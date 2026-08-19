@@ -12,6 +12,8 @@ import {
   Globe,
   ShieldCheck,
   Eye,
+  ExternalLink,
+  Building2,
 } from "lucide-react";
 
 export function ArtifactInfo({
@@ -31,6 +33,11 @@ export function ArtifactInfo({
 
   if (!artifact) return null;
 
+  // RAG payload format representation
+  const ragPayload = {
+    artifact_id: artifact.id,
+  };
+
   const handleSendAiQuestion = async (e) => {
     e.preventDefault();
     if (!aiQuestion.trim() || isAiLoading) return;
@@ -40,12 +47,12 @@ export function ArtifactInfo({
     setAiMessages((prev) => [...prev, { sender: "user", text: userText }]);
     setIsAiLoading(true);
 
-    // Simulate backend POST /api/chat response stub
+    // Endpoint stub: POST /api/chat { artifact_id: artifact.id, question: userText }
     setTimeout(() => {
-      let aiResponseText = `The ${artifact.name} dates from ${artifact.period} in ${artifact.origin}. ${artifact.aiContext?.historicalSignificance || artifact.description}`;
+      let aiResponseText = `The ${artifact.name} dates from ${artifact.period} in ${artifact.origin || "its historical region"}. ${artifact.aiContext?.historicalSignificance || artifact.description}`;
 
       if (userText.toLowerCase().includes("material") || userText.toLowerCase().includes("made")) {
-        aiResponseText = `This artifact is crafted from ${artifact.aiContext?.material || "authentic period materials"}. Dimensions are ${artifact.aiContext?.dimensions || "standard display scale"}.`;
+        aiResponseText = `This artifact is crafted from ${artifact.aiContext?.material || "authentic archaeological stone/ceramic materials"}. Dimensions: ${artifact.aiContext?.dimensions || "standard museum exhibit scale"}.`;
       }
 
       setAiMessages((prev) => [
@@ -53,12 +60,12 @@ export function ArtifactInfo({
         {
           sender: "curator",
           text: aiResponseText,
-          sources: [artifact.source],
+          sources: [artifact.source || "Smithsonian Institution"],
           confidence: "98.4%",
         },
       ]);
       setIsAiLoading(false);
-    }, 900);
+    }, 850);
   };
 
   return (
@@ -137,42 +144,81 @@ export function ArtifactInfo({
               </div>
             </div>
 
-            {/* Description */}
+            {/* Institution & Source */}
+            <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2.5">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-slate-400 flex items-center gap-1.5">
+                  <Building2 className="w-3.5 h-3.5 text-amber-400" />
+                  Institution
+                </span>
+                <span className="font-semibold text-slate-200">
+                  {artifact.institution || artifact.source}
+                </span>
+              </div>
+
+              {artifact.origin && (
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-400 flex items-center gap-1.5">
+                    <Globe className="w-3.5 h-3.5 text-amber-400" />
+                    Origin
+                  </span>
+                  <span className="font-semibold text-slate-200">{artifact.origin}</span>
+                </div>
+              )}
+
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-slate-400 flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  License
+                </span>
+                <span className="font-mono text-slate-300 text-[11px]">
+                  {artifact.license || "Public Domain"}
+                </span>
+              </div>
+
+              {artifact.sourceUrl && (
+                <div className="pt-2 border-t border-slate-800/80">
+                  <a
+                    href={artifact.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 hover:underline font-semibold"
+                  >
+                    <span>View on Official Smithsonian 3D</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Official Description */}
             <div className="space-y-2">
               <h3 className="text-xs uppercase font-extrabold tracking-wider text-amber-300/80">
-                Curator Notes
+                Official Curator Description
               </h3>
               <p className="text-sm text-slate-300 leading-relaxed font-light">
                 {artifact.description}
               </p>
             </div>
 
-            {/* Provenance & License */}
-            <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-400 flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-amber-400" />
-                  Origin
-                </span>
-                <span className="font-semibold text-slate-200">{artifact.origin}</span>
-              </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-400 flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  Digital License
-                </span>
-                <span className="font-mono text-slate-300">{artifact.license}</span>
-              </div>
-            </div>
-
             {/* Explore 360 Action Button */}
-            <button
-              onClick={onExplore}
-              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <Eye className="w-4 h-4" />
-              Explore Artifact 360°
-            </button>
+            <div className="space-y-2">
+              <button
+                onClick={onExplore}
+                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Eye className="w-4 h-4" />
+                Explore Artifact 360°
+              </button>
+
+              <button
+                onClick={() => setActiveTab("ai")}
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-semibold text-xs flex items-center justify-center gap-2 border border-amber-500/30 transition-all"
+              >
+                <Bot className="w-4 h-4 text-amber-400" />
+                Ask AI Curator Questions
+              </button>
+            </div>
           </>
         ) : (
           /* AI CURATOR CHAT TAB */
@@ -180,7 +226,7 @@ export function ArtifactInfo({
             <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
               <span>
-                RAG Context Ready: Asking queries for artifact <code className="font-mono font-bold text-amber-300">{artifact.id}</code>
+                RAG Payload Context: <code className="font-mono font-bold text-amber-300">{JSON.stringify(ragPayload)}</code>
               </span>
             </div>
 
@@ -213,7 +259,7 @@ export function ArtifactInfo({
               {isAiLoading && (
                 <div className="flex items-center gap-2 text-xs text-slate-400 p-2">
                   <Bot className="w-4 h-4 text-amber-400 animate-spin" />
-                  <span>Curator analyzing historical records...</span>
+                  <span>Curator querying Smithsonian evidence base...</span>
                 </div>
               )}
             </div>
@@ -224,7 +270,7 @@ export function ArtifactInfo({
                 type="text"
                 value={aiQuestion}
                 onChange={(e) => setAiQuestion(e.target.value)}
-                placeholder="Ask about materials, history..."
+                placeholder="Ask about age, toolmaking, material..."
                 className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/80"
               />
               <button

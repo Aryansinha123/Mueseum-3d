@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, Component, Suspense } from "react";
+import React, { useState, useEffect, Component, Suspense } from "react";
 import { useGLTF } from "@react-three/drei";
 import { ArtifactPlaceholder } from "./ArtifactPlaceholder";
+import { AutoFitModel } from "./AutoFitModel";
 
-// React Error Boundary to catch async 404 / GLTF parsing errors cleanly
+// Error Boundary for missing GLB model files
 class ModelErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,11 @@ class ModelErrorBoundary extends Component {
   }
 
   componentDidCatch(error) {
-    // Fall back to 3D procedural placeholder without crashing Canvas
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(
+        `${this.props.artifactId} model not found or failed to load. Place the Smithsonian GLB at public${this.props.modelPath}`
+      );
+    }
   }
 
   render() {
@@ -27,9 +32,9 @@ class ModelErrorBoundary extends Component {
   }
 }
 
-function GlbModel({ modelPath, scale }) {
+function GlbModelLoader({ modelPath, scale, artifactId }) {
   const { scene } = useGLTF(modelPath);
-  return <primitive object={scene.clone()} scale={scale || 1} />;
+  return <AutoFitModel object={scene} userScale={scale || 1} targetSize={0.65} />;
 }
 
 export function Artifact({
@@ -38,6 +43,13 @@ export function Artifact({
   onSelectArtifact,
 }) {
   const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    // Log development helpful notice if GLB path is set
+    if (artifact.modelPath && process.env.NODE_ENV !== "production") {
+      // dev console notice logged when GLB error boundary catches or loads
+    }
+  }, [artifact]);
 
   const handlePointerOver = (e) => {
     e.stopPropagation();
@@ -70,35 +82,42 @@ export function Artifact({
     <group
       position={artifact.position}
       rotation={artifact.rotation}
-      scale={artifact.scale || 1}
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
       onClick={handleClick}
     >
-      {/* Highlight glow ring on base when hovered or selected */}
+      {/* Base highlight ring when hovered or selected */}
       {(isHovered || isSelected) && (
         <mesh position={[0, 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <ringGeometry args={[0.5, 0.65, 32]} />
           <meshBasicMaterial
             color={isSelected ? "#f59e0b" : "#3b82f6"}
             transparent
-            opacity={isSelected ? 0.8 : 0.5}
+            opacity={isSelected ? 0.85 : 0.5}
           />
         </mesh>
       )}
 
-      {/* Render GLB model if modelPath is specified, wrapped in ErrorBoundary */}
+      {/* Render real GLB model with ErrorBoundary fallback to procedural 3D artifact */}
       {artifact.modelPath ? (
-        <ModelErrorBoundary fallback={placeholder}>
+        <ModelErrorBoundary
+          artifactId={artifact.id}
+          modelPath={artifact.modelPath}
+          fallback={placeholder}
+        >
           <Suspense fallback={placeholder}>
-            <GlbModel modelPath={artifact.modelPath} scale={artifact.scale} />
+            <GlbModelLoader
+              modelPath={artifact.modelPath}
+              scale={artifact.scale}
+              artifactId={artifact.id}
+            />
           </Suspense>
         </ModelErrorBoundary>
       ) : (
         placeholder
       )}
 
-      {/* Floating 3D Beacon Indicator */}
+      {/* 3D Floating Beacon Marker */}
       {(isHovered || isSelected) && (
         <group position={[0, 1.6, 0]}>
           <mesh position={[0, 0, 0]}>

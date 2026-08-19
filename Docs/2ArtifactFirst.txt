@@ -1,0 +1,295 @@
+# Add the First Real 3D Museum Artifact — ART001
+
+Now extend the existing Virtual Museum project by replacing the placeholder `ART001` artifact with a real museum 3D artifact.
+
+## Artifact
+
+Use:
+
+* Artifact ID: `ART001`
+* Name: `Handaxe from India`
+* Institution: Smithsonian Institution
+* Source: Smithsonian 3D
+* Category: Prehistoric / Archaeological Artifact
+
+## Important licensing requirement
+
+Do NOT download a random model from Google, Sketchfab, TurboSquid, or another third-party source.
+
+Use the Smithsonian 3D source and only use the actual artifact model if the Smithsonian provides a downloadable/reusable 3D asset with appropriate usage rights.
+
+Preserve the original source and license information in the project.
+
+If the actual GLB/GLTF cannot be downloaded automatically from the Smithsonian source, DO NOT substitute a random model.
+
+Instead:
+
+1. Keep the existing ART001 placeholder.
+2. Create the correct artifact metadata structure.
+3. Clearly tell me where the Smithsonian model needs to be downloaded manually.
+4. Make the project ready to accept the downloaded file.
+
+## Step 1 — Locate the 3D asset
+
+Search the Smithsonian 3D platform for:
+
+"Handaxe from India"
+
+Identify the exact 3D package corresponding to this artifact.
+
+Use the official Smithsonian source.
+
+Do not assume that the previously provided Voyager iframe itself is the GLB file.
+
+The iframe is a viewer, not necessarily the downloadable model.
+
+## Step 2 — Add an artifact directory
+
+Create:
+
+public/
+└── models/
+└── artifacts/
+└── ART001/
+
+Inside it, expect:
+
+ART001/
+├── model.glb
+└── preview.jpg
+
+If the model cannot be downloaded automatically, still create the directory and explain that I need to place the downloaded model at:
+
+public/models/artifacts/ART001/model.glb
+
+## Step 3 — Create artifact metadata
+
+Create:
+
+src/data/artifacts.js
+
+and define ART001 like:
+
+{
+id: "ART001",
+name: "Handaxe from India",
+category: "Prehistoric / Archaeological Artifact",
+source: "Smithsonian Institution",
+sourceUrl: "<official Smithsonian artifact URL>",
+modelPath: "/models/artifacts/ART001/model.glb",
+license: "<actual license reported by Smithsonian>",
+position: [-5, 0, -4],
+rotation: [0, 0, 0],
+scale: 1,
+description: "<use the official museum-provided description where available>"
+}
+
+Do not invent metadata.
+
+If a field is unavailable, leave it clearly marked as unavailable rather than fabricating information.
+
+## Step 4 — Load the GLB
+
+Use:
+
+`useGLTF` from `@react-three/drei`
+
+The existing Artifact component should load:
+
+`/models/artifacts/ART001/model.glb`
+
+when the file exists.
+
+Do not hardcode the model into the museum component.
+
+The architecture must remain:
+
+Museum
+↓
+ArtifactManager
+↓
+Artifact
+↓
+GLB model
+
+## Step 5 — Replace the placeholder
+
+If:
+
+`public/models/artifacts/ART001/model.glb`
+
+exists:
+
+* render the real Smithsonian model
+* remove/hide the placeholder
+* preserve ART001's position
+* preserve ART001's interaction
+* preserve the artifact information panel
+
+If the file does not exist:
+
+* show the existing placeholder
+* display a development-only message in the console:
+
+"ART001 model not found. Place the Smithsonian GLB at public/models/artifacts/ART001/model.glb"
+
+Do not break the application.
+
+## Step 6 — Automatically handle model scale
+
+Museum 3D models can have very different dimensions.
+
+Implement a reusable model-scaling mechanism so that ART001 fits naturally on its display pedestal.
+
+Do not permanently hardcode an arbitrary scale without checking the model's bounding box.
+
+The artifact should:
+
+* sit on the pedestal
+* face the visitor
+* have reasonable physical proportions
+* not appear microscopic
+* not be enormous compared with the museum
+
+Keep scale configurable in `artifacts.js`.
+
+## Step 7 — Artifact presentation
+
+ART001 should be displayed on a museum pedestal.
+
+Create:
+
+* pedestal
+* focused exhibit light
+* subtle shadow
+* artifact nameplate
+
+Example:
+
+```
+            ┌─────────────┐
+            │   ART001    │
+            │ Handaxe     │
+            └─────────────┘
+
+                 🪨
+                 │
+          ┌─────────────┐
+          │  PEDESTAL   │
+          └─────────────┘
+```
+
+The actual artifact should remain the focus.
+
+## Step 8 — Interaction
+
+Clicking/tapping ART001 should:
+
+1. Highlight the artifact.
+2. Show the information panel.
+3. Display its official metadata.
+4. Show:
+
+   * Name
+   * Category
+   * Institution
+   * Source
+   * License when available
+5. Provide an "Ask AI Curator" button.
+
+The AI button does not need to work yet.
+
+## Step 9 — Prepare for future RAG
+
+Do not implement ChromaDB or Gemini yet.
+
+However, ensure the selected artifact can be represented as:
+
+{
+"artifact_id": "ART001"
+}
+
+The future flow will be:
+
+User
+↓
+Select ART001
+↓
+Ask question
+↓
+FastAPI
+↓
+ChromaDB
+↓
+Museum evidence
+↓
+Gemini
+↓
+Answer + Sources + Confidence
+
+## Step 10 — Source documentation
+
+Create:
+
+docs/artifacts/ART001.md
+
+Document:
+
+* Artifact ID
+* Artifact name
+* Smithsonian source
+* Official artifact URL
+* 3D model URL if available
+* License
+* Download instructions
+* Model filename
+* Any limitations
+
+Do not invent URLs or license information.
+
+## Step 11 — Do not modify the museum unnecessarily
+
+The existing museum architecture should remain intact.
+
+Only add the real ART001 integration.
+
+The result should be:
+
+Virtual Museum
+│
+├── Gallery 1
+│     └── ART001
+│           ├── Real Smithsonian 3D model
+│           ├── Metadata
+│           ├── Source
+│           └── License
+│
+├── Gallery 2
+│
+└── Gallery 3
+
+## Final acceptance criteria
+
+The implementation is successful if:
+
+1. The application still starts with `npm run dev`.
+2. The museum loads normally.
+3. ART001 exists in the artifact configuration.
+4. If the real GLB is present, it is rendered inside the museum.
+5. The artifact is correctly scaled and positioned.
+6. The artifact is displayed on a pedestal.
+7. The artifact can be selected.
+8. Metadata appears when selected.
+9. The Smithsonian source is recorded.
+10. The model's license is recorded when available.
+11. The application does not break if the GLB is missing.
+12. The code is ready for ART002, ART003, ART004, and ART005 using the same system.
+
+After completing this, report:
+
+* whether the actual Smithsonian GLB was successfully obtained,
+* the exact file path used,
+* the official source URL,
+* the license,
+* how ART001 was loaded,
+* and exactly what I need to do manually if the model could not be downloaded automatically.
