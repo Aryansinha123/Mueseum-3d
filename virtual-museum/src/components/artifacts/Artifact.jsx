@@ -33,9 +33,22 @@ class ModelErrorBoundary extends Component {
   }
 }
 
-function GlbModelLoader({ modelPath, scale }) {
-  const { scene } = useGLTF(modelPath);
-  return <AutoFitModel object={scene} userScale={scale || 1} targetSize={0.65} />;
+function GlbModelLoader({ modelPath, scale, artifactId }) {
+  console.log(`[GLB LOAD START] ${artifactId}`);
+  const gltf = useGLTF(modelPath);
+  console.log(`[GLB LOAD SUCCESS] ${artifactId}`, gltf);
+  console.log(`[GLB SCENE] ${artifactId} scene object`, gltf.scene);
+
+  let meshCount = 0;
+  gltf.scene.traverse((child) => {
+    if (child.isMesh) {
+      meshCount++;
+      child.frustumCulled = false;
+    }
+  });
+  console.log(`[GLB MESH COUNT] ${artifactId}: ${meshCount}`);
+
+  return <AutoFitModel object={gltf.scene} userScale={scale || 1} targetSize={0.65} artifactId={artifactId} />;
 }
 
 export function Artifact({
@@ -47,6 +60,9 @@ export function Artifact({
   const [isAssetPresent, setIsAssetPresent] = useState(false);
 
   useEffect(() => {
+    console.log(`[ARTIFACT] ${artifact.id} received`);
+    console.log(`[MODEL PATH] ${artifact.modelPath}`);
+
     let isMounted = true;
     async function verifyAsset() {
       if (!artifact.modelPath) {
@@ -98,9 +114,18 @@ export function Artifact({
     />
   );
 
+  // Pedestal height offset: top of pedestal is at y = pedestalHeight (default 1.2)
+  const pedestalHeight = artifact.pedestalHeight || 1.2;
+  const artifactPositionY = (artifact.position ? artifact.position[1] : 0) + pedestalHeight;
+  const artifactPosition = [
+    artifact.position ? artifact.position[0] : 0,
+    artifactPositionY,
+    artifact.position ? artifact.position[2] : 0,
+  ];
+
   return (
     <group
-      position={artifact.position}
+      position={artifactPosition}
       rotation={artifact.rotation}
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
@@ -140,7 +165,7 @@ export function Artifact({
 
       {/* 3D Floating Beacon Marker */}
       {(isHovered || isSelected) && (
-        <group position={[0, 1.6, 0]}>
+        <group position={[0, 0.8, 0]}>
           <mesh position={[0, 0, 0]}>
             <sphereGeometry args={[0.04, 16, 16]} />
             <meshBasicMaterial color={isSelected ? "#f59e0b" : "#3b82f6"} />

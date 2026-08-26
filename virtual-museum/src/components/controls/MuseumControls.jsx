@@ -152,7 +152,7 @@ export function MuseumControls({
           ref={pointerLockRef}
           onUnlock={() => setIsPointerLocked && setIsPointerLocked(false)}
         />
-      ) : (
+      ) : controlMode === "inspect" ? (
         <OrbitControls
           ref={orbitRef}
           enablePan={true}
@@ -161,7 +161,7 @@ export function MuseumControls({
           minDistance={1}
           maxDistance={35}
         />
-      )}
+      ) : null}
     </>
   );
 }
