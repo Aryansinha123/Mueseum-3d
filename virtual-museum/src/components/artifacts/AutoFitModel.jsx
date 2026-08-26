@@ -18,15 +18,18 @@ export function AutoFitModel({ object, targetSize = 0.65, userScale = 1 }) {
     box.getSize(size);
 
     const maxDim = Math.max(size.x, size.y, size.z);
-    if (maxDim === 0) return;
+    if (maxDim === 0 || !Number.isFinite(maxDim)) return;
 
     // Calculate normalization scale factor
     const scaleFactor = (targetSize / maxDim) * userScale;
+    if (!Number.isFinite(scaleFactor) || scaleFactor <= 0) return;
 
     // Calculate center offsets so bottom of mesh aligns at y = 0
     const centerX = -(box.min.x + size.x / 2) * scaleFactor;
     const centerY = -box.min.y * scaleFactor; // Bottom alignment
     const centerZ = -(box.min.z + size.z / 2) * scaleFactor;
+
+    if (!Number.isFinite(centerX) || !Number.isFinite(centerY) || !Number.isFinite(centerZ)) return;
 
     // Apply transformation matrix to group
     cloned.position.set(centerX, centerY, centerZ);

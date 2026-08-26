@@ -17,6 +17,7 @@ export const artifactsData = [
     galleryId: "gallery-1",
     galleryName: "Gallery 1: Classical & Prehistoric Antiquities",
     pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
     aiContext: {
       artifact_id: "ART001",
       historicalSignificance: "Key archaeological evidence of Acheulean toolmaking innovation and early hominin dispersal in South Asia.",
@@ -42,6 +43,7 @@ export const artifactsData = [
     galleryId: "gallery-1",
     galleryName: "Gallery 1: Classical Antiquities",
     pedestalHeight: 1.2,
+    isVerifiedMuseumData: false,
     aiContext: {
       artifact_id: "ART002",
       historicalSignificance: "Amphorae were key export goods used for storing olive oil and wine across Mediterranean trade networks.",
@@ -67,6 +69,7 @@ export const artifactsData = [
     galleryId: "gallery-2",
     galleryName: "Gallery 2: Medieval & Epigraphic Treasures",
     pedestalHeight: 1.2,
+    isVerifiedMuseumData: false,
     aiContext: {
       artifact_id: "ART003",
       historicalSignificance: "Symbolized divine right and political sovereignty during coronation rituals of medieval monarchs.",
@@ -92,6 +95,7 @@ export const artifactsData = [
     galleryId: "gallery-2",
     galleryName: "Gallery 2: Medieval & Epigraphic Treasures",
     pedestalHeight: 1.2,
+    isVerifiedMuseumData: false,
     aiContext: {
       artifact_id: "ART004",
       historicalSignificance: "Demonstrates early codification of commercial law, property rights, and civic obligations in ancient Mesopotamia.",
@@ -117,6 +121,7 @@ export const artifactsData = [
     galleryId: "gallery-3",
     galleryName: "Gallery 3: Ancient Wonders Hall",
     pedestalHeight: 1.2,
+    isVerifiedMuseumData: false,
     aiContext: {
       artifact_id: "ART005",
       historicalSignificance: "Obelisks served as monumental sun altars representing rays of light connecting earth with the divine heavens.",

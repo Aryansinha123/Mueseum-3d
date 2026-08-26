@@ -23,12 +23,10 @@ export function Pedestal({
       {/* Exhibit Spotlight focused on this pedestal */}
       <spotLight
         position={[0, 4.5, 0]}
-        target-position={[0, 1.2, 0]}
         angle={0.45}
         penumbra={0.6}
         intensity={isSelected ? 35 : 22}
         color={isSelected ? "#fff6e0" : "#ffedd5"}
-        castShadow
         distance={9}
       />
 

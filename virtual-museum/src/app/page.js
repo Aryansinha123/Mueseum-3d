@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { artifactsData, galleriesData } from "@/data/artifacts";
 import { MuseumHUD } from "@/components/ui/MuseumHUD";
@@ -10,7 +10,8 @@ import { ControlsOverlay } from "@/components/ui/ControlsOverlay";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { AROverlayUI } from "@/components/ar/AROverlayUI";
 import { useWebXRSupport } from "@/hooks/useWebXRSupport";
-import { xrStore } from "@/components/museum/Museum";
+import { xrStore } from "@/utils/xrStore";
+import { validateArtifactAssets } from "@/utils/artifactValidator";
 
 // Dynamically import 3D Canvas component to prevent Next.js SSR evaluation
 const MuseumCanvas = dynamic(
@@ -36,6 +37,11 @@ export default function Home() {
   const [isInfoInArOpen, setIsInfoInArOpen] = useState(false);
 
   const { isSupported: isArSupported } = useWebXRSupport();
+
+  // Audit 3D GLB assets in dev console on initial load
+  useEffect(() => {
+    validateArtifactAssets(artifactsData);
+  }, []);
 
   // Compute current gallery location based on camera coordinates
   const currentGalleryName = useMemo(() => {
@@ -72,8 +78,13 @@ export default function Home() {
     setControlMode("first-person");
   };
 
-  // Trigger Mobile WebXR AR Mode
+  // Trigger Mobile WebXR AR Mode safely
   const handleEnterAr = () => {
+    if (!isArSupported) {
+      alert("AR is not supported on this device/browser.");
+      return;
+    }
+
     const targetArtifact = selectedArtifact || artifactsData[0];
     if (!selectedArtifact) {
       setSelectedArtifact(targetArtifact);
@@ -84,7 +95,11 @@ export default function Home() {
     setArScale(1.0);
     setRotationY(0);
     if (xrStore && typeof xrStore.enterAR === "function") {
-      xrStore.enterAR();
+      xrStore.enterAR().catch((err) => {
+        console.warn("[WebXR] Failed to enter AR session:", err);
+        setIsArMode(false);
+        alert("AR is not supported on this device/browser.");
+      });
     }
   };
 

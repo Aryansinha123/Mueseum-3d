@@ -4,8 +4,9 @@ import React, { useState, useEffect, Component, Suspense } from "react";
 import { useGLTF } from "@react-three/drei";
 import { ArtifactPlaceholder } from "./ArtifactPlaceholder";
 import { AutoFitModel } from "./AutoFitModel";
+import { checkGlbAssetExists } from "../../utils/artifactValidator";
 
-// Error Boundary for missing GLB model files
+// Error Boundary for GLB model loading runtime failures
 class ModelErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +20,7 @@ class ModelErrorBoundary extends Component {
   componentDidCatch(error) {
     if (process.env.NODE_ENV !== "production") {
       console.warn(
-        `${this.props.artifactId} model not found or failed to load. Place the Smithsonian GLB at public${this.props.modelPath}`
+        `[Artifact Pipeline] ${this.props.artifactId} model failed to load. Source: ${this.props.institution || "Museum Collection"}. Place GLB at public${this.props.modelPath}`
       );
     }
   }
@@ -32,7 +33,7 @@ class ModelErrorBoundary extends Component {
   }
 }
 
-function GlbModelLoader({ modelPath, scale, artifactId }) {
+function GlbModelLoader({ modelPath, scale }) {
   const { scene } = useGLTF(modelPath);
   return <AutoFitModel object={scene} userScale={scale || 1} targetSize={0.65} />;
 }
@@ -43,12 +44,31 @@ export function Artifact({
   onSelectArtifact,
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isAssetPresent, setIsAssetPresent] = useState(false);
 
   useEffect(() => {
-    // Log development helpful notice if GLB path is set
-    if (artifact.modelPath && process.env.NODE_ENV !== "production") {
-      // dev console notice logged when GLB error boundary catches or loads
+    let isMounted = true;
+    async function verifyAsset() {
+      if (!artifact.modelPath) {
+        if (isMounted) setIsAssetPresent(false);
+        return;
+      }
+      const exists = await checkGlbAssetExists(artifact.modelPath);
+      if (isMounted) {
+        setIsAssetPresent(exists);
+        if (!exists && process.env.NODE_ENV !== "production") {
+          console.info(
+            `[Artifact Pipeline] 3D model missing for ${artifact.id}. Place GLB file at public${artifact.modelPath}`
+          );
+        }
+      }
     }
+
+    verifyAsset();
+
+    return () => {
+      isMounted = false;
+    };
   }, [artifact]);
 
   const handlePointerOver = (e) => {
@@ -98,11 +118,12 @@ export function Artifact({
         </mesh>
       )}
 
-      {/* Render real GLB model with ErrorBoundary fallback to procedural 3D artifact */}
-      {artifact.modelPath ? (
+      {/* Render real GLB model ONLY if asset exists on disk; otherwise render placeholder cleanly without 404 console errors */}
+      {isAssetPresent && artifact.modelPath ? (
         <ModelErrorBoundary
           artifactId={artifact.id}
           modelPath={artifact.modelPath}
+          institution={artifact.institution || artifact.source}
           fallback={placeholder}
         >
           <Suspense fallback={placeholder}>

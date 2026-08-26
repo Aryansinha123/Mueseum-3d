@@ -5,10 +5,12 @@ import { useProgress } from "@react-three/drei";
 import { Compass, Landmark, Sparkles } from "lucide-react";
 
 export function LoadingScreen() {
+  const [mounted, setMounted] = useState(false);
   const { progress, active } = useProgress();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Auto-dismiss preloader once 3D assets & canvas finish mounting
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -16,7 +18,7 @@ export function LoadingScreen() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (isLoaded || (!active && progress >= 100)) {
+  if (!mounted || isLoaded || (!active && progress >= 100)) {
     return null;
   }
 
