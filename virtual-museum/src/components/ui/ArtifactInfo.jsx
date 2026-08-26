@@ -14,12 +14,14 @@ import {
   Eye,
   ExternalLink,
   Building2,
+  Smartphone,
 } from "lucide-react";
 
 export function ArtifactInfo({
   artifact,
   onClose,
   onExplore,
+  onEnterAr,
 }) {
   const [activeTab, setActiveTab] = useState("details"); // 'details' or 'ai'
   const [aiQuestion, setAiQuestion] = useState("");
@@ -201,7 +203,7 @@ export function ArtifactInfo({
               </p>
             </div>
 
-            {/* Explore 360 Action Button */}
+            {/* Explore & AR Action Buttons */}
             <div className="space-y-2">
               <button
                 onClick={onExplore}
@@ -211,9 +213,19 @@ export function ArtifactInfo({
                 Explore Artifact 360°
               </button>
 
+              {onEnterAr && (
+                <button
+                  onClick={onEnterAr}
+                  className="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-xs flex items-center justify-center gap-2 border border-amber-500/40 transition-all hover:border-amber-400"
+                >
+                  <Smartphone className="w-4 h-4 text-amber-400" />
+                  View Exhibit in Mobile AR
+                </button>
+              )}
+
               <button
                 onClick={() => setActiveTab("ai")}
-                className="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-semibold text-xs flex items-center justify-center gap-2 border border-amber-500/30 transition-all"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-semibold text-xs flex items-center justify-center gap-2 border border-slate-700 transition-all"
               >
                 <Bot className="w-4 h-4 text-amber-400" />
                 Ask AI Curator Questions

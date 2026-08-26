@@ -8,6 +8,9 @@ import { ArtifactInfo } from "@/components/ui/ArtifactInfo";
 import { MuseumMap } from "@/components/ui/MuseumMap";
 import { ControlsOverlay } from "@/components/ui/ControlsOverlay";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import { AROverlayUI } from "@/components/ar/AROverlayUI";
+import { useWebXRSupport } from "@/hooks/useWebXRSupport";
+import { xrStore } from "@/components/museum/Museum";
 
 // Dynamically import 3D Canvas component to prevent Next.js SSR evaluation
 const MuseumCanvas = dynamic(
@@ -22,6 +25,17 @@ export default function Home() {
   const [isControlsOpen, setIsControlsOpen] = useState(false);
   const [cameraPosition, setCameraPosition] = useState([0, 1.65, 23]);
   const [isPointerLocked, setIsPointerLocked] = useState(false);
+
+  // AR Mode state
+  const [isArMode, setIsArMode] = useState(false);
+  const [isPlaced, setIsPlaced] = useState(false);
+  const [placedPosition, setPlacedPosition] = useState(null);
+  const [lastHitPosition, setLastHitPosition] = useState(null);
+  const [arScale, setArScale] = useState(1.0);
+  const [rotationY, setRotationY] = useState(0);
+  const [isInfoInArOpen, setIsInfoInArOpen] = useState(false);
+
+  const { isSupported: isArSupported } = useWebXRSupport();
 
   // Compute current gallery location based on camera coordinates
   const currentGalleryName = useMemo(() => {
@@ -58,6 +72,34 @@ export default function Home() {
     setControlMode("first-person");
   };
 
+  // Trigger Mobile WebXR AR Mode
+  const handleEnterAr = () => {
+    const targetArtifact = selectedArtifact || artifactsData[0];
+    if (!selectedArtifact) {
+      setSelectedArtifact(targetArtifact);
+    }
+    setIsArMode(true);
+    setIsPlaced(false);
+    setPlacedPosition(null);
+    setArScale(1.0);
+    setRotationY(0);
+    if (xrStore && typeof xrStore.enterAR === "function") {
+      xrStore.enterAR();
+    }
+  };
+
+  const handleExitAr = () => {
+    setIsArMode(false);
+    setIsPlaced(false);
+    setPlacedPosition(null);
+    setIsInfoInArOpen(false);
+  };
+
+  const handleClearPlacement = () => {
+    setIsPlaced(false);
+    setPlacedPosition(null);
+  };
+
   return (
     <main className="w-screen h-screen relative overflow-hidden bg-slate-950 select-none">
       {/* 3D Preloader Screen */}
@@ -71,43 +113,82 @@ export default function Home() {
         onCameraMove={setCameraPosition}
         isPointerLocked={isPointerLocked}
         setIsPointerLocked={setIsPointerLocked}
+        isArMode={isArMode}
+        isPlaced={isPlaced}
+        setIsPlaced={setIsPlaced}
+        placedPosition={placedPosition}
+        setPlacedPosition={setPlacedPosition}
+        lastHitPosition={lastHitPosition}
+        setLastHitPosition={setLastHitPosition}
+        arScale={arScale}
+        rotationY={rotationY}
       />
 
-      {/* Top HUD Header & Floating Controls */}
-      <MuseumHUD
-        controlMode={controlMode}
-        setControlMode={setControlMode}
-        onOpenMap={() => setIsMapOpen(true)}
-        onOpenControls={() => setIsControlsOpen(true)}
-        onResetCamera={handleResetCamera}
-        selectedArtifact={selectedArtifact}
-        currentGalleryName={currentGalleryName}
-      />
-
-      {/* Artifact Inspect Detail Modal */}
-      {selectedArtifact && (
-        <ArtifactInfo
-          artifact={selectedArtifact}
-          onClose={handleCloseArtifactInfo}
-          onExplore={handleExploreArtifact}
+      {/* Conditionally Render AR Overlay vs Desktop HUD */}
+      {isArMode ? (
+        <AROverlayUI
+          selectedArtifact={selectedArtifact}
+          isPlaced={isPlaced}
+          arScale={arScale}
+          setArScale={setArScale}
+          rotationY={rotationY}
+          setRotationY={setRotationY}
+          onClearPlacement={handleClearPlacement}
+          onExitAr={handleExitAr}
+          onOpenInfo={() => setIsInfoInArOpen(true)}
         />
+      ) : (
+        <>
+          {/* Top HUD Header & Floating Controls */}
+          <MuseumHUD
+            controlMode={controlMode}
+            setControlMode={setControlMode}
+            onOpenMap={() => setIsMapOpen(true)}
+            onOpenControls={() => setIsControlsOpen(true)}
+            onResetCamera={handleResetCamera}
+            onEnterAr={handleEnterAr}
+            selectedArtifact={selectedArtifact}
+            currentGalleryName={currentGalleryName}
+            isArSupported={isArSupported}
+          />
+
+          {/* Artifact Inspect Detail Modal */}
+          {selectedArtifact && (
+            <ArtifactInfo
+              artifact={selectedArtifact}
+              onClose={handleCloseArtifactInfo}
+              onExplore={handleExploreArtifact}
+              onEnterAr={handleEnterAr}
+            />
+          )}
+
+          {/* 2D Interactive Museum Floorplan Map */}
+          <MuseumMap
+            isOpen={isMapOpen}
+            onClose={() => setIsMapOpen(false)}
+            artifacts={artifactsData}
+            galleries={galleriesData}
+            cameraPosition={cameraPosition}
+            onTeleport={handleTeleport}
+          />
+
+          {/* Keyboard & Touch Navigation Guide */}
+          <ControlsOverlay
+            isOpen={isControlsOpen}
+            onClose={() => setIsControlsOpen(false)}
+          />
+        </>
       )}
 
-      {/* 2D Interactive Museum Floorplan Map */}
-      <MuseumMap
-        isOpen={isMapOpen}
-        onClose={() => setIsMapOpen(false)}
-        artifacts={artifactsData}
-        galleries={galleriesData}
-        cameraPosition={cameraPosition}
-        onTeleport={handleTeleport}
-      />
-
-      {/* Keyboard & Touch Navigation Guide */}
-      <ControlsOverlay
-        isOpen={isControlsOpen}
-        onClose={() => setIsControlsOpen(false)}
-      />
+      {/* AR Curator Info Modal Drawer */}
+      {isArMode && isInfoInArOpen && selectedArtifact && (
+        <ArtifactInfo
+          artifact={selectedArtifact}
+          onClose={() => setIsInfoInArOpen(false)}
+          onExplore={() => setIsInfoInArOpen(false)}
+        />
+      )}
     </main>
   );
 }
+

@@ -9,6 +9,7 @@ import {
   Footprints,
   RotateCcw,
   Sparkles,
+  Smartphone,
 } from "lucide-react";
 
 export function MuseumHUD({
@@ -17,8 +18,10 @@ export function MuseumHUD({
   onOpenMap,
   onOpenControls,
   onResetCamera,
+  onEnterAr,
   selectedArtifact,
   currentGalleryName,
+  isArSupported = true,
 }) {
   return (
     <div className="fixed inset-0 pointer-events-none z-30 flex flex-col justify-between p-4 md:p-6">
@@ -42,6 +45,18 @@ export function MuseumHUD({
 
         {/* Top Right Action Buttons */}
         <div className="pointer-events-auto flex items-center gap-2">
+          {/* Enter Mobile AR Mode Button */}
+          {onEnterAr && (
+            <button
+              onClick={onEnterAr}
+              className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-extrabold px-3.5 py-2.5 rounded-xl transition-all shadow-lg shadow-amber-500/25 hover:scale-105 active:scale-95 border border-amber-400/40"
+              title="Enter Mobile WebXR AR Mode"
+            >
+              <Smartphone className="w-4 h-4" />
+              <span className="hidden sm:inline">Enter AR Mode</span>
+            </button>
+          )}
+
           {/* Mode Switcher */}
           <button
             onClick={() =>
@@ -66,9 +81,9 @@ export function MuseumHUD({
           {/* Map Button */}
           <button
             onClick={onOpenMap}
-            className="flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold px-3.5 py-2.5 rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:scale-105 active:scale-95"
+            className="flex items-center gap-2 bg-slate-900/80 hover:bg-slate-800 backdrop-blur-md border border-slate-800 text-amber-300 text-xs font-bold px-3.5 py-2.5 rounded-xl transition-all shadow-lg hover:border-amber-500/40"
           >
-            <Map className="w-4 h-4" />
+            <Map className="w-4 h-4 text-amber-400" />
             <span className="hidden sm:inline">Museum Map</span>
           </button>
 
@@ -106,3 +121,4 @@ export function MuseumHUD({
     </div>
   );
 }
+
