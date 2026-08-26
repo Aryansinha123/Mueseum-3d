@@ -1,0 +1,21 @@
+Update artifact metadata & READMEs
+⬜ Display multiple artifacts in virtual museum
+⬜ Create AR Artifact Selection screen
+⬜ Remove hardcoded ART001 from AR mode
+⬜ Add artifact thumbnails + names
+⬜ Implement table/floor surface detection
+⬜ Add AR placement reticle
+⬜ Place selected artifact on real surface
+⬜ Add AR move / rotate / scale
+⬜ Add artifact info panel in AR
+⬜ Connect Ask AI Curator
+⬜ Build FastAPI backend
+⬜ Build Sentence Transformer + ChromaDB RAG
+⬜ Integrate Gemini
+⬜ Add source + confidence + explanation
+⬜ Add talking AI Curator avatar
+⬜ Add voice interaction
+⬜ Add context-aware recommendations
+⬜ Test Android + iPhone
+⬜ Deploy final application
+⬜ Prepare results, screenshots & final documentation
