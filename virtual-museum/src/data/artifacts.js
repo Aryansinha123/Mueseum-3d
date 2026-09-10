@@ -137,19 +137,19 @@ export const catalogArtifacts = [
   },
   {
     id: "ART006",
-    name: "Artifact ART006",
-    category: "Museum Collection",
-    institution: "Smithsonian Institution",
-    source: "Smithsonian 3D",
+    name: "Apollo 11 Command Module \"Columbia\"",
+    category: "Spacecraft / Human Spaceflight",
+    institution: "National Air and Space Museum, Smithsonian Institution",
+    source: "Smithsonian 3D / National Air and Space Museum",
     sourceUrl: "https://3d.si.edu",
     modelPath: "/models/artifacts/ART006/model.glb",
     license: "CC0 1.0 Universal (Smithsonian Open Access)",
-    position: [14, 0, 3],
+    position: [14, 0, 6],
     rotation: [0, -Math.PI / 4, 0],
     scale: 1,
-    period: "TBD",
-    origin: "TBD",
-    description: "A verified 3D artifact from the Smithsonian collection, displayed in Gallery 2. Description to be updated with source details.",
+    period: "1969 (20th Century)",
+    origin: "United States",
+    description: "The Apollo 11 Command Module, 'Columbia,' served as the living quarters for the three-person crew (Neil Armstrong, Buzz Aldrin, Michael Collins) during the first crewed lunar landing mission in July 1969. It was the only portion of the Apollo spacecraft that returned to Earth.",
     galleryId: "gallery-2",
     galleryName: "Gallery 2: Smithsonian Technology & Science Hall",
     pedestalHeight: 1.2,
@@ -157,26 +157,26 @@ export const catalogArtifacts = [
     hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART006",
-      historicalSignificance: "To be updated.",
-      material: "TBD",
-      dimensions: "TBD"
+      historicalSignificance: "Carried Neil Armstrong, Buzz Aldrin, and Michael Collins to the Moon and back during the historic first lunar landing mission in July 1969. Designated a 'Milestone of Flight' by the National Air and Space Museum.",
+      material: "Aluminum Alloy, Titanium, Silica Heat Shield Tiles",
+      dimensions: "H: 3.48m, W: 3.91m, D: 3.91m (Inventory: A19700102000)"
     }
   },
   {
     id: "ART007",
-    name: "Artifact ART007",
-    category: "Museum Collection",
-    institution: "Smithsonian Institution",
-    source: "Smithsonian 3D",
+    name: "Space Shuttle Discovery",
+    category: "Spacecraft / Human Spaceflight",
+    institution: "National Air and Space Museum, Smithsonian Institution",
+    source: "Smithsonian 3D / National Air and Space Museum",
     sourceUrl: "https://3d.si.edu",
     modelPath: "/models/artifacts/ART007/model.glb",
     license: "CC0 1.0 Universal (Smithsonian Open Access)",
-    position: [14, 0, -3],
-    rotation: [0, Math.PI / 4, 0],
+    position: [14, 0, 3],
+    rotation: [0, -Math.PI / 4, 0],
     scale: 1,
-    period: "TBD",
-    origin: "TBD",
-    description: "A verified 3D artifact from the Smithsonian collection, displayed in Gallery 2. Description to be updated with source details.",
+    period: "1984–2011 (20th–21st Century)",
+    origin: "United States",
+    description: "Space Shuttle Discovery (OV-103) was the third Space Shuttle orbiter vehicle to fly in space and the most flown spacecraft in human history. Over 39 Earth-orbital missions spanning nearly 30 years, Discovery spent 365 days in space and traveled almost 240 million kilometers.",
     galleryId: "gallery-2",
     galleryName: "Gallery 2: Smithsonian Technology & Science Hall",
     pedestalHeight: 1.2,
@@ -184,14 +184,95 @@ export const catalogArtifacts = [
     hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART007",
-      historicalSignificance: "To be updated.",
-      material: "TBD",
-      dimensions: "TBD"
+      historicalSignificance: "Flew 39 spaceflight missions, carried 184 astronauts into space, deployed the Hubble Space Telescope, and helped build the International Space Station. Preserved at the Steven F. Udvar-Hazy Center.",
+      material: "Aluminum alloys, Titanium, Silica tiles, and RCC nose cap",
+      dimensions: "L: 38.03m, W: 17.77m, H: 24.31m (Mass: 73,176 kg)"
+    }
+  },
+  {
+    id: "ART008",
+    name: "Bell X-1 \"Glamorous Glennis\"",
+    category: "Supersonic Flight / Experimental Aircraft",
+    institution: "National Air and Space Museum, Smithsonian Institution",
+    source: "Smithsonian 3D / National Air and Space Museum",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART008/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [14, 0, 0],
+    rotation: [0, -Math.PI / 4, 0],
+    scale: 1,
+    period: "1946 (20th Century)",
+    origin: "United States",
+    description: "The Bell X-1 'Glamorous Glennis' was the first airplane to fly faster than the speed of sound. On October 14, 1947, U.S. Air Force Captain Charles E. 'Chuck' Yeager piloted the rocket-powered aircraft to Mach 1.06 (1,127 km/h) at an altitude of 13,000 meters, opening the era of supersonic flight.",
+    galleryId: "gallery-2",
+    galleryName: "Gallery 2: Smithsonian Technology & Science Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
+    aiContext: {
+      artifact_id: "ART008",
+      historicalSignificance: "First manned aircraft to break the sound barrier on October 14, 1947, piloted by Chuck Yeager. Proved supersonic flight was achievable and provided critical transonic data.",
+      material: "Aluminum, Steel, Glass, Magnesium, Plexiglass, Rubber",
+      dimensions: "L: 9.37m (30ft 9in), W: 8.53m (28ft), H: 3.26m (10ft 8.5in)"
+    }
+  },
+  {
+    id: "ART009",
+    name: "Mercury Pressure Suit",
+    category: "Space Suits / Human Spaceflight Personal Equipment",
+    institution: "National Air and Space Museum, Smithsonian Institution",
+    source: "Smithsonian 3D / National Air and Space Museum",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART009/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [14, 0, -3],
+    rotation: [0, Math.PI / 4, 0],
+    scale: 1,
+    period: "1961 (20th Century)",
+    origin: "United States",
+    description: "The Mercury full-pressure suit worn by astronaut Alan B. Shepard Jr. during Freedom 7, the first crewed spaceflight launched by the United States on May 5, 1961. Developed by B.F. Goodrich from U.S. Navy Mark IV pressure suits, it provided environmental protection and life support during early spaceflight.",
+    galleryId: "gallery-2",
+    galleryName: "Gallery 2: Smithsonian Technology & Science Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
+    aiContext: {
+      artifact_id: "ART009",
+      historicalSignificance: "Worn by Alan Shepard on May 5, 1961, during the first American manned spaceflight. Pivotal artifact in human spaceflight history and early spacesuit engineering.",
+      material: "Aluminized nylon, Neoprene, Anodized aluminum neck ring, Brass, Rubber",
+      dimensions: "Full-body pressure suit (approx. 175cm x 60cm x 40cm)"
+    }
+  },
+  {
+    id: "ART010",
+    name: "Pioneer 10 Space Probe",
+    category: "Robotic Spacecraft / Deep Space Exploration",
+    institution: "National Air and Space Museum, Smithsonian Institution",
+    source: "Smithsonian 3D / National Air and Space Museum",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART010/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [14, 0, -6],
+    rotation: [0, Math.PI / 4, 0],
+    scale: 1,
+    period: "1972 (20th Century)",
+    origin: "United States",
+    description: "Pioneer 10 was the first spacecraft to navigate through the Asteroid Belt, conduct a close-up flyby of Jupiter (December 1973), and achieve escape velocity from our Solar System. It carries the famous gold-anodized interstellar Pioneer Plaque.",
+    galleryId: "gallery-2",
+    galleryName: "Gallery 2: Smithsonian Technology & Science Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
+    aiContext: {
+      artifact_id: "ART010",
+      historicalSignificance: "First spacecraft to traverse the Asteroid Belt, perform a flyby of Jupiter, and carry the interstellar Pioneer Plaque intended for intelligent extraterrestrial life.",
+      material: "Aluminum alloy, Beryllium, Hydrazine propellant tanks, RTGs",
+      dimensions: "Antenna Diameter: 2.74m (9ft), Length: 2.9m"
     }
   }
 ];
 
-// Active exhibits: ART001-ART005 in Gallery 1, ART006-ART007 in Gallery 2
+// Active exhibits: ART001-ART005 in Gallery 1, ART006-ART010 in Gallery 2
 export const artifactsData = catalogArtifacts.filter(
   (artifact) =>
     artifact.id === "ART001" ||
@@ -200,7 +281,10 @@ export const artifactsData = catalogArtifacts.filter(
     artifact.id === "ART004" ||
     artifact.id === "ART005" ||
     artifact.id === "ART006" ||
-    artifact.id === "ART007"
+    artifact.id === "ART007" ||
+    artifact.id === "ART008" ||
+    artifact.id === "ART009" ||
+    artifact.id === "ART010"
 );
 
 export const galleriesData = [
@@ -220,15 +304,15 @@ export const galleriesData = [
   },
   {
     id: "gallery-1",
-    name: "Gallery 1: Classical Antiquities",
+    name: "Gallery 1: History",
     description: "Discover prehistoric stone tools and classical sculptures from ancient civilizations.",
     position: [-12, 1.65, 0],
     lookAt: [-14, 1.65, 0]
   },
   {
     id: "gallery-2",
-    name: "Gallery 2: Medieval & Epigraphic Treasures",
-    description: "Examine royal regalia and ancient written codes that shaped human civilization.",
+    name: "Gallery 2: Smithsonian Technology & Science Hall",
+    description: "Examine historic aerospace innovations, space suits, and groundbreaking spacecraft.",
     position: [12, 1.65, 0],
     lookAt: [14, 1.65, 0]
   },
