@@ -134,17 +134,73 @@ export const catalogArtifacts = [
       material: "Bronze with green patina",
       dimensions: "H: 17.2cm, W: 10.7cm, D: 21.4cm"
     }
+  },
+  {
+    id: "ART006",
+    name: "Artifact ART006",
+    category: "Museum Collection",
+    institution: "Smithsonian Institution",
+    source: "Smithsonian 3D",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART006/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [14, 0, 3],
+    rotation: [0, -Math.PI / 4, 0],
+    scale: 1,
+    period: "TBD",
+    origin: "TBD",
+    description: "A verified 3D artifact from the Smithsonian collection, displayed in Gallery 2. Description to be updated with source details.",
+    galleryId: "gallery-2",
+    galleryName: "Gallery 2: Smithsonian Technology & Science Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
+    aiContext: {
+      artifact_id: "ART006",
+      historicalSignificance: "To be updated.",
+      material: "TBD",
+      dimensions: "TBD"
+    }
+  },
+  {
+    id: "ART007",
+    name: "Artifact ART007",
+    category: "Museum Collection",
+    institution: "Smithsonian Institution",
+    source: "Smithsonian 3D",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART007/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [14, 0, -3],
+    rotation: [0, Math.PI / 4, 0],
+    scale: 1,
+    period: "TBD",
+    origin: "TBD",
+    description: "A verified 3D artifact from the Smithsonian collection, displayed in Gallery 2. Description to be updated with source details.",
+    galleryId: "gallery-2",
+    galleryName: "Gallery 2: Smithsonian Technology & Science Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
+    aiContext: {
+      artifact_id: "ART007",
+      historicalSignificance: "To be updated.",
+      material: "TBD",
+      dimensions: "TBD"
+    }
   }
 ];
 
-// Active exhibits in the museum — all 5 physical GLBs, displayed in Gallery 1
+// Active exhibits: ART001-ART005 in Gallery 1, ART006-ART007 in Gallery 2
 export const artifactsData = catalogArtifacts.filter(
   (artifact) =>
     artifact.id === "ART001" ||
     artifact.id === "ART002" ||
     artifact.id === "ART003" ||
     artifact.id === "ART004" ||
-    artifact.id === "ART005"
+    artifact.id === "ART005" ||
+    artifact.id === "ART006" ||
+    artifact.id === "ART007"
 );
 
 export const galleriesData = [
