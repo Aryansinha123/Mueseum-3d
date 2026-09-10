@@ -9,7 +9,7 @@ export const catalogArtifacts = [
     sourceUrl: "https://3d.si.edu/object/3d/old-arrow-maker%3A99ca3d6f-6d54-45a5-9b95-f8c245a662c2",
     modelPath: "/models/artifacts/ART001/model.glb",
     license: "CC0 1.0 Universal (Smithsonian Open Access)",
-    position: [-14, 0, 4],
+    position: [-14, 0, 6],
     rotation: [0, Math.PI / 4, 0],
     scale: 1,
     period: "Modeled 1866",
@@ -31,22 +31,22 @@ export const catalogArtifacts = [
     id: "ART002",
     name: "Attic Black-Figure Amphora",
     category: "Ancient Pottery",
-    institution: "Virtual Heritage Collection",
-    source: "Virtual Heritage Collection",
+    institution: "Smithsonian / Virtual Heritage Collection",
+    source: "Smithsonian 3D / Virtual Heritage Collection",
     sourceUrl: "https://3d.si.edu",
     modelPath: "/models/artifacts/ART002/model.glb",
-    license: "CC BY 4.0",
-    position: [-14, 0, 0],
-    rotation: [0, 0, 0],
+    license: "CC0 / CC BY 4.0",
+    position: [-14, 0, 2],
+    rotation: [0, -Math.PI / 6, 0],
     scale: 1,
     period: "c. 540 BCE",
     origin: "Attica, Greece",
-    description: "An exquisite ceramic storage vessel featuring black-figure narrative painting. Depicts mythological heroic motifs framed by intricate floral palmette borders and double curved handles.",
+    description: "An exquisite ceramic storage vessel featuring black-figure narrative painting. Depicts mythological heroic motifs framed by intricate floral palmette borders and double curved handles. One of the most important forms of Greek pottery used for wine and olive oil storage.",
     galleryId: "gallery-1",
     galleryName: "Gallery 1: Smithsonian & Heritage Hall",
     pedestalHeight: 1.2,
-    isVerifiedMuseumData: false,
-    hasPhysicalGlb: false,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART002",
       historicalSignificance: "Amphorae were key export goods used for storing olive oil and wine across Mediterranean trade networks.",
@@ -63,7 +63,7 @@ export const catalogArtifacts = [
     sourceUrl: "https://3d.si.edu",
     modelPath: "/models/artifacts/ART003/model.glb",
     license: "CC0 1.0 Universal (Smithsonian Open Access)",
-    position: [-14, 0, -4],
+    position: [-14, 0, -2],
     rotation: [0, -Math.PI / 4, 0],
     scale: 1,
     period: "c. 1844 (19th Century)",
@@ -83,29 +83,29 @@ export const catalogArtifacts = [
   },
   {
     id: "ART004",
-    name: "Cuneiform Decree Tablet",
-    category: "Historical Epigraphy",
-    institution: "Virtual Heritage Collection",
-    source: "Virtual Heritage Collection",
+    name: "Page Induction Coil",
+    category: "Electromagnetic Devices / History of Technology",
+    institution: "National Museum of American History (Smithsonian)",
+    source: "Smithsonian Institution (Smithsonian 3D)",
     sourceUrl: "https://3d.si.edu",
     modelPath: "/models/artifacts/ART004/model.glb",
-    license: "CC BY 4.0",
-    position: [14, 0, -4],
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [-14, 0, -6],
     rotation: [0, Math.PI / 6, 0],
     scale: 1,
-    period: "c. 1800 BCE",
-    origin: "Mesopotamia (Babylon)",
-    description: "A clay slab inscribed with dense cuneiform characters recording royal administrative decrees and legal precedents, offering invaluable insight into early urban governance and trade laws.",
-    galleryId: "gallery-2",
-    galleryName: "Gallery 2: Medieval & Epigraphic Treasures",
+    period: "ca. 1868 (19th Century)",
+    origin: "United States",
+    description: "A patent model electromagnetic induction coil developed by inventor Charles G. Page around 1868. Part of the National Museum of American History's 'Work and Industry: Electricity' collection and the 'Lighting a Revolution' exhibition. A pivotal artifact in the history of electrical engineering.",
+    galleryId: "gallery-1",
+    galleryName: "Gallery 1: Smithsonian & Heritage Hall",
     pedestalHeight: 1.2,
-    isVerifiedMuseumData: false,
-    hasPhysicalGlb: false,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART004",
-      historicalSignificance: "Demonstrates early codification of commercial law, property rights, and civic obligations in ancient Mesopotamia.",
-      material: "Kiln-baked Clay",
-      dimensions: "32cm x 24cm x 6cm"
+      historicalSignificance: "Demonstrates the early development of electromagnetic induction technology that underpins modern electrical devices and motors.",
+      material: "Brass, Iron, Copper Coil windings",
+      dimensions: "H: 17.78cm, W: 22.2cm, D: 12.1cm"
     }
   },
   {
@@ -137,9 +137,13 @@ export const catalogArtifacts = [
   }
 ];
 
-// Active exhibits in the museum - strictly the 2 physical GLB models added by the user
+// Active exhibits in the museum — ART001, ART002, ART003, ART004 all physically present in Gallery 1
 export const artifactsData = catalogArtifacts.filter(
-  (artifact) => artifact.id === "ART001" || artifact.id === "ART003"
+  (artifact) =>
+    artifact.id === "ART001" ||
+    artifact.id === "ART002" ||
+    artifact.id === "ART003" ||
+    artifact.id === "ART004"
 );
 
 export const galleriesData = [
