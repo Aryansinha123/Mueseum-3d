@@ -1,28 +1,30 @@
-export const artifactsData = [
+export const catalogArtifacts = [
   {
     id: "ART001",
-    name: "Handaxe from India",
-    category: "Prehistoric / Archaeological Artifact",
-    institution: "Smithsonian Institution",
-    source: "Smithsonian Institution",
-    sourceUrl: "https://humanorigins.si.edu/evidence/3d-collection/artifacts/handaxe-isampur-india",
+    name: "Old Arrow Maker",
+    artist: "Edmonia Lewis",
+    category: "American Neoclassical Sculpture",
+    institution: "Smithsonian American Art Museum",
+    source: "Smithsonian American Art Museum (Smithsonian 3D)",
+    sourceUrl: "https://3d.si.edu/object/3d/old-arrow-maker%3A99ca3d6f-6d54-45a5-9b95-f8c245a662c2",
     modelPath: "/models/artifacts/ART001/model.glb",
     license: "CC0 1.0 Universal (Smithsonian Open Access)",
     position: [-14, 0, 4],
     rotation: [0, Math.PI / 4, 0],
     scale: 1,
-    period: "c. 1.1 Million Years Old",
-    origin: "Isampur, Karnataka, India",
-    description: "An authentic Acheulean stone handaxe recovered from the Isampur archaeological site in Karnataka, India, dating to approximately 1.1 million years ago. Created by early humans who struck large flakes from limestone cores to shape durable bifacial cutting tools.",
+    period: "Modeled 1866",
+    origin: "Rome / United States",
+    description: "A masterwork neoclassical marble sculpture modeled in 1866 by renowned African-American and Native American sculptor Edmonia Lewis. Inspired by Henry Wadsworth Longfellow's epic 1855 poem 'The Song of Hiawatha', it depicts an Ojibwe arrow maker weaving arrows alongside his seated daughter Minnehaha.",
     galleryId: "gallery-1",
-    galleryName: "Gallery 1: Classical & Prehistoric Antiquities",
+    galleryName: "Gallery 1: Smithsonian & Heritage Hall",
     pedestalHeight: 1.2,
     isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART001",
-      historicalSignificance: "Key archaeological evidence of Acheulean toolmaking innovation and early hominin dispersal in South Asia.",
-      material: "Limestone / Chert",
-      dimensions: "approx. 18cm length"
+      historicalSignificance: "Celebrated work by Edmonia Lewis, the first African-American and Native American sculptor to achieve international acclaim. Highlights 19th-century Indigenous craft and cultural heritage.",
+      material: "Carved Marble",
+      dimensions: "54.6 x 34.6 x 33.7 cm"
     }
   },
   {
@@ -34,16 +36,17 @@ export const artifactsData = [
     sourceUrl: "https://3d.si.edu",
     modelPath: "/models/artifacts/ART002/model.glb",
     license: "CC BY 4.0",
-    position: [-14, 0, -4],
-    rotation: [0, -Math.PI / 6, 0],
+    position: [-14, 0, 0],
+    rotation: [0, 0, 0],
     scale: 1,
     period: "c. 540 BCE",
     origin: "Attica, Greece",
     description: "An exquisite ceramic storage vessel featuring black-figure narrative painting. Depicts mythological heroic motifs framed by intricate floral palmette borders and double curved handles.",
     galleryId: "gallery-1",
-    galleryName: "Gallery 1: Classical Antiquities",
+    galleryName: "Gallery 1: Smithsonian & Heritage Hall",
     pedestalHeight: 1.2,
     isVerifiedMuseumData: false,
+    hasPhysicalGlb: false,
     aiContext: {
       artifact_id: "ART002",
       historicalSignificance: "Amphorae were key export goods used for storing olive oil and wine across Mediterranean trade networks.",
@@ -53,28 +56,29 @@ export const artifactsData = [
   },
   {
     id: "ART003",
-    name: "Royal Ceremonial Gemmed Crown",
-    category: "Regalia & Metalwork",
-    institution: "Virtual Heritage Collection",
-    source: "Virtual Heritage Collection",
+    name: "Morse-Vail Telegraph Key",
+    category: "Communication Technology / Historical Instrument",
+    institution: "Smithsonian Institution",
+    source: "Smithsonian Institution (Smithsonian 3D)",
     sourceUrl: "https://3d.si.edu",
     modelPath: "/models/artifacts/ART003/model.glb",
-    license: "CC BY 4.0",
-    position: [14, 0, 4],
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [-14, 0, -4],
     rotation: [0, -Math.PI / 4, 0],
     scale: 1,
-    period: "12th Century CE",
-    origin: "Holy Roman Empire",
-    description: "An ornate ceremonial crown crafted from hammered gold sheet, set with cabochon sapphires, rubies, and freshwater pearls. Features filigree scrollwork and fleur-de-lis cresting points.",
-    galleryId: "gallery-2",
-    galleryName: "Gallery 2: Medieval & Epigraphic Treasures",
+    period: "c. 1844 (19th Century)",
+    origin: "United States",
+    description: "An authentic historical communication device associated with Samuel Morse and Alfred Vail, used by operators to manually transmit electrical signals representing characters through Morse code. Played a monumental role in launching the global telecommunications era.",
+    galleryId: "gallery-1",
+    galleryName: "Gallery 1: Smithsonian & Heritage Hall",
     pedestalHeight: 1.2,
-    isVerifiedMuseumData: false,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART003",
-      historicalSignificance: "Symbolized divine right and political sovereignty during coronation rituals of medieval monarchs.",
-      material: "22K Gold, Sapphires, Rubies, Pearls",
-      dimensions: "22cm diameter x 18cm height"
+      historicalSignificance: "Crucial milestone that revolutionized long-distance communication and laid the foundation for global electrical telecommunication networks.",
+      material: "Brass, Steel, and Polished Wood base",
+      dimensions: "approx. 16cm x 9cm x 8cm"
     }
   },
   {
@@ -96,6 +100,7 @@ export const artifactsData = [
     galleryName: "Gallery 2: Medieval & Epigraphic Treasures",
     pedestalHeight: 1.2,
     isVerifiedMuseumData: false,
+    hasPhysicalGlb: false,
     aiContext: {
       artifact_id: "ART004",
       historicalSignificance: "Demonstrates early codification of commercial law, property rights, and civic obligations in ancient Mesopotamia.",
@@ -122,6 +127,7 @@ export const artifactsData = [
     galleryName: "Gallery 3: Ancient Wonders Hall",
     pedestalHeight: 1.2,
     isVerifiedMuseumData: false,
+    hasPhysicalGlb: false,
     aiContext: {
       artifact_id: "ART005",
       historicalSignificance: "Obelisks served as monumental sun altars representing rays of light connecting earth with the divine heavens.",
@@ -130,6 +136,11 @@ export const artifactsData = [
     }
   }
 ];
+
+// Active exhibits in the museum - strictly the 2 physical GLB models added by the user
+export const artifactsData = catalogArtifacts.filter(
+  (artifact) => artifact.id === "ART001" || artifact.id === "ART003"
+);
 
 export const galleriesData = [
   {

@@ -151,6 +151,8 @@ export default function Home() {
           onClearPlacement={handleClearPlacement}
           onExitAr={handleExitAr}
           onOpenInfo={() => setIsInfoInArOpen(true)}
+          artifacts={artifactsData}
+          onSelectArtifact={handleSelectArtifact}
         />
       ) : (
         <>

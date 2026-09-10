@@ -1,7 +1,7 @@
-Update artifact metadata & READMEs
-⬜ Display multiple artifacts in virtual museum
-⬜ Create AR Artifact Selection screen
-⬜ Remove hardcoded ART001 from AR mode
+✅ Update artifact metadata & READMEs (ART001 & ART003 verified)
+✅ Display multiple artifacts in virtual museum (Strictly physical GLBs: ART001 & ART003)
+✅ Create AR Artifact Selection screen (Interactive selector bar in AR HUD)
+✅ Remove hardcoded ART001 from AR mode (Dynamic selection for all physical GLBs)
 ⬜ Add artifact thumbnails + names
 ⬜ Implement table/floor surface detection
 ⬜ Add AR placement reticle

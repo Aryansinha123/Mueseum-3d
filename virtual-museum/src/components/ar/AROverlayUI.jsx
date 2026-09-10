@@ -23,6 +23,8 @@ export function AROverlayUI({
   onClearPlacement,
   onExitAr,
   onOpenInfo,
+  artifacts = [],
+  onSelectArtifact,
 }) {
   const handleZoomIn = () => {
     setArScale((prev) => Math.min(prev + 0.15, 3.0));
@@ -42,34 +44,59 @@ export function AROverlayUI({
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 flex flex-col justify-between p-4 md:p-6 select-none">
-      {/* TOP AR HEADER BAR */}
-      <div className="flex items-center justify-between gap-3 w-full">
-        {/* AR Branding & Active Artifact */}
-        <div className="pointer-events-auto flex items-center gap-3 bg-slate-900/90 backdrop-blur-xl border border-amber-500/30 text-slate-100 px-4 py-2.5 rounded-2xl shadow-2xl">
-          <div className="p-2 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 font-bold shadow-md shadow-amber-500/20">
-            <Smartphone className="w-5 h-5 animate-pulse" />
-          </div>
-          <div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-extrabold tracking-wider text-amber-300">
-                MOBILE AR MODE
-              </span>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+      {/* TOP AR HEADER & EXHIBIT SELECTOR */}
+      <div className="flex flex-col gap-2 w-full">
+        <div className="flex items-center justify-between gap-3 w-full">
+          {/* AR Branding & Active Artifact */}
+          <div className="pointer-events-auto flex items-center gap-3 bg-slate-900/90 backdrop-blur-xl border border-amber-500/30 text-slate-100 px-4 py-2.5 rounded-2xl shadow-2xl">
+            <div className="p-2 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 font-bold shadow-md shadow-amber-500/20">
+              <Smartphone className="w-5 h-5 animate-pulse" />
             </div>
-            <p className="text-xs text-slate-300 font-medium">
-              {selectedArtifact ? selectedArtifact.name : "Select exhibit to place"}
-            </p>
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs font-extrabold tracking-wider text-amber-300">
+                  MOBILE AR MODE
+                </span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              </div>
+              <p className="text-xs text-slate-300 font-medium">
+                {selectedArtifact ? selectedArtifact.name : "Select exhibit to place"}
+              </p>
+            </div>
           </div>
+
+          {/* Exit AR Action Button */}
+          <button
+            onClick={onExitAr}
+            className="pointer-events-auto flex items-center gap-2 bg-red-600/90 hover:bg-red-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-xl hover:scale-105 active:scale-95 border border-red-400/40"
+          >
+            <X className="w-4 h-4" />
+            <span>Exit AR</span>
+          </button>
         </div>
 
-        {/* Exit AR Action Button */}
-        <button
-          onClick={onExitAr}
-          className="pointer-events-auto flex items-center gap-2 bg-red-600/90 hover:bg-red-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-xl hover:scale-105 active:scale-95 border border-red-400/40"
-        >
-          <X className="w-4 h-4" />
-          <span>Exit AR</span>
-        </button>
+        {/* Real GLB Exhibit Selector Bar */}
+        {artifacts && artifacts.length > 1 && (
+          <div className="pointer-events-auto flex items-center justify-center gap-2 max-w-sm mx-auto overflow-x-auto p-1.5 bg-slate-900/90 backdrop-blur-xl border border-amber-500/30 rounded-2xl shadow-2xl">
+            {artifacts.map((art) => {
+              const isCurrent = selectedArtifact?.id === art.id;
+              return (
+                <button
+                  key={art.id}
+                  onClick={() => onSelectArtifact && onSelectArtifact(art)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                    isCurrent
+                      ? "bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold shadow-md shadow-amber-500/30 scale-105"
+                      : "bg-slate-800/80 hover:bg-slate-700/80 text-slate-300"
+                  }`}
+                >
+                  <span className={`w-2 h-2 rounded-full ${isCurrent ? "bg-slate-950" : "bg-amber-400"}`} />
+                  <span>{art.id} • {art.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* MID-SCREEN PLACEMENT INSTRUCTION TOAST */}
