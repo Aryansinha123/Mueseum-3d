@@ -110,40 +110,41 @@ export const catalogArtifacts = [
   },
   {
     id: "ART005",
-    name: "Golden Obelisk of Memphis",
-    category: "Architectural Monument",
-    institution: "Virtual Heritage Collection",
-    source: "Virtual Heritage Collection",
-    sourceUrl: "https://3d.si.edu",
+    name: "Ceremonial Elephant-Shaped Covered Vessel",
+    category: "Ancient Chinese Bronze Ritual Vessel",
+    institution: "National Museum of Asian Art, Smithsonian Institution",
+    source: "Freer Gallery of Art Collection (Smithsonian 3D)",
+    sourceUrl: "http://n2t.net/ark:/65665/ye31d065109-ffb8-4d3f-ba49-7938b4f3f235",
     modelPath: "/models/artifacts/ART005/model.glb",
-    license: "CC BY 4.0",
-    position: [0, 0, -16],
-    rotation: [0, Math.PI / 8, 0],
-    scale: 1.1,
-    period: "13th Century BCE",
-    origin: "Memphis, Ancient Egypt",
-    description: "A miniature monolithic stone obelisk capped with a gold-leaf pyramidion. Engraved with deeply incised hieroglyphic inscriptions honoring solar deity Ra and royal cartouches.",
-    galleryId: "gallery-3",
-    galleryName: "Gallery 3: Ancient Wonders Hall",
+    license: "CC0 / Smithsonian Open Access",
+    position: [-14, 0, -10],
+    rotation: [0, Math.PI / 4, 0],
+    scale: 1,
+    period: "ca. 1100 BCE (Late Shang Dynasty, Late Anyang Period)",
+    origin: "China",
+    description: "A ceremonial covered vessel of type 'huo' cast in the form of an elephant, dating to the Late Shang dynasty around 1100 BCE. Decorated with a light green patina and cast in low relief, with a finial in the round. Purchased by the Freer Gallery of Art from Yamanaka and Company, Boston in 1936. One of the most remarkable examples of Shang-era bronze ritual art.",
+    galleryId: "gallery-1",
+    galleryName: "Gallery 1: Smithsonian & Heritage Hall",
     pedestalHeight: 1.2,
-    isVerifiedMuseumData: false,
-    hasPhysicalGlb: false,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART005",
-      historicalSignificance: "Obelisks served as monumental sun altars representing rays of light connecting earth with the divine heavens.",
-      material: "Red Granite & Electrum Pyramidion",
-      dimensions: "240cm total height"
+      historicalSignificance: "Demonstrates the extraordinary skill of Shang dynasty bronze casters and the ritual significance of animal-form vessels in ancient Chinese ceremonial practice.",
+      material: "Bronze with green patina",
+      dimensions: "H: 17.2cm, W: 10.7cm, D: 21.4cm"
     }
   }
 ];
 
-// Active exhibits in the museum — ART001, ART002, ART003, ART004 all physically present in Gallery 1
+// Active exhibits in the museum — all 5 physical GLBs, displayed in Gallery 1
 export const artifactsData = catalogArtifacts.filter(
   (artifact) =>
     artifact.id === "ART001" ||
     artifact.id === "ART002" ||
     artifact.id === "ART003" ||
-    artifact.id === "ART004"
+    artifact.id === "ART004" ||
+    artifact.id === "ART005"
 );
 
 export const galleriesData = [
