@@ -32,9 +32,9 @@
 
 - **Scale:** Meters
 
-- **Local File:** `elephant-vessel.glb`
+- **Local File:** `model.glb`
 
-- **Local Path:** `public/models/artifacts/ART003/elephant-vessel.glb`
+- **Local Path:** `public/models/artifacts/ART003/model.glb`
 
 ## Object Details
 

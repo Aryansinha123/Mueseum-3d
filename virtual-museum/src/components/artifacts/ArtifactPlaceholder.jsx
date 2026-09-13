@@ -181,12 +181,180 @@ export function ArtifactPlaceholder({ id, isHovered, isSelected }) {
         </group>
       );
 
-    default:
+    case "ART011":
+      // Salwasiren qatarensis Fossil Skeleton
       return (
-        <mesh ref={groupRef} position={[0, 0.4, 0]}>
-          <boxGeometry args={[0.4, 0.4, 0.4]} />
-          <meshStandardMaterial color="#ccaa66" roughness={0.3} metalness={0.5} />
-        </mesh>
+        <group ref={groupRef} position={[0, 0.45, 0]}>
+          {/* Paleontology display stand */}
+          <mesh position={[0, -0.38, 0]}>
+            <boxGeometry args={[0.6, 0.06, 0.35]} />
+            <meshStandardMaterial color="#1e2024" roughness={0.4} metalness={0.6} />
+          </mesh>
+          {/* Fossil Rock Matrix Slab */}
+          <mesh position={[0, -0.28, 0]}>
+            <boxGeometry args={[0.56, 0.12, 0.32]} />
+            <meshStandardMaterial color="#8c8275" roughness={0.85} />
+          </mesh>
+          {/* Curved Spine / Vertebral Column */}
+          <mesh position={[0, -0.15, 0]} rotation={[0, 0, 0]}>
+            <cylinderGeometry args={[0.04, 0.045, 0.48, 16]} rotation={[0, 0, Math.PI / 2]} />
+            <meshStandardMaterial color="#ded5c5" roughness={0.7} />
+          </mesh>
+          {/* Ribs Array */}
+          {[-0.18, -0.12, -0.06, 0.0, 0.06, 0.12, 0.18].map((xOffset, idx) => (
+            <mesh key={idx} position={[xOffset, -0.19, 0]} rotation={[0.4, 0, 0]}>
+              <torusGeometry args={[0.09, 0.016, 8, 16, Math.PI]} />
+              <meshStandardMaterial color="#cfc5b4" roughness={0.65} />
+            </mesh>
+          ))}
+          {/* Cranium / Snout */}
+          <mesh position={[0.26, -0.14, 0]} rotation={[0, 0, -0.2]}>
+            <coneGeometry args={[0.07, 0.16, 12]} rotation={[0, 0, -Math.PI / 2]} />
+            <meshStandardMaterial color="#d4cab8" roughness={0.7} />
+          </mesh>
+        </group>
+      );
+
+    case "ART012":
+      // Tyrannosaurus rex Skull
+      return (
+        <group ref={groupRef} position={[0, 0.45, 0]}>
+          {/* Cranium Vault */}
+          <mesh position={[-0.05, 0.1, 0]}>
+            <boxGeometry args={[0.34, 0.24, 0.22]} />
+            <meshStandardMaterial color="#948472" roughness={0.75} />
+          </mesh>
+          {/* Heavy Snout / Maxilla */}
+          <mesh position={[0.18, 0.05, 0]}>
+            <boxGeometry args={[0.26, 0.16, 0.15]} />
+            <meshStandardMaterial color="#887866" roughness={0.8} />
+          </mesh>
+          {/* Lower Jaw (Mandible) */}
+          <mesh position={[0.1, -0.1, 0]} rotation={[0, 0, -0.12]}>
+            <boxGeometry args={[0.38, 0.08, 0.14]} />
+            <meshStandardMaterial color="#7a6b5a" roughness={0.8} />
+          </mesh>
+          {/* Eye Socket (Orbit) Cavity */}
+          <mesh position={[-0.02, 0.12, 0.1]}>
+            <sphereGeometry args={[0.055, 16, 16]} />
+            <meshStandardMaterial color="#1f1a17" roughness={0.9} />
+          </mesh>
+          <mesh position={[-0.02, 0.12, -0.1]}>
+            <sphereGeometry args={[0.055, 16, 16]} />
+            <meshStandardMaterial color="#1f1a17" roughness={0.9} />
+          </mesh>
+          {/* Upper Serrated Teeth */}
+          {[0.08, 0.15, 0.22, 0.28].map((xOff, idx) => (
+            <mesh key={`t-${idx}`} position={[xOff, -0.05, 0.06]} rotation={[Math.PI, 0, 0]}>
+              <coneGeometry args={[0.015, 0.06, 6]} />
+              <meshStandardMaterial color="#e0d5c1" roughness={0.5} />
+            </mesh>
+          ))}
+          {[0.08, 0.15, 0.22, 0.28].map((xOff, idx) => (
+            <mesh key={`t2-${idx}`} position={[xOff, -0.05, -0.06]} rotation={[Math.PI, 0, 0]}>
+              <coneGeometry args={[0.015, 0.06, 6]} />
+              <meshStandardMaterial color="#e0d5c1" roughness={0.5} />
+            </mesh>
+          ))}
+        </group>
+      );
+
+    case "ART013":
+      // Triceratops horridus ("Hatcher")
+      return (
+        <group ref={groupRef} position={[0, 0.45, 0]}>
+          {/* Massive Parietal Neck Frill */}
+          <mesh position={[-0.14, 0.2, 0]} rotation={[0, 0, -0.3]}>
+            <cylinderGeometry args={[0.28, 0.26, 0.04, 16, 1, false, 0, Math.PI]} rotation={[Math.PI / 2, 0, 0]} />
+            <meshStandardMaterial color="#877764" roughness={0.8} />
+          </mesh>
+          {/* Skull Cranium */}
+          <mesh position={[0.02, 0.05, 0]}>
+            <boxGeometry args={[0.26, 0.18, 0.18]} />
+            <meshStandardMaterial color="#948471" roughness={0.75} />
+          </mesh>
+          {/* Left Brow Horn */}
+          <mesh position={[0.1, 0.24, 0.09]} rotation={[-0.2, 0, 0.6]}>
+            <coneGeometry args={[0.035, 0.32, 12]} />
+            <meshStandardMaterial color="#ded4bf" roughness={0.6} />
+          </mesh>
+          {/* Right Brow Horn */}
+          <mesh position={[0.1, 0.24, -0.09]} rotation={[0.2, 0, 0.6]}>
+            <coneGeometry args={[0.035, 0.32, 12]} />
+            <meshStandardMaterial color="#ded4bf" roughness={0.6} />
+          </mesh>
+          {/* Nasal Horn */}
+          <mesh position={[0.22, 0.14, 0]} rotation={[0, 0, 0.3]}>
+            <coneGeometry args={[0.025, 0.14, 10]} />
+            <meshStandardMaterial color="#ded4bf" roughness={0.6} />
+          </mesh>
+          {/* Beaked Snout */}
+          <mesh position={[0.22, 0.0, 0]}>
+            <coneGeometry args={[0.06, 0.15, 8]} rotation={[0, 0, -Math.PI / 2]} />
+            <meshStandardMaterial color="#786a58" roughness={0.8} />
+          </mesh>
+        </group>
+      );
+
+    case "ART014":
+      // Woolly Mammoth Tusk & Molar
+      return (
+        <group ref={groupRef} position={[0, 0.45, 0]}>
+          {/* Massive Sweeping Curved Tusk */}
+          <mesh position={[-0.05, 0.1, 0]} rotation={[0.3, 0.4, 0.8]}>
+            <torusGeometry args={[0.34, 0.045, 16, 32, Math.PI * 0.9]} />
+            <meshStandardMaterial color="#e8decc" roughness={0.45} />
+          </mesh>
+          {/* Tusk Tip */}
+          <mesh position={[0.26, 0.34, 0.08]} rotation={[0, 0, 0.5]}>
+            <coneGeometry args={[0.04, 0.14, 16]} />
+            <meshStandardMaterial color="#ebd9b5" roughness={0.4} />
+          </mesh>
+          {/* Mammoth Molar Block (Distinct high-crowned ridge plates) */}
+          <mesh position={[0.0, -0.22, 0.08]}>
+            <boxGeometry args={[0.22, 0.16, 0.12]} />
+            <meshStandardMaterial color="#5e5345" roughness={0.85} />
+          </mesh>
+          {/* Enamel Plates / Ridges on Molar */}
+          {[-0.08, -0.04, 0.0, 0.04, 0.08].map((xOff, idx) => (
+            <mesh key={`m-${idx}`} position={[xOff, -0.13, 0.08]}>
+              <boxGeometry args={[0.015, 0.04, 0.11]} />
+              <meshStandardMaterial color="#d4c9b2" roughness={0.6} />
+            </mesh>
+          ))}
+        </group>
+      );
+
+    case "ART015":
+      // Smilodon fatalis (Sabertooth Cat Skull)
+      return (
+        <group ref={groupRef} position={[0, 0.45, 0]}>
+          {/* Compact Carnivore Cranium */}
+          <mesh position={[-0.06, 0.06, 0]}>
+            <sphereGeometry args={[0.15, 24, 24]} />
+            <meshStandardMaterial color="#8a7c6b" roughness={0.7} />
+          </mesh>
+          {/* Snout & Zygomatic Arches */}
+          <mesh position={[0.1, 0.02, 0]}>
+            <boxGeometry args={[0.18, 0.12, 0.13]} />
+            <meshStandardMaterial color="#7a6c5b" roughness={0.75} />
+          </mesh>
+          {/* Left Iconic Saber Fang */}
+          <mesh position={[0.12, -0.14, 0.06]} rotation={[-0.05, 0, 0.18]}>
+            <coneGeometry args={[0.022, 0.28, 12]} rotation={[Math.PI, 0, 0]} />
+            <meshStandardMaterial color="#eae2d2" roughness={0.35} metalness={0.1} />
+          </mesh>
+          {/* Right Iconic Saber Fang */}
+          <mesh position={[0.12, -0.14, -0.06]} rotation={[0.05, 0, 0.18]}>
+            <coneGeometry args={[0.022, 0.28, 12]} rotation={[Math.PI, 0, 0]} />
+            <meshStandardMaterial color="#eae2d2" roughness={0.35} metalness={0.1} />
+          </mesh>
+          {/* Mandible Jaw */}
+          <mesh position={[0.06, -0.1, 0]} rotation={[0, 0, -0.2]}>
+            <boxGeometry args={[0.2, 0.05, 0.1]} />
+            <meshStandardMaterial color="#695c4d" roughness={0.8} />
+          </mesh>
+        </group>
       );
   }
 }

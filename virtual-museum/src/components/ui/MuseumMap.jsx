@@ -155,8 +155,8 @@ export function MuseumMap({
               className="cursor-pointer hover:fill-amber-900/40 transition-all"
               onClick={() => onTeleport([0, 1.7, -12])}
             />
-            <text x="170" y="65" fill="#fde68a" fontSize="10" fontWeight="bold" textAnchor="middle">
-              GALLERY 3: ANCIENT WONDERS
+            <text x="170" y="65" fill="#fde68a" fontSize="9" fontWeight="bold" textAnchor="middle">
+              GALLERY 3: PALEONTOLOGY HALL
             </text>
 
             {/* ARTIFACT PINS */}

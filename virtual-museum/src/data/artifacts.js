@@ -269,23 +269,149 @@ export const catalogArtifacts = [
       material: "Aluminum alloy, Beryllium, Hydrazine propellant tanks, RTGs",
       dimensions: "Antenna Diameter: 2.74m (9ft), Length: 2.9m"
     }
+  },
+  {
+    id: "ART011",
+    name: "Salwasiren qatarensis Fossil Skeleton",
+    category: "Prehistoric Marine Mammal / Sirenia Fossil",
+    institution: "National Museum of Natural History, Smithsonian Institution",
+    source: "Smithsonian Institution (NMNH Paleobiology Dept) & Qatar Museums",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART011/model.glb",
+    license: "Smithsonian Open Access / Qatar Museums",
+    position: [-4.2, 0, -13],
+    rotation: [0, Math.PI / 4, 0],
+    scale: 1,
+    period: "Early Miocene (c. 21 Million Years Old)",
+    origin: "Al Maszhabiya, Southwest Qatar",
+    description: "Fossilized skeleton of Salwasiren qatarensis, a 21-million-year-old extinct species of dugongid sea cow discovered in the Al Maszhabiya bonebed of Qatar. Digitized by the Smithsonian NMNH Paleobiology Department in collaboration with Qatar Museums, this fossil illustrates ancient sirenian evolution and the prehistoric seagrass ecosystems of the Early Miocene.",
+    galleryId: "gallery-3",
+    galleryName: "Gallery 3: Smithsonian Paleontology Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: true,
+    aiContext: {
+      artifact_id: "ART011",
+      historicalSignificance: "A transitional fossil sirenian illustrating the evolutionary lineage of modern dugongs and manatees. Collected from the Al Maszhabiya bonebed under Qatar Museums Heritage Area 23400.",
+      material: "Fossilized Bone in Mineral Matrix",
+      dimensions: "Early Miocene Dugongid specimen (Record ID: dpo_3d_250001)"
+    }
+  },
+  {
+    id: "ART012",
+    name: "Tyrannosaurus rex Skull",
+    category: "Theropod Dinosaur Paleontology",
+    institution: "National Museum of Natural History, Smithsonian Institution",
+    source: "Smithsonian NMNH Paleobiology (The Nation's T. rex)",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART012/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [-4.2, 0, -18],
+    rotation: [0, Math.PI / 4, 0],
+    scale: 1,
+    period: "Late Cretaceous (c. 66 Million Years Ago)",
+    origin: "Hell Creek Formation, Montana, United States",
+    description: "The monumental fossil skull of the apex predator Tyrannosaurus rex, showcased in the Smithsonian NMNH Hall of Fossils ('The Nation's T. rex'). Featuring massive reinforced jaws, 30 cm serrated bone-crushing teeth, and forward-facing stereoscopic eye sockets with acute depth perception.",
+    galleryId: "gallery-3",
+    galleryName: "Gallery 3: Smithsonian Paleontology Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: false,
+    aiContext: {
+      artifact_id: "ART012",
+      historicalSignificance: "Discovered in 1988 by Kathy Wankel in Montana. One of the most complete and scientifically celebrated T. rex specimens in the world, designated 'The Nation's T. rex'.",
+      material: "Fossilized Cranial Bone",
+      dimensions: "Skull length: 1.5m (approx. 5ft)"
+    }
+  },
+  {
+    id: "ART013",
+    name: "Triceratops horridus (\"Hatcher\")",
+    category: "Ceratopsian Dinosaur Paleontology",
+    institution: "National Museum of Natural History, Smithsonian Institution",
+    source: "Smithsonian Hall of Paleobiology (USNM 4720)",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART013/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [0, 0, -16],
+    rotation: [0, 0, 0],
+    scale: 1,
+    period: "Late Cretaceous (c. 66 Million Years Ago)",
+    origin: "Lance Formation, Niobrara County, Wyoming, United States",
+    description: "The world's first mounted Triceratops skeleton, affectionately nicknamed 'Hatcher' (catalog USNM 4720). One of the most famous dinosaur fossils on Earth, boasting three massive brow and nasal defensive horns and an expansive solid bony neck frill.",
+    galleryId: "gallery-3",
+    galleryName: "Gallery 3: Smithsonian Paleontology Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: false,
+    aiContext: {
+      artifact_id: "ART013",
+      historicalSignificance: "Mounted in 1905 at the Smithsonian, it was the first Triceratops mounted for public display anywhere in the world and remains the definitive ceratopsian type reference.",
+      material: "Fossilized Skeletal Matrix",
+      dimensions: "Length: 7.9m (26ft), Frill Width: 2m"
+    }
+  },
+  {
+    id: "ART014",
+    name: "Woolly Mammoth Tusk & Molar",
+    category: "Pleistocene Ice Age Megafauna",
+    institution: "National Museum of Natural History, Smithsonian Institution",
+    source: "Smithsonian Institution (NMNH Paleobiology Dept)",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART014/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [4.2, 0, -13],
+    rotation: [0, -Math.PI / 4, 0],
+    scale: 1,
+    period: "Late Pleistocene (c. 40,000–10,000 Years Ago)",
+    origin: "Beringia Tundra, Alaska / Siberia",
+    description: "Pristine fossilized spiraling ivory tusk and characteristic grooved molar of Mammuthus primigenius. The specialized high-crowned dental plates allowed mammoths to grind tough tundra steppe grasses during the Last Glacial Maximum.",
+    galleryId: "gallery-3",
+    galleryName: "Gallery 3: Smithsonian Paleontology Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: false,
+    aiContext: {
+      artifact_id: "ART014",
+      historicalSignificance: "Demonstrates the specialized anatomical adaptations of Ice Age megafauna that traversed the Bering Land Bridge during the Pleistocene epoch.",
+      material: "Fossilized Ivory & Mineralized Dentin",
+      dimensions: "Tusk curvature length: 2.8m; Molar length: 25cm"
+    }
+  },
+  {
+    id: "ART015",
+    name: "Smilodon fatalis (Sabertooth Cat Skull)",
+    category: "Pleistocene Carnivore Paleontology",
+    institution: "National Museum of Natural History, Smithsonian Institution",
+    source: "Smithsonian Institution / La Brea Tar Pits Collection",
+    sourceUrl: "https://3d.si.edu",
+    modelPath: "/models/artifacts/ART015/model.glb",
+    license: "CC0 1.0 Universal (Smithsonian Open Access)",
+    position: [4.2, 0, -18],
+    rotation: [0, -Math.PI / 4, 0],
+    scale: 1,
+    period: "Late Pleistocene (c. 30,000–11,000 Years Ago)",
+    origin: "North America (Rancho La Brea Tar Pits)",
+    description: "Complete fossilized skull of Smilodon fatalis featuring iconic elongated maxillary blade canines reaching up to 28 cm (11 inches). The skull exemplifies the specialized hypercarnivorous predatory mechanics and wide gape angle of Ice Age apex felids.",
+    galleryId: "gallery-3",
+    galleryName: "Gallery 3: Smithsonian Paleontology Hall",
+    pedestalHeight: 1.2,
+    isVerifiedMuseumData: true,
+    hasPhysicalGlb: false,
+    aiContext: {
+      artifact_id: "ART015",
+      historicalSignificance: "Preserved in natural asphalt seeps, providing remarkable scientific insight into Late Pleistocene apex predators that hunted alongside early humans.",
+      material: "Petrified Bone with Tar Permeation",
+      dimensions: "Skull length: 32cm; Saber Canines: 28cm"
+    }
   }
 ];
 
-// Active exhibits: ART001-ART005 in Gallery 1, ART006-ART010 in Gallery 2
-export const artifactsData = catalogArtifacts.filter(
-  (artifact) =>
-    artifact.id === "ART001" ||
-    artifact.id === "ART002" ||
-    artifact.id === "ART003" ||
-    artifact.id === "ART004" ||
-    artifact.id === "ART005" ||
-    artifact.id === "ART006" ||
-    artifact.id === "ART007" ||
-    artifact.id === "ART008" ||
-    artifact.id === "ART009" ||
-    artifact.id === "ART010"
-);
+// Active exhibits: ART001-ART005 in Gallery 1, ART006-ART010 in Gallery 2, ART011-ART015 in Gallery 3
+export const artifactsData = catalogArtifacts.filter((artifact) => {
+  const idNum = parseInt(artifact.id.replace("ART", ""), 10);
+  return idNum >= 1 && idNum <= 15;
+});
 
 export const galleriesData = [
   {
@@ -318,8 +444,8 @@ export const galleriesData = [
   },
   {
     id: "gallery-3",
-    name: "Gallery 3: Ancient Wonders Hall",
-    description: "Marvel at monumental architecture and sacred symbols of the ancient world.",
+    name: "Gallery 3: Smithsonian Paleontology Hall",
+    description: "Explore prehistoric fossils, dinosaur remains, and ancient evolutionary marvels.",
     position: [0, 1.65, -12],
     lookAt: [0, 1.65, -16]
   }

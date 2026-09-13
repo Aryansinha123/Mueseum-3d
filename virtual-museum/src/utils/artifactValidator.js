@@ -17,7 +17,23 @@ export async function checkGlbAssetExists(modelPath) {
   }
 
   try {
-    const res = await fetch(modelPath, { method: "HEAD" });
+    let res = await fetch(modelPath, { method: "HEAD" });
+    if (!res.ok) {
+      // Resilient fallback for 3-digit vs 4-digit formatting (e.g. ART011 vs ART0011)
+      let altPath = null;
+      if (modelPath.includes("/ART011/")) {
+        altPath = modelPath.replace("/ART011/", "/ART0011/");
+      } else if (modelPath.includes("/ART0011/")) {
+        altPath = modelPath.replace("/ART0011/", "/ART011/");
+      }
+      if (altPath) {
+        const altRes = await fetch(altPath, { method: "HEAD" });
+        if (altRes.ok) {
+          assetAvailabilityCache.set(modelPath, true);
+          return true;
+        }
+      }
+    }
     const exists = res.ok;
     assetAvailabilityCache.set(modelPath, exists);
     return exists;

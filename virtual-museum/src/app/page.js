@@ -50,7 +50,7 @@ export default function Home() {
     if (z > 3 && Math.abs(x) < 7) return "Central Rotunda Lobby";
     if (x < -7) return "Gallery 1: Classical Antiquities";
     if (x > 7) return "Gallery 2: Medieval Treasures";
-    if (z < -8) return "Final Gallery 3: Ancient Wonders Hall";
+    if (z < -8) return "Gallery 3: Smithsonian Paleontology Hall";
     return "Central Rotunda Lobby";
   }, [cameraPosition]);
 

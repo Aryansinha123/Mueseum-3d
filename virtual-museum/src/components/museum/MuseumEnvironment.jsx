@@ -68,10 +68,17 @@ export function MuseumEnvironment() {
         position={[0, 0, -8]}
         rotation={[0, 0, 0]}
         title="FINAL GALLERY 3 DOOR"
-        subtitle="ANCIENT WONDERS HALL"
+        subtitle="SMITHSONIAN PALEONTOLOGY"
       />
 
       {/* Gallery Wall Signage Banners */}
+      <Gallery
+        title="Gallery 3"
+        subtitle="Smithsonian Paleontology Hall"
+        position={[0, 3.4, -21.6]}
+        rotation={[0, 0, 0]}
+      />
+
       <Gallery
         title="Gallery 1"
         subtitle="Classical Antiquities"
@@ -83,13 +90,6 @@ export function MuseumEnvironment() {
         title="Gallery 2"
         subtitle="Medieval Treasures"
         position={[11, 3.4, 6]}
-        rotation={[0, 0, 0]}
-      />
-
-      <Gallery
-        title="Gallery 3"
-        subtitle="Ancient Wonders Hall"
-        position={[0, 3.4, -21.6]}
         rotation={[0, 0, 0]}
       />
     </group>
