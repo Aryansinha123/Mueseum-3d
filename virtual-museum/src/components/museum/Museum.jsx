@@ -76,11 +76,21 @@ export function Museum({
         }}
         gl={{
           antialias: true,
+          alpha: true,
           preserveDrawingBuffer: true,
           powerPreference: "high-performance",
           stencil: false,
         }}
         onCreated={({ gl }) => {
+          if (gl.xr) {
+            gl.xr.enabled = true;
+          }
+          if (process.env.NODE_ENV !== "production") {
+            console.log("[R3F Canvas] WebGLRenderer initialized & WebXR connected:", {
+              renderer: gl,
+              xrManager: gl?.xr,
+            });
+          }
           gl.domElement.addEventListener("webglcontextlost", (event) => {
             event.preventDefault();
             setHasWebGLError(true);
@@ -88,9 +98,10 @@ export function Museum({
         }}
       >
         <Suspense fallback={null}>
-          {isArMode ? (
-            /* Active Mobile AR Session Scene */
-            <XR store={xrStore}>
+          {/* Always mount XR provider inside Canvas so xrStore binds to gl.xr on page load */}
+          <XR store={xrStore}>
+            {isArMode ? (
+              /* Active Mobile WebXR AR Session Scene */
               <ARScene
                 selectedArtifact={selectedArtifact}
                 onSelectArtifact={onSelectArtifact}
@@ -103,33 +114,33 @@ export function Museum({
                 arScale={arScale}
                 rotationY={rotationY}
               />
-            </XR>
-          ) : (
-            /* Standard Desktop 3D Museum Experience */
-            <>
-              <color attach="background" args={["#0c0d10"]} />
-              <fog attach="fog" args={["#0c0d10", 15, 50]} />
+            ) : (
+              /* Standard Desktop 3D Museum Experience */
+              <>
+                <color attach="background" args={["#0c0d10"]} />
+                <fog attach="fog" args={["#0c0d10", 15, 50]} />
 
-              {/* 3D Architectural Environment with Doors */}
-              <MuseumEnvironment />
+                {/* 3D Architectural Environment with Doors */}
+                <MuseumEnvironment />
 
-              {/* 3D Artifacts & Pedestals */}
-              <ArtifactManager
-                artifacts={artifactsData}
-                selectedArtifact={selectedArtifact}
-                onSelectArtifact={onSelectArtifact}
-              />
+                {/* 3D Artifacts & Pedestals */}
+                <ArtifactManager
+                  artifacts={artifactsData}
+                  selectedArtifact={selectedArtifact}
+                  onSelectArtifact={onSelectArtifact}
+                />
 
-              {/* Navigation & Camera Controller */}
-              <MuseumControls
-                controlMode={controlMode}
-                selectedArtifact={selectedArtifact}
-                onCameraMove={onCameraMove}
-                isPointerLocked={isPointerLocked}
-                setIsPointerLocked={setIsPointerLocked}
-              />
-            </>
-          )}
+                {/* Navigation & Camera Controller */}
+                <MuseumControls
+                  controlMode={controlMode}
+                  selectedArtifact={selectedArtifact}
+                  onCameraMove={onCameraMove}
+                  isPointerLocked={isPointerLocked}
+                  setIsPointerLocked={setIsPointerLocked}
+                />
+              </>
+            )}
+          </XR>
         </Suspense>
       </Canvas>
     </div>

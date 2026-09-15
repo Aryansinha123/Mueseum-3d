@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
+import { useXREvent } from "@react-three/xr";
 import { ARPlacementIndicator } from "./ARPlacementIndicator";
 import { ARArtifact } from "./ARArtifact";
 import * as THREE from "three";
@@ -24,56 +25,35 @@ export function ARScene({
     lastHitRef.current = lastHitPosition;
   }, [lastHitPosition]);
 
-  const handleHitUpdate = (hitData) => {
-    if (!isPlaced && hitData && hitData.position) {
-      lastHitRef.current = hitData.position;
-      setLastHitPosition(hitData.position);
-    }
-  };
+  const handleHitUpdate = useCallback(
+    (hitData) => {
+      if (!isPlaced && hitData && hitData.position) {
+        lastHitRef.current = hitData.position;
+        setLastHitPosition(hitData.position);
+      }
+    },
+    [isPlaced, setLastHitPosition]
+  );
 
-  const attemptPlacement = () => {
+  const attemptPlacement = useCallback(() => {
     if (!isPlaced && lastHitRef.current) {
       setPlacedPosition([...lastHitRef.current]);
       setIsPlaced(true);
     }
-  };
+  }, [isPlaced, setPlacedPosition, setIsPlaced]);
 
+  // Use @react-three/xr's useXREvent to listen for WebXR session 'select' events.
+  // This is the correct, reliable way to handle tap-to-place on mobile AR
+  // instead of polling window.__activeXRSession.
+  useXREvent("select", () => {
+    attemptPlacement();
+  });
+
+  // Fallback: also handle R3F pointer events for testing/desktop
   const handlePointerDown = (e) => {
     e.stopPropagation();
     attemptPlacement();
   };
-
-  // Listen to native WebXR session 'select' event for 100% reliable screen tap-to-place on mobile
-  useEffect(() => {
-    if (typeof window === "undefined" || !navigator.xr) return;
-
-    let activeSession = null;
-
-    const handleSessionSelect = () => {
-      attemptPlacement();
-    };
-
-    // Try attaching to active WebXR session if available
-    navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
-      if (!supported) return;
-      // WebXR session listener hookup
-      const checkSession = setInterval(() => {
-        if (window.__activeXRSession) {
-          activeSession = window.__activeXRSession;
-          activeSession.addEventListener("select", handleSessionSelect);
-          clearInterval(checkSession);
-        }
-      }, 500);
-
-      setTimeout(() => clearInterval(checkSession), 5000);
-    });
-
-    return () => {
-      if (activeSession) {
-        activeSession.removeEventListener("select", handleSessionSelect);
-      }
-    };
-  }, [isPlaced]);
 
   return (
     <group>

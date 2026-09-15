@@ -82,6 +82,21 @@ export default function Home() {
     setControlMode("first-person");
   };
 
+  // Subscribe to WebXR session state from xrStore to auto-sync React state when session starts/ends natively
+  useEffect(() => {
+    if (!xrStore) return;
+    const unsub = xrStore.subscribe((state, prevState) => {
+      if (prevState?.session && !state?.session) {
+        console.log("[WebXR] Session ended natively by browser/hardware");
+        setIsArMode(false);
+        setIsPlaced(false);
+        setPlacedPosition(null);
+        setIsInfoInArOpen(false);
+      }
+    });
+    return unsub;
+  }, []);
+
   // Step 1: Open AR Artifact Picker Modal
   const handleOpenArPicker = () => {
     setIsArPickerOpen(true);
@@ -110,22 +125,30 @@ export default function Home() {
       xrStore
         .enterAR()
         .then((session) => {
-          if (session && typeof window !== "undefined") {
-            window.__activeXRSession = session;
-          }
+          console.log("[WebXR] AR session successfully initiated:", session);
         })
         .catch((err) => {
-          console.warn("[WebXR] Failed to launch AR session:", err);
+          console.error("[WebXR] Failed to launch AR session:", err);
           setIsArMode(false);
           setArErrorAlert(
             "Unable to start AR session: " +
-              (err.message || "Session initialization failed.")
+              (err.message || "Session initialization failed or 3D renderer was not ready.")
           );
         });
     }
   };
 
   const handleExitAr = () => {
+    // End WebXR hardware session if active in store
+    try {
+      const activeSession = xrStore?.getState?.()?.session;
+      if (activeSession) {
+        activeSession.end().catch((e) => console.warn("[WebXR] Error closing session:", e));
+      }
+    } catch (err) {
+      console.warn("[WebXR] Could not access active session to end:", err);
+    }
+
     setIsArMode(false);
     setIsPlaced(false);
     setPlacedPosition(null);
