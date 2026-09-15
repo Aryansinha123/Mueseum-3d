@@ -1,0 +1,677 @@
+FIX MOBILE AR POST-PLACEMENT INTERACTION
+
+The AR camera now opens successfully and surface scanning is working.
+
+CURRENT BEHAVIOR:
+1. User enters AR.
+2. Phone camera opens fullscreen.
+3. User scans the environment.
+4. A yellow surface marker/reticle appears.
+5. User taps the surface.
+6. Artifact is placed.
+7. BUT after placement there are no interaction controls.
+8. The screen remains essentially just fullscreen camera/AR.
+
+REQUIRED FINAL BEHAVIOR:
+
+BEFORE PLACEMENT:
+
+        Fullscreen AR Camera
+
+              yellow reticle
+                   ⊙
+
+        "Move your phone to
+         find a surface"
+
+No artifact controls should be shown yet.
+
+
+AFTER USER TAPS THE YELLOW RETICLE/SURFACE:
+
+        Fullscreen AR Camera
+               +
+        Selected 3D Artifact
+
+        Minimal bottom control bar:
+
+        ┌──────────────────────────────┐
+        │  ↔ Move   ⟳ Rotate   ⤢ Scale │
+        │              Info       ↺    │
+        └──────────────────────────────┘
+
+The controls must appear ONLY after the artifact has actually been placed.
+
+==================================================
+1. INSPECT CURRENT AR STATE
+==================================================
+
+Inspect the existing AR implementation first.
+
+Find the current state variables for:
+
+- AR session
+- scanning
+- hit-test
+- reticle
+- selected artifact
+- placement
+- artifact visibility
+- touch interaction
+
+If no clear state exists, introduce a clean state machine:
+
+AR_IDLE
+AR_SCANNING
+AR_SURFACE_FOUND
+AR_PLACED
+AR_INFO
+
+Required transitions:
+
+AR_IDLE
+   ↓
+AR_SCANNING
+   ↓
+AR_SURFACE_FOUND
+   ↓
+USER TAP
+   ↓
+AR_PLACED
+   ↓
+INTERACTION
+
+Do NOT show interaction controls during scanning.
+
+==================================================
+2. VERIFY TAP-TO-PLACE
+==================================================
+
+When a valid hit-test result exists:
+
+yellow reticle appears
+
+When the user taps:
+
+- save the reticle position
+- place the selected artifact
+- set artifactPlaced = true
+- hide the placement instruction
+- keep AR session running
+- enable interaction controls
+
+Do NOT exit AR after placement.
+
+Do NOT restart the XR session.
+
+==================================================
+3. IMPORTANT — DO NOT USE DOM BUTTONS AS THE ONLY
+INTERACTION MECHANISM
+==================================================
+
+The artifact must support direct touch gestures.
+
+After placement:
+
+ONE FINGER DRAG
+→ move artifact
+
+TWO FINGER PINCH
+→ scale artifact
+
+TWO FINGER ROTATION
+→ rotate artifact
+
+These gestures should work directly over the AR canvas.
+
+The DOM control bar is additional UI, not a replacement for gestures.
+
+==================================================
+4. CREATE ARTIFACT ROOT
+==================================================
+
+Use this hierarchy:
+
+XR Scene
+   └── ArtifactRoot
+          └── Selected GLB
+
+ArtifactRoot controls:
+
+- position
+- rotation
+- scale
+
+Do NOT apply transforms independently to the GLB from different components.
+
+Initial state:
+
+ArtifactRoot.visible = false
+
+After placement:
+
+ArtifactRoot.visible = true
+
+==================================================
+5. MOVE GESTURE
+==================================================
+
+Implement one-finger drag.
+
+When the user touches and drags the placed artifact:
+
+move ArtifactRoot across the detected surface.
+
+Do not move the XR camera.
+
+Do not move the entire AR scene.
+
+The artifact should remain anchored to the detected surface.
+
+Use the existing hit-test / surface detection mechanism where possible.
+
+Do not create another XR session.
+
+==================================================
+6. PINCH TO SCALE
+==================================================
+
+Implement two-finger pinch.
+
+Calculate the distance between the two active touches.
+
+Initial distance:
+
+d0
+
+Current distance:
+
+d1
+
+Scale proportionally:
+
+scale = initialScale * (d1 / d0)
+
+Clamp the result.
+
+Example:
+
+minimum scale = 0.2
+maximum scale = 3.0
+
+Adjust these values based on the existing artifact normalization.
+
+Scaling must feel smooth.
+
+Do not jump in size when the second finger is added.
+
+==================================================
+7. TWO-FINGER ROTATION
+==================================================
+
+Calculate the angle between the two active touch points.
+
+When the angle changes:
+
+rotate ArtifactRoot around its vertical/Y axis.
+
+The user should be able to naturally rotate the artifact left/right.
+
+Do not rotate the camera.
+
+Do not rotate the whole XR scene.
+
+==================================================
+8. GESTURE CONFLICT HANDLING
+==================================================
+
+Correctly distinguish:
+
+ONE FINGER
+→ MOVE
+
+TWO FINGERS
+→ ROTATE + SCALE
+
+Avoid accidental page scrolling.
+
+During AR interaction:
+
+touch-action: none
+
+on the AR interaction layer.
+
+Do not disable touch behavior globally on the entire application.
+
+==================================================
+9. MINIMAL POST-PLACEMENT UI
+==================================================
+
+After artifact placement, show a minimal floating bottom toolbar.
+
+Do NOT use large buttons.
+
+Use the existing Lucide icons if already installed.
+
+Suggested:
+
+       ↔       ⟳       ⤢       ℹ       ↺
+
+Move
+Rotate
+Scale
+Info
+Reset
+
+Keep it:
+
+- compact
+- translucent
+- rounded
+- modern
+- minimal
+- touch friendly
+- safe-area aware
+
+Each touch target should be approximately 44px or larger.
+
+Do not cover the artifact.
+
+==================================================
+10. PLACEMENT UI
+==================================================
+
+BEFORE PLACEMENT:
+
+Show:
+
+"Move your phone to find a surface"
+
+and the yellow reticle.
+
+AFTER PLACEMENT:
+
+Remove/hide:
+
+"Move your phone to find a surface"
+
+Hide the reticle if it is no longer needed.
+
+Show:
+
+artifact
++
+interaction toolbar
+
+==================================================
+11. RESET BUTTON
+==================================================
+
+Reset must restore:
+
+- original placement
+- original rotation
+- original scale
+
+Do NOT exit AR.
+
+Do NOT restart scanning unless explicitly requested.
+
+==================================================
+12. REPOSITION BUTTON
+==================================================
+
+If there is a Reposition control:
+
+User taps Reposition
+
+Then:
+
+artifact interaction temporarily disabled
+        ↓
+scanning mode
+        ↓
+yellow reticle
+        ↓
+user taps surface
+        ↓
+artifact moves to new position
+        ↓
+interaction enabled again
+
+Do NOT create a new XR session.
+
+==================================================
+13. INFO BUTTON
+==================================================
+
+When Info is pressed, show a small bottom sheet.
+
+Example:
+
+┌──────────────────────────┐
+│ Bell X-1                 │
+│                          │
+│ Broke the Sound Barrier  │
+│                          │
+│ National Air and Space   │
+│ Museum                   │
+│                          │
+│ Ask AI Curator →         │
+└──────────────────────────┘
+
+The AR camera must remain active behind the sheet.
+
+Closing the sheet returns to artifact interaction.
+
+==================================================
+14. SELECTED ARTIFACT
+==================================================
+
+Do NOT hardcode ART001.
+
+The currently selected artifact from the 15-artifact picker must be used.
+
+Flow:
+
+15 Artifacts
+     ↓
+User selects one
+     ↓
+selectedArtifact
+     ↓
+Enter AR
+     ↓
+scan
+     ↓
+place selectedArtifact
+     ↓
+interaction
+
+Example:
+
+selectedArtifact = ART012
+
+Then Bell X-1 must appear.
+
+If selectedArtifact = ART016:
+
+SpaceShipOne must appear.
+
+==================================================
+15. IMPORTANT R3F / WEBXR RULE
+==================================================
+
+Do NOT create another THREE.WebGLRenderer.
+
+Use the existing R3F renderer.
+
+Use:
+
+const { gl } = useThree();
+
+The XR session must remain connected to:
+
+gl.xr
+
+Do not create another Canvas.
+
+Do not create another renderer.
+
+Do not create a second XR loop.
+
+==================================================
+16. AR CAMERA MUST REMAIN FULLSCREEN
+==================================================
+
+The camera view should remain fullscreen.
+
+The UI must be an overlay ABOVE the AR view.
+
+Architecture:
+
+┌─────────────────────────────┐
+│                             │
+│       AR CAMERA             │
+│                             │
+│       3D ARTIFACT           │
+│                             │
+│                             │
+│                             │
+│ ┌─────────────────────────┐ │
+│ │ ↔  ⟳  ⤢  ℹ  ↺          │ │
+│ └─────────────────────────┘ │
+└─────────────────────────────┘
+
+Do NOT shrink the camera into a card.
+
+Do NOT place the artifact controls beside the camera.
+
+Do NOT create a second page after placement.
+
+==================================================
+17. SAFE AREA
+==================================================
+
+Use mobile safe-area insets.
+
+The bottom toolbar must not overlap the phone's home indicator.
+
+Use appropriate CSS such as:
+
+padding-bottom:
+env(safe-area-inset-bottom)
+
+Also account for:
+
+- notches
+- Dynamic Island
+- rounded screen corners
+
+==================================================
+18. PERFORMANCE
+==================================================
+
+Only the selected artifact should be loaded.
+
+Do not load all 15 GLBs into AR.
+
+Do not perform expensive operations every frame.
+
+Touch gesture calculations should be lightweight.
+
+Do not trigger React state updates continuously every animation frame unless necessary.
+
+Use refs for rapidly changing:
+
+- position
+- rotation
+- scale
+
+==================================================
+19. CLEANUP
+==================================================
+
+When exiting AR:
+
+- end XR session
+- remove touch listeners
+- remove hit-test source
+- clear gesture state
+- clear reticle
+- clean temporary AR state
+
+When re-entering AR:
+
+everything should initialize cleanly.
+
+==================================================
+20. DEBUG THE ACTUAL PROBLEM
+==================================================
+
+If the artifact is being placed successfully but interaction controls don't appear:
+
+Check whether the code actually changes:
+
+artifactPlaced
+
+or equivalent state
+
+after the placement tap.
+
+Trace:
+
+touch/click
+   ↓
+hit-test result
+   ↓
+place artifact
+   ↓
+set artifactPlaced = true
+   ↓
+React/UI update
+   ↓
+interaction toolbar visible
+
+If artifactPlaced is true but UI doesn't appear:
+
+inspect:
+
+- z-index
+- pointer-events
+- absolute positioning
+- fullscreen Canvas covering DOM
+- DOM overlay container
+- CSS display/visibility
+- mobile viewport height
+- safe-area styles
+
+A common issue is that the R3F Canvas is covering the DOM overlay.
+
+The final DOM hierarchy should be approximately:
+
+ARContainer
+├── Canvas
+│    └── WebXR / Artifact / Reticle
+│
+└── ARUIOverlay
+     ├── scanning instruction
+     ├── placement UI
+     ├── interaction toolbar
+     └── info sheet
+
+ARUIOverlay must sit above Canvas.
+
+Use:
+
+position: fixed
+inset: 0
+z-index: appropriate value
+pointer-events: none
+
+Then enable pointer-events only on actual buttons/interactive controls.
+
+==================================================
+21. FINAL UX
+==================================================
+
+The exact user experience should be:
+
+STEP 1
+
+User selects:
+
+Bell X-1
+
+STEP 2
+
+Tap:
+
+ENTER AR
+
+STEP 3
+
+Camera opens fullscreen.
+
+STEP 4
+
+User moves phone.
+
+Yellow marker appears on detected surface.
+
+STEP 5
+
+User taps the surface.
+
+Bell X-1 appears.
+
+STEP 6
+
+Bottom controls appear:
+
+↔ Move
+⟳ Rotate
+⤢ Scale
+ℹ Info
+↺ Reset
+
+STEP 7
+
+User can directly interact:
+
+one finger → move
+two fingers → rotate + scale
+
+STEP 8
+
+User can open Info.
+
+STEP 9
+
+User can reset/reposition.
+
+STEP 10
+
+User exits AR.
+
+==================================================
+ACCEPTANCE TEST
+==================================================
+
+Test on an actual phone.
+
+✓ Camera fullscreen
+✓ Surface scanning
+✓ Yellow reticle
+✓ Tap-to-place
+✓ Artifact appears
+✓ Controls appear AFTER placement
+✓ One-finger move
+✓ Two-finger rotate
+✓ Pinch scale
+✓ Reset
+✓ Reposition
+✓ Info
+✓ Exit AR
+✓ Re-enter AR
+✓ Selected artifact is respected
+✓ No ART001 hardcoding
+✓ Desktop WASD remains unchanged
+
+MOST IMPORTANT:
+
+The current camera/scanning functionality is already working.
+
+DO NOT BREAK IT.
+
+We are specifically adding the missing POST-PLACEMENT interaction layer.
+
+Do not rewrite the working WebXR initialization unless investigation proves it is necessary.
+
+First fix:
+
+PLACED ARTIFACT
+        ↓
+TOUCH INTERACTION
+        ↓
+MINIMAL UI OVERLAY

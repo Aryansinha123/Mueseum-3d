@@ -1,0 +1,712 @@
+# Build a Complete 3D Virtual Museum Using Three.js
+
+You are an expert full-stack web developer specializing in **Next.js, React, Three.js, React Three Fiber, 3D environments, and interactive museum experiences**.
+
+Build a complete, polished **3D Virtual Museum web application** from scratch.
+
+## 1. Core Project Goal
+
+The application is a **virtual museum**, not a normal website with 3D elements.
+
+The main experience should be a navigable 3D museum environment containing multiple artifact locations.
+
+The final scene should conceptually look like:
+
+```
+                VIRTUAL MUSEUM
+```
+
+┌──────────────────────────────────────────────────────┐
+│                                                      │
+│    🗿 ARTIFACT 1                  🏺 ARTIFACT 2      │
+│                                                      │
+│                                                      │
+│                  🖼️ ARTIFACT 3                       │
+│                                                      │
+│                                    🛕 ARTIFACT 4    │
+│                                                      │
+│                    🗿 ARTIFACT 5                     │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+
+The artifacts must eventually exist as **real 3D objects inside the same Three.js scene**.
+
+Do NOT use iframes for the artifacts.
+
+The Smithsonian Voyager iframe may be used only as a future reference/inspiration. The architecture must allow us to replace placeholder artifacts with actual `.glb/.gltf` models later.
+
+---
+
+# 2. Technology Stack
+
+Use:
+
+* Next.js
+* React
+* JavaScript, NOT TypeScript
+* Three.js
+* React Three Fiber
+* @react-three/drei
+* Tailwind CSS
+* npm
+* ESLint
+
+Do NOT introduce unnecessary technologies.
+
+Do NOT use:
+
+* Unity
+* Unreal Engine
+* React Native
+* TypeScript
+* Three.js alternatives
+* a game engine
+
+The project must run in a normal desktop browser.
+
+---
+
+# 3. Project Architecture
+
+Create a clean structure similar to:
+
+virtual-museum/
+│
+├── public/
+│   ├── models/
+│   │   └── artifacts/
+│   ├── textures/
+│   └── images/
+│
+├── src/
+│   ├── app/
+│   │   ├── page.js
+│   │   ├── layout.js
+│   │   └── globals.css
+│   │
+│   ├── components/
+│   │   ├── museum/
+│   │   │   ├── Museum.jsx
+│   │   │   ├── MuseumEnvironment.jsx
+│   │   │   ├── Gallery.jsx
+│   │   │   ├── Floor.jsx
+│   │   │   ├── Walls.jsx
+│   │   │   ├── Ceiling.jsx
+│   │   │   ├── Entrance.jsx
+│   │   │   └── Pedestal.jsx
+│   │   │
+│   │   ├── artifacts/
+│   │   │   ├── Artifact.jsx
+│   │   │   ├── ArtifactPlaceholder.jsx
+│   │   │   └── ArtifactManager.jsx
+│   │   │
+│   │   ├── controls/
+│   │   │   └── MuseumControls.jsx
+│   │   │
+│   │   └── ui/
+│   │       ├── MuseumHUD.jsx
+│   │       ├── ArtifactInfo.jsx
+│   │       └── LoadingScreen.jsx
+│   │
+│   └── data/
+│       └── artifacts.js
+│
+└── package.json
+
+Keep the architecture modular so additional galleries, artifacts, AI features, backend APIs, and AR capabilities can be added later.
+
+---
+
+# 4. Museum Environment
+
+Create a visually convincing museum interior.
+
+Do NOT make it just a floor and four walls.
+
+The environment should include:
+
+### Main areas
+
+1. Museum entrance
+2. Main lobby
+3. Gallery 1
+4. Gallery 2
+5. Gallery 3
+6. Connecting corridors
+7. Artifact display areas
+8. Exit
+
+The first version can be a medium-sized museum rather than an enormous building.
+
+Create a logical visitor path.
+
+Example:
+
+```
+                ENTRANCE
+                   │
+                   ▼
+             ┌───────────┐
+             │   LOBBY   │
+             └─────┬─────┘
+                   │
+          ┌────────┴────────┐
+          ▼                 ▼
+    ┌───────────┐     ┌───────────┐
+    │ GALLERY 1 │     │ GALLERY 2 │
+    │           │     │           │
+    └─────┬─────┘     └─────┬─────┘
+          │                 │
+          └────────┬────────┘
+                   ▼
+             ┌───────────┐
+             │ GALLERY 3 │
+             └───────────┘
+```
+
+---
+
+# 5. Visual Design
+
+Make the museum look like a modern digital cultural museum.
+
+Use:
+
+* spacious galleries
+* realistic proportions
+* clean walls
+* polished floors
+* display pedestals
+* framed information panels
+* subtle architectural details
+* ceiling lights
+* exhibit spotlights
+* directional lighting
+* warm neutral museum materials
+* clear gallery separation
+
+Do not make it look like a video game level.
+
+The visual style should feel like:
+
+"modern museum + digital heritage experience"
+
+Avoid excessive neon, sci-fi effects, glowing objects, or gaming aesthetics.
+
+---
+
+# 6. Lighting
+
+Implement a proper Three.js lighting setup.
+
+Use:
+
+* Ambient/Hemisphere lighting
+* Directional light
+* Point/spot lights for exhibits
+
+Each artifact display should have focused lighting.
+
+Artifacts should visually stand out from the environment without excessive bloom or glow.
+
+Create a reusable exhibit-light component if useful.
+
+---
+
+# 7. Camera and Navigation
+
+The user must be able to explore the museum.
+
+For the initial desktop version implement:
+
+### Desktop
+
+* mouse look / orbit controls
+* zoom
+* pan
+* smooth camera movement
+* reasonable camera limits
+* prevent the camera from going through walls as much as practical
+
+Prefer an immersive first-person museum navigation experience over a simple static orbit camera.
+
+The user should feel like they are inside the museum.
+
+If full first-person controls are implemented, provide:
+
+* WASD movement
+* mouse look
+* optional pointer-lock
+* movement speed control
+* collision boundaries where practical
+
+Also provide a simple fallback camera control if pointer lock is unavailable.
+
+---
+
+# 8. Mobile Responsiveness
+
+The web application must work on:
+
+* laptop
+* desktop
+* smartphone
+
+For smartphones, provide touch-friendly controls.
+
+Do NOT attempt to implement full AR in this first version.
+
+However, architect the application so that WebXR/spatial AR can be added later.
+
+The current milestone is the virtual museum itself.
+
+---
+
+# 9. Artifact System
+
+Create an artifact system that supports actual GLB/GLTF models.
+
+Create an `Artifact` component that accepts:
+
+* id
+* name
+* modelPath
+* position
+* rotation
+* scale
+* description
+* category
+* period
+* source
+* license
+
+Example data:
+
+const artifacts = [
+{
+id: "ART001",
+name: "Artifact 1",
+modelPath: "/models/artifacts/artifact1.glb",
+position: [-5, 0, -4],
+rotation: [0, 0, 0],
+scale: 1,
+category: "Historical Artifact"
+},
+...
+];
+
+---
+
+# 10. Placeholder Artifacts
+
+Since actual museum models may not be available initially, create five attractive placeholder 3D objects.
+
+Use simple Three.js geometries or generated placeholder models.
+
+Create:
+
+ART001
+ART002
+ART003
+ART004
+ART005
+
+Place them at different locations throughout the museum.
+
+Each should have:
+
+* pedestal
+* focused light
+* nameplate
+* unique visual appearance
+
+The placeholder system must be easy to replace later with real `.glb` files.
+
+---
+
+# 11. GLB/GLTF Loading
+
+Create reusable GLB loading functionality using:
+
+`useGLTF` from `@react-three/drei`
+
+The architecture should allow:
+
+```text
+/public/models/artifacts/artifact1.glb
+```
+
+to replace:
+
+```text
+ArtifactPlaceholder
+```
+
+without changing the rest of the museum.
+
+Do not hardcode artifact models directly into the museum component.
+
+---
+
+# 12. Artifact Coordinates
+
+Every artifact must have a configurable 3D position.
+
+Use the Three.js coordinate system:
+
+x = left/right
+y = vertical
+z = depth
+
+Do not hardcode positions across multiple components.
+
+Keep artifact configuration in:
+
+`src/data/artifacts.js`
+
+This will later allow us to connect:
+
+artifact_id → 3D model → MongoDB → ChromaDB → AI curator.
+
+---
+
+# 13. Artifact Interaction
+
+When the user clicks/taps an artifact:
+
+1. Highlight it subtly.
+2. Show a small information panel.
+3. Display:
+
+   * artifact name
+   * category
+   * period
+   * short description
+4. Provide an "Explore Artifact" button.
+
+Example:
+
+┌──────────────────────────────┐
+│ ARTIFACT 1                   │
+│                              │
+│ Ancient Cultural Artifact    │
+│                              │
+│ Period: 12th Century         │
+│                              │
+│ A short description...       │
+│                              │
+│ [ Explore Artifact ]         │
+└──────────────────────────────┘
+
+The interaction system must use artifact IDs.
+
+---
+
+# 14. Museum UI
+
+Add a clean overlay UI.
+
+Top-left:
+
+"VIRTUAL HERITAGE MUSEUM"
+
+Top-right:
+
+* Help
+* Controls
+* Museum Map
+
+Bottom:
+
+* movement instructions
+* selected artifact information when applicable
+
+Keep the UI minimal so the 3D environment remains the primary focus.
+
+---
+
+# 15. Museum Map
+
+Create a small 2D museum map accessible from a button.
+
+The map should show:
+
+* Entrance
+* Gallery 1
+* Gallery 2
+* Gallery 3
+* approximate artifact locations
+* current visitor position if practical
+
+Do not make the map a complex GIS system.
+
+A simple museum floor-plan is enough.
+
+---
+
+# 16. Loading Experience
+
+Create a polished loading screen while the 3D scene initializes.
+
+Example:
+
+VIRTUAL HERITAGE MUSEUM
+
+Loading Museum...
+
+[████████████░░░]
+
+Loading environment
+Loading exhibits
+Preparing experience
+
+Do not block the UI unnecessarily after the scene is ready.
+
+---
+
+# 17. Performance
+
+Optimize the application for normal laptops and smartphones.
+
+Important requirements:
+
+* avoid unnecessarily high polygon counts
+* use compressed textures where possible
+* avoid excessive lights
+* use reusable materials
+* avoid rendering unnecessary objects
+* use reasonable shadow settings
+* use LOD or simplified geometry where useful
+* lazy-load artifact models where practical
+
+The final project will eventually contain multiple museum artifacts, so design for scalability.
+
+---
+
+# 18. Future AI Integration
+
+Do NOT implement the AI backend yet.
+
+But prepare the frontend architecture for a future:
+
+POST /api/chat
+
+request:
+
+{
+"artifact_id": "ART001",
+"question": "Who created this artifact?"
+}
+
+The future backend will be:
+
+Next.js
+↓
+FastAPI
+↓
+Context Manager
+↓
+ChromaDB
+↓
+Museum Evidence
+↓
+Gemini
+↓
+Answer + Sources + Confidence
+
+The current project should already have a clean place where the future AI curator interface can be added.
+
+---
+
+# 19. Future AR Integration
+
+Do NOT implement AR yet.
+
+However, do not architect the museum in a way that prevents later WebXR integration.
+
+The museum scene should be independent from:
+
+* camera implementation
+* input controls
+* AI
+* database
+* artifact metadata
+
+Eventually we want:
+
+Laptop:
+3D virtual museum
+
+Smartphone:
+3D virtual museum + spatial/AR mode
+
+Keep the 3D scene reusable.
+
+---
+
+# 20. Future Artifact Dataset
+
+Design everything around a unique artifact ID.
+
+For example:
+
+ART001
+
+will eventually connect:
+
+ART001
+│
+├── 3D model
+│   └── artifact1.glb
+│
+├── MongoDB metadata
+│
+├── ChromaDB documents
+│
+├── museum position
+│
+├── source
+│
+├── license
+│
+└── AI context
+
+Do not create independent systems that cannot be linked through artifact IDs.
+
+---
+
+# 21. Important: Do NOT use Smithsonian iframes as the final artifacts
+
+The project must NOT be:
+
+Museum
+├── iframe 1
+├── iframe 2
+├── iframe 3
+└── iframe 4
+
+Instead it must be:
+
+Three.js Museum Scene
+│
+├── Museum architecture
+├── ART001 3D object
+├── ART002 3D object
+├── ART003 3D object
+├── ART004 3D object
+└── ART005 3D object
+
+If an external Smithsonian 3D model is later legally downloadable/reusable, import the actual GLB/GLTF asset.
+
+The iframe can be used only as a temporary reference/demo.
+
+---
+
+# 22. Code Quality
+
+Use:
+
+* reusable components
+* meaningful variable names
+* modular files
+* comments only where useful
+* no unnecessary abstractions
+* no giant components
+* no duplicated artifact configuration
+* JavaScript rather than TypeScript
+
+Do not create a huge enterprise architecture for this MVP.
+
+Keep the code understandable to a student developer who needs to maintain and extend it.
+
+---
+
+# 23. Final Expected Experience
+
+When the project is opened:
+
+1. Loading screen appears.
+2. Museum loads.
+3. User enters the museum.
+4. User can move around.
+5. User sees multiple galleries.
+6. User sees five placeholder artifacts.
+7. Artifacts sit on proper display pedestals.
+8. User can approach/select artifacts.
+9. Artifact information appears.
+10. Museum map is available.
+11. The experience is responsive on laptop and smartphone.
+12. The codebase is ready for actual GLB models.
+13. The codebase is ready for FastAPI/RAG/Gemini integration later.
+14. The codebase is ready for future WebXR/AR integration.
+
+---
+
+# 24. Do not stop at a landing page
+
+This is critical.
+
+I am NOT asking for:
+
+* a marketing landing page
+* a static museum image
+* cards showing artifacts
+* an iframe collection
+* a simple Three.js rotating cube
+* a generic 3D gallery
+
+I am asking for a **functional navigable 3D museum environment**.
+
+The 3D environment itself should be the primary experience.
+
+---
+
+# 25. Development approach
+
+First inspect the project and install the required dependencies.
+
+Then implement the project in this order:
+
+1. Next.js setup
+2. Three.js / React Three Fiber setup
+3. Basic 3D scene
+4. Museum floor
+5. Walls
+6. Entrance
+7. Galleries
+8. Lighting
+9. Camera/navigation
+10. Display pedestals
+11. Five placeholder artifacts
+12. Artifact interaction
+13. Museum information UI
+14. Museum map
+15. Responsive/mobile layout
+16. Performance optimization
+17. Prepare GLB loading system
+18. Prepare future AI integration points
+
+After each major stage, ensure the application still runs correctly.
+
+Do not move on while the previous stage is broken.
+
+---
+
+# 26. Final requirement
+
+At the end, provide:
+
+1. Complete working project.
+2. Folder structure.
+3. All installed dependencies.
+4. How to run it locally.
+5. Where to place `.glb` artifact files.
+6. Where artifact metadata is defined.
+7. How to add a sixth artifact.
+8. How to change artifact position/rotation/scale.
+9. Explanation of the main components.
+10. A short list of what remains for the next phase.
+
+The first milestone is:
+
+**A polished, navigable 3D virtual museum containing five placeholder artifacts inside a proper museum environment, built entirely with Next.js + React + Three.js + React Three Fiber.**

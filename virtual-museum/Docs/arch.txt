@@ -1,0 +1,38 @@
+                         USER
+                          │
+                 ┌────────┴────────┐
+                 │                 │
+              Laptop           Smartphone
+                 │                 │
+                 ▼                 ▼
+          ┌──────────────────────────────┐
+          │       REACT / NEXT.JS        │
+          │                              │
+          │          THREE.JS            │
+          │                              │
+          │      VIRTUAL MUSEUM          │
+          │                              │
+          │  🗿    🏺    🖼️    🛕       │
+          │                              │
+          └──────────────┬───────────────┘
+                         │
+                    Current Artifact
+                         │
+                         ▼
+                  ┌─────────────┐
+                  │   FASTAPI   │
+                  └──────┬──────┘
+                         │
+             ┌───────────┼───────────┐
+             ▼           ▼           ▼
+          MongoDB     ChromaDB    Gemini
+             │           │           │
+             │      RAG Evidence     │
+             │           │           │
+             └───────────┼───────────┘
+                         ▼
+                  Explainable AI
+                         │
+          ┌──────────────┼─────────────┐
+          ▼              ▼             ▼
+       Answer         Sources      Confidence

@@ -1,0 +1,56 @@
+Open Museum on Phone
+        ↓
+Enter "AR Mode"
+        ↓
+Request Camera Permission
+        ↓
+Scan Floor / Table
+        ↓
+Detect Horizontal Surface
+        ↓
+Show Placement Indicator
+        ↓
+Tap "Place Artifact"
+        ↓
+Load Selected GLB
+        ↓
+Anchor Artifact to Surface
+        ↓
+Move / Rotate / Scale Artifact
+        ↓
+Tap Artifact
+        ↓
+AI Curator / Information
+
+
+
+
+
+                         ┌── Virtual Museum
+                         │
+Next.js → R3F → Three.js ┤
+                         │
+                         └── AR Mode
+                               ↓
+                         Phone Camera
+                               ↓
+                         Surface Detection
+                               ↓
+                         AR Placement
+                               ↓
+                         3D Artifact
+
+
+
+| Component         | Technology        |
+| ----------------- | ----------------- |
+| Web application   | Next.js 16        |
+| 3D rendering      | Three.js          |
+| React integration | React Three Fiber |
+| AR                | WebXR             |
+| AR helpers        | `@react-three/xr` |
+| 3D models         | GLB / glTF        |
+| Backend           | FastAPI           |
+| AI                | Gemini            |
+| RAG               | ChromaDB          |
+| Database          | MongoDB           |
