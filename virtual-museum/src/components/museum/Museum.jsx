@@ -66,6 +66,7 @@ export function Museum({
   return (
     <div className="absolute inset-0 w-full h-full bg-slate-950">
       <Canvas
+        dpr={isArMode ? [1, 1.2] : [1, 1.5]}
         shadows={!isArMode ? "basic" : false}
         camera={{
           fov: 60,
@@ -73,7 +74,12 @@ export function Museum({
           far: 100,
           position: [0, 1.65, 23],
         }}
-        gl={{ antialias: true, preserveDrawingBuffer: true }}
+        gl={{
+          antialias: true,
+          preserveDrawingBuffer: true,
+          powerPreference: "high-performance",
+          stencil: false,
+        }}
         onCreated={({ gl }) => {
           gl.domElement.addEventListener("webglcontextlost", (event) => {
             event.preventDefault();
@@ -129,4 +135,3 @@ export function Museum({
     </div>
   );
 }
-

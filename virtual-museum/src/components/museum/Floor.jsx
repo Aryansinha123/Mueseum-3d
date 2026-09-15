@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export function Floor() {
+export const Floor = React.memo(function Floor() {
   return (
     <group>
       {/* Main Polished Museum Floor Plane */}
@@ -17,7 +17,7 @@ export function Floor() {
 
       {/* Decorative Marble Border Trim Inlays */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, 0]}>
-        <ringGeometry args={[7.8, 8.2, 32]} />
+        <ringGeometry args={[7.8, 8.2, 24]} />
         <meshStandardMaterial color="#c5a059" roughness={0.3} metalness={0.7} />
       </mesh>
 
@@ -41,4 +41,4 @@ export function Floor() {
       </mesh>
     </group>
   );
-}
+});

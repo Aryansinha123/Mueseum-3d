@@ -8,7 +8,7 @@ import { Entrance } from "./Entrance";
 import { Gallery } from "./Gallery";
 import { Door } from "./Door";
 
-export function MuseumEnvironment() {
+export const MuseumEnvironment = React.memo(function MuseumEnvironment() {
   return (
     <group>
       {/* Overall Ambient & Hemisphere Lights */}
@@ -94,4 +94,4 @@ export function MuseumEnvironment() {
       />
     </group>
   );
-}
+});

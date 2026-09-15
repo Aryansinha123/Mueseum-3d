@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, Component, Suspense } from "react";
+import React, { useState, useEffect, Component, Suspense, useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 import { ArtifactPlaceholder } from "./ArtifactPlaceholder";
 import { AutoFitModel } from "./AutoFitModel";
 import { checkGlbAssetExists } from "../../utils/artifactValidator";
@@ -34,35 +35,40 @@ class ModelErrorBoundary extends Component {
 }
 
 function GlbModelLoader({ modelPath, scale, artifactId }) {
-  console.log(`[GLB LOAD START] ${artifactId}`);
   const gltf = useGLTF(modelPath);
-  console.log(`[GLB LOAD SUCCESS] ${artifactId}`, gltf);
-  console.log(`[GLB SCENE] ${artifactId} scene object`, gltf.scene);
 
-  let meshCount = 0;
-  gltf.scene.traverse((child) => {
-    if (child.isMesh) {
-      meshCount++;
-      child.frustumCulled = false;
+  // Preserve frustum culling on child meshes for GPU optimization
+  useMemo(() => {
+    if (gltf?.scene) {
+      gltf.scene.traverse((child) => {
+        if (child.isMesh) {
+          child.frustumCulled = true;
+        }
+      });
     }
-  });
-  console.log(`[GLB MESH COUNT] ${artifactId}: ${meshCount}`);
+  }, [gltf]);
 
-  return <AutoFitModel object={gltf.scene} userScale={scale || 1} targetSize={0.65} artifactId={artifactId} />;
+  return (
+    <AutoFitModel
+      object={gltf.scene}
+      userScale={scale || 1}
+      targetSize={0.65}
+      artifactId={artifactId}
+    />
+  );
 }
 
-export function Artifact({
+export const Artifact = React.memo(function Artifact({
   artifact,
   isSelected,
   onSelectArtifact,
+  cameraPosition,
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isAssetPresent, setIsAssetPresent] = useState(false);
+  const { camera } = useThree();
 
   useEffect(() => {
-    console.log(`[ARTIFACT] ${artifact.id} received`);
-    console.log(`[MODEL PATH] ${artifact.modelPath}`);
-
     let isMounted = true;
     async function verifyAsset() {
       if (!artifact.modelPath) {
@@ -72,20 +78,26 @@ export function Artifact({
       const exists = await checkGlbAssetExists(artifact.modelPath);
       if (isMounted) {
         setIsAssetPresent(exists);
-        if (!exists && process.env.NODE_ENV !== "production") {
-          console.info(
-            `[Artifact Pipeline] 3D model missing for ${artifact.id}. Place GLB file at public${artifact.modelPath}`
-          );
-        }
       }
     }
 
     verifyAsset();
-
     return () => {
       isMounted = false;
     };
   }, [artifact]);
+
+  // Compute distance from camera to artifact position for proximity lazy loading
+  const isWithinProximity = useMemo(() => {
+    if (isSelected || isHovered) return true;
+    const camX = cameraPosition ? cameraPosition[0] : camera.position.x;
+    const camZ = cameraPosition ? cameraPosition[2] : camera.position.z;
+    const artX = artifact.position ? artifact.position[0] : 0;
+    const artZ = artifact.position ? artifact.position[2] : 0;
+    const dx = camX - artX;
+    const dz = camZ - artZ;
+    return dx * dx + dz * dz <= 625; // 25 meters radius
+  }, [cameraPosition, camera.position.x, camera.position.z, artifact.position, isSelected, isHovered]);
 
   const handlePointerOver = (e) => {
     e.stopPropagation();
@@ -143,8 +155,8 @@ export function Artifact({
         </mesh>
       )}
 
-      {/* Render real GLB model ONLY if asset exists on disk; otherwise render placeholder cleanly without 404 console errors */}
-      {isAssetPresent && artifact.modelPath ? (
+      {/* Render real GLB model ONLY if within viewing proximity & asset exists; otherwise render procedural placeholder */}
+      {isAssetPresent && artifact.modelPath && isWithinProximity ? (
         <ModelErrorBoundary
           artifactId={artifact.id}
           modelPath={artifact.modelPath}
@@ -174,4 +186,4 @@ export function Artifact({
       )}
     </group>
   );
-}
+});

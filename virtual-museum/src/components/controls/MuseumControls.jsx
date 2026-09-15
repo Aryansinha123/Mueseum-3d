@@ -5,6 +5,11 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, PointerLockControls } from "@react-three/drei";
 import * as THREE from "three";
 
+// Reusable static vectors to avoid per-frame allocations inside useFrame
+const _moveVector = new THREE.Vector3();
+const _forward = new THREE.Vector3();
+const _side = new THREE.Vector3();
+
 export function MuseumControls({
   controlMode, // 'first-person' or 'inspect'
   selectedArtifact,
@@ -15,6 +20,8 @@ export function MuseumControls({
   const { camera } = useThree();
   const orbitRef = useRef();
   const pointerLockRef = useRef();
+  const lastReportedPos = useRef([0, 1.65, 23]);
+  const lastReportTime = useRef(0);
 
   // Keys press tracking
   const keys = useRef({
@@ -88,40 +95,46 @@ export function MuseumControls({
   useFrame((state, delta) => {
     if (controlMode === "first-person") {
       const speed = 6.0 * delta;
-      const moveVector = new THREE.Vector3();
+      _moveVector.set(0, 0, 0);
 
       // Forward/backward vector relative to camera look direction
-      const forward = new THREE.Vector3();
-      camera.getWorldDirection(forward);
-      forward.y = 0; // Lock to horizontal ground walking plane
-      forward.normalize();
+      camera.getWorldDirection(_forward);
+      _forward.y = 0; // Lock to horizontal ground walking plane
+      _forward.normalize();
 
-      const side = new THREE.Vector3(-forward.z, 0, forward.x).normalize();
+      _side.set(-_forward.z, 0, _forward.x).normalize();
 
-      if (keys.current.forward) moveVector.addScaledVector(forward, speed);
-      if (keys.current.backward) moveVector.addScaledVector(forward, -speed);
-      if (keys.current.left) moveVector.addScaledVector(side, -speed);
-      if (keys.current.right) moveVector.addScaledVector(side, speed);
+      if (keys.current.forward) _moveVector.addScaledVector(_forward, speed);
+      if (keys.current.backward) _moveVector.addScaledVector(_forward, -speed);
+      if (keys.current.left) _moveVector.addScaledVector(_side, -speed);
+      if (keys.current.right) _moveVector.addScaledVector(_side, speed);
 
       // Apply touch joystick input if present
       if (touchDirection.current.y !== 0) {
-        moveVector.addScaledVector(forward, -touchDirection.current.y * speed);
+        _moveVector.addScaledVector(_forward, -touchDirection.current.y * speed);
       }
       if (touchDirection.current.x !== 0) {
-        moveVector.addScaledVector(side, touchDirection.current.x * speed);
+        _moveVector.addScaledVector(_side, touchDirection.current.x * speed);
       }
 
       // Propose new position
-      const newX = THREE.MathUtils.clamp(camera.position.x + moveVector.x, -20.5, 20.5);
-      const newZ = THREE.MathUtils.clamp(camera.position.z + moveVector.z, -20.5, 20.5);
+      const newX = THREE.MathUtils.clamp(camera.position.x + _moveVector.x, -20.5, 20.5);
+      const newZ = THREE.MathUtils.clamp(camera.position.z + _moveVector.z, -20.5, 20.5);
 
       camera.position.x = newX;
       camera.position.z = newZ;
       camera.position.y = 1.65; // Fixed eye level height
 
-      // Notify parent for minimap dot updates
-      if (onCameraMove) {
-        onCameraMove([camera.position.x, camera.position.y, camera.position.z]);
+      // Throttled parent notification for minimap dot updates (only on >0.25m movement or 150ms interval)
+      const now = state.clock.getElapsedTime() * 1000;
+      const dx = camera.position.x - lastReportedPos.current[0];
+      const dz = camera.position.z - lastReportedPos.current[2];
+      const distSq = dx * dx + dz * dz;
+
+      if (onCameraMove && (distSq > 0.0625 || now - lastReportTime.current > 150)) {
+        lastReportedPos.current = [camera.position.x, camera.position.y, camera.position.z];
+        lastReportTime.current = now;
+        onCameraMove(lastReportedPos.current);
       }
     }
   });

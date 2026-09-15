@@ -4,10 +4,11 @@ import React from "react";
 import { Artifact } from "./Artifact";
 import { Pedestal } from "../museum/Pedestal";
 
-export function ArtifactManager({
+export const ArtifactManager = React.memo(function ArtifactManager({
   artifacts,
   selectedArtifact,
   onSelectArtifact,
+  cameraPosition,
 }) {
   return (
     <group>
@@ -27,10 +28,11 @@ export function ArtifactManager({
               artifact={artifact}
               isSelected={isSelected}
               onSelectArtifact={onSelectArtifact}
+              cameraPosition={cameraPosition}
             />
           </group>
         );
       })}
     </group>
   );
-}
+});

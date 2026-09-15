@@ -107,11 +107,21 @@ export default function Home() {
     setRotationY(0);
 
     if (xrStore && typeof xrStore.enterAR === "function") {
-      xrStore.enterAR().catch((err) => {
-        console.warn("[WebXR] Failed to launch AR session:", err);
-        setIsArMode(false);
-        setArErrorAlert("Unable to start AR session: " + (err.message || "Session initialization failed."));
-      });
+      xrStore
+        .enterAR()
+        .then((session) => {
+          if (session && typeof window !== "undefined") {
+            window.__activeXRSession = session;
+          }
+        })
+        .catch((err) => {
+          console.warn("[WebXR] Failed to launch AR session:", err);
+          setIsArMode(false);
+          setArErrorAlert(
+            "Unable to start AR session: " +
+              (err.message || "Session initialization failed.")
+          );
+        });
     }
   };
 

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export function Walls() {
+export const Walls = React.memo(function Walls() {
   const wallMaterialProps = {
     color: "#e8e5de",
     roughness: 0.7,
@@ -119,4 +119,4 @@ export function Walls() {
       </mesh>
     </group>
   );
-}
+});
