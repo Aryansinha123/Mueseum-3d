@@ -24,37 +24,27 @@ class ARModelErrorBoundary extends Component {
   }
 }
 
-function GlbARLoader({ modelPath, userScale, arScaleMultiplier }) {
+function GlbARLoader({ modelPath, userScale, artifactId }) {
   const { scene } = useGLTF(modelPath);
-  const totalScale = (userScale || 1) * (arScaleMultiplier || 1);
-  return <AutoFitModel object={scene} userScale={totalScale} targetSize={0.5} />;
+  return (
+    <AutoFitModel
+      object={scene}
+      userScale={userScale || 1}
+      targetSize={0.65}
+      artifactId={artifactId}
+    />
+  );
 }
 
 export function ARArtifact({
   artifact,
-  position,
+  position = [0, 0, 0],
   rotationY = 0,
   arScale = 1.0,
-  isSelected,
+  isSelected = true,
   onSelect,
-  onUpdateTransform,
 }) {
-  const groupRef = useRef();
   const [isHovered, setIsHovered] = useState(false);
-
-  // Touch gesture state tracking
-  const touchStartRef = useRef({
-    distance: 0,
-    angle: 0,
-    position: [0, 0],
-    isDragging: false,
-    isPinching: false,
-  });
-
-  const handlePointerDown = (e) => {
-    e.stopPropagation();
-    if (onSelect) onSelect(artifact);
-  };
 
   const placeholder = (
     <ArtifactPlaceholder
@@ -65,55 +55,61 @@ export function ARArtifact({
   );
 
   return (
-    <group
-      ref={groupRef}
-      position={position}
-      rotation={[0, rotationY, 0]}
-      onPointerDown={handlePointerDown}
-      onPointerOver={(e) => {
-        e.stopPropagation();
-        setIsHovered(true);
-      }}
-      onPointerOut={(e) => {
-        e.stopPropagation();
-        setIsHovered(false);
-      }}
-    >
-      {/* Selection Base Indicator Ring */}
-      {(isSelected || isHovered) && (
-        <mesh position={[0, 0.005, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[0.25, 0.35, 32]} />
-          <meshBasicMaterial
-            color={isSelected ? "#f59e0b" : "#60a5fa"}
-            transparent
-            opacity={0.8}
-            side={THREE.DoubleSide}
-          />
-        </mesh>
-      )}
-
-      {/* Render GLB model without pedestal */}
-      {artifact.modelPath ? (
-        <ARModelErrorBoundary fallback={placeholder}>
-          <Suspense fallback={placeholder}>
-            <GlbARLoader
-              modelPath={artifact.modelPath}
-              userScale={artifact.scale}
-              arScaleMultiplier={arScale}
+    /* Level 1: ARAnchor - World Placement Position */
+    <group position={position}>
+      {/* Level 2: ArtifactRoot - User Transform (Rotation & Scale) */}
+      <group
+        rotation={[0, rotationY, 0]}
+        scale={[arScale, arScale, arScale]}
+        onPointerDown={(e) => {
+          e.stopPropagation();
+          if (onSelect) onSelect(artifact);
+        }}
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          setIsHovered(true);
+        }}
+        onPointerOut={(e) => {
+          e.stopPropagation();
+          setIsHovered(false);
+        }}
+      >
+        {/* Selection Base Ring */}
+        {(isSelected || isHovered) && (
+          <mesh position={[0, 0.005, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <ringGeometry args={[0.3, 0.4, 32]} />
+            <meshBasicMaterial
+              color={isSelected ? "#f59e0b" : "#60a5fa"}
+              transparent
+              opacity={0.8}
+              side={THREE.DoubleSide}
             />
-          </Suspense>
-        </ARModelErrorBoundary>
-      ) : (
-        placeholder
-      )}
+          </mesh>
+        )}
 
-      {/* Selection Beacon */}
-      {isSelected && (
-        <mesh position={[0, 0.8 * arScale, 0]}>
-          <sphereGeometry args={[0.03, 16, 16]} />
-          <meshBasicMaterial color="#f59e0b" />
-        </mesh>
-      )}
+        {/* Level 3: GLB Model / Procedural Model Normalizer */}
+        {artifact.modelPath ? (
+          <ARModelErrorBoundary fallback={placeholder}>
+            <Suspense fallback={placeholder}>
+              <GlbARLoader
+                modelPath={artifact.modelPath}
+                userScale={artifact.scale}
+                artifactId={artifact.id}
+              />
+            </Suspense>
+          </ARModelErrorBoundary>
+        ) : (
+          placeholder
+        )}
+
+        {/* Floating Highlight Beacon */}
+        {isSelected && (
+          <mesh position={[0, 0.75, 0]}>
+            <sphereGeometry args={[0.025, 16, 16]} />
+            <meshBasicMaterial color="#f59e0b" />
+          </mesh>
+        )}
+      </group>
     </group>
   );
 }

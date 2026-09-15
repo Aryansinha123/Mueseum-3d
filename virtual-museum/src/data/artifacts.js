@@ -316,7 +316,7 @@ export const catalogArtifacts = [
     galleryName: "Gallery 3: Smithsonian Paleontology Hall",
     pedestalHeight: 1.2,
     isVerifiedMuseumData: true,
-    hasPhysicalGlb: false,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART012",
       historicalSignificance: "Discovered in 1988 by Kathy Wankel in Montana. One of the most complete and scientifically celebrated T. rex specimens in the world, designated 'The Nation's T. rex'.",
@@ -343,7 +343,7 @@ export const catalogArtifacts = [
     galleryName: "Gallery 3: Smithsonian Paleontology Hall",
     pedestalHeight: 1.2,
     isVerifiedMuseumData: true,
-    hasPhysicalGlb: false,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART013",
       historicalSignificance: "Mounted in 1905 at the Smithsonian, it was the first Triceratops mounted for public display anywhere in the world and remains the definitive ceratopsian type reference.",
@@ -370,7 +370,7 @@ export const catalogArtifacts = [
     galleryName: "Gallery 3: Smithsonian Paleontology Hall",
     pedestalHeight: 1.2,
     isVerifiedMuseumData: true,
-    hasPhysicalGlb: false,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART014",
       historicalSignificance: "Demonstrates the specialized anatomical adaptations of Ice Age megafauna that traversed the Bering Land Bridge during the Pleistocene epoch.",
@@ -397,7 +397,7 @@ export const catalogArtifacts = [
     galleryName: "Gallery 3: Smithsonian Paleontology Hall",
     pedestalHeight: 1.2,
     isVerifiedMuseumData: true,
-    hasPhysicalGlb: false,
+    hasPhysicalGlb: true,
     aiContext: {
       artifact_id: "ART015",
       historicalSignificance: "Preserved in natural asphalt seeps, providing remarkable scientific insight into Late Pleistocene apex predators that hunted alongside early humans.",

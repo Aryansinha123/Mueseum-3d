@@ -2,16 +2,18 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { artifactsData, galleriesData } from "@/data/artifacts";
+import { artifactsData, catalogArtifacts, galleriesData } from "@/data/artifacts";
 import { MuseumHUD } from "@/components/ui/MuseumHUD";
 import { ArtifactInfo } from "@/components/ui/ArtifactInfo";
 import { MuseumMap } from "@/components/ui/MuseumMap";
 import { ControlsOverlay } from "@/components/ui/ControlsOverlay";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { AROverlayUI } from "@/components/ar/AROverlayUI";
+import { ARArtifactPickerModal } from "@/components/ar/ARArtifactPickerModal";
 import { useWebXRSupport } from "@/hooks/useWebXRSupport";
 import { xrStore } from "@/utils/xrStore";
 import { validateArtifactAssets } from "@/utils/artifactValidator";
+import { X, AlertCircle, RotateCcw } from "lucide-react";
 
 // Dynamically import 3D Canvas component to prevent Next.js SSR evaluation
 const MuseumCanvas = dynamic(
@@ -27,7 +29,8 @@ export default function Home() {
   const [cameraPosition, setCameraPosition] = useState([0, 1.65, 23]);
   const [isPointerLocked, setIsPointerLocked] = useState(false);
 
-  // AR Mode state
+  // AR Mode & Picker States
+  const [isArPickerOpen, setIsArPickerOpen] = useState(false);
   const [isArMode, setIsArMode] = useState(false);
   const [isPlaced, setIsPlaced] = useState(false);
   const [placedPosition, setPlacedPosition] = useState(null);
@@ -35,12 +38,13 @@ export default function Home() {
   const [arScale, setArScale] = useState(1.0);
   const [rotationY, setRotationY] = useState(0);
   const [isInfoInArOpen, setIsInfoInArOpen] = useState(false);
+  const [arErrorAlert, setArErrorAlert] = useState(null);
 
-  const { isSupported: isArSupported } = useWebXRSupport();
+  const { isSupported: isArSupported, errorMessage: arSupportError } = useWebXRSupport();
 
   // Audit 3D GLB assets in dev console on initial load
   useEffect(() => {
-    validateArtifactAssets(artifactsData);
+    validateArtifactAssets(catalogArtifacts);
   }, []);
 
   // Compute current gallery location based on camera coordinates
@@ -49,7 +53,7 @@ export default function Home() {
     if (z > 18) return "Main Entrance Doorway";
     if (z > 3 && Math.abs(x) < 7) return "Central Rotunda Lobby";
     if (x < -7) return "Gallery 1: Classical Antiquities";
-    if (x > 7) return "Gallery 2: Medieval Treasures";
+    if (x > 7) return "Gallery 2: Smithsonian Technology & Science Hall";
     if (z < -8) return "Gallery 3: Smithsonian Paleontology Hall";
     return "Central Rotunda Lobby";
   }, [cameraPosition]);
@@ -78,27 +82,35 @@ export default function Home() {
     setControlMode("first-person");
   };
 
-  // Trigger Mobile WebXR AR Mode safely
-  const handleEnterAr = () => {
+  // Step 1: Open AR Artifact Picker Modal
+  const handleOpenArPicker = () => {
+    setIsArPickerOpen(true);
+  };
+
+  // Step 2: Confirm artifact choice & initiate WebXR session
+  const handleConfirmEnterAr = (chosenArtifact) => {
+    const target = chosenArtifact || selectedArtifact || catalogArtifacts[0];
+    setSelectedArtifact(target);
+    setIsArPickerOpen(false);
+
     if (!isArSupported) {
-      alert("AR is not supported on this device/browser.");
+      setArErrorAlert(
+        arSupportError || "WebXR AR is not supported on this device or browser. Please try on a WebXR-compatible mobile browser (e.g. Chrome on Android)."
+      );
       return;
     }
 
-    const targetArtifact = selectedArtifact || artifactsData[0];
-    if (!selectedArtifact) {
-      setSelectedArtifact(targetArtifact);
-    }
     setIsArMode(true);
     setIsPlaced(false);
     setPlacedPosition(null);
     setArScale(1.0);
     setRotationY(0);
+
     if (xrStore && typeof xrStore.enterAR === "function") {
       xrStore.enterAR().catch((err) => {
-        console.warn("[WebXR] Failed to enter AR session:", err);
+        console.warn("[WebXR] Failed to launch AR session:", err);
         setIsArMode(false);
-        alert("AR is not supported on this device/browser.");
+        setArErrorAlert("Unable to start AR session: " + (err.message || "Session initialization failed."));
       });
     }
   };
@@ -148,11 +160,12 @@ export default function Home() {
           setArScale={setArScale}
           rotationY={rotationY}
           setRotationY={setRotationY}
+          placedPosition={placedPosition}
+          setPlacedPosition={setPlacedPosition}
           onClearPlacement={handleClearPlacement}
           onExitAr={handleExitAr}
           onOpenInfo={() => setIsInfoInArOpen(true)}
-          artifacts={artifactsData}
-          onSelectArtifact={handleSelectArtifact}
+          onOpenPicker={() => setIsArPickerOpen(true)}
         />
       ) : (
         <>
@@ -163,7 +176,7 @@ export default function Home() {
             onOpenMap={() => setIsMapOpen(true)}
             onOpenControls={() => setIsControlsOpen(true)}
             onResetCamera={handleResetCamera}
-            onEnterAr={handleEnterAr}
+            onEnterAr={handleOpenArPicker}
             selectedArtifact={selectedArtifact}
             currentGalleryName={currentGalleryName}
             isArSupported={isArSupported}
@@ -175,7 +188,7 @@ export default function Home() {
               artifact={selectedArtifact}
               onClose={handleCloseArtifactInfo}
               onExplore={handleExploreArtifact}
-              onEnterAr={handleEnterAr}
+              onEnterAr={() => handleConfirmEnterAr(selectedArtifact)}
             />
           )}
 
@@ -197,7 +210,18 @@ export default function Home() {
         </>
       )}
 
-      {/* AR Curator Info Modal Drawer */}
+      {/* AR Artifact Selection Picker Modal */}
+      <ARArtifactPickerModal
+        isOpen={isArPickerOpen}
+        onClose={() => setIsArPickerOpen(false)}
+        selectedArtifact={selectedArtifact}
+        onSelectArtifact={setSelectedArtifact}
+        onConfirmEnterAr={handleConfirmEnterAr}
+        isArSupported={isArSupported}
+        arErrorMessage={arSupportError}
+      />
+
+      {/* AR Info & AI Curator Bottom Sheet Drawer */}
       {isArMode && isInfoInArOpen && selectedArtifact && (
         <ArtifactInfo
           artifact={selectedArtifact}
@@ -205,7 +229,32 @@ export default function Home() {
           onExplore={() => setIsInfoInArOpen(false)}
         />
       )}
+
+      {/* AR Unsupported / Error Dialog Overlay */}
+      {arErrorAlert && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+          <div className="max-w-md w-full bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-2xl text-slate-100 text-center flex flex-col items-center gap-4">
+            <div className="p-3 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              <AlertCircle className="w-8 h-8" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-amber-200 mb-1">
+                AR Not Available
+              </h3>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                {arErrorAlert}
+              </p>
+            </div>
+            <button
+              onClick={() => setArErrorAlert(null)}
+              className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <RotateCcw className="w-4 h-4" />
+              <span>Back to Museum</span>
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
-
