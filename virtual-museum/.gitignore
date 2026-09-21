@@ -18,6 +18,8 @@
 /out/
 /backend/venv
 /backend/data/*.npy
+__pycache__/
+*.pyc
 
 # production
 /build

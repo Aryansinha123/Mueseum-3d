@@ -9,7 +9,7 @@
     "origin": "Rome / United States",
     "description": "A masterwork neoclassical marble sculpture modeled in 1866 by renowned African-American and Native American sculptor Edmonia Lewis. Inspired by Henry Wadsworth Longfellow's epic 1855 poem 'The Song of Hiawatha', it depicts an Ojibwe arrow maker weaving arrows alongside his seated daughter Minnehaha.",
     "galleryId": "gallery-1",
-    "galleryName": "History (Gallery 1: Smithsonian & Heritage Hall)",
+    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
     "aiContext": {
       "historicalSignificance": "Celebrated work by Edmonia Lewis, the first African-American and Native American sculptor to achieve international acclaim. Highlights 19th-century Indigenous craft and cultural heritage.",
       "material": "Carved Marble",
@@ -25,7 +25,7 @@
     "origin": "Attica, Greece",
     "description": "An exquisite ceramic storage vessel featuring black-figure narrative painting. Depicts mythological heroic motifs framed by intricate floral palmette borders and double curved handles. One of the most important forms of Greek pottery used for wine and olive oil storage.",
     "galleryId": "gallery-1",
-    "galleryName": "History (Gallery 1: Smithsonian & Heritage Hall)",
+    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
     "aiContext": {
       "historicalSignificance": "Amphorae were key export goods used for storing olive oil and wine across Mediterranean trade networks.",
       "material": "Terracotta & Slip Glaze",
@@ -41,7 +41,7 @@
     "origin": "United States",
     "description": "An authentic historical communication device associated with Samuel Morse and Alfred Vail, used by operators to manually transmit electrical signals representing characters through Morse code. Played a monumental role in launching the global telecommunications era.",
     "galleryId": "gallery-1",
-    "galleryName": "History (Gallery 1: Smithsonian & Heritage Hall)",
+    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
     "aiContext": {
       "historicalSignificance": "Crucial milestone that revolutionized long-distance communication and laid the foundation for global electrical telecommunication networks.",
       "material": "Brass, Steel, and Polished Wood base",
@@ -57,7 +57,7 @@
     "origin": "United States",
     "description": "A patent model electromagnetic induction coil developed by inventor Charles G. Page around 1868. Part of the National Museum of American History's 'Work and Industry: Electricity' collection and the 'Lighting a Revolution' exhibition. A pivotal artifact in the history of electrical engineering.",
     "galleryId": "gallery-1",
-    "galleryName": "History (Gallery 1: Smithsonian & Heritage Hall)",
+    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
     "aiContext": {
       "historicalSignificance": "Demonstrates the early development of electromagnetic induction technology that underpins modern electrical devices and motors.",
       "material": "Brass, Iron, Copper Coil windings",
@@ -73,7 +73,7 @@
     "origin": "China",
     "description": "A ceremonial covered vessel of type 'huo' cast in the form of an elephant, dating to the Late Shang dynasty around 1100 BCE. Decorated with a light green patina and cast in low relief, with a finial in the round. Purchased by the Freer Gallery of Art from Yamanaka and Company, Boston in 1936. One of the most remarkable examples of Shang-era bronze ritual art.",
     "galleryId": "gallery-1",
-    "galleryName": "History (Gallery 1: Smithsonian & Heritage Hall)",
+    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
     "aiContext": {
       "historicalSignificance": "Demonstrates the extraordinary skill of Shang dynasty bronze casters and the ritual significance of animal-form vessels in ancient Chinese ceremonial practice.",
       "material": "Bronze with green patina",
@@ -89,7 +89,7 @@
     "origin": "United States",
     "description": "The Apollo 11 Command Module, 'Columbia,' served as the living quarters for the three-person crew (Neil Armstrong, Buzz Aldrin, Michael Collins) during the first crewed lunar landing mission in July 1969. It was the only portion of the Apollo spacecraft that returned to Earth.",
     "galleryId": "gallery-2",
-    "galleryName": "Space (Gallery 2: Smithsonian Technology & Science Hall)",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "aiContext": {
       "historicalSignificance": "Carried Neil Armstrong, Buzz Aldrin, and Michael Collins to the Moon and back during the historic first lunar landing mission in July 1969. Designated a 'Milestone of Flight' by the National Air and Space Museum.",
       "material": "Aluminum Alloy, Titanium, Silica Heat Shield Tiles",
@@ -105,7 +105,7 @@
     "origin": "United States",
     "description": "Space Shuttle Discovery (OV-103) was the third Space Shuttle orbiter vehicle to fly in space and the most flown spacecraft in human history. Over 39 Earth-orbital missions spanning nearly 30 years, Discovery spent 365 days in space and traveled almost 240 million kilometers.",
     "galleryId": "gallery-2",
-    "galleryName": "Space (Gallery 2: Smithsonian Technology & Science Hall)",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "aiContext": {
       "historicalSignificance": "Flew 39 spaceflight missions, carried 184 astronauts into space, deployed the Hubble Space Telescope, and helped build the International Space Station. Preserved at the Steven F. Udvar-Hazy Center.",
       "material": "Aluminum alloys, Titanium, Silica tiles, and RCC nose cap",
@@ -121,7 +121,7 @@
     "origin": "United States",
     "description": "The Bell X-1 'Glamorous Glennis' was the first airplane to fly faster than the speed of sound. On October 14, 1947, U.S. Air Force Captain Charles E. 'Chuck' Yeager piloted the rocket-powered aircraft to Mach 1.06 (1,127 km/h) at an altitude of 13,000 meters, opening the era of supersonic flight.",
     "galleryId": "gallery-2",
-    "galleryName": "Space & Aviation (Gallery 2: Smithsonian Technology & Science Hall)",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "aiContext": {
       "historicalSignificance": "First manned aircraft to break the sound barrier on October 14, 1947, piloted by Chuck Yeager. Proved supersonic flight was achievable and provided critical transonic data.",
       "material": "Aluminum, Steel, Glass, Magnesium, Plexiglass, Rubber",
@@ -137,7 +137,7 @@
     "origin": "United States",
     "description": "The Mercury full-pressure suit worn by astronaut Alan B. Shepard Jr. during Freedom 7, the first crewed spaceflight launched by the United States on May 5, 1961. Developed by B.F. Goodrich from U.S. Navy Mark IV pressure suits, it provided environmental protection and life support during early spaceflight.",
     "galleryId": "gallery-2",
-    "galleryName": "Space (Gallery 2: Smithsonian Technology & Science Hall)",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "aiContext": {
       "historicalSignificance": "Worn by Alan Shepard on May 5, 1961, during the first American manned spaceflight. Pivotal artifact in human spaceflight history and early spacesuit engineering.",
       "material": "Aluminized nylon, Neoprene, Anodized aluminum neck ring, Brass, Rubber",
@@ -153,7 +153,7 @@
     "origin": "United States",
     "description": "Pioneer 10 was the first spacecraft to navigate through the Asteroid Belt, conduct a close-up flyby of Jupiter (December 1973), and achieve escape velocity from our Solar System. It carries the famous gold-anodized interstellar Pioneer Plaque.",
     "galleryId": "gallery-2",
-    "galleryName": "Space (Gallery 2: Smithsonian Technology & Science Hall)",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "aiContext": {
       "historicalSignificance": "First spacecraft to traverse the Asteroid Belt, perform a flyby of Jupiter, and carry the interstellar Pioneer Plaque intended for intelligent extraterrestrial life.",
       "material": "Aluminum alloy, Beryllium, Hydrazine propellant tanks, RTGs",
@@ -169,7 +169,7 @@
     "origin": "Al Maszhabiya, Southwest Qatar",
     "description": "Fossilized skeleton of Salwasiren qatarensis, a 21-million-year-old extinct species of dugongid sea cow discovered in the Al Maszhabiya bonebed of Qatar. Digitized by the Smithsonian NMNH Paleobiology Department in collaboration with Qatar Museums, this fossil illustrates ancient sirenian evolution and the prehistoric seagrass ecosystems of the Early Miocene.",
     "galleryId": "gallery-3",
-    "galleryName": "Natural History (Gallery 3: Smithsonian Paleontology Hall)",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "aiContext": {
       "historicalSignificance": "A transitional fossil sirenian illustrating the evolutionary lineage of modern dugongs and manatees. Collected from the Al Maszhabiya bonebed under Qatar Museums Heritage Area 23400.",
       "material": "Fossilized Bone in Mineral Matrix",
@@ -185,7 +185,7 @@
     "origin": "Hell Creek Formation, Montana, United States",
     "description": "The monumental fossil skull of the apex predator Tyrannosaurus rex, showcased in the Smithsonian NMNH Hall of Fossils ('The Nation's T. rex'). Featuring massive reinforced jaws, 30 cm serrated bone-crushing teeth, and forward-facing stereoscopic eye sockets with acute depth perception.",
     "galleryId": "gallery-3",
-    "galleryName": "Natural History (Gallery 3: Smithsonian Paleontology Hall)",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "aiContext": {
       "historicalSignificance": "Discovered in 1988 by Kathy Wankel in Montana. One of the most complete and scientifically celebrated T. rex specimens in the world, designated 'The Nation's T. rex'.",
       "material": "Fossilized Cranial Bone",
@@ -201,7 +201,7 @@
     "origin": "Lance Formation, Niobrara County, Wyoming, United States",
     "description": "The world's first mounted Triceratops skeleton, affectionately nicknamed 'Hatcher' (catalog USNM 4720). One of the most famous dinosaur fossils on Earth, boasting three massive brow and nasal defensive horns and an expansive solid bony neck frill.",
     "galleryId": "gallery-3",
-    "galleryName": "Natural History (Gallery 3: Smithsonian Paleontology Hall)",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "aiContext": {
       "historicalSignificance": "Mounted in 1905 at the Smithsonian, it was the first Triceratops mounted for public display anywhere in the world and remains the definitive ceratopsian type reference.",
       "material": "Fossilized Skeletal Matrix",
@@ -217,7 +217,7 @@
     "origin": "Beringia Tundra, Alaska / Siberia",
     "description": "Pristine fossilized spiraling ivory tusk and characteristic grooved molar of Mammuthus primigenius. The specialized high-crowned dental plates allowed mammoths to grind tough tundra steppe grasses during the Last Glacial Maximum.",
     "galleryId": "gallery-3",
-    "galleryName": "Natural History (Gallery 3: Smithsonian Paleontology Hall)",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "aiContext": {
       "historicalSignificance": "Demonstrates the specialized anatomical adaptations of Ice Age megafauna that traversed the Bering Land Bridge during the Pleistocene epoch.",
       "material": "Fossilized Ivory & Mineralized Dentin",
@@ -233,7 +233,7 @@
     "origin": "North America (Rancho La Brea Tar Pits)",
     "description": "Complete fossilized skull of Smilodon fatalis featuring iconic elongated maxillary blade canines reaching up to 28 cm (11 inches). The skull exemplifies the specialized hypercarnivorous predatory mechanics and wide gape angle of Ice Age apex felids.",
     "galleryId": "gallery-3",
-    "galleryName": "Natural History (Gallery 3: Smithsonian Paleontology Hall)",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "aiContext": {
       "historicalSignificance": "Preserved in natural asphalt seeps, providing remarkable scientific insight into Late Pleistocene apex predators that hunted alongside early humans.",
       "material": "Petrified Bone with Tar Permeation",

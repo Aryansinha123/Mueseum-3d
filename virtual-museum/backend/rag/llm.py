@@ -1,119 +1,189 @@
 """
-Grounded LLM Integration Module (Phase 2 XAI Layer)
+Grounded LLM Integration Module (Phase 2/3)
 
-Connects to Groq API (or Gemini/OpenAI API) to generate
-strictly grounded answers using ONLY retrieved artifact metadata.
+Calls Groq API with ONLY the retrieved artifact's curated metadata.
+No outside knowledge is permitted. The LLM is a tone-adapting formatter,
+not an independent knowledge source.
 
-No outside knowledge or ungrounded facts are permitted.
+Tone directives affect writing style only — factual content is unchanged.
 """
 
 import os
 from typing import Dict, Any
 
-# Load environment variables from .env
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     pass
 
-# System prompt forcing strict factual grounding on retrieved artifact
+# ── TONE DIRECTIVES ───────────────────────────────────────────────────────────
+# Style-only instructions. Factual grounding is enforced by the system prompt.
+TONE_DIRECTIVES = {
+    "educational": "Provide a scholarly, analytical, and informative museum curator response with cultural and historical context.",
+    "concise":     "Provide a brief, direct, key-facts-only answer in 2 to 3 sentences maximum.",
+    "friendly":    "Provide a warm, engaging, conversational, and welcoming museum guide response.",
+}
+
+# ── SYSTEM PROMPT ─────────────────────────────────────────────────────────────
 SYSTEM_PROMPT_TEMPLATE = """You are an AI curator for a virtual museum.
 
-Answer the user's question ONLY using the supplied curated artifact information.
+Answer the visitor's question ONLY using the supplied curated artifact information below.
 
 Do not use outside knowledge.
+Do not invent facts, dates, names, measurements, historical events, or interpretations.
+The selected artifact is the subject of the visitor's question.
 
-Do not invent facts, dates, names, measurements, historical events or interpretations.
+If the supplied artifact information does not contain enough information to answer the question, explicitly state: "This information is not available in the curated museum knowledge base."
 
-If the supplied artifact information does not contain enough information to answer the question, explicitly state that the information is not available in the curated knowledge base.
+Conversation history may be used ONLY to understand references such as 'it', 'this artifact', or 'that object'.
+The conversation history is NOT a source of factual museum knowledge.
+The current retrieved artifact evidence below is the sole authoritative source for all factual information.
 
-Keep the answer concise, clear and suitable for a museum visitor.
+Use the requested tone ONLY to change writing style — never to alter factual content.
 
-ARTIFACT INFORMATION:
+REQUESTED TONE:
+{tone_instruction}
+
+CURRENT SELECTED ARTIFACT:
 Name: {name}
 Gallery: {gallery}
 Category: {category}
 Institution: {institution}
-Period/Origin: {period} ({origin})
+Period / Date: {period}
+Origin: {origin}
 Description: {description}
 Historical Significance: {significance}
-Material & Dimensions: {material}, {dimensions}
+Material: {material}
+Dimensions: {dimensions}
 
-USER QUESTION:
+RECENT CONVERSATION HISTORY:
+{history}
+
+VISITOR QUESTION:
 {question}"""
 
 
-def get_api_credentials():
-    """Reads API keys from environment variables."""
+# ── VALIDATION ────────────────────────────────────────────────────────────────
+
+def validate_tone(tone: str) -> str:
+    """Returns a valid tone string, defaulting to 'educational' for invalid values."""
+    if not tone or not isinstance(tone, str):
+        return "educational"
+    tone_clean = tone.strip().lower()
+    return tone_clean if tone_clean in TONE_DIRECTIVES else "educational"
+
+
+# ── API CREDENTIALS ───────────────────────────────────────────────────────────
+
+def get_api_credentials() -> Dict[str, Any]:
+    """
+    Reads LLM API keys from environment variables.
+    Keys are NEVER logged or exposed.
+    """
     groq_key = os.environ.get("GROQ_API_KEY") or os.environ.get("GROK_API_KEY")
     gemini_key = os.environ.get("GEMINI_API_KEY")
-    llm_key = os.environ.get("LLM_API_KEY")
     return {
-        "groq": groq_key.strip() if groq_key else None,
+        "groq":   groq_key.strip() if groq_key else None,
         "gemini": gemini_key.strip() if gemini_key else None,
-        "generic": llm_key.strip() if llm_key else None
     }
 
 
-def _call_groq_sdk(prompt: str, api_key: str) -> str:
-    """Calls Groq API using the official Groq Python SDK with available model endpoints."""
+# ── GROQ CALL ─────────────────────────────────────────────────────────────────
+
+GROQ_CANDIDATE_MODELS = [
+    "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b",
+    "groq/compound",
+    "qwen/qwen3.8-27b",
+    "llama-3.3-70b-versatile",
+    "llama-3.1-8b-instant",
+]
+
+
+def _call_groq(prompt: str, api_key: str) -> str:
+    """
+    Calls Groq API via the official groq-python SDK.
+    Tries multiple model IDs in order of preference.
+    """
     from groq import Groq
 
     client = Groq(api_key=api_key)
-    
-    candidate_models = [
-        "openai/gpt-oss-20b",
-        "qwen/qwen3.8-27b",
-        "groq/compound-mini",
-        "openai/gpt-oss-120b"
-    ]
-
     last_err = None
-    for model_name in candidate_models:
+
+    print("[GROQ] Request started")
+
+    for model_name in GROQ_CANDIDATE_MODELS:
         try:
+            print(f"[GROQ] Trying model: {model_name}")
             completion = client.chat.completions.create(
                 model=model_name,
                 messages=[
-                    {"role": "system", "content": "You are a strict, grounded virtual museum curator."},
-                    {"role": "user", "content": prompt}
+                    {
+                        "role": "system",
+                        "content": (
+                            "You are an AI curator for a virtual museum. "
+                            "Answer using ONLY the supplied curated artifact information. "
+                            "Do not use outside knowledge. Do not invent facts."
+                        ),
+                    },
+                    {"role": "user", "content": prompt},
                 ],
                 temperature=0.2,
-                max_tokens=512
+                max_tokens=512,
             )
-            return completion.choices[0].message.content.strip()
+            answer = completion.choices[0].message.content.strip()
+            print(f"[GROQ] Model request successful ({model_name})")
+            print(f"[GROQ] Response received ({len(answer)} chars)")
+            return answer
         except Exception as e:
+            print(f"[GROQ] Model {model_name} failed: {type(e).__name__}")
             last_err = e
             continue
 
-    raise RuntimeError(f"All Groq models failed ({last_err})")
+    raise RuntimeError(f"All Groq models failed. Last error: {last_err}")
 
 
-def generate_grounded_answer(question: str, artifact: Dict[str, Any]) -> str:
+# ── MAIN GENERATION FUNCTION ──────────────────────────────────────────────────
+
+def generate_grounded_answer(
+    question: str,
+    artifact: Dict[str, Any],
+    history_text: str = "None",
+    tone: str = "educational",
+) -> str:
     """
-    Calls configured LLM API (Groq/Gemini) with strict grounding prompt.
-    
-    :param question: User question string
-    :param artifact: Retrieved artifact metadata dictionary
-    :return: Grounded answer string generated by LLM
+    Generates a grounded LLM answer using ONLY the supplied artifact's metadata.
+
+    :param question: Visitor question string
+    :param artifact: Retrieved / selected artifact metadata dictionary
+    :param history_text: Formatted string of recent conversation turns
+    :param tone: Presentation style ('educational', 'concise', 'friendly')
+    :return: Grounded answer string from LLM
     """
     keys = get_api_credentials()
+    valid_tone = validate_tone(tone)
+    tone_directive = TONE_DIRECTIVES[valid_tone]
 
-    # Extract artifact context fields
-    name = artifact.get("name", "Unknown")
-    gallery = artifact.get("galleryName", "Museum Collection")
-    category = artifact.get("category", "")
+    # Extract artifact context fields safely
+    name        = artifact.get("name", "Unknown Artifact")
+    gallery     = artifact.get("galleryName", "Museum Collection")
+    category    = artifact.get("category", "")
     institution = artifact.get("institution", "")
-    period = artifact.get("period", "")
-    origin = artifact.get("origin", "")
+    period      = artifact.get("period", "")
+    origin      = artifact.get("origin", "")
     description = artifact.get("description", "")
-    
-    ai_ctx = artifact.get("aiContext", {})
-    significance = ai_ctx.get("historicalSignificance", "") if isinstance(ai_ctx, dict) else ""
-    material = ai_ctx.get("material", "N/A") if isinstance(ai_ctx, dict) else "N/A"
-    dimensions = ai_ctx.get("dimensions", "N/A") if isinstance(ai_ctx, dict) else "N/A"
+
+    ai_ctx      = artifact.get("aiContext", {}) or {}
+    if isinstance(ai_ctx, dict):
+        significance = ai_ctx.get("historicalSignificance", "")
+        material     = ai_ctx.get("material", "N/A")
+        dimensions   = ai_ctx.get("dimensions", "N/A")
+    else:
+        significance = material = dimensions = "N/A"
 
     prompt = SYSTEM_PROMPT_TEMPLATE.format(
+        tone_instruction=tone_directive,
         name=name,
         gallery=gallery,
         category=category,
@@ -124,29 +194,36 @@ def generate_grounded_answer(question: str, artifact: Dict[str, Any]) -> str:
         significance=significance,
         material=material,
         dimensions=dimensions,
-        question=question
+        history=history_text if history_text else "None (first interaction)",
+        question=question,
     )
 
-    # Priority 1: Groq API Key
+    # Priority 1: Groq
     if keys["groq"]:
         try:
-            return _call_groq_sdk(prompt, keys["groq"])
+            return _call_groq(prompt, keys["groq"])
         except Exception as err:
-            print(f"[LLM Error] Groq API call failed: {err}")
-            raise RuntimeError(f"Grounded Groq LLM service error ({err})")
+            print(f"[LLM ERROR] Groq failed: {err}")
+            raise RuntimeError(f"Groq LLM service error: {err}")
 
-    # Priority 2: Gemini API Key
-    elif keys["gemini"]:
+    # Priority 2: Gemini
+    if keys["gemini"]:
         try:
+            print("[GEMINI] Request started")
             from google import genai
             client = genai.Client(api_key=keys["gemini"])
             res = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
             if res and res.text:
+                print("[GEMINI] Response received")
                 return res.text.strip()
+            raise RuntimeError("Gemini returned empty response")
         except Exception as err:
-            print(f"[LLM Error] Gemini API call failed: {err}")
-            raise RuntimeError(f"Grounded Gemini LLM service error ({err})")
+            print(f"[LLM ERROR] Gemini failed: {err}")
+            raise RuntimeError(f"Gemini LLM service error: {err}")
 
-    # Fallback Warning if no API keys found
-    print("[LLM Warning] No API key found (GROQ_API_KEY / GEMINI_API_KEY).")
-    return f"Based on the curated record for {name} ({gallery}), {description}"
+    # No API key configured — return deterministic fallback (no hallucination)
+    print("[LLM WARNING] No API key configured (GROQ_API_KEY / GEMINI_API_KEY). Using description fallback.")
+    fallback = f"{name} is part of the {gallery}. {description}"
+    if significance:
+        fallback += f" {significance}"
+    return fallback

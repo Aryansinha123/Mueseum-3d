@@ -16,12 +16,14 @@ import {
   Building2,
   Smartphone,
 } from "lucide-react";
+import { AICuratorPanel } from "@/components/curator/AICuratorPanel";
 
 export function ArtifactInfo({
   artifact,
   onClose,
   onExplore,
   onEnterAr,
+  onSelectArtifact,
 }) {
   const [activeTab, setActiveTab] = useState("details"); // 'details' or 'ai'
   const [aiQuestion, setAiQuestion] = useState("");
@@ -234,66 +236,11 @@ export function ArtifactInfo({
           </>
         ) : (
           /* AI CURATOR CHAT TAB */
-          <div className="flex flex-col h-full space-y-4">
-            <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>
-                RAG Payload Context: <code className="font-mono font-bold text-amber-300">{JSON.stringify(ragPayload)}</code>
-              </span>
-            </div>
-
-            {/* Chat Log */}
-            <div className="flex-1 space-y-3 min-h-[220px]">
-              {aiMessages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`flex flex-col ${
-                    msg.sender === "user" ? "items-end" : "items-start"
-                  }`}
-                >
-                  <div
-                    className={`max-w-[85%] p-3 rounded-2xl text-xs leading-relaxed ${
-                      msg.sender === "user"
-                        ? "bg-amber-500 text-slate-950 font-medium rounded-br-none"
-                        : "bg-slate-800 text-slate-200 border border-slate-700/60 rounded-bl-none"
-                    }`}
-                  >
-                    {msg.text}
-                  </div>
-                  {msg.sources && (
-                    <div className="text-[10px] text-slate-500 mt-1 px-1">
-                      Source: {msg.sources[0]} • Confidence: {msg.confidence}
-                    </div>
-                  )}
-                </div>
-              ))}
-
-              {isAiLoading && (
-                <div className="flex items-center gap-2 text-xs text-slate-400 p-2">
-                  <Bot className="w-4 h-4 text-amber-400 animate-spin" />
-                  <span>Curator querying Smithsonian evidence base...</span>
-                </div>
-              )}
-            </div>
-
-            {/* Chat Input Form */}
-            <form onSubmit={handleSendAiQuestion} className="flex gap-2 pt-2">
-              <input
-                type="text"
-                value={aiQuestion}
-                onChange={(e) => setAiQuestion(e.target.value)}
-                placeholder="Ask about age, toolmaking, material..."
-                className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/80"
-              />
-              <button
-                type="submit"
-                disabled={isAiLoading || !aiQuestion.trim()}
-                className="p-2.5 bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold rounded-xl transition-all"
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
+          <AICuratorPanel
+            artifact={artifact}
+            onSelectArtifact={onSelectArtifact}
+            className="h-full border-none p-0 bg-transparent"
+          />
         )}
       </div>
     </div>

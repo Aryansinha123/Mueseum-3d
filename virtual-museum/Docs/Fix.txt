@@ -1,0 +1,874 @@
+CRITICAL BUG FOUND IN PHASE 4.
+
+The current backend log shows:
+
+[PIPELINE] Question : "what is this"
+[PIPELINE] Artifact ID supplied: None (Type B query)
+[RETRIEVAL] Similarity : 0.2044
+[RETRIEVAL] Threshold : 0.5000
+[PIPELINE] Gate result: REFUSE
+
+This is NOT a threshold problem.
+
+The actual problem is:
+
+THE FRONTEND IS NOT SENDING THE SELECTED ARTIFACT ID.
+
+Because artifact_id is None, the backend treats:
+
+"What is this?"
+
+as a general semantic retrieval query.
+
+This is incorrect.
+
+"What is this?" is a contextual query referring to the artifact currently selected by the visitor.
+
+DO NOT fix this by lowering the threshold.
+
+DO NOT hardcode an answer for "what is this".
+
+DO NOT bypass the Phase 2 threshold globally.
+
+Fix the complete artifact-context flow.
+
+==================================================
+
+1. ROOT CAUSE TO FIX
+   ==================================================
+
+Current flow:
+
+User selects artifact
+↓
+"What is this?"
+↓
+Frontend
+↓
+artifact_id = None
+↓
+Backend treats it as Type B
+↓
+Semantic retrieval
+↓
+Similarity = 0.2044
+↓
+REFUSAL
+
+Correct flow:
+
+User selects artifact
+↓
+Selected artifact ID
+↓
+"What is this?"
+↓
+Frontend sends artifact_id
+↓
+Backend resolves selected artifact
+↓
+Artifact becomes explicit context
+↓
+Grounded response
+↓
+Grok
+↓
+Answer + source + evidence
+
+==================================================
+2. FIRST INSPECT THE FRONTEND
+=============================
+
+Find exactly where the artifact is selected.
+
+Inspect:
+
+* Selection Beacon
+* artifact click/selection handler
+* selectedArtifact state
+* artifact data structure
+* AI Curator component
+* question submission handler
+* API fetch function
+
+Determine:
+
+1. What variable currently stores the selected artifact?
+2. What is the actual artifact ID field?
+3. Is it called:
+
+   * id
+   * artifactId
+   * artifact_id
+   * uuid
+   * something else?
+4. Where is that state available when the AI Curator question is submitted?
+
+DO NOT ASSUME THE FIELD NAME.
+
+Use the actual existing artifact schema.
+
+==================================================
+3. TRACE THE ARTIFACT ID
+========================
+
+Trace this complete chain:
+
+artifacts.json
+↓
+3D artifact
+↓
+Selection Beacon
+↓
+selectedArtifact
+↓
+AI Curator
+↓
+askCurator()
+↓
+fetch()
+↓
+POST /ask
+↓
+FastAPI
+↓
+AskRequest.artifact_id
+
+At EVERY stage verify the actual value.
+
+Add temporary logs:
+
+FRONTEND:
+
+[CURATOR DEBUG]
+Selected artifact:
+{selectedArtifact}
+
+[CURATOR DEBUG]
+Selected artifact ID:
+{artifactId}
+
+[CURATOR DEBUG]
+Question:
+{question}
+
+[CURATOR DEBUG]
+Sending request:
+{
+session_id,
+question,
+artifact_id,
+tone
+}
+
+BACKEND:
+
+[API DEBUG]
+Received artifact_id:
+...
+
+[API DEBUG]
+Received question:
+...
+
+[API DEBUG]
+Resolved artifact:
+...
+
+The final request MUST show something like:
+
+{
+"session_id": "sess-...",
+"question": "what is this",
+"artifact_id": "ART003",
+"tone": "educational"
+}
+
+NOT:
+
+{
+"session_id": "sess-...",
+"question": "what is this",
+"artifact_id": null,
+"tone": "educational"
+}
+
+==================================================
+4. FIX THE FRONTEND REQUEST
+===========================
+
+The AI Curator request must include the currently selected artifact.
+
+Conceptually:
+
+const artifactId = selectedArtifact?.id;
+
+Then:
+
+fetch(`${NEXT_PUBLIC_API_URL}/ask`, {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+session_id,
+question,
+artifact_id: artifactId,
+tone
+})
+});
+
+IMPORTANT:
+
+Use the actual ID property from the existing artifact schema.
+
+Do not invent:
+
+selectedArtifact.artifact_id
+
+if the actual object uses:
+
+selectedArtifact.id
+
+Inspect the data first.
+
+==================================================
+5. VERIFY THE AI CURATOR RECEIVES THE SELECTED ARTIFACT
+=======================================================
+
+If the AI Curator component is separate from the 3D scene:
+
+Pass the selected artifact into it.
+
+For example conceptually:
+
+<AICuratorPanel
+ artifact={selectedArtifact}
+ sessionId={sessionId}
+/>
+
+Then inside the component:
+
+artifact.id
+
+must be available.
+
+Do not create a second copy of artifact state.
+
+The selected artifact from the existing museum should be the source
+of truth.
+
+==================================================
+6. BACKEND ARTIFACT RESOLUTION
+==============================
+
+When FastAPI receives:
+
+artifact_id = "ART003"
+
+resolve it against artifacts.json.
+
+Example:
+
+{
+"id": "ART003",
+"name": "Morse-Vail Telegraph Key",
+"gallery": "History",
+"description": "..."
+}
+
+Log:
+
+[CONTEXT]
+Artifact ID: ART003
+
+[CONTEXT]
+Artifact Name: Morse-Vail Telegraph Key
+
+[CONTEXT]
+Gallery: History
+
+==================================================
+7. CONTEXTUAL QUERY DETECTION
+=============================
+
+Implement a clean distinction.
+
+TYPE A:
+Artifact-contextual query
+
+Examples:
+
+"What is this?"
+"Tell me about this."
+"What am I looking at?"
+"Explain this."
+"Tell me more about it."
+"What is it?"
+"What is this artifact?"
+"Why is this important?"
+"What is it made of?"
+"When was it created?"
+
+If a valid artifact_id is supplied, these questions refer to the
+selected artifact.
+
+TYPE B:
+General museum query
+
+Examples:
+
+"Which artifacts are related to astronomy?"
+"Tell me about ancient Egyptian artifacts."
+"Which objects are related to communication?"
+
+These can use semantic retrieval across all artifacts.
+
+==================================================
+8. IMPORTANT — DO NOT USE KEYWORD MATCHING ALONE
+================================================
+
+Do NOT simply implement:
+
+if question == "what is this":
+...
+
+That would be a brittle hack.
+
+The system should work with variations such as:
+
+"What is this?"
+"what am I looking at?"
+"Tell me about this"
+"Can you explain this object?"
+"What is it?"
+"Tell me more about it."
+
+The important signal is:
+
+artifact_id is supplied
+
+AND
+
+the question refers to the selected artifact.
+
+==================================================
+9. CONTEXTUAL QUERY HANDLING
+============================
+
+For a valid selected artifact:
+
+artifact_id = ART003
+
+question = "what is this"
+
+the pipeline should use:
+
+selected artifact
++
+artifact description
++
+question
+
+as the context.
+
+Do NOT perform normal collection-wide semantic retrieval first and
+then reject the query based only on the literal question.
+
+The literal question "what is this?" is intentionally generic.
+
+The selected artifact provides the missing semantic context.
+
+==================================================
+10. DO NOT REMOVE THE PHASE 2 GATE
+==================================
+
+The Phase 2 research mechanism must remain intact for general queries.
+
+Do NOT change:
+
+THRESHOLD = 0.50
+
+just to make "what is this?" pass.
+
+Do NOT globally lower the threshold to:
+
+0.2
+0.1
+0.05
+
+This would be the wrong solution.
+
+Instead, contextual artifact selection should be explicit.
+
+==================================================
+11. CONTEXTUAL RELEVANCE CHECK
+==============================
+
+For contextual queries, the selected artifact is already known.
+
+Use a contextual validation strategy rather than interpreting the
+generic question embedding as the retrieval relevance score.
+
+At minimum:
+
+1. Verify artifact_id exists.
+2. Verify artifact has a non-empty description.
+3. Treat selected artifact as the retrieval context.
+4. Pass its curated description to Grok.
+5. Keep source and evidence tied to that artifact.
+
+For general queries without artifact_id:
+
+Continue using:
+
+question embedding
+↓
+cosine similarity
+↓
+threshold
+↓
+Grok / refusal
+
+This preserves the research design.
+
+==================================================
+12. GROK PROMPT FOR SELECTED ARTIFACT
+=====================================
+
+For:
+
+artifact_id = ART003
+
+question = "what is this"
+
+Grok should receive:
+
+SYSTEM:
+
+"You are an AI curator for a virtual museum.
+
+The visitor is currently viewing the selected artifact provided below.
+
+Answer the visitor's question using ONLY the supplied curated
+artifact information.
+
+Do not use outside knowledge.
+
+Do not invent facts.
+
+If the supplied artifact information does not contain enough
+information to answer the question, say:
+
+'This information is not available in the curated museum knowledge base.'
+
+The selected artifact is the subject of contextual questions such
+as 'What is this?', 'Tell me about it', and 'What is it?'.
+
+Keep the answer clear and suitable for a museum visitor."
+
+CURRENT ARTIFACT:
+
+Name:
+{artifact.name}
+
+Gallery:
+{artifact.gallery}
+
+Curated Description:
+{artifact.description}
+
+VISITOR QUESTION:
+
+{question}
+
+RECENT CONVERSATION:
+
+{memory}
+
+TONE:
+
+{tone}
+
+==================================================
+13. RESPONSE
+============
+
+For:
+
+"What is this?"
+
+with ART003:
+
+return:
+
+{
+"answer": "...",
+"source": {
+"artifact": "Morse-Vail Telegraph Key",
+"gallery": "History"
+},
+"confidence": ...,
+"evidence": "...",
+"refused": false,
+"session_id": "...",
+"tone": "educational",
+"related_suggestions": [...]
+}
+
+The source MUST be the selected artifact.
+
+Evidence MUST come from the selected artifact description.
+
+Do not fabricate evidence.
+
+==================================================
+14. WHAT ABOUT CONFIDENCE?
+==========================
+
+Do NOT report:
+
+"What is this?" → similarity 0.2044 → refusal
+
+when a valid artifact_id is supplied.
+
+That 0.2044 only represents the semantic similarity between the
+generic phrase "what is this" and the artifact corpus.
+
+It is NOT an appropriate relevance measurement once the visitor
+has explicitly selected the artifact.
+
+For contextual queries, either:
+
+A. Return the artifact-context confidence separately, OR
+
+B. Clearly identify that the artifact was explicitly selected.
+
+Do not falsely represent the generic question's cosine score as
+the confidence that the selected artifact is relevant.
+
+If you retain the field:
+
+"confidence"
+
+document that contextual queries are grounded through explicit
+artifact selection rather than collection-wide semantic retrieval.
+
+==================================================
+15. GENERAL QUESTIONS MUST STILL WORK
+=====================================
+
+If artifact_id is NOT supplied:
+
+Question:
+
+"Which artifact is related to space exploration?"
+
+Then:
+
+question
+↓
+embedding
+↓
+collection retrieval
+↓
+similarity
+↓
+threshold
+↓
+Grok/refusal
+
+The original Phase 1/2 behavior remains.
+
+==================================================
+16. REFUSAL TEST
+================
+
+Even when an artifact is selected:
+
+Question:
+
+"What is the weather today?"
+
+Do NOT automatically answer using the artifact just because an
+artifact is selected.
+
+This must still be rejected as outside the curated knowledge base.
+
+The contextual mechanism is for artifact-related questions.
+
+Therefore test:
+
+Selected artifact:
+Morse-Vail Telegraph Key
+
+Question:
+"What is the weather today?"
+
+Expected:
+
+REFUSED
+
+Grok should NOT be called.
+
+==================================================
+17. FOLLOW-UP MEMORY
+====================
+
+Test:
+
+Question 1:
+
+"What is this?"
+
+Expected:
+
+Answer about selected artifact.
+
+Question 2:
+
+"When was it created?"
+
+Expected:
+
+The system understands "it" refers to the same artifact.
+
+Question 3:
+
+"What was it used for?"
+
+Expected:
+
+Answer based only on the selected artifact description.
+
+==================================================
+18. RECOMMENDATIONS
+===================
+
+After successful contextual answer:
+
+Return:
+
+related_suggestions
+
+based on artifact embedding similarity.
+
+Exclude:
+
+* current artifact
+* already-seen artifacts
+
+Do not let recommendations become factual knowledge for Grok.
+
+==================================================
+19. FRONTEND DISPLAY
+====================
+
+When an artifact is selected, the AI Curator must visibly show:
+
+┌─────────────────────────────────────┐
+│ AI CURATOR                          │
+│                                     │
+│ Currently viewing:                  │
+│ Morse-Vail Telegraph Key            │
+│ History Gallery                     │
+│                                     │
+│ Ask about this artifact...          │
+│                                     │
+│ [ What is this? ] [ Ask ]           │
+└─────────────────────────────────────┘
+
+This makes it clear to the user what "this" refers to.
+
+==================================================
+20. ADD QUICK QUESTION BUTTONS
+==============================
+
+To make testing and user interaction easier, add optional quick
+question buttons:
+
+[ What is this? ]
+[ Tell me more ]
+[ When was it created? ]
+[ What is it made of? ]
+
+When clicked, they should populate/submit the question using the
+CURRENTLY SELECTED artifact.
+
+Do NOT hardcode answers.
+
+==================================================
+21. DEBUG THE ACTUAL NETWORK REQUEST
+====================================
+
+Use browser developer tools.
+
+Verify the actual POST /ask request payload.
+
+It MUST contain:
+
+artifact_id: "ARTxxx"
+
+If it contains:
+
+artifact_id: null
+
+undefined
+
+""
+
+or is missing:
+
+FIX THE FRONTEND STATE FLOW.
+
+Do not proceed until this works.
+
+==================================================
+22. TEST WITH MULTIPLE ARTIFACTS
+================================
+
+Do not fix only ART003.
+
+Test at least:
+
+Artifact A:
+"What is this?"
+
+Artifact B:
+"What is this?"
+
+Artifact C:
+"What is this?"
+
+Expected:
+
+Artifact A → answer about A
+
+Artifact B → answer about B
+
+Artifact C → answer about C
+
+This proves that the system uses the selected artifact dynamically.
+
+==================================================
+23. REGRESSION TESTS
+====================
+
+After fixing the contextual flow, verify all previous functionality:
+
+PHASE 0:
+[ ] 3 galleries work
+[ ] GLB models work
+[ ] Selection Beacon works
+
+PHASE 1:
+[ ] General semantic retrieval works
+[ ] Similarity scores work
+
+PHASE 2:
+[ ] Threshold works
+[ ] Refusal works
+[ ] Grok grounding works
+[ ] Source works
+[ ] Evidence works
+
+PHASE 3:
+[ ] Session ID works
+[ ] Conversation memory works
+[ ] Profile tracking works
+[ ] Tone works
+[ ] Recommendations work
+
+PHASE 4:
+[ ] FastAPI works
+[ ] CORS works
+[ ] Frontend fetch works
+[ ] Selected artifact ID reaches backend
+[ ] "What is this?" works
+[ ] Follow-up works
+[ ] Refusal works
+[ ] Source/evidence display works
+[ ] Recommendations work
+[ ] VR UI works
+[ ] Phone UI works
+
+==================================================
+24. IMPORTANT — DO NOT BREAK EXISTING CODE
+==========================================
+
+Before modifying files:
+
+Inspect the current implementation.
+
+Make targeted fixes.
+
+Do NOT rewrite the entire application unnecessarily.
+
+Do NOT replace working Three.js code.
+
+Do NOT replace working artifact loading.
+
+Do NOT replace the existing RAG implementation unless there is an
+actual bug.
+
+==================================================
+25. FINAL TEST SCENARIO
+=======================
+
+Perform this exact test:
+
+1. Open museum.
+2. Enter History gallery.
+3. Select Morse-Vail Telegraph Key.
+4. Confirm Selection Beacon.
+5. Open AI Curator.
+6. Confirm UI displays:
+   Morse-Vail Telegraph Key.
+7. Click:
+   "What is this?"
+8. Verify browser network request contains:
+   artifact_id = ART003
+9. Verify backend receives:
+   artifact_id = ART003
+10. Verify backend resolves:
+    Morse-Vail Telegraph Key
+11. Verify Grok receives the artifact description.
+12. Verify answer is displayed.
+13. Verify source is displayed.
+14. Verify evidence is displayed.
+15. Ask:
+    "When was it created?"
+16. Verify memory works.
+17. Ask:
+    "What is the weather today?"
+18. Verify refusal.
+19. Verify Grok is NOT called for the refusal.
+20. Select another artifact.
+21. Ask:
+    "What is this?"
+22. Verify answer refers to the NEW artifact.
+
+==================================================
+FINAL REPORT
+============
+
+After fixing everything, report:
+
+1. Exact root cause.
+2. Why similarity was 0.2044.
+3. How artifact context is now passed.
+4. Frontend files changed.
+5. Backend files changed.
+6. Example frontend request.
+7. Example backend log.
+8. Example successful response.
+9. Confirmation that "What is this?" works.
+10. Confirmation that follow-up questions work.
+11. Confirmation that unrelated questions still refuse.
+12. Confirmation that Grok is not called for refused queries.
+13. Confirmation that all Phase 0–3 features remain functional.
+14. Any remaining issue.
+
+DO NOT IMPLEMENT PHASE 5.
+
+The task is complete only when the actual frontend works end-to-end.

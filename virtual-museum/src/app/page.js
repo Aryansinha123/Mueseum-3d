@@ -222,6 +222,7 @@ export default function Home() {
               onClose={handleCloseArtifactInfo}
               onExplore={handleExploreArtifact}
               onEnterAr={() => handleConfirmEnterAr(selectedArtifact)}
+              onSelectArtifact={handleSelectArtifact}
             />
           )}
 

@@ -1,6 +1,9 @@
-# Phase 1 & Phase 2 RAG Dependencies
+# Virtual Museum RAG & API Backend Dependencies
+fastapi
+uvicorn
 sentence-transformers
 numpy
 groq
 python-dotenv
 requests
+pydantic

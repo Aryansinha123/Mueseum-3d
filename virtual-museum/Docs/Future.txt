@@ -1,0 +1,199 @@
+right now your museum already has the core experience:
+
+🏛️ Enter 3D museum
+🧱 Explore different galleries
+🗿 See real 3D artifacts
+🔄 Rotate / zoom / inspect artifacts
+🖱️ Select an artifact
+🤖 Ask AI Curator questions
+📚 Get grounded answers from the museum knowledge base
+🔎 See source/evidence
+🚫 AI refuses unrelated questions
+💡 Get related artifact recommendations
+🧠 Follow-up questions using session memory
+
+But if you want it to feel like a proper Virtual Museum rather than just "3D models + chatbot", I'd add these features:
+
+1. Artifact Information Panel
+
+When you select an artifact:
+
+┌─────────────────────────────┐
+│ Morse-Vail Telegraph Key    │
+│                             │
+│ Gallery: History            │
+│ Period: 1840s               │
+│ Origin: United States       │
+│                             │
+│ [About] [AI Curator]        │
+└─────────────────────────────┘
+2. Artifact Hotspots 🔵
+
+Put clickable points directly on the 3D model.
+
+For example:
+
+        🔵 ← important component
+       /
+   [3D TELEGRAPH]
+       \
+        🔵 ← mechanism
+
+Clicking a hotspot shows:
+
+Key mechanism
+This component was used to...
+
+This makes the project much more interactive.
+
+3. Guided Museum Tours 🚶
+
+Add:
+
+Space Tour
+Ancient History Tour
+Natural History Tour
+"15-minute Museum Tour"
+"Beginner Tour"
+
+The system automatically moves/highlights artifacts:
+
+Start Tour
+    ↓
+Artifact 1
+    ↓
+Artifact 2
+    ↓
+Artifact 3
+    ↓
+Tour Complete
+4. AI Curator Voice 🎙️
+
+Instead of only typing:
+
+"What is this?"
+
+The curator could speak the explanation.
+
+And optionally:
+
+🔊 Listen
+
+This would be particularly impressive on mobile.
+
+5. Artifact Comparison ⚖️
+
+Allow:
+
+Compare two artifacts
+
+        Artifact A       Artifact B
+
+Period   1800s            1900s
+Material Metal            Wood
+Purpose  Communication    Communication
+Origin   USA              UK
+
+This is a very good museum feature.
+
+6. Search the Museum 🔎
+
+Instead of only walking around:
+
+Search artifacts...
+
+"telegraph"
+"Egypt"
+"space"
+"fossil"
+"communication"
+
+Results take the user directly to the artifact.
+
+7. Favorites / Personal Collection ⭐
+
+User can save artifacts:
+
+⭐ My Collection
+
+Then:
+
+My Collection
+├── Telegraph Key
+├── Apollo artifact
+├── Fossil
+└── Ancient artifact
+
+This also fits nicely with your personalization phase.
+
+8. Artifact Timeline ⏳
+
+For historical artifacts:
+
+1700 ─── 1800 ─── 1900 ─── 2000
+          ↑
+     Your Artifact
+
+Very useful for explaining historical context.
+
+9. Museum Map 🗺️
+
+Show:
+
+             MUSEUM MAP
+
+        ┌───────────────┐
+        │    SPACE      │
+        │   🚀  🛰️      │
+        └───────┬───────┘
+                │
+        ┌───────┴───────┐
+        │    HISTORY    │
+        │  🏺  ⚔️  📜   │
+        └───────┬───────┘
+                │
+        ┌───────┴───────┐
+        │ NATURAL HIST. │
+        │ 🦴  🐚  🦖    │
+        └───────────────┘
+
+Clicking a gallery takes the user there.
+
+10. Mobile AR Mode 📱
+
+This could become one of your strongest features.
+
+User points their phone camera at a surface and places an artifact:
+
+Phone Camera
+     ↓
+Detect Surface
+     ↓
+Place 3D Artifact
+     ↓
+Walk around it
+     ↓
+Rotate / Scale / Inspect
+     ↓
+Ask AI Curator
+
+So you have both:
+
+Virtual Museum Mode
+
+and
+
+AR Artifact Mode
+
+11. Museum Achievements 🏆
+
+For example:
+
+🏆 First Artifact
+🔭 Space Explorer
+🏺 History Explorer
+🦴 Natural History Explorer
+🤖 Asked 10 AI Questions
+🏛️ Completed Museum Tour
+
+Not essential, but makes exploration more engaging.

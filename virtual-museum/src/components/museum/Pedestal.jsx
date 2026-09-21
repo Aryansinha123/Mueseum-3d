@@ -60,30 +60,43 @@ export const Pedestal = React.memo(function Pedestal({
 
       {/* Brass Plaque on Front of Pedestal */}
       <group position={[0, pedestalHeight * 0.6, 0.68]} rotation={[0, 0, 0]}>
-        {/* Brass Plate */}
+        {/* Brass Plate — wider & taller to fit long names */}
         <mesh>
-          <boxGeometry args={[0.6, 0.22, 0.02]} />
+          <boxGeometry args={[0.92, 0.32, 0.02]} />
           <meshStandardMaterial color="#b89742" roughness={0.3} metalness={0.8} />
         </mesh>
 
-        {/* Text on Plaque */}
+        {/* Thin dark border inset */}
+        <mesh position={[0, 0, 0.011]}>
+          <boxGeometry args={[0.86, 0.26, 0.002]} />
+          <meshStandardMaterial color="#8a6f28" roughness={0.5} metalness={0.6} />
+        </mesh>
+
+        {/* Artifact Name — wraps if too long */}
         <Text
-          position={[0, 0.04, 0.015]}
-          fontSize={0.05}
+          position={[0, 0.055, 0.016]}
+          fontSize={0.044}
           color="#1a140a"
           anchorX="center"
           anchorY="middle"
           fontWeight="bold"
+          maxWidth={0.8}
+          textAlign="center"
+          lineHeight={1.15}
+          overflowWrap="break-word"
         >
           {artifact.name.toUpperCase()}
         </Text>
 
+        {/* ID + Period sub-line */}
         <Text
-          position={[0, -0.04, 0.015]}
-          fontSize={0.032}
+          position={[0, -0.095, 0.016]}
+          fontSize={0.028}
           color="#382c16"
           anchorX="center"
           anchorY="middle"
+          maxWidth={0.8}
+          textAlign="center"
         >
           {`${artifact.id} • ${artifact.period}`}
         </Text>
