@@ -16,6 +16,8 @@
 # next.js
 /.next/
 /out/
+/backend/venv
+/backend/data/*.npy
 
 # production
 /build

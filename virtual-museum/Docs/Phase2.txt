@@ -1,0 +1,638 @@
+We are continuing the existing Virtual Museum AR/VR project.
+
+PHASE 0 is complete.
+PHASE 1 is complete.
+
+Phase 1 already implements:
+
+User Question
+↓
+Sentence Transformer
+↓
+Artifact Embeddings
+↓
+Cosine Similarity
+↓
+Best Matching Artifact
+↓
+Similarity Score
+
+Now implement ONLY:
+
+# PHASE 2 — CONFIDENCE-AWARE EXPLAINABLE RAG
+
+This is the main research component of the project.
+
+Do NOT implement Phase 3 personalization.
+Do NOT implement Phase 4 frontend/API wiring.
+Do NOT implement Phase 5 evaluation framework beyond the basic Phase 2 tests.
+Do NOT implement Phase 6 demo polish.
+
+Preserve all existing Phase 0 and Phase 1 functionality.
+
+==================================================
+
+1. CORE OBJECTIVE
+   ==================================================
+
+The system must prevent the LLM from answering questions that are
+outside the curated museum knowledge base.
+
+The pipeline must be:
+
+USER QUESTION
+↓
+EMBED QUESTION
+↓
+COSINE SIMILARITY
+↓
+BEST MATCHING ARTIFACT
+↓
+SIMILARITY / RELEVANCE CHECK
+↓
+┌─────────────────────┐
+│ score >= threshold? │
+└─────────┬───────────┘
+YES │       │ NO
+↓       ↓
+LLM CALL   REFUSAL
+↓
+GROUNDED ANSWER
+↓
+Answer + Source + Score + Evidence
+
+IMPORTANT:
+
+The threshold check MUST happen BEFORE the LLM call.
+
+If the score is below the threshold:
+
+* Do NOT call the LLM.
+* Do NOT generate an answer using general knowledge.
+* Return the fixed refusal response.
+
+==================================================
+2. CONFIDENCE / RELEVANCE THRESHOLD
+===================================
+
+Create:
+
+backend/rag/confidence.py
+
+Define a configurable threshold.
+
+Example:
+
+THRESHOLD = 0.55
+
+However, do not describe 0.55 as a scientifically proven value.
+
+Call the value:
+
+retrieval threshold
+or
+relevance threshold.
+
+Do NOT claim that a similarity score of 0.55 means
+"55% confidence".
+
+The score is cosine similarity.
+
+Make the threshold easy to change from one place.
+
+Example:
+
+THRESHOLD = 0.55
+
+Create a function such as:
+
+is_relevant(score)
+
+which returns:
+
+True / False
+
+==================================================
+3. REFUSAL BEHAVIOR
+===================
+
+If:
+
+similarity_score < THRESHOLD
+
+return a structured result without calling the LLM.
+
+Use this exact default message:
+
+"This information is not available in the curated museum knowledge base."
+
+The result should contain:
+
+{
+"answer": "This information is not available in the curated museum knowledge base.",
+"source": null,
+"confidence": similarity_score,
+"evidence": null,
+"refused": true
+}
+
+Use the field name "confidence" in the final API-style response if useful,
+but internally make it clear that this value originates from retrieval
+similarity and is not a calibrated probability.
+
+==================================================
+4. ACCEPTED QUERY BEHAVIOR
+==========================
+
+If:
+
+similarity_score >= THRESHOLD
+
+then:
+
+1. Select the best matching artifact.
+2. Extract its description.
+3. Extract artifact name.
+4. Extract gallery.
+5. Send ONLY the necessary information to the LLM.
+
+The LLM must receive:
+
+* user question
+* retrieved artifact information
+
+Do not send the entire artifact database to the LLM.
+
+==================================================
+5. LLM INTEGRATION
+==================
+
+Create:
+
+backend/rag/llm.py
+
+Implement a small reusable function:
+
+generate_grounded_answer(question, artifact)
+
+The LLM provider should be configurable.
+
+Do not hardcode API keys.
+
+Read the API key from an environment variable.
+
+For example:
+
+LLM_API_KEY
+
+If a specific provider is already configured in the project,
+reuse that provider.
+
+Otherwise make the implementation provider-independent where
+practical and document the required environment variable.
+
+DO NOT expose API keys in source code.
+
+==================================================
+6. STRICT GROUNDING PROMPT
+==========================
+
+The LLM system prompt must enforce:
+
+"You are an AI curator for a virtual museum.
+
+Answer the user's question ONLY using the supplied curated
+artifact information.
+
+Do not use outside knowledge.
+
+Do not invent facts, dates, names, measurements, historical
+events or interpretations.
+
+If the supplied artifact information does not contain enough
+information to answer the question, explicitly state that the
+information is not available in the curated knowledge base.
+
+Keep the answer concise, clear and suitable for a museum visitor."
+
+Then provide:
+
+ARTIFACT INFORMATION:
+{artifact description}
+
+USER QUESTION:
+{user question}
+
+IMPORTANT:
+
+The model must not receive the full artifact database.
+
+It receives only the retrieved artifact.
+
+==================================================
+7. SOURCE INFORMATION
+=====================
+
+Every accepted answer must return:
+
+source:
+
+{
+"artifact": "...",
+"gallery": "..."
+}
+
+Use the actual values from artifacts.json.
+
+Do not fabricate source information.
+
+==================================================
+8. EVIDENCE
+===========
+
+Every accepted answer must return an evidence field.
+
+The evidence must come directly from the retrieved artifact
+description.
+
+Do not ask the LLM to invent the evidence.
+
+Use the original retrieved text.
+
+Example:
+
+"evidence": "This ceramic vessel dates to approximately 1500 BCE..."
+
+For Phase 2, it is acceptable to return the complete relevant
+description as evidence rather than implementing sophisticated
+sentence-level highlighting.
+
+The frontend can later highlight it.
+
+==================================================
+9. FINAL PIPELINE
+=================
+
+Create:
+
+backend/rag/rag_pipeline.py
+
+Implement the complete Phase 2 flow:
+
+answer_question(question)
+
+Process:
+
+1. Validate question.
+2. Retrieve best artifact using Phase 1 retrieval.
+3. Obtain similarity score.
+4. Compare score against threshold.
+5. If below threshold:
+   return refusal
+   DO NOT call LLM.
+6. If above/equal threshold:
+   call grounded LLM.
+7. Return:
+
+   * answer
+   * source
+   * confidence/similarity score
+   * evidence
+   * refused flag
+
+Expected successful structure:
+
+{
+"answer": "...",
+"source": {
+"artifact": "...",
+"gallery": "..."
+},
+"confidence": 0.82,
+"evidence": "...",
+"refused": false
+}
+
+Expected refusal structure:
+
+{
+"answer": "This information is not available in the curated museum knowledge base.",
+"source": null,
+"confidence": 0.21,
+"evidence": null,
+"refused": true
+}
+
+==================================================
+10. IMPORTANT: NO FRONTEND CHANGES
+==================================
+
+Do NOT modify:
+
+* Next.js pages
+* Three.js scene
+* VR galleries
+* AR interface
+* Selection Beacon
+* GLB models
+* artifact rendering
+* existing museum navigation
+
+Phase 2 should remain a backend/RAG experiment.
+
+==================================================
+11. TESTING
+===========
+
+Create:
+
+backend/rag/test_phase2.py
+
+Test at least these categories.
+
+CATEGORY A — IN-SCOPE
+
+Examples:
+
+1. Tell me about this historical artifact.
+2. What is this artifact made of?
+3. What is the significance of this object?
+4. Tell me about the space artifact.
+5. What can you tell me about this natural history specimen?
+
+CATEGORY B — VAGUE
+
+Examples:
+
+6. Tell me about this.
+7. What is this?
+8. Can you explain this artifact?
+
+CATEGORY C — COMPLETELY OUT OF SCOPE
+
+Examples:
+
+9. What is the weather today?
+10. What is 25 × 17?
+11. Write a Python program for sorting.
+12. Who won a random sports match?
+
+The exact questions should be adjusted to the actual artifact
+knowledge base where appropriate.
+
+==================================================
+12. TEST THE REFUSAL MECHANISM
+==============================
+
+For every test print:
+
+Question
+Best artifact
+Similarity score
+Threshold
+Accepted / Refused
+LLM called or not
+Answer
+Source
+Evidence
+
+Example:
+
+==================================================
+Question:
+What is the weather today?
+
+Best Match:
+Ancient Vase
+
+Similarity:
+0.21
+
+Threshold:
+0.55
+
+Decision:
+REFUSED
+
+LLM Called:
+NO
+
+Answer:
+This information is not available in the curated museum
+knowledge base.
+
+==================================================
+
+For an accepted query:
+
+==================================================
+Question:
+What material is this artifact made from?
+
+Best Match:
+Ancient Vase
+
+Similarity:
+0.82
+
+Threshold:
+0.55
+
+Decision:
+ACCEPTED
+
+LLM Called:
+YES
+
+Answer:
+...
+
+Source:
+Ancient Vase — History
+
+Evidence:
+...
+
+==================================================
+13. VERIFY THAT REFUSED QUESTIONS DO NOT CALL THE LLM
+=====================================================
+
+This is critical.
+
+Implement logging such as:
+
+[RETRIEVAL]
+score = 0.21
+
+[THRESHOLD]
+0.21 < 0.55
+
+[DECISION]
+REFUSE
+
+[LLM]
+NOT CALLED
+
+For accepted queries:
+
+[RETRIEVAL]
+score = 0.82
+
+[THRESHOLD]
+0.82 >= 0.55
+
+[DECISION]
+ACCEPT
+
+[LLM]
+CALLED
+
+This is necessary to demonstrate that the confidence gate
+actually prevents unnecessary and potentially hallucinated
+LLM responses.
+
+==================================================
+14. API KEY SAFETY
+==================
+
+Use environment variables.
+
+Create:
+
+backend/.env.example
+
+Do NOT put real credentials inside it.
+
+Example:
+
+LLM_API_KEY=your_api_key_here
+
+If the chosen provider requires a different variable name,
+document it appropriately.
+
+Add .env to .gitignore if it is not already there.
+
+Never print the API key.
+
+==================================================
+15. ERROR HANDLING
+==================
+
+Handle:
+
+* missing API key
+* LLM API failure
+* empty question
+* malformed artifact data
+* missing description
+* embedding/retrieval errors
+
+If the LLM fails after a query has passed the threshold,
+return a clean error rather than fabricating an answer.
+
+Do NOT silently generate an answer from model knowledge.
+
+==================================================
+16. DEPENDENCIES
+================
+
+Only add dependencies actually required.
+
+Do not introduce:
+
+* LangChain
+* LangGraph
+* ChromaDB
+* Pinecone
+* FAISS
+* PostgreSQL
+* pgvector
+
+unless there is an existing project dependency that absolutely
+requires it.
+
+Keep Phase 2 simple and transparent.
+
+==================================================
+17. RESEARCH TERMINOLOGY
+========================
+
+Use these terms correctly:
+
+"retrieval similarity score"
+rather than automatically calling it a probability.
+
+"relevance threshold"
+for the decision boundary.
+
+"grounded answer"
+for an answer generated from retrieved artifact information.
+
+"refusal"
+when the system rejects a query because retrieval similarity
+is below the threshold.
+
+Do not claim that the system completely eliminates hallucinations.
+
+The correct research claim is that the architecture is designed
+to reduce unsupported responses by gating LLM access and
+restricting accepted responses to retrieved evidence.
+
+==================================================
+18. README UPDATE
+=================
+
+Update:
+
+backend/README.md
+
+Document:
+
+* Phase 1 retrieval
+* Phase 2 confidence/relevance gate
+* threshold
+* refusal mechanism
+* grounded LLM
+* source
+* evidence
+* testing
+* environment variable setup
+* limitations
+
+Clearly explain that the threshold is an experimental parameter
+and should be evaluated systematically in Phase 5.
+
+==================================================
+19. FINAL VALIDATION
+====================
+
+After implementation:
+
+1. Run Phase 1 retrieval tests.
+2. Run Phase 2 tests.
+3. Verify accepted museum questions call the LLM.
+4. Verify unrelated questions below threshold do NOT call the LLM.
+5. Verify refusal message is returned.
+6. Verify source is returned for accepted answers.
+7. Verify evidence comes from the artifact description.
+8. Verify confidence/similarity score is returned.
+9. Verify API keys are not hardcoded.
+10. Verify frontend remains unchanged.
+11. Verify no unnecessary databases/frameworks were added.
+
+At the end report:
+
+A. Files created
+B. Files modified
+C. Dependencies added
+D. Environment variables required
+E. Threshold used
+F. Test results
+G. Example accepted query
+H. Example refused query
+I. Confirmation that refused queries did not call the LLM
+J. Any problems encountered
+
+STOP after Phase 2.
+
+Do NOT implement Phase 3.

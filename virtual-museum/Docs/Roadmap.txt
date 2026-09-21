@@ -1,0 +1,34 @@
+PHASE 0 — Done ✅
+3 VR galleries (Space, History, Natural History) with GLB models via Smithsonian Open Access
+15 artifacts in artifacts.json
+Frontend model-loading with Suspense/error boundaries
+Literature review (13-15 papers) + comparative analysis + problem statement + research gap drafted
+PHASE 1 — RAG Core (backend, not built yet)
+Load artifacts.json, embed each description (sentence-transformers)
+Store embeddings in memory (plain numpy — you don't need a vector DB at 15-45 artifacts)
+Write the retrieval function: question → embed → cosine similarity → best match + score
+Test retrieval alone (print scores for ~10 sample questions) before touching the LLM
+PHASE 2 — XAI Layer (this is your actual novelty — don't rush it)
+Set a confidence threshold; below it → return the fixed "not available in curated knowledge base" message, no LLM call
+Above threshold → LLM generates answer using only the retrieved artifact's description
+Return four things every time: answer, source (artifact + gallery), confidence score, evidence snippet (the retrieved text highlighted)
+Deliberately test edge cases: an in-scope question, a vague question, a completely unrelated question (weather, math) — confirm the refusal actually fires
+PHASE 3 — Personalization (the addition you just asked for)
+Session ID generated per visitor, sent with every request
+Conversation memory: last 2-3 exchanges passed to the LLM as context
+Profile tracking: count which gallery/artifacts they engage with
+Tone toggle: UI control → passed into the LLM prompt
+"You might also like": second retrieval pass on artifact-to-artifact similarity, excluding current + already-seen
+PHASE 4 — Wiring (backend ↔ frontend)
+Wrap Phases 1-3 into one FastAPI /ask endpoint (session_id, question in → answer, source, confidence, evidence, related_suggestion out)
+Enable CORS
+Connect from your existing "Selection Beacon" trigger via fetch()
+Display in both VR (in-scene panel) and phone AR (DOM overlay) — same API, different display layer
+PHASE 5 — Research-level evidence (this is what makes it "research level," not just "working app")
+Build the evaluation table: ~15-20 test questions across all 3 galleries, log confidence score + correct/incorrect + refused-correctly or not
+Ablation: show what the system does without the confidence threshold (hallucinates/wrong answers) vs with it — this is your strongest evidence slide
+Tie results back to your research gap slide — explicitly state which gap each feature (confidence score, refusal, source citation) addresses
+PHASE 6 — Demo polish
+Add Smithsonian attribution (from read.txt files) somewhere visible
+Rehearse the full walkthrough: enter VR → walk to exhibit → ask question (in-scope) → see grounded answer → ask out-of-scope question → see correct refusal → show personalization (tone toggle + related suggestion)
+Have a backup screen-recording of the demo in case live VR/network fails during review

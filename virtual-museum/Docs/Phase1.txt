@@ -1,0 +1,424 @@
+You are working on my existing Virtual Museum AR/VR project.
+
+PHASE 0 IS ALREADY COMPLETE.
+
+The existing project has:
+
+* 3 VR galleries:
+
+  1. Space
+  2. History
+  3. Natural History
+* 15 cultural/scientific artifacts
+* GLB 3D models loaded into the museum
+* Existing artifacts.json
+* Next.js frontend
+* Existing artifact selection / Selection Beacon interaction
+* Frontend model loading already works
+* The museum itself must NOT be redesigned or broken.
+
+We are now implementing ONLY:
+
+# PHASE 1 — RAG CORE
+
+Do NOT implement Phase 2, Phase 3, Phase 4, Phase 5 or Phase 6 yet.
+
+The goal of Phase 1 is:
+
+USER QUESTION
+↓
+Sentence Transformer
+↓
+Question Embedding
+↓
+Cosine Similarity
+↓
+Best Matching Artifact
+↓
+Similarity / Confidence Score
+
+The system must work independently of any LLM.
+
+==================================================
+
+1. FIRST INSPECT THE EXISTING PROJECT
+   ==================================================
+
+Before modifying anything:
+
+* Inspect the complete project structure.
+* Find the existing artifacts.json.
+* Inspect its exact schema.
+* Identify:
+
+  * artifact ID
+  * artifact name
+  * description
+  * gallery
+  * any other useful metadata
+* Find how artifacts are currently loaded by the frontend.
+* Do NOT duplicate or create a second conflicting artifact database if the existing artifacts.json can be reused.
+* Preserve all existing frontend functionality.
+
+Explain briefly which files you found before making changes.
+
+==================================================
+2. CREATE BACKEND
+=================
+
+Create a separate Python backend directory:
+
+backend/
+
+Recommended structure:
+
+backend/
+├── data/
+│   └── artifacts.json
+├── rag/
+│   ├── **init**.py
+│   ├── embeddings.py
+│   ├── retrieval.py
+│   └── test_retrieval.py
+├── requirements.txt
+└── README.md
+
+If the existing artifacts.json is already located somewhere appropriate, do NOT unnecessarily duplicate it.
+
+Prefer using the existing source of truth.
+
+==================================================
+3. PYTHON DEPENDENCIES
+======================
+
+Create:
+
+backend/requirements.txt
+
+Use only the dependencies required for Phase 1:
+
+sentence-transformers
+numpy
+
+Do NOT add:
+
+* LangChain
+* LangGraph
+* ChromaDB
+* Pinecone
+* FAISS
+* PostgreSQL
+* pgvector
+* OpenAI API
+* Groq API
+* Gemini API
+
+The retrieval system must be simple and transparent.
+
+==================================================
+4. EMBEDDING MODEL
+==================
+
+Use Sentence Transformers.
+
+Recommended model:
+
+all-MiniLM-L6-v2
+
+Load the model once.
+
+Create:
+
+backend/rag/embeddings.py
+
+It should:
+
+1. Load artifacts.json.
+2. Extract the textual description of every artifact.
+3. Generate an embedding for every artifact.
+4. Store the embeddings in memory as a NumPy array.
+5. Provide reusable functions/classes so retrieval.py can use them.
+
+Do not create a vector database.
+
+There are currently only around 15 artifacts and eventually approximately 15–45 artifacts.
+
+In-memory NumPy retrieval is intentional.
+
+==================================================
+5. RETRIEVAL SYSTEM
+===================
+
+Create:
+
+backend/rag/retrieval.py
+
+Implement cosine similarity manually using NumPy or a simple transparent implementation.
+
+The main function should conceptually be:
+
+retrieve(question)
+
+It should:
+
+1. Convert the user question into an embedding.
+2. Calculate cosine similarity against every artifact embedding.
+3. Find the artifact with the highest similarity.
+4. Return:
+
+   * artifact ID
+   * artifact name
+   * gallery
+   * similarity score
+   * description
+   * evidence text
+
+Example result:
+
+{
+"artifact_id": "...",
+"artifact_name": "...",
+"gallery": "History",
+"score": 0.82,
+"description": "...",
+"evidence": "..."
+}
+
+Do NOT call any LLM.
+
+==================================================
+6. IMPORTANT — DO NOT CALL THE SCORE "CERTAIN
+CONFIDENCE" YET
+===============
+
+For Phase 1, treat the cosine similarity as:
+
+similarity_score
+
+It may later be used as the basis for the confidence mechanism in Phase 2.
+
+Do not claim that a cosine similarity of 0.8 automatically means 80% confidence.
+
+Use terminology such as:
+
+"retrieval similarity score"
+
+This distinction is important for the research methodology.
+
+==================================================
+7. TEXT USED FOR EMBEDDING
+==========================
+
+Use the artifact's descriptive information as the retrieval corpus.
+
+Prefer:
+
+artifact name + description + gallery
+
+if these fields exist.
+
+Example:
+
+"Ancient Egyptian Vase. History. This artifact..."
+
+Do not embed irrelevant technical fields such as:
+
+* GLB URLs
+* image URLs
+* internal database IDs
+* React component information
+
+The goal is semantic retrieval based on museum knowledge.
+
+==================================================
+8. TESTING
+==========
+
+Create:
+
+backend/rag/test_retrieval.py
+
+It must test approximately 10 questions.
+
+Include:
+
+IN-SCOPE QUESTIONS:
+
+1. Questions about historical artifacts.
+2. Questions about space artifacts.
+3. Questions about natural history artifacts.
+4. Questions asking about an artifact's description.
+5. Questions asking about an artifact's significance.
+
+Also include OUT-OF-SCOPE QUESTIONS:
+
+6. "What is the weather today?"
+7. "What is 25 multiplied by 17?"
+8. A completely unrelated general question.
+
+IMPORTANT:
+
+Phase 1 must NOT refuse these questions yet.
+
+It should simply show that unrelated questions tend to produce lower similarity scores.
+
+This refusal mechanism belongs to Phase 2.
+
+==================================================
+9. OUTPUT FORMAT
+================
+
+Make test output easy to understand.
+
+Example:
+
+==================================================
+Question: What is this historical artifact used for?
+
+Best Match:
+Artifact: Ancient Pottery
+Gallery: History
+
+Similarity Score: 0.8421
+
+Description:
+...
+
+==================================================
+
+For unrelated questions:
+
+==================================================
+Question: What is the weather today?
+
+Best Match:
+Artifact: ...
+
+Gallery: ...
+
+Similarity Score: 0.18
+
+==================================================
+
+Do not hardcode expected artifact names or scores.
+
+==================================================
+10. TEST RETRIEVAL QUALITY
+==========================
+
+The test script should clearly show whether retrieval is behaving sensibly.
+
+Do not introduce a confidence threshold yet.
+
+Do not reject questions yet.
+
+Do not call an LLM.
+
+Do not generate answers.
+
+This phase is ONLY retrieval.
+
+==================================================
+11. OPTIONAL ARTIFACT EMBEDDING CACHE
+=====================================
+
+Because embeddings do not need to be generated every time the program starts, you may implement a simple local cache if useful.
+
+For example:
+
+backend/data/artifact_embeddings.npy
+
+However:
+
+* Keep the implementation simple.
+* Automatically regenerate embeddings if artifacts.json changes.
+* Do not introduce a database.
+
+If caching makes the implementation unnecessarily complicated, simply generate them at startup.
+
+==================================================
+12. README
+==========
+
+Create:
+
+backend/README.md
+
+Document:
+
+1. What Phase 1 does.
+2. Installation.
+3. How to run the retrieval test.
+4. Embedding model used.
+5. Why NumPy is sufficient.
+6. Example output.
+7. What Phase 1 does NOT implement.
+
+Mention explicitly:
+
+Phase 2 will add confidence thresholding, refusal, grounded LLM responses, source citation and evidence presentation.
+
+==================================================
+13. CODE QUALITY
+================
+
+Keep the code:
+
+* simple
+* readable
+* modular
+* beginner-friendly
+* well commented
+* easy to explain in a research/project viva
+
+Avoid unnecessary abstractions.
+
+Do not introduce complex frameworks.
+
+==================================================
+14. DO NOT MODIFY THE FRONTEND
+==============================
+
+For this phase:
+
+DO NOT modify:
+
+* museum UI
+* VR galleries
+* AR UI
+* Selection Beacon
+* GLB loading
+* Three.js scene
+* artifact models
+* existing frontend routing
+
+Phase 1 is backend retrieval only.
+
+==================================================
+15. FINAL VALIDATION
+====================
+
+After implementation:
+
+1. Install dependencies if possible.
+2. Run the retrieval test.
+3. Confirm artifacts.json loads successfully.
+4. Confirm all artifacts receive embeddings.
+5. Confirm retrieval returns the best artifact.
+6. Confirm similarity scores are printed.
+7. Confirm in-scope questions generally retrieve relevant artifacts.
+8. Confirm unrelated questions generally produce lower scores.
+9. Check for Python errors.
+10. Do not proceed to Phase 2.
+
+At the end, provide me with:
+
+A. Files created
+B. Files modified
+C. Commands required to run Phase 1
+D. Example retrieval output
+E. Any problems encountered
+F. Confirmation that Phase 1 is complete
+
+STOP after Phase 1.
+Do not implement Phase 2 automatically.
