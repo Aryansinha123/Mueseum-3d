@@ -1,0 +1,1330 @@
+# AR PERFORMANCE OPTIMIZATION + INSTANT MARKER FIX
+
+## OBJECTIVE
+
+The current Virtual Museum / AR website is functional, but the experience is too laggy.
+
+The biggest problems are:
+
+1. AR mode feels slow and laggy.
+2. 3D artifacts do not render smoothly enough.
+3. The yellow placement/selection marker does not appear instantly.
+4. There may be unnecessary React re-renders.
+5. GLB models may be loading/reloading unnecessarily.
+6. AR interactions such as rotate, scale, and move should feel much smoother.
+7. Opening AI Curator must not freeze or interrupt the AR experience.
+
+The goal is:
+
+> **Make the existing museum and AR experience feel smooth, responsive, and production-quality without changing the core functionality.**
+
+DO NOT rebuild the entire project.
+
+DO NOT replace the existing AR system unless the current implementation is fundamentally broken.
+
+First diagnose the actual bottlenecks, then optimize them.
+
+---
+
+# 1. IMPORTANT — AUDIT BEFORE MODIFYING
+
+Inspect the complete project first.
+
+Identify:
+
+### Frontend
+
+* Next.js version
+* React components
+* Three.js implementation
+* React Three Fiber if used
+* Drei if used
+* WebXR / AR implementation
+* GLB loading
+* Suspense boundaries
+* artifact components
+* marker implementation
+* AR placement logic
+* raycasting
+* camera handling
+* lighting
+* shadows
+* post-processing
+* animation loops
+* state management
+* React state updates
+* AI Curator
+* AR controls
+
+### Assets
+
+Inspect:
+
+* all `.glb`
+* `.gltf`
+* textures
+* HDR/environment maps
+* images
+* videos
+* audio
+
+Determine:
+
+* model file sizes
+* texture sizes
+* polygon/triangle counts if possible
+* number of meshes
+* number of materials
+* number of lights
+* number of draw calls
+
+Do not blindly optimize things that are not actually causing the problem.
+
+---
+
+# 2. FIRST PRIORITY — FIX YELLOW MARKER DELAY
+
+The yellow marker must appear **immediately when a valid AR surface/hit-test result is detected**.
+
+Current problematic flow may be:
+
+```text
+AR detects surface
+      ↓
+wait for artifact GLB
+      ↓
+wait for React state
+      ↓
+render marker
+```
+
+This is wrong.
+
+The marker should NOT depend on the artifact model loading.
+
+Correct flow:
+
+```text
+AR starts
+   ↓
+Hit-test detects surface
+   ↓
+IMMEDIATELY render yellow marker
+   ↓
+User taps
+   ↓
+Place artifact
+   ↓
+Load/render GLB
+```
+
+The marker and artifact loading must be independent.
+
+---
+
+# 3. MARKER MUST BE A LIGHTWEIGHT OBJECT
+
+Do NOT use a heavy GLB or complex component for the yellow marker.
+
+Use a lightweight Three.js primitive.
+
+For example:
+
+```text
+RingGeometry
+CircleGeometry
+PlaneGeometry
+Line
+MeshBasicMaterial
+```
+
+Prefer:
+
+```js
+MeshBasicMaterial
+```
+
+because it does not require lighting calculations.
+
+The marker should be extremely cheap to render.
+
+Example concept:
+
+```js
+const geometry = new THREE.RingGeometry(0.08, 0.1, 32);
+
+const material = new THREE.MeshBasicMaterial({
+  color: 0xffff00,
+  transparent: true,
+  opacity: 0.85,
+  depthWrite: false
+});
+```
+
+Adapt to the existing project's scale.
+
+DO NOT blindly copy this exact code if the project already has a marker implementation.
+
+---
+
+# 4. MARKER MUST BE PERSISTENT
+
+Do not create and destroy the marker every frame.
+
+BAD:
+
+```text
+Every frame
+ ↓
+create marker
+ ↓
+render
+ ↓
+destroy marker
+```
+
+GOOD:
+
+```text
+AR starts
+ ↓
+Create marker ONCE
+ ↓
+Every frame:
+   update position
+   update visibility
+```
+
+Create the marker once and reuse it.
+
+---
+
+# 5. USE REFS FOR REAL-TIME AR STATE
+
+Do not cause React re-renders for every AR frame.
+
+Avoid:
+
+```js
+setMarkerPosition(...)
+```
+
+inside the AR frame loop.
+
+Do NOT update React state at 60 FPS.
+
+Use refs or Three.js object transforms:
+
+```js
+markerRef.current.position.copy(...)
+```
+
+or the equivalent existing architecture.
+
+React state should be used for meaningful application changes such as:
+
+* artifact placed
+* artifact selected
+* curator opened
+* placement confirmed
+
+not:
+
+* every hit-test update
+* every frame
+* every camera movement
+* every marker position change
+
+---
+
+# 6. AR FRAME LOOP OPTIMIZATION
+
+Inspect the current AR frame/update loop.
+
+Do NOT perform expensive work every frame.
+
+Avoid inside `useFrame`, `requestAnimationFrame`, or XR frame callbacks:
+
+* JSON parsing
+* array `.map()` over large datasets
+* filtering artifacts
+* creating geometries
+* creating materials
+* loading GLBs
+* React state updates
+* console.log
+* DOM manipulation
+* API calls
+* expensive calculations
+
+The per-frame loop should only perform lightweight operations.
+
+For example:
+
+```text
+AR frame
+ ↓
+get hit-test result
+ ↓
+update marker position
+ ↓
+update marker visibility
+```
+
+Nothing more unless necessary.
+
+---
+
+# 7. REMOVE EXCESSIVE CONSOLE LOGGING
+
+Search for:
+
+```js
+console.log
+console.warn
+console.error
+```
+
+especially inside:
+
+* animation loops
+* `useFrame`
+* AR hit-test callbacks
+* pointer events
+* render cycles
+
+Remove or disable high-frequency logs.
+
+Never log every frame.
+
+If debugging is required, throttle it.
+
+Example:
+
+```text
+[AR] Surface detected
+```
+
+should happen only when state changes, not 60 times per second.
+
+---
+
+# 8. PRELOAD GLB MODELS
+
+Inspect how GLB files are loaded.
+
+If the same artifact is repeatedly loaded:
+
+```text
+open AR
+ ↓
+load model
+ ↓
+close
+ ↓
+open again
+ ↓
+load model again
+```
+
+fix this.
+
+Use the existing Three.js/R3F caching mechanism where available.
+
+If using `useGLTF`, use its built-in caching/preload behavior appropriately.
+
+For important AR artifacts, preload when practical.
+
+However:
+
+DO NOT preload all 15 large models simultaneously if that causes high memory usage on mobile.
+
+Use a balanced strategy:
+
+```text
+Currently selected artifact
+        ↓
+Preload / load
+
+Nearby/likely next artifact
+        ↓
+Optional preload
+
+Everything else
+        ↓
+Lazy load
+```
+
+---
+
+# 9. NEVER RELOAD THE SAME GLB UNNECESSARILY
+
+When changing:
+
+* marker position
+* marker visibility
+* camera
+* scale
+* rotation
+
+DO NOT reload the GLB.
+
+The model should remain mounted.
+
+Only update its transform.
+
+---
+
+# 10. OPTIMIZE GLB MODELS
+
+Inspect all existing GLBs.
+
+For each model, check:
+
+* triangle count
+* texture resolution
+* number of materials
+* number of meshes
+* file size
+
+If models are unnecessarily heavy, optimize them.
+
+Preferred target for mobile AR:
+
+* reasonable polygon count
+* compressed textures
+* minimal materials
+* minimal unnecessary meshes
+
+If appropriate, use:
+
+```text
+Draco compression
+Meshopt
+KTX2/Basis textures
+```
+
+ONLY if the current Three.js/WebXR setup supports them correctly.
+
+Do not introduce compression that breaks model loading.
+
+---
+
+# 11. TEXTURE OPTIMIZATION
+
+Large textures are a common mobile performance problem.
+
+Inspect:
+
+```text
+4K textures
+8K textures
+```
+
+If they are unnecessary, reduce them.
+
+Prefer mobile-friendly texture sizes such as:
+
+```text
+1024
+2048
+```
+
+depending on artifact importance.
+
+Do not blindly reduce everything to extremely low quality.
+
+Maintain acceptable visual quality.
+
+---
+
+# 12. LIGHTING OPTIMIZATION
+
+Inspect the current lighting.
+
+Avoid excessive lights.
+
+Prefer a small number of efficient lights.
+
+If possible:
+
+```text
+1 ambient/hemi light
++
+1 directional light
+```
+
+instead of many dynamic lights.
+
+Avoid expensive real-time shadows unless they materially improve the experience.
+
+---
+
+# 13. DISABLE EXPENSIVE SHADOWS WHERE NOT NECESSARY
+
+Mobile AR should prioritize smoothness.
+
+Inspect:
+
+```text
+castShadow
+receiveShadow
+shadowMap
+```
+
+If shadows are causing significant performance loss:
+
+* disable them for mobile AR
+* or use simplified shadows
+* or use baked/static lighting where practical
+
+Do NOT sacrifice the entire museum's visual quality unnecessarily.
+
+Desktop and mobile can use different quality settings.
+
+---
+
+# 14. ADD QUALITY LEVELS
+
+Implement adaptive rendering quality if practical.
+
+For example:
+
+```text
+Desktop
+High Quality
+
+Mobile
+Medium Quality
+
+Low-end Mobile
+Performance Mode
+```
+
+Possible differences:
+
+### Desktop
+
+```text
+Higher pixel ratio
+Better shadows
+Higher texture quality
+```
+
+### Mobile AR
+
+```text
+Lower pixel ratio
+Reduced shadows
+Reduced post-processing
+Simpler lighting
+```
+
+---
+
+# 15. CAP PIXEL RATIO
+
+Do not blindly use:
+
+```js
+renderer.setPixelRatio(window.devicePixelRatio);
+```
+
+on mobile.
+
+Very high device pixel ratios can be expensive.
+
+Use a reasonable cap such as:
+
+```js
+Math.min(window.devicePixelRatio, 1.5)
+```
+
+or another value determined by profiling.
+
+Do not blindly copy this exact number if testing shows another value is better.
+
+The goal is:
+
+> prevent extremely expensive rendering on high-DPI mobile displays.
+
+---
+
+# 16. AVOID EXPENSIVE POST-PROCESSING
+
+Inspect for:
+
+* Bloom
+* SSAO
+* Depth of Field
+* Motion Blur
+* expensive outlines
+* screen-space effects
+
+Disable or reduce them in AR mode unless they are absolutely necessary.
+
+AR should prioritize:
+
+```text
+Stable FPS
++
+Low latency
++
+Responsive controls
+```
+
+over cinematic effects.
+
+---
+
+# 17. OPTIMIZE THE MUSEUM MODE TOO
+
+The desktop museum is working, but it is also reportedly laggy.
+
+Inspect the museum scene for:
+
+* too many objects
+* unnecessary animations
+* duplicate lights
+* unnecessary shadows
+* excessive draw calls
+* huge textures
+* expensive environment maps
+* unnecessary DOM overlays
+* frequent React state updates
+
+Do not remove functionality.
+
+Optimize implementation.
+
+---
+
+# 18. DO NOT RENDER ALL HEAVY ARTIFACTS AT FULL QUALITY
+
+If all 15 artifacts are loaded simultaneously in a gallery:
+
+```text
+15 GLBs
++
+15 textures
++
+many materials
++
+many meshes
+```
+
+this can become expensive.
+
+Consider:
+
+```text
+Current gallery:
+Load visible/nearby artifacts
+
+Other galleries:
+Lazy load when entered
+```
+
+If the museum currently already lazy-loads correctly, keep that implementation.
+
+Do not break gallery transitions.
+
+---
+
+# 19. ARTIFACT VISIBILITY OPTIMIZATION
+
+Use distance-based optimization where appropriate.
+
+For example:
+
+```text
+Far artifact
+ ↓
+simpler rendering
+
+Nearby artifact
+ ↓
+full detail
+```
+
+Do not implement complicated LOD unless it is actually beneficial.
+
+Keep the first optimization pass simple.
+
+---
+
+# 20. SMOOTH ROTATION
+
+Inspect the current rotate interaction.
+
+Avoid abrupt:
+
+```text
+rotation += largeValue
+```
+
+Use smooth interpolation where appropriate.
+
+For example:
+
+```text
+touch input
+   ↓
+target rotation
+   ↓
+smooth interpolation
+   ↓
+actual rotation
+```
+
+Do not introduce noticeable input latency.
+
+Touch should still feel responsive.
+
+---
+
+# 21. SMOOTH SCALE
+
+AR scaling should feel smooth.
+
+Avoid sudden jumps when pinch zooming.
+
+Use:
+
+```text
+currentScale
+targetScale
+```
+
+and smoothly interpolate.
+
+Clamp scale:
+
+```text
+minimum scale
+maximum scale
+```
+
+to prevent the artifact becoming microscopic or enormous.
+
+---
+
+# 22. SMOOTH MOVEMENT
+
+When moving the placed artifact:
+
+```text
+touch movement
+ ↓
+target position
+ ↓
+smooth interpolation
+ ↓
+artifact position
+```
+
+Avoid jitter.
+
+However, do not make it so smoothed that the object feels delayed.
+
+---
+
+# 23. PREVENT UI RERENDERING FROM FREEZING THREE.JS
+
+The AR scene and UI should be separated logically.
+
+Opening:
+
+```text
+AI Curator
+```
+
+must not cause the entire Three.js scene to rerender unnecessarily.
+
+Similarly:
+
+```text
+typing a question
+```
+
+must not rerender the 3D scene.
+
+Prefer component separation:
+
+```text
+ARScene
+ARControls
+AICuratorPanel
+```
+
+with only the required state shared between them.
+
+---
+
+# 24. AI CURATOR MUST NOT BLOCK AR
+
+When the user submits:
+
+```text
+What is this?
+```
+
+the request happens asynchronously.
+
+The AR scene must remain responsive.
+
+Do NOT:
+
+* block rendering
+* reload the GLB
+* restart AR
+* recreate the scene
+* recreate the camera
+* recreate the renderer
+
+while waiting for the backend.
+
+The user should still be able to look around the AR scene.
+
+---
+
+# 25. MARKER VISUAL DESIGN
+
+The marker should clearly communicate:
+
+> "You can place the artifact here."
+
+Use a lightweight yellow marker.
+
+Possible design:
+
+```text
+        ╭────────╮
+        │  🟡   │
+        ╰────────╯
+```
+
+or a yellow ring/reticle.
+
+Optional subtle animation:
+
+```text
+scale:
+1.0 → 1.05 → 1.0
+```
+
+But keep the animation lightweight.
+
+Do NOT animate by causing React state updates.
+
+Use Three.js transforms or CSS animation where appropriate.
+
+---
+
+# 26. MARKER STATE MACHINE
+
+Implement a clean marker state:
+
+```text
+AR initializing
+      ↓
+Searching for surface
+      ↓
+No surface
+      ↓
+Surface detected
+      ↓
+🟡 Marker visible
+      ↓
+User taps
+      ↓
+Artifact placed
+      ↓
+Marker hidden OR changes to selected state
+```
+
+The marker must not remain stuck invisible.
+
+---
+
+# 27. IMPORTANT — MARKER MUST NOT WAIT FOR GLB
+
+This is a strict requirement.
+
+Even if the artifact takes:
+
+```text
+500ms
+1 second
+2 seconds
+```
+
+to load:
+
+the yellow marker should appear immediately once the AR hit-test detects a valid surface.
+
+Correct:
+
+```text
+Surface detected
+   ↓
+🟡 Marker immediately
+   ↓
+User taps
+   ↓
+Artifact loading
+   ↓
+Artifact appears
+```
+
+NOT:
+
+```text
+Surface detected
+   ↓
+Load GLB
+   ↓
+Wait
+   ↓
+Render marker
+```
+
+---
+
+# 28. FIRST-FRAME OPTIMIZATION
+
+When entering AR:
+
+Prioritize:
+
+```text
+Camera
++
+Hit testing
++
+Marker
+```
+
+before:
+
+```text
+Artifact
++
+secondary UI
++
+optional effects
+```
+
+The user should see the AR camera and marker as quickly as possible.
+
+---
+
+# 29. LAZY LOAD NON-CRITICAL UI
+
+Do not delay AR initialization because of:
+
+* AI Curator
+* recommendations
+* analytics
+* secondary UI
+* unnecessary images
+
+Load these after the AR experience is ready where practical.
+
+---
+
+# 30. NETWORK OPTIMIZATION
+
+Inspect network requests.
+
+Avoid repeatedly downloading:
+
+* same GLB
+* same textures
+* same JSON
+* fonts
+* unnecessary scripts
+
+Use caching where appropriate.
+
+Do not fetch artifact metadata repeatedly if it is already available.
+
+---
+
+# 31. MEMORY MANAGEMENT
+
+Inspect for:
+
+* objects not disposed
+* textures not disposed
+* geometries not disposed
+* materials not disposed
+* event listeners not removed
+* animation loops continuing after unmount
+* WebXR sessions not cleaned up
+
+Especially verify when:
+
+```text
+Enter AR
+ ↓
+Exit AR
+ ↓
+Enter AR again
+```
+
+There should not be progressively increasing memory usage.
+
+---
+
+# 32. CLEANUP
+
+When leaving AR:
+
+properly clean:
+
+* animation loops
+* event listeners
+* hit-test sources
+* temporary objects
+* unnecessary references
+
+Do not accidentally destroy shared resources required by the rest of the application.
+
+---
+
+# 33. PERFORMANCE MONITORING
+
+During development, add a lightweight FPS/performance monitor if the project does not already have one.
+
+Measure:
+
+```text
+FPS
+Frame time
+Draw calls
+Triangles
+Texture memory where available
+```
+
+Do not leave an intrusive performance overlay enabled in production unless useful.
+
+---
+
+# 34. TARGET PERFORMANCE
+
+Aim for:
+
+### Desktop museum
+
+```text
+~60 FPS where hardware allows
+```
+
+### Mobile AR
+
+Prefer:
+
+```text
+stable 45–60 FPS
+```
+
+depending on device.
+
+Do not sacrifice usability trying to force a specific FPS on low-end hardware.
+
+The key requirement is:
+
+> **stable frame pacing and responsive interaction rather than occasional high FPS followed by stutters.**
+
+---
+
+# 35. TEST DEVICES
+
+Test at minimum:
+
+### Desktop
+
+* Chrome Windows
+* normal laptop
+* lower-performance laptop if available
+
+### Mobile
+
+* Android Chrome
+* one mid-range device
+* one lower-end device if available
+
+If iPhone testing is available:
+
+* Safari iOS
+
+---
+
+# 36. TEST AR MARKER
+
+Perform:
+
+```text
+Open AR
+ ↓
+Wait for camera
+ ↓
+Move phone toward floor/table
+ ↓
+Surface detected
+```
+
+The yellow marker should appear immediately.
+
+Then:
+
+```text
+move phone
+```
+
+The marker should:
+
+* follow the detected surface
+* not lag badly
+* not flicker unnecessarily
+* not disappear randomly
+* remain responsive
+
+---
+
+# 37. TEST RAPID MOVEMENT
+
+Move the phone around quickly.
+
+Expected:
+
+```text
+Marker follows surface smoothly
+```
+
+No major:
+
+* lag
+* flicker
+* delayed updates
+* jumping
+* freezing
+
+---
+
+# 38. TEST ARTIFACT PLACEMENT
+
+Tap the yellow marker.
+
+Expected:
+
+```text
+Tap
+ ↓
+Artifact placed
+ ↓
+No major freeze
+ ↓
+Artifact appears
+```
+
+The marker should transition correctly.
+
+---
+
+# 39. TEST AR CONTROLS
+
+After placement:
+
+```text
+Rotate
+Scale
+Move
+Reset
+AI Curator
+```
+
+All must remain responsive.
+
+No control should cause the entire AR scene to rerender.
+
+---
+
+# 40. TEST AI CURATOR
+
+With an artifact placed:
+
+```text
+AI Curator
+ ↓
+What is this?
+ ↓
+Answer
+```
+
+During the request:
+
+```text
+AR remains responsive
+```
+
+Opening/closing curator must not restart the AR session.
+
+---
+
+# 41. REGRESSION TEST DESKTOP
+
+After optimization verify:
+
+* museum loads
+* galleries work
+* all artifacts work
+* GLBs load
+* rotate works
+* zoom works
+* selection works
+* AI Curator works
+* RAG works
+* confidence gate works
+* refusal works
+* source/evidence works
+* recommendations work
+* voice output still works if already implemented
+
+Do not accept performance changes that break existing functionality.
+
+---
+
+# 42. DO NOT ADD UNNECESSARY FEATURES
+
+This task is ONLY about:
+
+```text
+PERFORMANCE
++
+SMOOTHNESS
++
+AR MARKER
+```
+
+Do NOT add:
+
+* new galleries
+* new artifacts
+* new AI features
+* voice input
+* new database
+* new authentication
+* new RAG features
+* new recommendation systems
+
+---
+
+# 43. FINAL EXPECTED AR EXPERIENCE
+
+The final experience should feel like:
+
+```text
+             OPEN AR
+                ↓
+          Camera appears
+                ↓
+       Detect surface quickly
+                ↓
+         🟡 Marker appears
+                ↓
+           Tap to place
+                ↓
+         3D artifact appears
+                ↓
+       ┌────────┼────────┐
+       ↓        ↓        ↓
+     Rotate   Scale     Move
+       │        │        │
+       └────────┼────────┘
+                ↓
+          🤖 AI Curator
+                ↓
+          Ask question
+                ↓
+        RAG + Grok answer
+                ↓
+             🔊 Voice
+```
+
+The experience should feel continuous rather than:
+
+```text
+tap
+ ↓
+wait
+ ↓
+freeze
+ ↓
+load
+ ↓
+wait
+ ↓
+marker
+ ↓
+artifact
+```
+
+---
+
+# 44. FINAL REPORT
+
+After completing the optimization, provide:
+
+### Performance findings
+
+* Main bottlenecks discovered
+* What caused the lag
+* What caused marker delay
+
+### Changes
+
+* Files modified
+* GLB optimizations
+* texture optimizations
+* render optimizations
+* React optimization
+* AR loop optimization
+* marker optimization
+* caching/preloading changes
+
+### Measurements
+
+Before vs after, if measurable:
+
+```text
+                 Before       After
+Initial AR       ___ ms       ___ ms
+Marker           ___ ms       ___ ms
+FPS              ___          ___
+Draw Calls       ___          ___
+Model Load       ___ ms       ___ ms
+```
+
+Do not invent measurements. Only report values that were actually measured.
+
+### Final verification
+
+Confirm:
+
+```text
+Desktop Museum       ✅
+AR Mode              ✅
+Instant Marker       ✅
+Rotate               ✅
+Scale                ✅
+Move                 ✅
+AI Curator           ✅
+Voice Output         ✅
+No major regression  ✅
+```
+
+The primary success criterion is:
+
+> **The museum and AR mode should feel smooth and responsive, with the yellow AR placement marker appearing immediately when a valid surface is detected.**

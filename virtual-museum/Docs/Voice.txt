@@ -1,0 +1,924 @@
+# PHASE 1 — AI CURATOR VOICE OUTPUT (TEXT-TO-SPEECH)
+
+## OBJECTIVE
+
+Add a **voice output feature** to the existing AI Curator.
+
+When the AI Curator generates an answer, the user should be able to press:
+
+> 🔊 Listen
+
+and hear the AI Curator's answer spoken aloud.
+
+This must work in:
+
+1. 🖥️ Laptop/Desktop Virtual Museum
+2. 📱 Phone AR Mode
+
+The existing RAG, Grok, artifact selection, confidence gate, source/evidence, memory, and AR functionality are already working.
+
+**DO NOT rebuild those systems.**
+
+This phase is ONLY:
+
+> **AI-generated text → browser Text-to-Speech → spoken curator answer**
+
+Do NOT implement microphone input or speech-to-text in this phase.
+
+---
+
+# 1. AUDIT THE EXISTING PROJECT FIRST
+
+Before modifying anything, inspect the current implementation.
+
+Find:
+
+### Frontend
+
+* AI Curator component
+* Laptop AI Curator UI
+* AR AI Curator UI
+* Existing answer rendering
+* Loading state
+* Source/evidence section
+* Current artifact state
+* Any existing audio/voice functionality
+
+### Backend
+
+Do not modify the RAG pipeline unless absolutely necessary.
+
+The backend already returns something similar to:
+
+```json
+{
+  "answer": "...",
+  "source": {
+    "artifact": "...",
+    "gallery": "..."
+  },
+  "confidence": 0.82,
+  "evidence": "...",
+  "refused": false
+}
+```
+
+Use the existing `answer` field.
+
+---
+
+# 2. USE BROWSER TEXT-TO-SPEECH
+
+For Phase 1, use the browser's native:
+
+```js
+window.speechSynthesis
+```
+
+and:
+
+```js
+SpeechSynthesisUtterance
+```
+
+Do NOT add an external paid TTS API.
+
+Do NOT add ElevenLabs.
+
+Do NOT add another AI API.
+
+Do NOT add a backend `/tts` endpoint.
+
+The architecture should be:
+
+```text
+Grok
+  ↓
+Existing RAG Answer
+  ↓
+Frontend receives answer
+  ↓
+User presses 🔊 Listen
+  ↓
+SpeechSynthesis
+  ↓
+Curator speaks
+```
+
+This keeps Phase 1 free and simple.
+
+---
+
+# 3. CREATE A REUSABLE TTS UTILITY
+
+Create a reusable frontend utility rather than duplicating speech code inside every component.
+
+For example:
+
+```text
+lib/voice/
+└── textToSpeech.js
+```
+
+Use the project's existing folder conventions if a better location already exists.
+
+The utility should provide functionality similar to:
+
+```js
+speakText(text)
+stopSpeaking()
+pauseSpeaking()
+resumeSpeaking()
+isSpeaking()
+```
+
+Do not blindly use these exact names if the existing architecture suggests better names.
+
+---
+
+# 4. BASIC SPEECH FUNCTION
+
+The implementation should:
+
+1. Check whether `window.speechSynthesis` is available.
+2. Stop any previous speech.
+3. Create a `SpeechSynthesisUtterance`.
+4. Set the answer text.
+5. Select an appropriate voice if available.
+6. Speak the answer.
+
+Conceptually:
+
+```js
+const utterance = new SpeechSynthesisUtterance(text);
+
+utterance.rate = 0.95;
+utterance.pitch = 1;
+utterance.volume = 1;
+
+window.speechSynthesis.cancel();
+window.speechSynthesis.speak(utterance);
+```
+
+Do not hardcode a voice name because available voices vary by browser/device.
+
+---
+
+# 5. ADD LISTEN BUTTON TO AI CURATOR
+
+After an AI answer is displayed, add:
+
+```text
+🔊 Listen
+```
+
+Example:
+
+```text
+┌──────────────────────────────┐
+│ 🤖 AI Curator                │
+│                              │
+│ This artifact is a Morse-    │
+│ Vail Telegraph Key...        │
+│                              │
+│ 🔊 Listen                    │
+│                              │
+│ Source: Morse-Vail...        │
+└──────────────────────────────┘
+```
+
+The button should only appear when there is an actual answer.
+
+Do not show it during loading.
+
+---
+
+# 6. LISTEN BUTTON BEHAVIOR
+
+When the user presses:
+
+```text
+🔊 Listen
+```
+
+the answer should start playing.
+
+Change the UI while speaking.
+
+For example:
+
+```text
+🔊 Listening...
+```
+
+or:
+
+```text
+⏹ Stop
+```
+
+Prefer providing a clear stop control.
+
+Example:
+
+```text
+🔊 Playing
+[Stop]
+```
+
+Do not allow multiple copies of the same answer to play simultaneously.
+
+Before starting new speech:
+
+```js
+speechSynthesis.cancel();
+```
+
+---
+
+# 7. STOP BUTTON
+
+When speech is playing, allow the user to stop it.
+
+Example:
+
+```text
+⏹ Stop
+```
+
+Clicking Stop should immediately call:
+
+```js
+window.speechSynthesis.cancel();
+```
+
+and return the UI to:
+
+```text
+🔊 Listen
+```
+
+---
+
+# 8. HANDLE NEW ANSWERS
+
+If the user asks another question while the previous answer is being spoken:
+
+```text
+Old answer
+   ↓
+User asks new question
+   ↓
+Stop old speech
+   ↓
+New RAG request
+   ↓
+New answer
+```
+
+Never allow old and new answers to speak simultaneously.
+
+---
+
+# 9. IMPORTANT — AR MODE
+
+The same feature MUST work in the phone AR curator.
+
+Example:
+
+```text
+📱 AR Camera
+     ↓
+🗿 Placed Artifact
+     ↓
+🤖 AI Curator
+     ↓
+"What is this?"
+     ↓
+AI answer appears
+     ↓
+🔊 Listen
+     ↓
+Phone speaks answer
+```
+
+Do not create a separate AR TTS implementation.
+
+Reuse the same `textToSpeech` utility.
+
+Architecture:
+
+```text
+                 TTS Utility
+                    │
+          ┌─────────┴─────────┐
+          ↓                   ↓
+   Laptop Curator         AR Curator
+          ↓                   ↓
+       🔊 Listen            🔊 Listen
+```
+
+---
+
+# 10. MOBILE UI
+
+The AR voice button must be touch-friendly.
+
+Minimum target:
+
+```text
+44px × 44px
+```
+
+Prefer:
+
+```text
+🔊 Listen
+```
+
+rather than an icon-only button on small screens.
+
+However, if the existing AR toolbar is icon-based, an icon can be used with an accessible label.
+
+Example:
+
+```text
+🔊
+Listen
+```
+
+or:
+
+```text
+🔊 Listen
+```
+
+Do not cover the AR artifact unnecessarily.
+
+---
+
+# 11. HANDLE BROWSER SUPPORT
+
+Not every browser/device may support speech synthesis.
+
+Check:
+
+```js
+"speechSynthesis" in window
+```
+
+If unsupported, show:
+
+> Voice playback is not supported on this browser.
+
+Do not crash the curator.
+
+The text answer must continue working normally.
+
+---
+
+# 12. HANDLE MOBILE BROWSER RESTRICTIONS
+
+Speech must be initiated by a user interaction such as:
+
+```text
+Tap "Listen"
+```
+
+Do NOT automatically start speech when the answer arrives.
+
+Do NOT call speech synthesis automatically after a network response.
+
+The user must explicitly press:
+
+```text
+🔊 Listen
+```
+
+This is important for mobile browser autoplay restrictions.
+
+---
+
+# 13. LANGUAGE / VOICE SELECTION
+
+Initially use the browser's default English voice.
+
+Do NOT build a complicated voice-selection system in Phase 1.
+
+However, structure the utility so it can later support:
+
+```text
+language
+voice
+rate
+pitch
+volume
+```
+
+For example:
+
+```js
+speakText(text, {
+  rate: 0.95,
+  pitch: 1,
+  volume: 1
+});
+```
+
+Do not expose unnecessary settings in the UI yet.
+
+---
+
+# 14. SPEECH SETTINGS
+
+Use natural museum-guide speech.
+
+Recommended initial settings:
+
+```text
+Rate: 0.9–1.0
+Pitch: 1
+Volume: 1
+```
+
+Avoid robotic or extremely fast speech.
+
+Do not modify the actual AI answer text just for speech.
+
+The spoken text should correspond to the displayed answer.
+
+---
+
+# 15. DO NOT SPEAK SOURCE/EVIDENCE AUTOMATICALLY
+
+If the response contains:
+
+```text
+Answer
+Source
+Evidence
+Confidence
+```
+
+the default spoken content should be ONLY:
+
+```text
+answer
+```
+
+Do not automatically speak:
+
+```text
+Source: Morse-Vail Telegraph Key
+Confidence: 82 percent
+Evidence: ...
+```
+
+The user is listening to the curator explanation, not the UI metadata.
+
+---
+
+# 16. REFUSED ANSWERS
+
+If the AI returns:
+
+```json
+{
+  "answer": "This information is not available in the curated museum knowledge base.",
+  "refused": true
+}
+```
+
+the Listen button may still speak the refusal.
+
+Example:
+
+```text
+🤖 This information is not available...
+🔊 Listen
+```
+
+Do not attempt to generate a different answer.
+
+---
+
+# 17. EMPTY ANSWER HANDLING
+
+If:
+
+```js
+answer === null
+```
+
+or:
+
+```js
+answer === ""
+```
+
+do not show the Listen button.
+
+If somehow triggered programmatically, safely return without speaking.
+
+---
+
+# 18. COMPONENT LIFECYCLE
+
+When the AI Curator component closes/unmounts:
+
+stop active speech.
+
+For example:
+
+```text
+Close curator
+   ↓
+Stop speech
+   ↓
+Unmount panel
+```
+
+Do not allow audio to continue unexpectedly after the curator is closed.
+
+Also stop speech when:
+
+* changing artifact
+* leaving AR mode
+* navigating away from the museum
+* starting a new curator request
+
+where appropriate.
+
+---
+
+# 19. ACCESSIBILITY
+
+The Listen control should have an accessible label.
+
+For example:
+
+```html
+<button aria-label="Listen to AI Curator answer">
+  🔊 Listen
+</button>
+```
+
+When playing:
+
+```html
+<button aria-label="Stop AI Curator speech">
+  ⏹ Stop
+</button>
+```
+
+Use `aria-live` appropriately for state changes if the existing UI already uses it.
+
+Do not rely only on color to indicate playing state.
+
+---
+
+# 20. ERROR HANDLING
+
+If speech synthesis throws an error:
+
+Do NOT break the AI Curator.
+
+Show a small message:
+
+> Unable to play voice. You can still read the answer above.
+
+The text answer must remain visible.
+
+Do not expose browser stack traces.
+
+---
+
+# 21. DO NOT CHANGE THE RAG PIPELINE
+
+This feature must NOT modify:
+
+* embeddings
+* retrieval
+* threshold
+* confidence calculation
+* Grok prompt
+* artifact knowledge
+* session memory
+* recommendations
+* `/ask` request format
+* `/ask` response format
+
+Unless absolutely required for integration.
+
+The current architecture should remain:
+
+```text
+Question
+   ↓
+/ask
+   ↓
+RAG
+   ↓
+Confidence Gate
+   ↓
+Grok
+   ↓
+Answer
+   ↓
+Frontend
+   ↓
+🔊 Text-to-Speech
+```
+
+---
+
+# 22. TEST LAPTOP MODE
+
+Test:
+
+### Test 1
+
+Select an artifact.
+
+Ask:
+
+```text
+What is this?
+```
+
+Expected:
+
+```text
+AI answer appears
+       ↓
+🔊 Listen button
+       ↓
+Click
+       ↓
+Answer is spoken
+```
+
+### Test 2
+
+Press Listen twice.
+
+Expected:
+
+```text
+Only one speech instance
+```
+
+No overlapping voices.
+
+### Test 3
+
+Press Stop.
+
+Expected:
+
+```text
+Speech immediately stops
+```
+
+---
+
+# 23. TEST AR MODE
+
+On a phone:
+
+```text
+Open AR
+   ↓
+Place artifact
+   ↓
+AI Curator
+   ↓
+What is this?
+   ↓
+Answer
+   ↓
+🔊 Listen
+```
+
+The phone should speak the answer.
+
+Verify that:
+
+* AR scene remains active
+* artifact remains placed
+* curator remains functional
+* speech works
+* Stop works
+* closing curator stops speech
+
+---
+
+# 24. TEST NEW QUESTION WHILE SPEAKING
+
+1. Ask:
+
+```text
+What is this?
+```
+
+2. Press Listen.
+
+3. While speaking, ask another question.
+
+Expected:
+
+```text
+Old speech stops
+       ↓
+New answer arrives
+       ↓
+New Listen button
+```
+
+No overlapping speech.
+
+---
+
+# 25. TEST REFUSAL
+
+Ask:
+
+```text
+What is the weather today?
+```
+
+If refused:
+
+```text
+This information is not available...
+```
+
+The Listen button should speak exactly that refusal if the user presses it.
+
+---
+
+# 26. TEST UNSUPPORTED BROWSER
+
+Simulate/verify a browser where:
+
+```js
+window.speechSynthesis
+```
+
+is unavailable.
+
+Expected:
+
+```text
+AI answer still works.
+
+Voice:
+Not supported on this browser.
+```
+
+The entire curator must not crash.
+
+---
+
+# 27. UI CONSISTENCY
+
+Match the existing museum design.
+
+Do NOT redesign:
+
+* AI Curator
+* AR UI
+* museum UI
+* artifact cards
+
+Only add the necessary voice controls.
+
+The desktop and mobile experience should feel like the same product.
+
+---
+
+# 28. FINAL EXPECTED EXPERIENCE
+
+### Laptop
+
+```text
+3D Artifact
+    ↓
+Ask AI Curator
+    ↓
+Answer
+    ↓
+🔊 Listen
+    ↓
+Curator speaks
+```
+
+### Phone AR
+
+```text
+AR Camera
+    ↓
+Place Artifact
+    ↓
+🤖 AI Curator
+    ↓
+Ask question
+    ↓
+Answer
+    ↓
+🔊 Listen
+    ↓
+Phone speaks
+```
+
+---
+
+# 29. FUTURE-PHASE COMPATIBILITY
+
+Do NOT implement these now:
+
+* 🎤 microphone input
+* speech-to-text
+* continuous conversation
+* wake word
+* voice activity detection
+* external TTS API
+* ElevenLabs
+* Whisper
+* real-time voice agent
+
+Those belong to a future phase.
+
+However, write the TTS utility cleanly enough that Phase 2 can later add:
+
+```text
+🎤 Voice Input
+      ↓
+Speech-to-Text
+      ↓
+Existing /ask
+      ↓
+RAG + Grok
+      ↓
+🔊 TTS
+```
+
+without rewriting the current system.
+
+---
+
+# 30. FINAL ACCEPTANCE CRITERIA
+
+The implementation is complete only when:
+
+### Desktop
+
+* AI Curator answer appears
+* 🔊 Listen button appears
+* Clicking Listen speaks the answer
+* Stop works
+* New answers stop previous speech
+* Closing curator stops speech
+
+### Mobile AR
+
+* Artifact can still be placed
+* Existing AR controls still work
+* AI Curator still works
+* Answer appears
+* 🔊 Listen works
+* Phone speaks the answer
+* Stop works
+* Closing curator stops speech
+
+### Architecture
+
+```text
+                 Existing RAG
+                     │
+                   Answer
+                     │
+             ┌───────┴────────┐
+             ↓                ↓
+        Laptop UI          AR UI
+             │                │
+             └───────┬────────┘
+                     ↓
+               TTS Utility
+                     ↓
+          Browser SpeechSynthesis
+```
+
+Do not create duplicate RAG, Grok, or backend systems.
+
+After implementation, provide a concise report:
+
+1. Files created/modified
+2. TTS utility location
+3. Desktop integration
+4. AR integration
+5. Browser compatibility
+6. Tests performed
+7. Any remaining limitations
+
+Do not implement voice input in this phase.

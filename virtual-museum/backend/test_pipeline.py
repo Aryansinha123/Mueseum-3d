@@ -34,7 +34,7 @@ assert r3["llm_called"] == True, "FAIL: LLM should be called for accepted query"
 assert r3["source"] is not None, "FAIL: source must be populated"
 assert r3["source"]["artifact"] == "Old Arrow Maker", f"FAIL: wrong artifact, got {r3['source']['artifact']}"
 print(f"TEST 3 PASS: 'What is this?' + ART001 | score={r3['confidence']:.4f} | source={r3['source']['artifact']}")
-print(f"  Answer: {r3['answer'][:100]}...")
+print(f"  Answer: {r3['answer'][:100].encode('ascii', 'replace').decode('ascii')}...")
 
 # Test 4: "Tell me about this artifact" with ART006
 r4 = answer_question("Tell me about this artifact", artifact_id="ART006", session_id="test-session-2")

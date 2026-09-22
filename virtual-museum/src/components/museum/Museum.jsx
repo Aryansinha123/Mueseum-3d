@@ -41,8 +41,6 @@ export function Museum({
   setIsPlaced,
   placedPosition,
   setPlacedPosition,
-  lastHitPosition,
-  setLastHitPosition,
   arScale,
   rotationY,
 }) {
@@ -77,19 +75,13 @@ export function Museum({
         gl={{
           antialias: true,
           alpha: true,
-          preserveDrawingBuffer: true,
+          preserveDrawingBuffer: false,
           powerPreference: "high-performance",
           stencil: false,
         }}
         onCreated={({ gl }) => {
           if (gl.xr) {
             gl.xr.enabled = true;
-          }
-          if (process.env.NODE_ENV !== "production") {
-            console.log("[R3F Canvas] WebGLRenderer initialized & WebXR connected:", {
-              renderer: gl,
-              xrManager: gl?.xr,
-            });
           }
           gl.domElement.addEventListener("webglcontextlost", (event) => {
             event.preventDefault();
@@ -109,8 +101,6 @@ export function Museum({
                 setIsPlaced={setIsPlaced}
                 placedPosition={placedPosition}
                 setPlacedPosition={setPlacedPosition}
-                lastHitPosition={lastHitPosition}
-                setLastHitPosition={setLastHitPosition}
                 arScale={arScale}
                 rotationY={rotationY}
               />

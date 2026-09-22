@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, Component, Suspense } from "react";
+import React, { useState, useRef, useEffect, Component, Suspense } from "react";
 import { useGLTF } from "@react-three/drei";
 import { AutoFitModel } from "../artifacts/AutoFitModel";
 import { ArtifactPlaceholder } from "../artifacts/ArtifactPlaceholder";
@@ -45,6 +45,13 @@ export function ARArtifact({
   onSelect,
 }) {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Preload GLB in Drei cache
+  useEffect(() => {
+    if (artifact?.modelPath && typeof useGLTF.preload === "function") {
+      useGLTF.preload(artifact.modelPath);
+    }
+  }, [artifact?.modelPath]);
 
   const placeholder = (
     <ArtifactPlaceholder

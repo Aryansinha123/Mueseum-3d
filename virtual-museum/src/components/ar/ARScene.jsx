@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useCallback } from "react";
 import { useXREvent } from "@react-three/xr";
 import { ARPlacementIndicator } from "./ARPlacementIndicator";
 import { ARArtifact } from "./ARArtifact";
@@ -13,27 +13,11 @@ export function ARScene({
   setIsPlaced,
   placedPosition,
   setPlacedPosition,
-  lastHitPosition,
-  setLastHitPosition,
   arScale,
   rotationY,
 }) {
-  const lastHitRef = useRef(lastHitPosition);
-
-  // Keep ref synchronized with state
-  useEffect(() => {
-    lastHitRef.current = lastHitPosition;
-  }, [lastHitPosition]);
-
-  const handleHitUpdate = useCallback(
-    (hitData) => {
-      if (!isPlaced && hitData && hitData.position) {
-        lastHitRef.current = hitData.position;
-        setLastHitPosition(hitData.position);
-      }
-    },
-    [isPlaced, setLastHitPosition]
-  );
+  // Real-time hit position tracked in a ref to avoid 60fps React re-renders
+  const lastHitRef = useRef([0, 0, 0]);
 
   const attemptPlacement = useCallback(() => {
     if (!isPlaced && lastHitRef.current) {
@@ -43,13 +27,11 @@ export function ARScene({
   }, [isPlaced, setPlacedPosition, setIsPlaced]);
 
   // Use @react-three/xr's useXREvent to listen for WebXR session 'select' events.
-  // This is the correct, reliable way to handle tap-to-place on mobile AR
-  // instead of polling window.__activeXRSession.
   useXREvent("select", () => {
     attemptPlacement();
   });
 
-  // Fallback: also handle R3F pointer events for testing/desktop
+  // Fallback: handle R3F pointer events for testing
   const handlePointerDown = (e) => {
     e.stopPropagation();
     attemptPlacement();
@@ -61,7 +43,7 @@ export function ARScene({
       <directionalLight position={[5, 10, 5]} intensity={1.8} />
       <ambientLight intensity={1.0} />
 
-      {/* Transparent Tap Receiver Plane (visible=true + opacity=0 ensures R3F raycasting catches touch taps) */}
+      {/* Transparent Tap Receiver Plane (active before placement) */}
       {!isPlaced && (
         <mesh
           rotation={[-Math.PI / 2, 0, 0]}
@@ -80,11 +62,11 @@ export function ARScene({
         </mesh>
       )}
 
-      {/* Surface Hit Test Reticle */}
+      {/* Instant Surface Hit Test Reticle */}
       {!isPlaced && (
         <ARPlacementIndicator
           active={!isPlaced}
-          onHitUpdate={handleHitUpdate}
+          lastHitRef={lastHitRef}
         />
       )}
 
@@ -102,3 +84,4 @@ export function ARScene({
     </group>
   );
 }
+

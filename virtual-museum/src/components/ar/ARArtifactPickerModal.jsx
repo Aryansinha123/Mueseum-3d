@@ -1,6 +1,5 @@
-"use client";
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useGLTF } from "@react-three/drei";
 import {
   X,
   Smartphone,
@@ -25,6 +24,15 @@ export function ARArtifactPickerModal({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
+  const activeArtifact = selectedArtifact || catalogArtifacts[0];
+
+  // Preload chosen artifact GLB ahead of entering AR
+  useEffect(() => {
+    if (isOpen && activeArtifact?.modelPath && typeof useGLTF.preload === "function") {
+      useGLTF.preload(activeArtifact.modelPath);
+    }
+  }, [isOpen, activeArtifact?.modelPath]);
+
   if (!isOpen) return null;
 
   // Filter artifacts by search query & category
@@ -44,8 +52,6 @@ export function ARArtifactPickerModal({
       art.category?.toLowerCase().includes(selectedCategory.toLowerCase());
     return matchesSearch && matchesCategory;
   });
-
-  const activeArtifact = selectedArtifact || catalogArtifacts[0];
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/80 backdrop-blur-md transition-all animate-fadeIn select-none">

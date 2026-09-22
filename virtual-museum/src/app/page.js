@@ -34,7 +34,6 @@ export default function Home() {
   const [isArMode, setIsArMode] = useState(false);
   const [isPlaced, setIsPlaced] = useState(false);
   const [placedPosition, setPlacedPosition] = useState(null);
-  const [lastHitPosition, setLastHitPosition] = useState(null);
   const [arScale, setArScale] = useState(1.0);
   const [rotationY, setRotationY] = useState(0);
   const [isInfoInArOpen, setIsInfoInArOpen] = useState(false);
@@ -178,8 +177,6 @@ export default function Home() {
         setIsPlaced={setIsPlaced}
         placedPosition={placedPosition}
         setPlacedPosition={setPlacedPosition}
-        lastHitPosition={lastHitPosition}
-        setLastHitPosition={setLastHitPosition}
         arScale={arScale}
         rotationY={rotationY}
       />
@@ -188,6 +185,7 @@ export default function Home() {
       {isArMode ? (
         <AROverlayUI
           selectedArtifact={selectedArtifact}
+          onSelectArtifact={setSelectedArtifact}
           isPlaced={isPlaced}
           arScale={arScale}
           setArScale={setArScale}
@@ -261,6 +259,7 @@ export default function Home() {
           artifact={selectedArtifact}
           onClose={() => setIsInfoInArOpen(false)}
           onExplore={() => setIsInfoInArOpen(false)}
+          onSelectArtifact={setSelectedArtifact}
         />
       )}
 

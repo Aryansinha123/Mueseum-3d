@@ -1,0 +1,1148 @@
+# Add AI Curator + RAG to Mobile AR Mode
+
+## IMPORTANT
+
+The laptop/desktop Virtual Museum is already working correctly.
+
+The existing system includes:
+
+* 3D museum environment
+* Space, History, and Natural History galleries
+* 3D GLB artifacts
+* Artifact selection
+* Rotate / zoom / interaction
+* FastAPI backend
+* RAG retrieval
+* Confidence/relevance threshold
+* Grok API
+* Grounded AI answers
+* Source/evidence display
+* Session memory
+* Related artifact recommendations
+* Refusal for out-of-scope questions
+
+DO NOT rebuild or replace the existing RAG system.
+
+DO NOT create a separate AR-specific RAG system.
+
+The goal of this task is:
+
+> **Make the exact same AI Curator + RAG system available inside Mobile AR Mode when an artifact has been placed in the real world.**
+
+The laptop museum must continue working exactly as it currently does.
+
+---
+
+# 1. FIRST AUDIT THE EXISTING PROJECT
+
+Before changing anything, inspect the entire existing project.
+
+Identify:
+
+### Frontend
+
+* Next.js structure
+* AR mode implementation
+* WebXR / AR library currently being used
+* AR artifact placement component
+* GLB loading component
+* artifact selection state
+* rotate controls
+* zoom/scale controls
+* move controls
+* existing AR toolbar
+* AI Curator components
+* API client
+* session ID handling
+
+### Backend
+
+Inspect:
+
+* `/ask`
+* `AskRequest`
+* RAG pipeline
+* embedding/retrieval code
+* confidence threshold
+* Grok integration
+* memory
+* recommendations
+* artifact JSON
+* source/evidence generation
+
+DO NOT assume variable names.
+
+Find the actual implementation and reuse it.
+
+---
+
+# 2. CORE REQUIREMENT
+
+When the user places an artifact in AR, that artifact must become the currently selected artifact.
+
+For example:
+
+```text
+User opens AR
+        ↓
+Selects / places Morse-Vail Telegraph Key
+        ↓
+AR scene contains ART003
+        ↓
+Current AR artifact = ART003
+        ↓
+User presses "AI Curator"
+        ↓
+Curator knows ART003 is being viewed
+```
+
+The artifact ID must come from the actual artifact data.
+
+Do not hardcode:
+
+```text
+ART003
+```
+
+Use the actual selected/placed artifact ID dynamically.
+
+---
+
+# 3. CONNECT AR ARTIFACT TO EXISTING SELECTED ARTIFACT STATE
+
+Find how the existing project represents an artifact.
+
+It may be something similar to:
+
+```js
+selectedArtifact
+```
+
+or:
+
+```js
+currentArtifact
+```
+
+or:
+
+```js
+placedArtifact
+```
+
+or another existing state.
+
+Reuse the existing architecture wherever possible.
+
+Do NOT create multiple competing artifact states unnecessarily.
+
+The AR mode should maintain:
+
+```js
+selectedArtifact
+```
+
+with at minimum:
+
+```js
+{
+  id,
+  name,
+  gallery,
+  description,
+  ...
+}
+```
+
+Use the real schema from:
+
+```text
+backend/data/artifacts.json
+```
+
+Do not assume field names.
+
+---
+
+# 4. ADD "AI CURATOR" BUTTON TO AR CONTROLS
+
+Find the existing AR controls.
+
+They currently have controls such as:
+
+```text
+Rotate
+Zoom
+Scale
+Move
+Reset
+```
+
+Add:
+
+```text
+🤖 AI Curator
+```
+
+The button must be:
+
+* clearly visible
+* touch-friendly
+* usable on mobile
+* approximately 44px or larger touch target
+* visually consistent with existing AR controls
+* positioned so it does not block the AR camera view
+* usable with one hand where practical
+
+Example:
+
+```text
+┌──────────────────────────────────┐
+│                                  │
+│          AR CAMERA               │
+│                                  │
+│             🗿                   │
+│                                  │
+│                                  │
+│  🔄 Rotate   🔍 Zoom   ↔ Move   │
+│                                  │
+│        🤖 Ask Curator            │
+└──────────────────────────────────┘
+```
+
+Do not redesign the entire AR UI.
+
+Integrate into the existing UI.
+
+---
+
+# 5. OPEN MOBILE AI CURATOR PANEL
+
+When the user presses:
+
+```text
+🤖 AI Curator
+```
+
+open a mobile-friendly panel/modal/bottom sheet.
+
+Prefer a bottom sheet on mobile.
+
+Example:
+
+```text
+┌─────────────────────────────┐
+│ 🤖 AI Curator          ✕    │
+├─────────────────────────────┤
+│                             │
+│ Morse-Vail Telegraph Key    │
+│ History Gallery             │
+│                             │
+│ Ask me about this artifact. │
+│                             │
+│ ┌─────────────────────────┐ │
+│ │ Ask a question...       │ │
+│ └─────────────────────────┘ │
+│                         ➤   │
+│                             │
+│ Quick Questions             │
+│                             │
+│ [What is this?]             │
+│ [Tell me more]              │
+│ [When was it created?]      │
+│ [What was it used for?]    │
+│                             │
+└─────────────────────────────┘
+```
+
+The panel must work on small phone screens.
+
+It must not destroy or reload the AR scene.
+
+The AR experience should remain underneath/behind the panel.
+
+---
+
+# 6. SEND THE AR ARTIFACT ID TO `/ask`
+
+This is the MOST IMPORTANT requirement.
+
+When the user asks:
+
+```text
+"What is this?"
+```
+
+the frontend must send something like:
+
+```json
+{
+  "session_id": "sess-123",
+  "question": "What is this?",
+  "artifact_id": "ART003",
+  "tone": "educational"
+}
+```
+
+The exact artifact ID must come from the currently placed AR artifact.
+
+NEVER send:
+
+```json
+"artifact_id": null
+```
+
+when an artifact has been successfully placed.
+
+NEVER send a fake ID.
+
+---
+
+# 7. REUSE THE EXISTING API CLIENT
+
+If the project already has something like:
+
+```text
+lib/api/curator.js
+```
+
+or:
+
+```text
+askCurator()
+```
+
+reuse it.
+
+Do not create a duplicate `/ask` implementation.
+
+The AR curator should call the same API:
+
+```text
+POST /ask
+```
+
+used by the desktop museum.
+
+Architecture:
+
+```text
+                  AI CURATOR
+                      │
+             ┌────────┴────────┐
+             │                 │
+       Laptop Museum        AR Mode
+             │                 │
+             └────────┬────────┘
+                      ↓
+                  POST /ask
+                      ↓
+                 FastAPI RAG
+                      ↓
+             Confidence Gate
+                      ↓
+                   Grok
+```
+
+---
+
+# 8. BACKEND SHOULD REQUIRE NO NEW RAG SYSTEM
+
+Do NOT create:
+
+```text
+ar_rag.py
+ar_embeddings.py
+ar_retrieval.py
+```
+
+unless absolutely necessary.
+
+The existing RAG pipeline should handle both interfaces.
+
+The backend should receive:
+
+```json
+{
+  "session_id": "...",
+  "question": "...",
+  "artifact_id": "...",
+  "tone": "educational"
+}
+```
+
+and process the artifact context exactly as it already does for the laptop museum.
+
+---
+
+# 9. CONTEXTUAL QUESTIONS MUST WORK
+
+When a valid `artifact_id` is supplied, questions such as:
+
+```text
+What is this?
+Tell me about this.
+What am I looking at?
+What is this artifact?
+Tell me more about it.
+Why is this important?
+What is it made of?
+When was it created?
+Where is it from?
+What was it used for?
+```
+
+should be interpreted in the context of the selected AR artifact.
+
+For example:
+
+```text
+AR artifact = ART003
+Question = "What is this?"
+```
+
+should NOT perform a generic semantic search for the phrase:
+
+```text
+"What is this?"
+```
+
+Instead:
+
+```text
+artifact_id = ART003
+        ↓
+resolve ART003
+        ↓
+retrieve artifact knowledge
+        ↓
+ground Grok answer in ART003
+```
+
+---
+
+# 10. DO NOT BYPASS THE RELEVANCE GATE
+
+Important:
+
+Having an artifact selected does NOT mean every question should be answered.
+
+For example:
+
+```text
+Artifact = Morse-Vail Telegraph Key
+
+Question:
+"What is the weather today?"
+```
+
+must still be rejected if weather information is not in the curated knowledge base.
+
+The selected artifact is contextual information.
+
+It is NOT permission to answer unrelated questions.
+
+Maintain the existing confidence/relevance/refusal logic.
+
+---
+
+# 11. REFUSAL MUST WORK IN AR
+
+For an unrelated question:
+
+```text
+What is the weather today?
+```
+
+the AR curator should show:
+
+> This information is not available in the curated museum knowledge base.
+
+The response should still contain the existing fields:
+
+```json
+{
+  "answer": "This information is not available in the curated museum knowledge base.",
+  "source": null,
+  "confidence": 0.21,
+  "evidence": null,
+  "refused": true
+}
+```
+
+Do not call Grok when the existing gate says the query should be refused.
+
+---
+
+# 12. DISPLAY SOURCE AND EVIDENCE IN AR
+
+The mobile curator should not only show the generated answer.
+
+Also display:
+
+```text
+Source
+Morse-Vail Telegraph Key
+```
+
+and optionally:
+
+```text
+Evidence
+[relevant grounded artifact information]
+```
+
+Example:
+
+```text
+🤖 AI Curator
+
+This artifact is a Morse-Vail Telegraph Key...
+
+────────────────────
+
+Source
+Morse-Vail Telegraph Key
+History Gallery
+
+Evidence
+The artifact was used for...
+```
+
+Keep this compact for mobile.
+
+The user should be able to expand/collapse evidence if necessary.
+
+---
+
+# 13. DISPLAY CONFIDENCE
+
+If the existing backend returns:
+
+```json
+"confidence": 0.82
+```
+
+display it in a subtle way.
+
+For example:
+
+```text
+Grounding confidence: 82%
+```
+
+or:
+
+```text
+✓ Strongly grounded
+```
+
+Do not call it:
+
+```text
+82% probability
+```
+
+It is a retrieval similarity/relevance score.
+
+Use terminology such as:
+
+```text
+Retrieval confidence
+```
+
+or:
+
+```text
+Grounding confidence
+```
+
+consistent with the existing project.
+
+---
+
+# 14. QUICK QUESTIONS
+
+Add quick-question buttons to the AR curator.
+
+At minimum:
+
+```text
+What is this?
+Tell me more
+When was it created?
+What was it used for?
+Why is it important?
+```
+
+Clicking one should immediately send the question.
+
+For example:
+
+```text
+[What is this?]
+```
+
+should internally trigger:
+
+```js
+askCurator("What is this?", selectedArtifact.id)
+```
+
+Do not require the user to manually type it.
+
+---
+
+# 15. FOLLOW-UP QUESTIONS / SESSION MEMORY
+
+The AR curator must use the SAME session system as the laptop curator.
+
+Example:
+
+User:
+
+```text
+What is this?
+```
+
+AI:
+
+```text
+This is the Morse-Vail Telegraph Key...
+```
+
+User:
+
+```text
+When was it created?
+```
+
+The system should understand that:
+
+```text
+"it"
+```
+
+refers to the currently discussed artifact.
+
+Do not create separate AR memory.
+
+Use the existing:
+
+```text
+session_id
+```
+
+system.
+
+---
+
+# 16. TONE SELECTOR
+
+If the existing AI Curator has:
+
+```text
+Educational
+Concise
+Friendly
+```
+
+keep the same selector in AR.
+
+Example:
+
+```text
+Tone:
+[Educational ▼]
+```
+
+The selected tone must be sent to:
+
+```json
+{
+  "tone": "educational"
+}
+```
+
+Use the existing backend behavior.
+
+---
+
+# 17. RELATED ARTIFACTS
+
+If the backend already returns:
+
+```text
+related_suggestions
+```
+
+display them inside the AR curator.
+
+Example:
+
+```text
+You might also like
+
+┌─────────────────────┐
+│ Telegraph Receiver  │
+│ History             │
+│ [View in AR]        │
+└─────────────────────┘
+```
+
+Add:
+
+```text
+View in AR
+```
+
+or:
+
+```text
+Place in AR
+```
+
+If technically practical, clicking it should:
+
+1. close the curator
+2. load/select the recommended artifact
+3. replace the current AR artifact OR prepare it for placement
+4. update `selectedArtifact`
+5. allow the user to ask the curator about the new artifact
+
+Do not break the existing AR placement workflow.
+
+---
+
+# 18. LOADING STATE
+
+When asking the curator:
+
+```text
+🤖 Thinking...
+```
+
+or:
+
+```text
+Analyzing artifact...
+```
+
+Show a clear loading state.
+
+Disable duplicate submissions while the request is processing.
+
+Do not freeze the entire AR interface.
+
+---
+
+# 19. ERROR HANDLING
+
+If the backend is unavailable:
+
+```text
+Unable to connect to the AI Curator.
+Please try again.
+```
+
+If the question fails:
+
+```text
+Something went wrong while getting the answer.
+```
+
+Do not expose:
+
+* API keys
+* stack traces
+* internal server errors
+* Grok credentials
+* backend implementation details
+
+---
+
+# 20. MOBILE RESPONSIVENESS
+
+This feature is primarily for phone AR.
+
+Test at:
+
+```text
+320px
+375px
+390px
+412px
+430px
+```
+
+The curator panel must:
+
+* fit the screen
+* not overflow horizontally
+* have readable text
+* have large touch targets
+* support keyboard input
+* remain usable when the mobile keyboard opens
+* not cover essential AR controls unnecessarily
+
+Avoid desktop-only layouts.
+
+---
+
+# 21. CAMERA / AR PERFORMANCE
+
+Do not unnecessarily re-render or reload the AR scene when:
+
+* opening curator
+* closing curator
+* submitting a question
+* receiving an answer
+
+The placed GLB should remain stable.
+
+The camera/session should remain stable whenever technically possible.
+
+Do not restart WebXR just because the curator panel opened.
+
+---
+
+# 22. DO NOT DUPLICATE ARTIFACT DATA
+
+The AR mode should use the same artifact metadata used by the museum.
+
+Do not create another:
+
+```text
+arArtifacts.json
+```
+
+or duplicate artifact descriptions.
+
+Single source of truth:
+
+```text
+backend/data/artifacts.json
+```
+
+or the existing project's artifact data source.
+
+---
+
+# 23. DEBUG LOGGING
+
+During implementation, temporarily add logs.
+
+Frontend:
+
+```text
+[AR CURATOR]
+Placed artifact:
+ART003
+
+[AR CURATOR]
+Artifact name:
+Morse-Vail Telegraph Key
+
+[AR CURATOR]
+Question:
+What is this?
+
+[AR CURATOR]
+Request:
+{
+  artifact_id: "ART003",
+  ...
+}
+```
+
+Backend:
+
+```text
+[AR ASK]
+Session:
+sess-xxxx
+
+[AR ASK]
+Artifact ID:
+ART003
+
+[AR ASK]
+Question:
+What is this?
+```
+
+These logs are for debugging only.
+
+Remove excessive production logs after confirming the feature works.
+
+---
+
+# 24. IMPORTANT TEST
+
+Perform this exact test.
+
+### Test 1 — AR artifact identification
+
+1. Open the website on a phone.
+2. Enter AR mode.
+3. Place a known artifact.
+4. Open AI Curator.
+5. Press:
+
+```text
+What is this?
+```
+
+Verify the request contains:
+
+```json
+"artifact_id": "<actual placed artifact ID>"
+```
+
+NOT:
+
+```json
+"artifact_id": null
+```
+
+The answer must describe the placed artifact.
+
+---
+
+# 25. TEST 2 — Follow-up
+
+Ask:
+
+```text
+What is this?
+```
+
+Then:
+
+```text
+When was it created?
+```
+
+Verify the system understands the same artifact.
+
+---
+
+# 26. TEST 3 — Out-of-scope question
+
+With an artifact placed, ask:
+
+```text
+What is the weather today?
+```
+
+Expected:
+
+```text
+This information is not available in the curated museum knowledge base.
+```
+
+Verify Grok is NOT called if the relevance gate rejects it.
+
+---
+
+# 27. TEST 4 — Change artifact
+
+Place Artifact A.
+
+Ask:
+
+```text
+What is this?
+```
+
+Then replace/select Artifact B.
+
+Ask:
+
+```text
+What is this?
+```
+
+The second answer MUST describe Artifact B.
+
+This is critical.
+
+---
+
+# 28. TEST 5 — Laptop Regression
+
+After implementing AR Curator, verify that the existing laptop museum still works:
+
+* gallery navigation
+* artifact loading
+* artifact selection
+* rotate
+* zoom
+* AI Curator
+* RAG
+* confidence gate
+* refusal
+* source
+* evidence
+* memory
+* recommendations
+
+Do not accept the implementation if AR works but laptop functionality breaks.
+
+---
+
+# 29. FINAL ARCHITECTURE
+
+The final architecture should be:
+
+```text
+                       USER
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+          LAPTOP MODE            PHONE MODE
+              │                     │
+        Virtual Museum           AR Camera
+              │                     │
+        Select Artifact          Place Artifact
+              │                     │
+              └──────────┬──────────┘
+                         │
+                  selectedArtifact
+                         │
+                         ↓
+                   AI CURATOR UI
+                         │
+                         ↓
+                     POST /ask
+                         │
+                         ↓
+                  FastAPI Backend
+                         │
+                         ↓
+                   RAG Retrieval
+                         │
+                         ↓
+                 Relevance Threshold
+                    /           \
+                   /             \
+              Relevant          Irrelevant
+                 ↓                  ↓
+              Grok              REFUSE
+                 ↓
+        Grounded Answer
+                 │
+        ┌────────┼─────────┐
+        ↓        ↓         ↓
+      Source   Evidence   Confidence
+                 │
+                 ↓
+       Related Artifacts
+                 │
+                 ↓
+        Laptop / AR UI
+```
+
+---
+
+# 30. DO NOT DO THESE THINGS
+
+Do NOT:
+
+* create a second RAG system
+* create a second Grok integration
+* create separate artifact knowledge
+* hardcode ART003
+* bypass the relevance threshold
+* expose the Grok API key
+* put `XAI_API_KEY` in `NEXT_PUBLIC_*`
+* create a separate AR backend
+* duplicate `/ask`
+* break existing laptop functionality
+* rebuild the existing museum
+* replace the current AR implementation
+* remove existing rotate/zoom/move controls
+* add unrelated features
+* implement Phase 5 evaluation yet
+
+---
+
+# 31. FINAL ACCEPTANCE CRITERIA
+
+The implementation is complete only when:
+
+### Laptop
+
+```text
+3D Museum
+   ↓
+Select artifact
+   ↓
+AI Curator
+   ↓
+RAG
+   ↓
+Grounded answer
+```
+
+works exactly as before.
+
+### Phone
+
+```text
+Open AR
+   ↓
+Place artifact
+   ↓
+Artifact becomes selectedArtifact
+   ↓
+🤖 AI Curator button
+   ↓
+"What is this?"
+   ↓
+artifact_id correctly sent
+   ↓
+same FastAPI /ask
+   ↓
+same RAG
+   ↓
+same confidence gate
+   ↓
+same Grok
+   ↓
+answer + source + evidence
+```
+
+works end-to-end.
+
+### Most important verification
+
+When an AR artifact is placed:
+
+```text
+selectedArtifact.id
+        ↓
+AI Curator
+        ↓
+request.artifact_id
+        ↓
+FastAPI
+        ↓
+RAG
+        ↓
+Grok
+```
+
+must contain the SAME artifact ID throughout the entire pipeline.
+
+After implementation, provide a concise report containing:
+
+1. Files changed
+2. Components changed
+3. How AR artifact ID is propagated
+4. How `/ask` is reused
+5. How mobile curator UI works
+6. Tests performed
+7. Any remaining issues
+
+Do not implement anything beyond this scope until this feature is fully working.

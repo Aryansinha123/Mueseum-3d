@@ -48,17 +48,80 @@ CONTEXTUAL_TRIGGER_PHRASES = {
     "what am i looking at", "explain this", "explain it", "what is this artifact",
     "tell me more", "tell me more about this", "tell me more about it",
     "what is this thing", "describe this", "describe it", "what does this do",
-    "who made this", "when was it made", "when was it created", "how old is this",
-    "how old is it", "what is it made of", "what material is this",
-    "where is it from", "where does this come from", "what period is this from",
+    "what does it do", "who made this", "who made it", "who created this",
+    "who created it", "who designed this", "who designed it", "who built this",
+    "who built it", "when was it made", "when was it created", "when was this made",
+    "when was this created", "when was this built", "when was it built",
+    "how old is this", "how old is it", "what is it made of", "what is this made of",
+    "what material is this", "what material is it", "what materials were used",
+    "what is this crafted from", "where is it from", "where does this come from",
+    "where did it come from", "where was this found", "where was it found",
+    "where was this made", "where was it made", "what period is this from",
+    "what period is it from", "which period is this", "which era is this from",
+    "what era is this", "what was it used for", "what was this used for",
+    "what is it used for", "what is this used for", "why is it important",
+    "why is this important", "why is it significant", "why is this significant",
+    "why is this in the museum", "why is it in the museum", "what makes it special",
+    "what makes this special", "tell me a fun fact", "tell me a fun fact about this",
+    "tell me a fun fact about it", "who discovered it", "who discovered this",
+    "how was it found", "how was this found", "how big is it", "how big is this",
+    "how heavy is it", "how heavy is this", "what are its dimensions",
+    "what are the dimensions", "what is its size", "what is its story",
+    "tell me its story", "tell me its history", "tell me the history",
+    "can you explain this exhibit", "tell me about this exhibit", "give me an overview",
+    "tell me about this artifact", "tell me about this piece", "tell me about this object",
+    "what is the significance of this", "what is the significance of it",
+    "what is the history behind this", "what is the history behind it",
+    "who used this", "who used it", "is this authentic", "is this real",
+}
+
+OUT_OF_SCOPE_KEYWORDS = {
+    "weather", "forecast", "temperature", "rain", "snow", "math", "calculate",
+    "multiply", "divide", "times", "plus", "minus", "stock", "stocks", "crypto",
+    "bitcoin", "president", "prime minister", "election", "movie", "song", "lyrics",
+    "recipe", "cook", "joke", "sports", "football", "basketball", "soccer", "cricket",
+    "score", "flight", "hotel", "restaurant", "hospital", "doctor", "medicine",
+    "symptom", "pizza", "burger", "coffee", "beer", "code", "python", "javascript",
+    "programming", "translate", "currency", "dollar", "euro", "rupee", "salary",
+    "job", "career",
+}
+
+ARTIFACT_ASPECT_KEYWORDS = {
+    "this", "it", "its", "that", "these", "artifact", "exhibit", "piece",
+    "object", "model", "sculpture", "fossil", "specimen", "collection", "museum",
 }
 
 
 def _is_contextual_phrase(question: str) -> bool:
-    """Returns True if the question is a short contextual phrase that refers
-    to the currently selected artifact rather than expressing domain-specific content."""
-    q = question.strip().lower().rstrip("?.!")
-    return q in CONTEXTUAL_TRIGGER_PHRASES or len(question.strip().split()) <= 5
+    """Returns True if the question is a contextual reference to the currently selected artifact.
+    Rejects questions containing clear out-of-scope domain keywords (e.g. weather, math, stocks)."""
+    q = question.strip().lower().rstrip("?.!,:;")
+    
+    # 1. Exact match against known contextual trigger phrases
+    if q in CONTEXTUAL_TRIGGER_PHRASES:
+        return True
+        
+    words = set(q.split())
+    
+    # 2. Check for out-of-scope intrusion
+    if words.intersection(OUT_OF_SCOPE_KEYWORDS):
+        return False
+        
+    # 3. Check for demonstrative reference + question inquiry pattern
+    has_artifact_ref = bool(words.intersection(ARTIFACT_ASPECT_KEYWORDS))
+    if has_artifact_ref and len(words) <= 12:
+        # Inquiry terms for artifact properties
+        inquiry_terms = {
+            "what", "who", "when", "where", "why", "how", "tell", "explain",
+            "describe", "show", "is", "was", "are", "were", "made", "used", "created",
+            "origin", "material", "history", "age", "period", "function", "significance",
+            "dimensions", "size", "weight", "creator", "artist", "date", "found",
+            "purpose", "meaning", "craft", "built", "designed", "about", "context"
+        }
+        if len(words.intersection(inquiry_terms)) >= 1:
+            return True
+            
+    return False
 
 
 class Phase3RAGPipeline:
