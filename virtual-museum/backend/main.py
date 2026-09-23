@@ -192,3 +192,11 @@ def ask_curator_endpoint(payload: AskRequest):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error occurred while processing your query. Please try again.",
         )
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    print(f"[STARTUP] Launching Uvicorn server on 0.0.0.0:{port}")
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
