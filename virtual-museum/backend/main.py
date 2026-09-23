@@ -44,15 +44,24 @@ app = FastAPI(
 )
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
-# Allow the Next.js dev server and any configured frontend URL.
-_cors_origins = list({FRONTEND_URL, "http://localhost:3000", "http://127.0.0.1:3000"})
+# Allow local dev servers, configured FRONTEND_URL, and all Vercel deployment origins
+_cors_origins = list({
+    FRONTEND_URL,
+    FRONTEND_URL + "/",
+    "https://mueseum-3d.vercel.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8000",
+    "http://localhost:8080"
+})
 print(f"[STARTUP] CORS allowed origins: {_cors_origins}")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 

@@ -11,9 +11,16 @@
  *  - Clear error messages distinguish network vs server errors
  */
 
-const API_BASE_URL = (
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
-).replace(/\/$/, "");
+function getFormattedApiUrl() {
+  const envUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+  const trimmed = envUrl.trim().replace(/\/$/, "");
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    return trimmed;
+  }
+  return `https://${trimmed}`;
+}
+
+const API_BASE_URL = getFormattedApiUrl();
 
 /**
  * Returns a persistent anonymous session ID for the current browser session.
