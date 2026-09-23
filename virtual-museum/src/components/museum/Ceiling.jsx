@@ -10,21 +10,21 @@ export function Ceiling() {
       {/* Main Recessed Ceiling Plane */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <planeGeometry args={[44, 44]} />
-        <meshStandardMaterial color="#202228" roughness={0.9} />
+        <meshStandardMaterial color="#ffffff" roughness={0.8} />
       </mesh>
 
       {/* Ceiling Architectural Beams */}
       {[-14, 0, 14].map((x, i) => (
         <mesh key={`beam-x-${i}`} position={[x, -0.15, 0]}>
           <boxGeometry args={[0.6, 0.3, 44]} />
-          <meshStandardMaterial color="#14151a" roughness={0.7} />
+          <meshStandardMaterial color="#f1f5f9" roughness={0.7} />
         </mesh>
       ))}
 
       {[-12, 0, 12].map((z, i) => (
         <mesh key={`beam-z-${i}`} position={[0, -0.15, z]}>
           <boxGeometry args={[44, 0.3, 0.6]} />
-          <meshStandardMaterial color="#14151a" roughness={0.7} />
+          <meshStandardMaterial color="#f1f5f9" roughness={0.7} />
         </mesh>
       ))}
 
