@@ -46,17 +46,6 @@ export function Museum({
 }) {
   const [hasWebGLError, setHasWebGLError] = useState(false);
 
-  useEffect(() => {
-    const handleContextLost = (e) => {
-      e.preventDefault();
-      console.warn("[Museum] WebGL Context Lost");
-      setHasWebGLError(true);
-    };
-
-    window.addEventListener("webglcontextlost", handleContextLost);
-    return () => window.removeEventListener("webglcontextlost", handleContextLost);
-  }, []);
-
   if (hasWebGLError) {
     return <WebGLFallback />;
   }
@@ -76,17 +65,26 @@ export function Museum({
           antialias: true,
           alpha: true,
           preserveDrawingBuffer: false,
-          powerPreference: "high-performance",
+          powerPreference: "default",
+          failIfMajorPerformanceCaveat: false,
           stencil: false,
         }}
         onCreated={({ gl }) => {
           if (gl.xr) {
             gl.xr.enabled = true;
           }
-          gl.domElement.addEventListener("webglcontextlost", (event) => {
+          const canvasEl = gl.domElement;
+          const handleContextLost = (event) => {
             event.preventDefault();
-            setHasWebGLError(true);
-          });
+            console.warn("[Museum] WebGL Context lost. Attempting auto-recovery...");
+          };
+          const handleContextRestored = () => {
+            console.log("[Museum] WebGL Context restored successfully.");
+            setHasWebGLError(false);
+          };
+
+          canvasEl.addEventListener("webglcontextlost", handleContextLost, false);
+          canvasEl.addEventListener("webglcontextrestored", handleContextRestored, false);
         }}
       >
         <Suspense fallback={null}>
