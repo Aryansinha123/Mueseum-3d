@@ -34,6 +34,7 @@ export default function Home() {
   const [isArMode, setIsArMode] = useState(false);
   const [isPlaced, setIsPlaced] = useState(false);
   const [placedPosition, setPlacedPosition] = useState(null);
+  const [placedQuaternion, setPlacedQuaternion] = useState(null);
   const [arScale, setArScale] = useState(1.0);
   const [rotationY, setRotationY] = useState(0);
   const [isInfoInArOpen, setIsInfoInArOpen] = useState(false);
@@ -177,6 +178,8 @@ export default function Home() {
         setIsPlaced={setIsPlaced}
         placedPosition={placedPosition}
         setPlacedPosition={setPlacedPosition}
+        placedQuaternion={placedQuaternion}
+        setPlacedQuaternion={setPlacedQuaternion}
         arScale={arScale}
         rotationY={rotationY}
       />

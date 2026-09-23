@@ -39,6 +39,7 @@ function GlbARLoader({ modelPath, userScale, artifactId }) {
 export function ARArtifact({
   artifact,
   position = [0, 0, 0],
+  quaternion = null,
   rotationY = 0,
   arScale = 1.0,
   isSelected = true,
@@ -62,8 +63,8 @@ export function ARArtifact({
   );
 
   return (
-    /* Level 1: ARAnchor - World Placement Position */
-    <group position={position}>
+    /* Level 1: ARAnchor - World Placement Position & Locked Surface Quaternion */
+    <group position={position} quaternion={quaternion}>
       {/* Level 2: ArtifactRoot - User Transform (Rotation & Scale) */}
       <group
         rotation={[0, rotationY, 0]}

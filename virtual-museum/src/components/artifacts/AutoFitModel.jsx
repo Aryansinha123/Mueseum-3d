@@ -67,6 +67,14 @@ export function AutoFitModel({ object, targetSize = 0.65, userScale = 1, artifac
     if (groupRef.current) {
       groupRef.current.add(cloned);
     }
+
+    return () => {
+      if (groupRef.current) {
+        while (groupRef.current.children.length > 0) {
+          groupRef.current.remove(groupRef.current.children[0]);
+        }
+      }
+    };
   }, [object, targetSize, userScale, artifactId]);
 
   return <group ref={groupRef} />;

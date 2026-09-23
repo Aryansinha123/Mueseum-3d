@@ -13,25 +13,33 @@ export function ARScene({
   setIsPlaced,
   placedPosition,
   setPlacedPosition,
+  placedQuaternion,
+  setPlacedQuaternion,
   arScale,
   rotationY,
 }) {
-  // Real-time hit position tracked in a ref to avoid 60fps React re-renders
+  // Real-time hit position & orientation tracked in refs to avoid 60fps React re-renders
   const lastHitRef = useRef([0, 0, 0]);
+  const lastHitQuatRef = useRef([0, 0, 0, 1]);
 
   const attemptPlacement = useCallback(() => {
     if (!isPlaced && lastHitRef.current) {
+      console.log("[AR] Artifact placed");
       setPlacedPosition([...lastHitRef.current]);
+      if (lastHitQuatRef.current && setPlacedQuaternion) {
+        setPlacedQuaternion([...lastHitQuatRef.current]);
+      }
       setIsPlaced(true);
+      console.log("[AR] Artifact transform locked");
     }
-  }, [isPlaced, setPlacedPosition, setIsPlaced]);
+  }, [isPlaced, setPlacedPosition, setPlacedQuaternion, setIsPlaced]);
 
-  // Use @react-three/xr's useXREvent to listen for WebXR session 'select' events.
+  // Listen for WebXR session tap/select events to confirm placement
   useXREvent("select", () => {
     attemptPlacement();
   });
 
-  // Fallback: handle R3F pointer events for testing
+  // Fallback pointer event handler for testing
   const handlePointerDown = (e) => {
     e.stopPropagation();
     attemptPlacement();
@@ -43,7 +51,7 @@ export function ARScene({
       <directionalLight position={[5, 10, 5]} intensity={1.8} />
       <ambientLight intensity={1.0} />
 
-      {/* Transparent Tap Receiver Plane (active before placement) */}
+      {/* Transparent Tap Receiver Plane (active BEFORE placement only) */}
       {!isPlaced && (
         <mesh
           rotation={[-Math.PI / 2, 0, 0]}
@@ -62,19 +70,21 @@ export function ARScene({
         </mesh>
       )}
 
-      {/* Instant Surface Hit Test Reticle */}
+      {/* Surface Detection Reticle - Active ONLY BEFORE placement */}
       {!isPlaced && (
         <ARPlacementIndicator
           active={!isPlaced}
           lastHitRef={lastHitRef}
+          lastHitQuatRef={lastHitQuatRef}
         />
       )}
 
-      {/* Placed AR Artifact Model */}
+      {/* Placed & Locked AR Artifact Model */}
       {isPlaced && selectedArtifact && placedPosition && (
         <ARArtifact
           artifact={selectedArtifact}
           position={placedPosition}
+          quaternion={placedQuaternion}
           rotationY={rotationY}
           arScale={arScale}
           isSelected={true}

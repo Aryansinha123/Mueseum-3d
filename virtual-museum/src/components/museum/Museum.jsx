@@ -41,6 +41,8 @@ export function Museum({
   setIsPlaced,
   placedPosition,
   setPlacedPosition,
+  placedQuaternion,
+  setPlacedQuaternion,
   arScale,
   rotationY,
 }) {
@@ -99,6 +101,8 @@ export function Museum({
                 setIsPlaced={setIsPlaced}
                 placedPosition={placedPosition}
                 setPlacedPosition={setPlacedPosition}
+                placedQuaternion={placedQuaternion}
+                setPlacedQuaternion={setPlacedQuaternion}
                 arScale={arScale}
                 rotationY={rotationY}
               />
