@@ -20,6 +20,12 @@ export function AutoFitModel({ object, targetSize = 0.65, userScale = 1, artifac
     } else {
       cloned = object.clone(true);
 
+      // Reset initial transform before computing bounding box for exact floor alignment
+      cloned.position.set(0, 0, 0);
+      cloned.rotation.set(0, 0, 0);
+      cloned.scale.set(1, 1, 1);
+      cloned.updateMatrixWorld(true);
+
       // Compute 3D Bounding Box of the model
       const box = new THREE.Box3().setFromObject(cloned);
       const size = new THREE.Vector3();
@@ -31,7 +37,7 @@ export function AutoFitModel({ object, targetSize = 0.65, userScale = 1, artifac
         const scaleFactor = (targetSize / maxDim) * userScale;
         if (Number.isFinite(scaleFactor) && scaleFactor > 0) {
           const centerX = -(box.min.x + size.x / 2) * scaleFactor;
-          const centerY = -box.min.y * scaleFactor; // Bottom alignment at y = 0
+          const centerY = -box.min.y * scaleFactor; // Bottom alignment flush at y = 0 floor plane
           const centerZ = -(box.min.z + size.z / 2) * scaleFactor;
 
           if (Number.isFinite(centerX) && Number.isFinite(centerY) && Number.isFinite(centerZ)) {

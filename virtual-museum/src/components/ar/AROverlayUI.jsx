@@ -101,16 +101,8 @@ export function AROverlayUI({
     if (!isPlaced || isCuratorOpen) return;
     const touches = e.touches;
 
-    if (touches.length === 1) {
-      touchState.current.isDragging = true;
-      touchState.current.touchStartX = touches[0].clientX;
-      touchState.current.touchStartY = touches[0].clientY;
-      if (placedPosition) {
-        touchState.current.initialPos = [...placedPosition];
-      }
-    } else if (touches.length === 2) {
+    if (touches.length === 2) {
       touchState.current.isPinching = true;
-      touchState.current.isDragging = false;
       const dx = touches[1].clientX - touches[0].clientX;
       const dy = touches[1].clientY - touches[0].clientY;
       touchState.current.initialDist = Math.hypot(dx, dy);
@@ -124,23 +116,8 @@ export function AROverlayUI({
     if (!isPlaced || isCuratorOpen) return;
     const touches = e.touches;
 
-    if (touches.length === 1 && touchState.current.isDragging && placedPosition) {
-      // 1-Finger Drag -> Move artifact along horizontal floor plane
-      const dx = (touches[0].clientX - touchState.current.touchStartX) * 0.0025;
-      const dz = (touches[0].clientY - touchState.current.touchStartY) * 0.0025;
-      
-      if (!rafRef.current) {
-        rafRef.current = requestAnimationFrame(() => {
-          setPlacedPosition([
-            touchState.current.initialPos[0] + dx,
-            touchState.current.initialPos[1],
-            touchState.current.initialPos[2] + dz,
-          ]);
-          rafRef.current = null;
-        });
-      }
-    } else if (touches.length === 2 && touchState.current.isPinching) {
-      // 2-Finger Pinch -> Scale & Rotate artifact
+    if (touches.length === 2 && touchState.current.isPinching) {
+      // 2-Finger Pinch -> Scale & Rotate artifact intentionally
       const dx = touches[1].clientX - touches[0].clientX;
       const dy = touches[1].clientY - touches[0].clientY;
       const currentDist = Math.hypot(dx, dy);
@@ -262,7 +239,7 @@ export function AROverlayUI({
         ) : !isCuratorOpen ? (
           <div className="pointer-events-auto inline-flex items-center gap-2 bg-slate-950/85 backdrop-blur-md border border-slate-800/80 text-slate-300 px-4 py-2 rounded-full shadow-lg text-[11px] font-medium animate-fadeIn">
             <Move className="w-3.5 h-3.5 text-amber-400" />
-            <span>1-finger drag to move • 2-finger pinch/twist</span>
+            <span>Anchored in place • 2-finger pinch/twist to transform</span>
           </div>
         ) : null}
       </div>
