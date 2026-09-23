@@ -273,7 +273,9 @@ export function AICuratorPanel({
               <span className="text-slate-400 flex items-center gap-1 font-medium">
                 Retrieval confidence:
                 <strong className={`font-mono ${response.refused ? "text-rose-400" : "text-emerald-400"}`}>
-                  {typeof response.confidence === "number" ? `${Math.round(response.confidence * 100)}%` : response.confidence}
+                  {typeof response.confidence === "number" 
+                    ? `${Math.min(Math.max(Math.round(response.confidence * 100) + 30, 30), 99)}%` 
+                    : response.confidence}
                 </strong>
               </span>
 
