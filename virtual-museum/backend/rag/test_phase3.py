@@ -55,11 +55,11 @@ def run_phase3_tests():
     sid_mem = "session-memory-test"
     
     # Turn 1
-    res_t2_1 = pipeline.answer_question("Tell me about the Attic Black-Figure Amphora.", session_id=sid_mem)
+    res_t2_1 = pipeline.answer_question("Tell me about the George Washington statue.", session_id=sid_mem)
     print(f"Turn 1 Answer: {res_t2_1['answer'][:120]}...")
     
     # Turn 2
-    res_t2_2 = pipeline.answer_question("What was the Attic Black-Figure Amphora used for in ancient Greece?", session_id=sid_mem)
+    res_t2_2 = pipeline.answer_question("Who sculpted the statue of George Washington and when?", session_id=sid_mem)
     print(f"Turn 2 Answer: {res_t2_2['answer'][:120]}...")
 
     session_state2 = sm.get_or_create_session(sid_mem)

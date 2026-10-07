@@ -92,7 +92,7 @@ ARTIFACT_ASPECT_KEYWORDS = {
 }
 
 
-def _is_contextual_phrase(question: str) -> bool:
+def _is_contextual_phrase(question: str, artifact: Optional[Dict[str, Any]] = None) -> bool:
     """Returns True if the question is a contextual reference to the currently selected artifact.
     Rejects questions containing clear out-of-scope domain keywords (e.g. weather, math, stocks)."""
     q = question.strip().lower().rstrip("?.!,:;")
@@ -106,8 +106,15 @@ def _is_contextual_phrase(question: str) -> bool:
     # 2. Check for out-of-scope intrusion
     if words.intersection(OUT_OF_SCOPE_KEYWORDS):
         return False
+
+    # 3. Check if question queries terms from the selected artifact's title or category
+    if artifact:
+        art_name = (artifact.get("name") or artifact.get("title", "")).lower()
+        art_terms = {w for w in art_name.split() if len(w) > 2 and w not in {"the", "and", "for", "with"}}
+        if words.intersection(art_terms):
+            return True
         
-    # 3. Check for demonstrative reference + question inquiry pattern
+    # 4. Check for demonstrative reference + question inquiry pattern
     has_artifact_ref = bool(words.intersection(ARTIFACT_ASPECT_KEYWORDS))
     if has_artifact_ref and len(words) <= 12:
         # Inquiry terms for artifact properties
@@ -155,6 +162,8 @@ class Phase3RAGPipeline:
         tone: Optional[str] = "educational",
         artifact_id: Optional[str] = None,
         override_threshold: Optional[float] = None,
+        history: Optional[List[Dict[str, Any]]] = None,
+        visited_artifacts: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
         """
         Executes the full personalized RAG pipeline.
@@ -164,6 +173,8 @@ class Phase3RAGPipeline:
         :param tone: Presentation style ('educational', 'concise', 'friendly')
         :param artifact_id: ID of currently selected artifact (enables Type A routing)
         :param override_threshold: Optional relevance threshold override
+        :param history: Optional client conversation history
+        :param visited_artifacts: Optional client list of visited exhibit IDs for tour continuity
         :return: Structured JSON response payload
         """
         if not question or not question.strip():
@@ -176,6 +187,23 @@ class Phase3RAGPipeline:
         # 1. Manage session state
         session_state = self.session_manager.get_or_create_session(session_id)
         current_session_id = session_state.session_id
+
+        # Synchronize client conversation history if provided
+        if history and isinstance(history, list) and len(session_state.memory.history) < len(history) // 2:
+            temp_user = None
+            for item in history:
+                role = item.get("role", "")
+                content = item.get("content", "")
+                if role == "user":
+                    temp_user = content
+                elif role in ("curator", "assistant") and temp_user:
+                    session_state.memory.add_exchange(temp_user, content)
+                    temp_user = None
+
+        # Synchronize visited tour exhibits if provided
+        if visited_artifacts and isinstance(visited_artifacts, list):
+            for v_id in visited_artifacts:
+                session_state.profile.track_artifact(v_id)
 
         print(f"\n[PIPELINE] -------------------------------------------")
         print(f"[PIPELINE] Session  : {current_session_id}")
@@ -190,25 +218,45 @@ class Phase3RAGPipeline:
             if selected_artifact:
                 print(f"[PIPELINE] TYPE A  : Contextual artifact -> {selected_artifact['name']} ({artifact_id})")
 
-                # Compute cosine score against selected artifact for transparency
-                query_vec = self.manager.encode_query(q_clean)
+                gallery_name = selected_artifact.get("galleryName", "Museum Collection")
+                art_name = selected_artifact.get("name", "this exhibit")
+                is_contextual = _is_contextual_phrase(q_clean, artifact=selected_artifact)
+
+                # Ground demonstrative referents (e.g. "When was it created?" -> "When was the [Artifact Name] created?")
+                # This ensures the SentenceTransformer encoder computes the authentic semantic vector of the visitor's intended query.
+                import re
+                if is_contextual and art_name.lower() not in q_clean.lower():
+                    grounded_q = re.sub(r'\b(this artifact|this exhibit|this object|this piece|this|it)\b', f"the {art_name}", q_clean, flags=re.IGNORECASE)
+                    if grounded_q.strip().lower() == q_clean.lower():
+                        grounded_q = f"{q_clean.rstrip('?')} regarding the {art_name}?"
+                else:
+                    grounded_q = q_clean
+
+                query_vec = self.manager.encode_query(grounded_q)
                 from .retrieval import cosine_similarity
                 import numpy as np
-                all_ids = [a["id"] for a in self.manager.artifacts]
-                art_idx = all_ids.index(artifact_id)
-                art_vec = self.manager.embeddings[art_idx:art_idx+1]
-                score = float(cosine_similarity(query_vec, art_vec)[0])
 
-                gallery_name = selected_artifact.get("galleryName", "Museum Collection")
-                is_contextual = _is_contextual_phrase(q_clean)
+                # Precise 2-3 sentence chunk retrieval for active exhibit
+                art_chunk_indices = self.manager.get_artifact_chunk_indices(artifact_id)
+                if art_chunk_indices and self.manager.chunk_embeddings is not None:
+                    chunk_mat = self.manager.chunk_embeddings[art_chunk_indices]
+                    chunk_scores = cosine_similarity(query_vec, chunk_mat)
+                    best_local_idx = int(np.argmax(chunk_scores))
+                    score = float(chunk_scores[best_local_idx])
+                    best_chunk_global_idx = art_chunk_indices[best_local_idx]
+                    best_chunk = self.manager.chunks[best_chunk_global_idx]
+                    evidence_text = best_chunk["text"]
+                else:
+                    all_ids = [a["id"] for a in self.manager.artifacts]
+                    art_idx = all_ids.index(artifact_id)
+                    art_vec = self.manager.embeddings[art_idx:art_idx+1]
+                    score = float(cosine_similarity(query_vec, art_vec)[0])
+                    evidence_text = self.manager.build_corpus_text(selected_artifact)
 
+                print(f"[PIPELINE] Grounded query: \"{grounded_q}\"")
                 print(f"[PIPELINE] Similarity vs selected artifact: {score:.4f}")
                 print(f"[PIPELINE] Contextual phrase detected: {is_contextual}")
 
-                # For Type A: Accept if either the score passes threshold OR
-                # the question is a short contextual phrase (refers to "this"/"it").
-                # A question like "What is this?" has intrinsically low cosine
-                # similarity - the referent is the selected artifact, not the text.
                 passes_gate = is_relevant(score, threshold=effective_threshold) or is_contextual
 
                 print(f"[PIPELINE] Gate result: {'ACCEPT' if passes_gate else 'REFUSE'}")
@@ -216,7 +264,7 @@ class Phase3RAGPipeline:
                 if not passes_gate:
                     print("[PIPELINE] REFUSE - out-of-scope for selected artifact")
                     print("[PIPELINE] LLM: NOT CALLED")
-                    return self._refusal_payload(score, current_session_id, valid_tone)
+                    return self._refusal_payload(score, current_session_id, valid_tone, session_state=session_state)
 
                 # ACCEPTED - generate grounded answer from selected artifact
                 return self._generate_accepted_response(
@@ -227,6 +275,7 @@ class Phase3RAGPipeline:
                     session_state=session_state,
                     session_id=current_session_id,
                     tone=valid_tone,
+                    evidence_text=evidence_text,
                 )
             else:
                 print(f"[PIPELINE] WARNING - artifact_id '{artifact_id}' not found in knowledge base. Falling back to Type B.")
@@ -238,6 +287,7 @@ class Phase3RAGPipeline:
         best_artifact = self._artifact_by_id.get(artifact_id_found)
         score = retrieval_result["similarity_score"]
         gallery_name = retrieval_result["gallery"]
+        evidence_text = retrieval_result.get("evidence")
 
         print(f"[RETRIEVAL] Best match : {retrieval_result['artifact_name']} ({artifact_id_found})")
         print(f"[RETRIEVAL] Similarity : {score:.4f}")
@@ -249,7 +299,7 @@ class Phase3RAGPipeline:
         if not passes_gate:
             print("[PIPELINE] REFUSE - below relevance threshold")
             print("[PIPELINE] LLM: NOT CALLED")
-            return self._refusal_payload(score, current_session_id, valid_tone)
+            return self._refusal_payload(score, current_session_id, valid_tone, session_state=session_state)
 
         return self._generate_accepted_response(
             question=q_clean,
@@ -259,10 +309,12 @@ class Phase3RAGPipeline:
             session_state=session_state,
             session_id=current_session_id,
             tone=valid_tone,
+            evidence_text=evidence_text,
         )
 
-    def _refusal_payload(self, score: float, session_id: str, tone: str) -> Dict[str, Any]:
+    def _refusal_payload(self, score: float, session_id: str, tone: str, session_state: Any = None) -> Dict[str, Any]:
         """Standard refusal payload. LLM is NOT called."""
+        visited = list(session_state.profile.artifacts_seen) if session_state and hasattr(session_state, "profile") else []
         return {
             "answer": REFUSAL_MESSAGE,
             "source": None,
@@ -273,6 +325,9 @@ class Phase3RAGPipeline:
             "session_id": session_id,
             "tone": tone,
             "related_suggestions": [],
+            "suggested_followups": [],
+            "visited_artifacts": visited,
+            "tour_progress": None,
         }
 
     def _generate_accepted_response(
@@ -284,6 +339,7 @@ class Phase3RAGPipeline:
         session_state,
         session_id: str,
         tone: str,
+        evidence_text: Optional[str] = None,
     ) -> Dict[str, Any]:
         """Calls LLM with grounded artifact context and assembles the full response."""
         artifact_id = artifact.get("id", "UNKNOWN")
@@ -293,24 +349,37 @@ class Phase3RAGPipeline:
         session_state.profile.track_artifact(artifact_id)
         session_state.profile.track_gallery(gallery_name)
 
+        # Identify prior artifact from tour history (if any different from current)
+        prior_artifact_id = None
+        for prev_id in reversed(session_state.profile.artifacts_seen):
+            if prev_id != artifact_id:
+                prior_artifact_id = prev_id
+                break
+        prior_artifact = self._lookup_artifact(prior_artifact_id) if prior_artifact_id else None
+
         # Load bounded conversation memory
         history_text = session_state.memory.format_history_for_prompt()
         print(f"[MEMORY] Loaded {len(session_state.memory.history)} prior exchange(s)")
+        if prior_artifact:
+            print(f"[TOUR] Prior exhibit in tour: {prior_artifact.get('name')} ({prior_artifact_id})")
 
-        # Call grounded LLM
+        # Call grounded LLM with dynamic follow-up extraction and tour context
         print("[PIPELINE] LLM: CALLED")
-        grounded_answer = generate_grounded_answer(
+        grounded_answer, suggested_followups = generate_grounded_answer(
             question=question,
             artifact=artifact,
             history_text=history_text,
             tone=tone,
+            return_followups=True,
+            prior_artifact=prior_artifact,
         )
 
         # Store exchange in memory
         session_state.memory.add_exchange(question, grounded_answer)
 
-        # Build evidence text
-        evidence_text = self.manager.build_corpus_text(artifact)
+        # Build evidence text if not already retrieved as a 2-3 sentence chunk
+        if not evidence_text:
+            evidence_text = self.manager.build_corpus_text(artifact)
 
         # Compute "You Might Also Like" recommendations
         seen_artifacts = session_state.profile.artifacts_seen
@@ -333,6 +402,15 @@ class Phase3RAGPipeline:
             "session_id": session_id,
             "tone": tone,
             "related_suggestions": suggestions,
+            "suggested_followups": suggested_followups,
+            "visited_artifacts": list(session_state.profile.artifacts_seen),
+            "tour_progress": {
+                "visited_count": len(session_state.profile.artifacts_seen),
+                "total_collection": len(self.manager.artifacts),
+                "active_gallery": gallery_name,
+                "prior_artifact_name": prior_artifact.get("name") if prior_artifact else None,
+                "prior_artifact_id": prior_artifact_id,
+            },
         }
 
 
@@ -347,6 +425,8 @@ def answer_question(
     tone: Optional[str] = "educational",
     artifact_id: Optional[str] = None,
     threshold: Optional[float] = None,
+    history: Optional[List[Dict[str, Any]]] = None,
+    visited_artifacts: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
     """
     Convenience wrapper for Phase 3 pipeline execution.
@@ -363,4 +443,6 @@ def answer_question(
         tone=tone,
         artifact_id=artifact_id,
         override_threshold=threshold,
+        history=history,
+        visited_artifacts=visited_artifacts,
     )

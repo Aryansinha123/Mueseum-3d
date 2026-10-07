@@ -2,242 +2,682 @@
   {
     "id": "ART001",
     "name": "Old Arrow Maker",
+    "title": "Old Arrow Maker",
     "artist": "Edmonia Lewis",
     "category": "American Neoclassical Sculpture",
+    "gallery": "Gallery 1: History",
+    "galleryId": "gallery-1",
+    "galleryName": "Gallery 1: History",
     "institution": "Smithsonian American Art Museum",
+    "source": "Smithsonian American Art Museum (Smithsonian 3D)",
+    "sourceUrl": "https://3d.si.edu/object/3d/old-arrow-maker%3A99ca3d6f-6d54-45a5-9b95-f8c245a662c2",
+    "modelPath": "/models/artifacts/ART001/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      -14,
+      0,
+      6
+    ],
+    "rotation": [
+      0,
+      0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "Modeled 1866",
     "origin": "Rome / United States",
     "description": "A masterwork neoclassical marble sculpture modeled in 1866 by renowned African-American and Native American sculptor Edmonia Lewis. Inspired by Henry Wadsworth Longfellow's epic 1855 poem 'The Song of Hiawatha', it depicts an Ojibwe arrow maker weaving arrows alongside his seated daughter Minnehaha.",
-    "galleryId": "gallery-1",
-    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART001",
       "historicalSignificance": "Celebrated work by Edmonia Lewis, the first African-American and Native American sculptor to achieve international acclaim. Highlights 19th-century Indigenous craft and cultural heritage.",
       "material": "Carved Marble",
       "dimensions": "54.6 x 34.6 x 33.7 cm"
+    },
+    "readme_text": "ART001 — Old Arrow Maker\n\nArtifact Information\n\n- **Artifact Name:** Old Arrow Maker\n- **Artist:** Edmonia Lewis\n- **Date:** Modeled 1866\n- **Medium:** Marble\n- **Type:** Sculpture\n- **Institution:** Smithsonian American Art Museum\n- **Object Number:** 1983.95.179\n- **Smithsonian Record ID:** saam_1983.95.179\n\n3D Model Information\n\n- **3D Asset:** Old Arrow Maker\n- **Model Format:** GLB\n- **Model Version:** Low-resolution 3D mesh\n- **Scale:** Meters\n- **Local File:** `model.glb`\n- **Local Path:** `public/models/artifacts/ART001/model.glb`\n\nSource\n\nThe 3D model is sourced from the Smithsonian 3D Digitization collection.\n\n**Official Smithsonian 3D Record:**\nhttps://3d.si.edu/object/3d/old-arrow-maker%3A99ca3d6f-6d54-45a5-9b95-f8c245a662c2\n\nRights and Usage\n\nThe Smithsonian record identifies the work as **CC0 / Public Domain**.\n\nThe asset is being used in this project for educational and academic purposes as part of a virtual museum and AR demonstration.\n\nProject Usage\n\nThe model is integrated into the Virtual Heritage Museum as:\n\n**ART001 — Old Arrow Maker**\n\nIt is used for:\n\n- Virtual 3D museum exhibition\n- Interactive artifact inspection\n- Mobile AR artifact placement\n- Artifact information display\n- Future AI Curator interaction\n- RAG-based artifact information retrieval\n\nIntegration Path\n\nThe application loads the model using:\n\n`/models/artifacts/ART001/model.glb`\n\nThe model is managed through the centralized artifact metadata system and loaded using the project's Three.js / React Three Fiber artifact pipeline.\n\nAttribution\n\nEdmonia Lewis, *Old Arrow Maker*, modeled 1866, Smithsonian American Art Museum, Smithsonian Institution.\n\n3D asset sourced from Smithsonian 3D Digitization.\n\nDownload Information\n\n- **Downloaded Format:** GLB\n- **Downloaded Model:** Low-resolution 3D mesh\n- **Downloaded For:** Virtual Museum / AR Academic Project\n\nNotes\n\nThe model is intended to be reused across both:\n\n1. Virtual Museum Mode\n2. Mobile AR Mode\n\nThe same GLB asset is used for both experiences.",
+    "extended_knowledge": {
+      "biography_and_artist": "Edmonia Lewis (c. 1844–1907) was the first African-American and Native American (Ojibwe) sculptor to achieve international prominence. Working in the neoclassical style in Rome, she carved her own marble rather than hiring Italian artisans to ensure her artistic integrity.",
+      "inspiration": "Inspired by Henry Wadsworth Longfellow's 1855 epic poem 'The Song of Hiawatha'. The sculpture portrays an Ojibwe arrow maker weaving arrows while his daughter Minnehaha plaits mats of rushes.",
+      "material_and_technique": "Carved from fine white Italian Carrara marble. Dimensions: 54.6 x 34.6 x 33.7 cm. Lewis mastered the arduous subtractive marble carving technique in her Roman studio.",
+      "historical_significance": "A monumental achievement celebrating Indigenous craft and identity during the post-Civil War American Reconstruction era. Acquired by the Smithsonian American Art Museum in 1983."
     }
   },
   {
     "id": "ART002",
-    "name": "Attic Black-Figure Amphora",
-    "category": "Ancient Pottery",
-    "institution": "Smithsonian / Virtual Heritage Collection",
-    "period": "c. 540 BCE",
-    "origin": "Attica, Greece",
-    "description": "An exquisite ceramic storage vessel featuring black-figure narrative painting. Depicts mythological heroic motifs framed by intricate floral palmette borders and double curved handles. One of the most important forms of Greek pottery used for wine and olive oil storage.",
+    "name": "George Washington",
+    "title": "George Washington",
+    "artist": "Horatio Greenough",
+    "category": "American Neoclassical Sculpture",
+    "gallery": "Gallery 1: History",
     "galleryId": "gallery-1",
-    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
+    "galleryName": "Gallery 1: History",
+    "institution": "Smithsonian American Art Museum",
+    "source": "Smithsonian 3D / Virtual Heritage Collection",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART002/model.glb",
+    "license": "CC0 / CC BY 4.0",
+    "position": [
+      -14,
+      0,
+      3
+    ],
+    "rotation": [
+      0,
+      -0.5236,
+      0
+    ],
+    "scale": 1,
+    "period": "Commissioned 1832, Completed 1840",
+    "origin": "Florence, Italy / United States Capitol",
+    "description": "Colossal neoclassical marble statue of George Washington created by American sculptor Horatio Greenough for the U.S. Capitol Rotunda. Depicts Washington seated in classical drapery as a modern Olympian Zeus or Cincinnatus, holding a sheathed sword with the hilt forward to symbolize surrendering military power to the people.",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART002",
       "historicalSignificance": "Amphorae were key export goods used for storing olive oil and wine across Mediterranean trade networks.",
       "material": "Terracotta & Slip Glaze",
       "dimensions": "58cm x 34cm diameter"
+    },
+    "readme_text": "ART002 — George Washington\n\nArtifact Information\n\n- **Artifact Name:** George Washington\n\n- **Artist:** Horatio Greenough\n\n- **Date:** 1840\n\n- **Medium:** Marble\n\n- **Type:** Sculpture\n\n- **Institution:** Smithsonian American Art Museum\n\n- **Object Number:** 1910.10.3\n\n- **Smithsonian Record ID:** saam_1910.10.3\n\n3D Model Information\n\n- **3D Asset:** George Washington\n\n- **Model Format:** GLB\n\n- **Model Version:** Low-resolution 3D mesh\n\n- **Scale:** Meters\n\n- **Local File:** `george-washington.glb`\n\n- **Local Path:** `public/models/artifacts/ART002/george-washington.glb`\n\nSource\n\nThe 3D model is sourced from the Smithsonian 3D Digitization collection.\n\n**Official Smithsonian 3D Record:**\n\nhttps://3d.si.edu/object/3d/george-washington:789cf90a-4387-4ac1-9e96-c7d6a7b9d26f\n\nRights and Usage\n\nThe Smithsonian record identifies the work as **CC0 / Public Domain**. The Smithsonian states that the media is in the public domain and may be copied, modified, and distributed without contacting the Smithsonian. It also recommends attributing the Smithsonian, contributing modifications or improvements back, and not misrepresenting the dataset or its source.\n\nThe asset is being used in this project for educational and academic purposes as part of a virtual museum and AR demonstration.\n\nProject Usage\n\nThe model is integrated into the Virtual Heritage Museum as:\n\n**ART002 — George Washington**\n\nIt is used for:\n\n- Virtual 3D museum exhibition\n\n- Interactive artifact inspection\n\n- Mobile AR artifact placement\n\n- Artifact information display\n\n- Future AI Curator interaction\n\n- RAG-based artifact information retrieval\n\nIntegration Path\n\nThe application loads the model using:\n\n`/models/artifacts/ART002/model.glb`\n\nThe model is managed through the centralized artifact metadata system and loaded using the project's Three.js / React Three Fiber artifact pipeline.\n\nAttribution\n\nHoratio Greenough, *George Washington*, 1840, Smithsonian American Art Museum, Smithsonian Institution.\n\n3D asset sourced from Smithsonian 3D Digitization.\n\nThe Smithsonian record lists the credit line as **Smithsonian American Art Museum, Transfer from the U.S. Capitol**.\n\nDownload Information\n\n- **Downloaded Format:** GLB\n\n- **Downloaded Model:** Low-resolution 3D mesh\n\n- **Downloaded For:** Virtual Museum / AR Academic Project\n\nNotes\n\nThe model is intended to be reused across both:\n\n1. Virtual Museum Mode\n\n2. Mobile AR Mode\n\nThe same GLB asset is used for both experiences.",
+    "extended_knowledge": {
+      "sculptor_and_commission": "Horatio Greenough was commissioned by the U.S. Congress in 1832 to commemorate Washington's centennial. Worked in Florence, Italy, carving a massive 12-ton block of Carrara marble.",
+      "symbolism_and_pose": "Washington sits in a heroic semi-nude pose echoing Phidias' Statue of Zeus at Olympia. In his left hand he presents the sword hilt to the American public, symbolizing the peaceful transition of civilian democratic authority.",
+      "reception_and_history": "Too heavy for the Capitol Rotunda floor and controversial for Washington's bare chest, it was moved to the East Capitol lawn before finding its permanent home at the Smithsonian in 1908.",
+      "dimensions_and_materials": "Carrara marble, measuring 3.45 m (11.3 ft) in height, weighing roughly 12 metric tons (24,000 lbs)."
     }
   },
   {
     "id": "ART003",
     "name": "Morse-Vail Telegraph Key",
+    "title": "Morse-Vail Telegraph Key",
+    "artist": "Samuel Morse & Alfred Vail",
     "category": "Communication Technology / Historical Instrument",
+    "gallery": "Gallery 1: History",
+    "galleryId": "gallery-1",
+    "galleryName": "Gallery 1: History",
     "institution": "Smithsonian Institution",
+    "source": "Smithsonian Institution (Smithsonian 3D)",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART003/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      -14,
+      0,
+      0
+    ],
+    "rotation": [
+      0,
+      -0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "c. 1844 (19th Century)",
     "origin": "United States",
     "description": "An authentic historical communication device associated with Samuel Morse and Alfred Vail, used by operators to manually transmit electrical signals representing characters through Morse code. Played a monumental role in launching the global telecommunications era.",
-    "galleryId": "gallery-1",
-    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART003",
       "historicalSignificance": "Crucial milestone that revolutionized long-distance communication and laid the foundation for global electrical telecommunication networks.",
       "material": "Brass, Steel, and Polished Wood base",
       "dimensions": "approx. 16cm x 9cm x 8cm"
+    },
+    "readme_text": "ART003 - Morse-Vail Telegraph Key\n\nArtifact Information\n\n- **Artifact ID:** ART003\n- **Name:** Morse-Vail Telegraph Key\n- **Domain:** Technology & Communication History\n- **Category:** Telegraph / Communication Device\n- **Institution:** Smithsonian Institution\n- **3D Source:** Smithsonian 3D\n- **Format:** GLB\n- **Model Resolution:** Low Resolution\n- **Scale:** Meters (m)\n- **Current Status:** Verified 3D GLB model placed (`model.glb`, ~1.34 MB); active in Museum & AR.\n\nDescription\n\nThe Morse-Vail Telegraph Key is an important historical communication device associated with the development of electrical telegraphy. Telegraph keys were used by operators to manually transmit electrical signals representing characters through Morse code. The development of telegraph technology played a major role in long-distance communication during the nineteenth century.\n\nIntegration Status\n\n1. Model placed at `public/models/artifacts/ART003/model.glb`.\n2. Verified museum data active. Auto-normalized and rendered on pedestal in Gallery 2.\n\n3D Model\n\nThe low-resolution GLB version of the artifact is used for better performance in web-based 3D rendering and mobile augmented reality.\n\nLocal model path:\n\n`public/models/artifacts/ART003/model.glb`\n\nThe model uses meters (m) as its scale unit, making it suitable for real-world scale placement in WebXR-based augmented reality.\n\nProject Usage\n\nThis model is used for:\n\n- Virtual Museum 3D visualization\n- Interactive artifact inspection\n- Mobile AR artifact placement\n- AI Museum Curator interaction\n- RAG-based artifact information retrieval\n- Explainable AI responses\n- Context-aware artifact recommendations\n\nSource\n\nSmithsonian 3D  \nMorse-Vail Telegraph Key\n\nSource page:\nhttps://3d.si.edu/\n\nThe original Smithsonian artifact page and downloaded metadata should\nbe retained with the project for proper source attribution.\n\nFiles\n\nART003/\n├── model.glb\n└── README.md",
+    "extended_knowledge": {
+      "inventors": "Developed by Samuel F. B. Morse, Alfred Vail, and Leonard Gale. Vail developed the spring-loaded finger key mechanism and contributed heavily to the dot-and-dash Morse code system.",
+      "first_transmission": "The historic first long-distance telegraph message: 'What hath God wrought!' was transmitted from the Supreme Court chamber in Washington, D.C. to Baltimore, Maryland on May 24, 1844.",
+      "engineering_details": "Features a heavy solid brass lever, platinum contact points, adjustable counterweight tension springs, and a polished American mahogany wood insulating base.",
+      "impact_on_civilization": "Catalyzed the Victorian internet, shrinking communication time across continents from weeks to seconds and revolutionizing global diplomacy, rail coordination, and commerce."
     }
   },
   {
     "id": "ART004",
     "name": "Page Induction Coil",
+    "title": "Page Induction Coil",
+    "artist": "Charles G. Page",
     "category": "Electromagnetic Devices / History of Technology",
+    "gallery": "Gallery 1: History",
+    "galleryId": "gallery-1",
+    "galleryName": "Gallery 1: History",
     "institution": "National Museum of American History (Smithsonian)",
+    "source": "Smithsonian Institution (Smithsonian 3D)",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART004/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      -14,
+      0,
+      -3
+    ],
+    "rotation": [
+      0,
+      0.5236,
+      0
+    ],
+    "scale": 1,
     "period": "ca. 1868 (19th Century)",
     "origin": "United States",
     "description": "A patent model electromagnetic induction coil developed by inventor Charles G. Page around 1868. Part of the National Museum of American History's 'Work and Industry: Electricity' collection and the 'Lighting a Revolution' exhibition. A pivotal artifact in the history of electrical engineering.",
-    "galleryId": "gallery-1",
-    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART004",
       "historicalSignificance": "Demonstrates the early development of electromagnetic induction technology that underpins modern electrical devices and motors.",
       "material": "Brass, Iron, Copper Coil windings",
       "dimensions": "H: 17.78cm, W: 22.2cm, D: 12.1cm"
+    },
+    "readme_text": "ART008 - Page Induction Coil\n\nArtifact Information\n\n- **Artifact ID:** ART004\n- **Artifact Name:** Page Induction Coil\n- **Object Name:** Induction Coil\n- **Object Type:** Patent Model\n- **Other Terms:** Induction Coil; Electromagnetic Devices\n- **Maker:** Charles G. Page\n- **Date Made:** ca. 1868\n- **Patent Number:** 76654\n- **ID Number:** EM.309254\n- **Catalog Number:** 309254\n- **Accession Number:** 49064\n\n---\n\nDomain\n\n- **Primary Domain:** History of Technology\n- **Subdomain:** Electrical Engineering\n- **Category:** Electromagnetic Devices\n- **Technology:** Induction Coil\n\nThis artifact represents historical development in electrical and\nelectromagnetic technology and is included in the museum as part of the\nhistorical technology collection.\n\n---\n\nMuseum Information\n\n- **Data Source:** National Museum of American History\n- **Exhibition:** Lighting a Revolution\n- **Exhibition Location:** National Museum of American History\n- **Collection/Section:** Work and Industry: Electricity\n\n---\n\nDescription\n\nThe Page Induction Coil is an electromagnetic device developed by\nCharles G. Page around 1868. The object is recorded by the National\nMuseum of American History as a patent model.\n\nThe artifact is associated with the historical development of\nelectromagnetic devices and electrical technology. It provides a\nphysical representation of an invention from the nineteenth-century\ndevelopment of electrical engineering.\n\nThe object is particularly relevant to the study of the development of\nelectricity, electromagnetism, and electrical devices during the\nnineteenth century.\n\n---\n\nHistorical Significance\n\nThe Page Induction Coil is an example of a nineteenth-century patent\nmodel associated with the development of electromagnetic technology.\n\nIts inclusion in the National Museum of American History's\n\"Work and Industry: Electricity\" collection and the exhibition\n\"Lighting a Revolution\" makes it useful for understanding the history\nof electrical technology.\n\nThe artifact can be used in the virtual museum to demonstrate how\nhistorical electrical and electromagnetic devices contributed to the\ndevelopment of modern electrical engineering.\n\n---\n\nPhysical Measurements\n\nThe Smithsonian record provides the following overall measurements:\n\n- **Height:** 7 in\n- **Width:** 8 3/4 in\n- **Depth:** 4 3/4 in\n\nMetric measurements:\n\n- **Height:** 17.78 cm\n- **Width:** 22.225 cm\n- **Depth:** 12.065 cm\n\nThese measurements describe the physical dimensions of the original\nmuseum object.\n\n---\n\n3D Model Information\n\nThe 3D model used in this project is the Smithsonian's:\n\n**Low resolution 3D mesh, GLB, scale in meters**\n\nWhy this version is used\n\nThe low-resolution GLB model is selected for the web-based virtual\nmuseum and augmented reality application because:\n\n- GLB is directly compatible with Three.js.\n- GLB can be loaded using GLTFLoader.\n- The low-resolution model reduces loading time.\n- The model is suitable for real-time rendering.\n- Meter-based scale is useful for AR placement.\n- The same model can be reused in the virtual museum and AR mode.\n\n---\n\nLocal File Structure\n\nThe 3D model should be stored at:\n\n```text\npublic/models/artifacts/ART008/model.glb",
+    "extended_knowledge": {
+      "inventor_and_date": "Invented by American physicist Charles Grafton Page around 1837 and refined in this 1868 patent model. Page was a pioneer in electromagnetism, acoustics, and early electric locomotives.",
+      "scientific_breakthrough": "Page discovered that interrupting a low-voltage primary circuit with a rapid contact breaker (Page's sparker) induced monumental high-voltage surges in a fine secondary wire winding.",
+      "predecessor_to_modern_tech": "The direct technological ancestor of the Ruhmkorff induction coil, automotive ignition coils, fluorescent light ballasts, and modern step-up electrical power grid transformers.",
+      "construction": "Features hand-wound copper coils insulated with silk, brass binding posts, an iron wire core, and an automated mechanical magnetic circuit breaker."
     }
   },
   {
     "id": "ART005",
     "name": "Ceremonial Elephant-Shaped Covered Vessel",
+    "title": "Ceremonial Elephant-Shaped Covered Vessel",
+    "artist": "Shang Dynasty Artisans",
     "category": "Ancient Chinese Bronze Ritual Vessel",
+    "gallery": "Gallery 1: History",
+    "galleryId": "gallery-1",
+    "galleryName": "Gallery 1: History",
     "institution": "National Museum of Asian Art, Smithsonian Institution",
+    "source": "Freer Gallery of Art Collection (Smithsonian 3D)",
+    "sourceUrl": "http://n2t.net/ark:/65665/ye31d065109-ffb8-4d3f-ba49-7938b4f3f235",
+    "modelPath": "/models/artifacts/ART005/model.glb",
+    "license": "CC0 / Smithsonian Open Access",
+    "position": [
+      -14,
+      0,
+      -6
+    ],
+    "rotation": [
+      0,
+      0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "ca. 1100 BCE (Late Shang Dynasty, Late Anyang Period)",
     "origin": "China",
     "description": "A ceremonial covered vessel of type 'huo' cast in the form of an elephant, dating to the Late Shang dynasty around 1100 BCE. Decorated with a light green patina and cast in low relief, with a finial in the round. Purchased by the Freer Gallery of Art from Yamanaka and Company, Boston in 1936. One of the most remarkable examples of Shang-era bronze ritual art.",
-    "galleryId": "gallery-1",
-    "galleryName": "Gallery 1: Smithsonian & Heritage Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART005",
       "historicalSignificance": "Demonstrates the extraordinary skill of Shang dynasty bronze casters and the ritual significance of animal-form vessels in ancient Chinese ceremonial practice.",
       "material": "Bronze with green patina",
       "dimensions": "H: 17.2cm, W: 10.7cm, D: 21.4cm"
+    },
+    "readme_text": "ART003 — Ceremonial Elephant-Shaped Covered Vessel\n\nArtifact Information\n\n- **Artifact Name:** Ceremonial covered vessel, type huo, in the form of an elephant\n\n- **Artist:** Unknown\n\n- **Date:** ca. 1100 BCE\n\n- **Period:** Late Shang dynasty, late Anyang period\n\n- **Medium:** Bronze\n\n- **Type:** Vessel\n\n- **Institution:** National Museum of Asian Art, Smithsonian Institution\n\n- **Collection:** Freer Gallery of Art Collection\n\n- **Accession Number:** F1936.6a-b\n\n- **Record ID:** fsg_F1936.6a-b\n\n3D Model Information\n\n- **3D Asset:** Ceremonial Elephant-Shaped Covered Vessel\n\n- **Model Format:** GLB\n\n- **Model Version:** Low-resolution 3D mesh\n\n- **Scale:** Meters\n\n- **Local File:** `model.glb`\n\n- **Local Path:** `public/models/artifacts/ART003/model.glb`\n\nObject Details\n\nDescription\n\nCeremonial covered vessel, type huo, in the form of an elephant. Wooden stand. Surface: a light green patina. Decoration: cast in low relief; final in the round.\n\nDimensions\n\n- **Height:** 17.2 cm\n\n- **Width:** 10.7 cm\n\n- **Depth:** 21.4 cm\n\nSource\n\nThe artifact information is sourced from the National Museum of Asian Art / Smithsonian Institution collection.\n\n**Official Smithsonian Record:**\n\nSmithsonian National Museum of Asian Art — F1936.6a-b\n\n- **Data Source:** National Museum of Asian Art\n\n- **GUID:** `http://n2t.net/ark:/65665/ye31d065109-ffb8-4d3f-ba49-7938b4f3f235`\n\nProvenance\n\n**To 1936**\n\nYamanaka and Company, Boston.\n\n**From 1936**\n\nFreer Gallery of Art, purchased from Yamanaka and Company, Boston.\n\nProvenance Notes\n\n- **[1]** Curatorial Remark 1 in the object record.\n\n- **[2]** See note 1.\n\nRights and Usage\n\n**Restrictions & Rights:** Usage conditions apply.\n\n**Metadata Usage:** Usage conditions apply.\n\nThe artifact information and metadata are subject to the usage conditions specified by the National Museum of Asian Art / Smithsonian Institution.\n\nThe asset is being used in this project for educational and academic purposes as part of a virtual museum and AR demonstration.\n\nProject Usage\n\nThe model is integrated into the Virtual Heritage Museum as:\n\n**ART003 — Ceremonial Elephant-Shaped Covered Vessel**\n\nIt is used for:\n\n- Virtual 3D museum exhibition\n\n- Interactive artifact inspection\n\n- Mobile AR artifact placement\n\n- Artifact information display\n\n- Future AI Curator interaction\n\n- RAG-based artifact information retrieval\n\nIntegration Path\n\nThe application loads the model using:\n\n`/models/artifacts/ART003/elephant-vessel.glb`\n\nThe model is managed through the centralized artifact metadata system and loaded using the project's Three.js / React Three Fiber artifact pipeline.\n\nAttribution\n\n*Ceremonial covered vessel, type huo, in the form of an elephant*, ca. 1100 BCE, Late Shang dynasty, late Anyang period, National Museum of Asian Art, Smithsonian Institution, Freer Gallery of Art Collection.\n\nCredit Line: **Purchase — Charles Lang Freer Endowment.**\n\nCollection Information\n\n- **Collection:** Freer Gallery of Art Collection\n\n- **See More Items In:** National Museum of Asian Art\n\n- **On View:** East Building (Arthur M. Sackler Gallery), Gallery 30: Ancient Chinese Bronzes\n\nOrigin\n\n- **Origin:** Anyang, probably Henan province, China\n\nTopics\n\n- Casting\n- Metal\n- Bronze\n- Dragon\n- Elephant\n- Shang dynasty (ca. 1600 - ca. 1050 BCE)\n- Anyang period, Late Shang dynasty (ca. 1300 - 1050 BCE)\n- Wine\n- Mask\n- China\n- Chinese Art\n\nExhibition History\n\n- **Ancient Chinese Bronzes** — August 25, 2026 to TBD\n\n- **Anyang: China's Ancient City of Kings** — February 25, 2023 to April 28, 2024\n\n- **Ancient Chinese Bronzes** — May 9, 1993 to February 10, 1997\n\n- **Chinese Art** — February 18, 1983 to April 1, 1987\n\n- **Chinese Art** — June 15, 1982 to September 24, 1982\n\n- **Chinese Art** — March 15, 1982 to June 15, 1982\n\n- **Chinese Art** — March 9, 1981 to March 12, 1982\n\n- **Chinese Art** — January 1, 1963 to March 6, 1981\n\n- **Chinese Bronze, Jade, Marble** — March 1, 1957 to January 1, 1963\n\n- **Centennial Exhibition, Galleries 14 and 15** — February 25, 1956 to March 1, 1957\n\n- **Untitled Exhibition, Ancient Chinese Art, 1955** — October 24, 1955 to February 25, 1956\n\n- **Untitled Exhibition, Ancient Chinese Jade and Bronze** — August 26, 1955 to October 25, 1955\n\n- **Untitled Exhibition, Ancient Chinese Art, 1945** — January 9, 1945 to August 20, 1955\n\n- **Untitled Exhibition, Ancient Chinese Art, 1944** — December 13, 1944 to May 7, 1946\n\n- **Untitled Exhibition, Chinese Metalwork, 1943** — March 22, 1943 to December 13, 1944\n\n- **Untitled Exhibition, Chinese Metalwork** — March 14, 1931 to March 22, 1943\n\nPrevious Custodian or Owner\n\n**Yamanaka and Co. 山中商会 (1917-1965)**\n\nRelated Online Resources\n\n- Google Arts & Culture\n\nDownload Information\n\n- **Downloaded Format:** GLB\n\n- **Downloaded Model:** Low-resolution 3D mesh\n\n- **Downloaded For:** Virtual Museum / AR Academic Project\n\nNotes\n\nThe model is intended to be reused across both:\n\n1. Virtual Museum Mode\n\n2. Mobile AR Mode\n\nThe same GLB asset is used for both experiences.\n\nThe artifact represents an ancient Chinese bronze vessel from the Late Shang dynasty and is particularly notable for its elephant form, bronze casting, and decorative motifs.",
+    "extended_knowledge": {
+      "dynasty_and_period": "Late Shang Dynasty (ca. 1100 BCE), Anyang period. Discovered in central China, exemplifying the apex of ancient Chinese piece-mold bronze metallurgy.",
+      "religious_and_ritual_use": "Vessels of type 'huo' were ceremonial wine vessels used in ancestral veneration rituals to offer heated millet wine and herb-infused spirits to royal ancestral spirits.",
+      "artistic_and_zoological_detail": "Features an elephant with stylized trunk spout, round ears, and low-relief mythical taotie masks, kui dragons, and geometric thunder spirals (leiwen) carved across its flanks.",
+      "provenance": "Acquired by Charles Lang Freer in 1936 from Yamanaka & Company, Boston. Part of the permanent collection of the National Museum of Asian Art."
     }
   },
   {
     "id": "ART006",
     "name": "Apollo 11 Command Module \"Columbia\"",
+    "title": "Apollo 11 Command Module \"Columbia\"",
+    "artist": "North American Rockwell / NASA",
     "category": "Spacecraft / Human Spaceflight",
+    "gallery": "Gallery 2: Smithsonian Technology & Science Hall",
+    "galleryId": "gallery-2",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "institution": "National Air and Space Museum, Smithsonian Institution",
+    "source": "Smithsonian 3D / National Air and Space Museum",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART006/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      14,
+      0,
+      6
+    ],
+    "rotation": [
+      0,
+      -0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "1969 (20th Century)",
     "origin": "United States",
     "description": "The Apollo 11 Command Module, 'Columbia,' served as the living quarters for the three-person crew (Neil Armstrong, Buzz Aldrin, Michael Collins) during the first crewed lunar landing mission in July 1969. It was the only portion of the Apollo spacecraft that returned to Earth.",
-    "galleryId": "gallery-2",
-    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART006",
       "historicalSignificance": "Carried Neil Armstrong, Buzz Aldrin, and Michael Collins to the Moon and back during the historic first lunar landing mission in July 1969. Designated a 'Milestone of Flight' by the National Air and Space Museum.",
       "material": "Aluminum Alloy, Titanium, Silica Heat Shield Tiles",
       "dimensions": "H: 3.48m, W: 3.91m, D: 3.91m (Inventory: A19700102000)"
+    },
+    "readme_text": "ART006 - Apollo 11 Command Module \"Columbia\"\n\nArtifact Information\n\n- **Artifact ID:** ART006\n- **Artifact Name:** Apollo 11 Command Module \"Columbia\"\n- **Alternate Name:** Apollo 11 Command Module Columbia\n- **Type:** SPACECRAFT\n- **Domain:** Space & Aerospace History\n- **Subdomain:** Human Spaceflight\n- **Key Accomplishment:** First Lunar Landing Mission\n- **Manufacturer:** North American Rockwell\n- **Country of Origin:** United States of America\n- **Inventory Number:** A19700102000\n\n---\n\nDescription\n\nThe Apollo 11 Command Module, \"Columbia,\" served as the living quarters\nfor the three-person crew during most of the first crewed lunar landing\nmission in July 1969.\n\nOn July 16, 1969, Neil Armstrong, Edwin \"Buzz\" Aldrin, and Michael\nCollins were launched from Cape Kennedy aboard a Saturn V rocket.\n\nThe Command Module was one of three major parts of the Apollo spacecraft.\nThe other two parts were:\n\n- Service Module\n- Lunar Module \"Eagle\"\n\nThe Service Module contained the main spacecraft propulsion system and\nconsumables.\n\nThe Lunar Module \"Eagle\" was the two-person spacecraft used by Neil\nArmstrong and Edwin \"Buzz\" Aldrin to descend to the Moon's surface on\nJuly 20, 1969.\n\nThe Command Module was the only portion of the Apollo spacecraft that\nreturned to Earth.\n\n---\n\nHistorical Significance\n\nApollo 11 \"Columbia\" is one of the most significant artifacts in the\nhistory of human spaceflight.\n\nIt was used during the first crewed lunar landing mission in July 1969\nand carried Neil Armstrong, Edwin \"Buzz\" Aldrin, and Michael Collins to\nthe Moon and back.\n\nThe Apollo Command Module represents a major milestone in human\nspaceflight and the technological development required to conduct\ncrewed lunar missions.\n\nThe Apollo CM Columbia has been designated a:\n\n**\"Milestone of Flight\"**\n\nby the National Air and Space Museum.\n\n---\n\nApollo 11 Crew\n\nThe Command Module carried three astronauts:\n\n- **Neil A. Armstrong**\n- **Edwin \"Buzz\" Aldrin**\n- **Michael Collins**\n\nThe crew launched on July 16, 1969.\n\nArmstrong and Aldrin used the Lunar Module \"Eagle\" to descend to the\nMoon's surface on July 20, 1969, while Columbia remained in lunar orbit\nwith Michael Collins.\n\n---\n\nApollo Spacecraft Components\n\nThe complete Apollo spacecraft consisted of three major components:\n\n```text\nApollo Spacecraft\n│\n├── Command Module \"Columbia\"\n│   └── Crew living quarters\n│\n├── Service Module\n│   └── Propulsion and consumables\n│\n└── Lunar Module \"Eagle\"\n    └── Lunar landing vehicle",
+    "extended_knowledge": {
+      "mission_and_crew": "Carried Neil Armstrong (Commander), Edwin 'Buzz' Aldrin (Lunar Module Pilot), and Michael Collins (Command Module Pilot) during the historic July 16–24, 1969 lunar landing.",
+      "reentry_and_heat_shield": "Only module of the 363-foot Saturn V rocket stack to return intact. Endured atmospheric reentry at 24,700 mph (Mach 32) and temperatures exceeding 5,000°F (2,760°C) using an ablative phenolic epoxy resin honeycomb heat shield.",
+      "splashdown_and_recovery": "Splashed down in the North Pacific Ocean on July 24, 1969, 812 nautical miles southwest of Hawaii, recovered by the USS Hornet (CV-12).",
+      "specifications": "Base diameter: 3.91 m (12.8 ft), height: 3.48 m (11.4 ft), launch mass: 5,557 kg (12,251 lb). Designated a Smithsonian 'Milestone of Flight'."
     }
   },
   {
     "id": "ART007",
     "name": "Space Shuttle Discovery",
+    "title": "Space Shuttle Discovery",
+    "artist": "Rockwell International / NASA",
     "category": "Spacecraft / Human Spaceflight",
+    "gallery": "Gallery 2: Smithsonian Technology & Science Hall",
+    "galleryId": "gallery-2",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "institution": "National Air and Space Museum, Smithsonian Institution",
+    "source": "Smithsonian 3D / National Air and Space Museum",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART007/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      14,
+      0,
+      3
+    ],
+    "rotation": [
+      0,
+      -0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "1984–2011 (20th–21st Century)",
     "origin": "United States",
     "description": "Space Shuttle Discovery (OV-103) was the third Space Shuttle orbiter vehicle to fly in space and the most flown spacecraft in human history. Over 39 Earth-orbital missions spanning nearly 30 years, Discovery spent 365 days in space and traveled almost 240 million kilometers.",
-    "galleryId": "gallery-2",
-    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART007",
       "historicalSignificance": "Flew 39 spaceflight missions, carried 184 astronauts into space, deployed the Hubble Space Telescope, and helped build the International Space Station. Preserved at the Steven F. Udvar-Hazy Center.",
       "material": "Aluminum alloys, Titanium, Silica tiles, and RCC nose cap",
       "dimensions": "L: 38.03m, W: 17.77m, H: 24.31m (Mass: 73,176 kg)"
+    },
+    "readme_text": "run devART011 - Space Shuttle Discovery\n\nArtifact Information\n\n- **Artifact ID:** ART007\n- **Artifact Name:** Space Shuttle Discovery\n- **Alternate Name:** Space Shuttle Discovery\n- **Type:** SPACECRAFT-Crewed\n- **Domain:** Space & Aerospace History\n- **Subdomain:** Human Spaceflight\n- **Manufacturer:** Rockwell International Corporation\n- **Country of Origin:** United States of America\n- **Service Period:** 1984–2011\n- **Total Missions:** 39 Earth-orbital missions\n- **Total Time in Space:** 365 days\n- **Total Distance Traveled:** Almost 240 million km (150 million mi)\n- **Inventory Number:** A20120325000\n\n---\n\nDescription\n\nDiscovery was the third Space Shuttle orbiter vehicle to fly in space.\nIt entered service in 1984 and became the oldest and most utilized\norbiter in the Space Shuttle fleet.\n\nDiscovery flew 39 Earth-orbital missions and spent a total of 365 days\nin space. During its operational history, it traveled almost 240 million\nkilometers (150 million miles), more than any other Space Shuttle\norbiter.\n\nThe orbiter carried 184 men and women into space and back, with some\ncrew members flying more than once. The total number of crew assignments\nwas 251.\n\nBecause Discovery performed every type of mission that the Space Shuttle\nwas intended to perform, it represents approximately 30 years of U.S.\nhuman spaceflight history from 1981 to 2011.\n\nDiscovery was named after renowned sailing ships of exploration. It has\nbeen preserved as intact as possible following its final flight in 2011.\n\n---\n\nHistorical Significance\n\nSpace Shuttle Discovery represents a major period in the history of\nhuman spaceflight and the U.S. Space Shuttle program.\n\nIts 39 Earth-orbital missions, extensive time in space, and wide range\nof mission types make it an important artifact for understanding the\ndevelopment of reusable crewed spacecraft.\n\nDiscovery provides a useful example for studying:\n\n- Human spaceflight\n- Reusable spacecraft\n- Space Shuttle technology\n- Earth-orbital missions\n- U.S. space exploration history\n- Aerospace engineering\n\n---\n\nTransfer to the Smithsonian\n\nNASA transferred Discovery to the Smithsonian in April 2012 following\na delivery flight over the nation's capital.\n\nThe spacecraft is preserved at the Smithsonian's National Air and Space\nMuseum.\n\n---\n\nMuseum Information\n\n- **Institution:** National Air and Space Museum\n- **Data Source:** National Air and Space Museum\n- **Location:** Steven F. Udvar-Hazy Center, Chantilly, Virginia\n- **Hangar:** James S. McDonnell Space Hangar\n- **Credit Line:** Transferred from the National Aeronautics and Space\n  Administration\n- **Inventory Number:** A20120325000\n\n---\n\nMaterials\n\nThe Smithsonian record lists the following materials:\n\nAirframe\n\n- Aluminum alloys\n- Titanium\n\nSurface\n\n- Silica tiles\n- Reinforced carbon-carbon (RCC) nose cap\n- Reinforced carbon-carbon (RCC) wing leading edges\n\nInterior\n\n- Aluminum\n- Fabric\n- Beta cloth\n- Velcro\n- Other materials\n\n---\n\nDimensions\n\nThe overall dimensions provided by the Smithsonian are:\n\n- **Length:** 38.03 m\n- **Width:** 17.768 m\n- **Height:** 24.314 m\n- **Mass:** 73,176.5 kg\n\nImperial dimensions:\n\n- **Length:** 122 ft\n- **Width:** 57 ft\n- **Height:** 78 ft\n- **Mass:** 161,325 lb\n\n---\n\n3D Model Information\n\nThe 3D model used in this project is the Smithsonian 3D model of\nSpace Shuttle Discovery.\n\nFor the web-based virtual museum and WebXR AR application, the\npreferred model format is:\n\n**Low-resolution 3D mesh, GLB, scale in meters**\n\nWhy GLB is used\n\nGLB is suitable for the project because:\n\n- It is directly supported by Three.js.\n- It can be loaded using GLTFLoader.\n- It packages the model and associated resources into a single file.\n- The low-resolution version provides better real-time performance.\n- Meter-based scale is suitable for AR spatial placement.\n\n---\n\nLocal File Structure\n\nThe model should be stored at:\n\n```text\npublic/models/artifacts/ART007/model.glb",
+    "extended_knowledge": {
+      "flight_record": "Most flown spacecraft in human history: 39 orbital missions between August 30, 1984 and March 9, 2011. Spent 365 cumulative days in space and orbited Earth 5,830 times over 238 million kilometers.",
+      "historic_milestones": "Deployed the Hubble Space Telescope in April 1990 (STS-31), flew the Return to Flight mission after Challenger (STS-26) and Columbia (STS-114), and carried Senator John Glenn back into space at age 77 (STS-95).",
+      "thermal_protection": "Covered in over 24,000 individual reusable silica foam ceramic tiles and reinforced carbon-carbon (RCC) panels on the nose and wing leading edges.",
+      "preservation": "Retired intact in pristine post-flight condition and displayed at the Steven F. Udvar-Hazy Center in Chantilly, Virginia."
     }
   },
   {
     "id": "ART008",
     "name": "Bell X-1 \"Glamorous Glennis\"",
+    "title": "Bell X-1 \"Glamorous Glennis\"",
+    "artist": "Bell Aircraft Corporation",
     "category": "Supersonic Flight / Experimental Aircraft",
+    "gallery": "Gallery 2: Smithsonian Technology & Science Hall",
+    "galleryId": "gallery-2",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "institution": "National Air and Space Museum, Smithsonian Institution",
+    "source": "Smithsonian 3D / National Air and Space Museum",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART008/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      14,
+      0,
+      0
+    ],
+    "rotation": [
+      0,
+      -0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "1946 (20th Century)",
     "origin": "United States",
     "description": "The Bell X-1 'Glamorous Glennis' was the first airplane to fly faster than the speed of sound. On October 14, 1947, U.S. Air Force Captain Charles E. 'Chuck' Yeager piloted the rocket-powered aircraft to Mach 1.06 (1,127 km/h) at an altitude of 13,000 meters, opening the era of supersonic flight.",
-    "galleryId": "gallery-2",
-    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART008",
       "historicalSignificance": "First manned aircraft to break the sound barrier on October 14, 1947, piloted by Chuck Yeager. Proved supersonic flight was achievable and provided critical transonic data.",
       "material": "Aluminum, Steel, Glass, Magnesium, Plexiglass, Rubber",
       "dimensions": "L: 9.37m (30ft 9in), W: 8.53m (28ft), H: 3.26m (10ft 8.5in)"
+    },
+    "readme_text": "ART008 — Bell X-1 \"Glamorous Glennis\"\n\n1. Basic Information\n\n- **Artifact ID:** ART008\n- **Artifact Name:** Bell X-1\n- **Alternate Name:** Bell X-1 \"Glamorous Glennis\"\n- **Domain:** Space & Aerospace History\n- **Subdomain:** Supersonic Flight / Experimental Aircraft\n- **Date:** 1946\n- **Manufacturer:** Bell Aircraft Corp.\n- **Country of Origin:** United States of America\n- **Type:** CRAFT-Aircraft\n\n---\n\n2. Historical Significance\n\nThe Bell X-1 was the first airplane to fly faster than the speed of sound.\n\nOn October 14, 1947, U.S. Air Force Captain Charles E. \"Chuck\" Yeager piloted the aircraft to a speed of approximately:\n\n- **Speed:** 1,127 km/h (700 mph)\n- **Speed:** Mach 1.06\n- **Altitude:** 13,000 m (43,000 ft)\n\nYeager named the aircraft **\"Glamorous Glennis\"** in tribute to his wife.\n\nThe flight demonstrated that aircraft could be designed to fly faster than sound and helped establish practical supersonic flight.\n\n---\n\n3. Key Accomplishment\n\n**Broke the Sound Barrier**\n\nThe X-1 proved that a manned aircraft could travel faster than the speed of sound and gathered important transonic flight data.\n\n---\n\n4. Development\n\nThe XS-1/X-1 program was developed through a cooperative program initiated in 1944 by:\n\n- National Advisory Committee for Aeronautics (NACA)\n- U.S. Army Air Forces\n\nBell Aircraft Corporation was contracted in 1945 to develop three transonic and supersonic research aircraft.\n\nThe aircraft was powered by a rocket engine and was air-launched from Boeing B-29 or B-50 Superfortress aircraft.\n\n---\n\n5. Aircraft Design\n\nThe Bell X-1 was a:\n\n- Single-engine aircraft\n- Single-seat aircraft\n- Mid-wing rocket plane\n- International-orange painted aircraft\n\nIts smooth fuselage was based on the aerodynamic shape of a **.50-caliber machine-gun bullet**.\n\nThe fuselage contained:\n\n- Two propellant tanks\n- Twelve nitrogen spheres\n- Pressurized cockpit\n- Pressure regulators\n- Retractable landing gear\n- Wing carry-through structure\n- Rocket engine\n- Flight-test instrumentation\n\nThe aircraft used a **Reaction Motors, Inc. rocket engine** producing approximately **6,000 pounds of thrust**.\n\n---\n\n6. Flight History\n\nThe Bell X-1 completed a total of **78 flights**.\n\nOn March 26, 1948, Chuck Yeager reached:\n\n- **Speed:** 1,540 km/h (957 mph)\n- **Speed:** Mach 1.45\n- **Altitude:** approximately 21,900 m (71,900 ft)\n\nThis represented the highest velocity and altitude reached by a manned airplane up to that time.\n\nThe X-1 continued flight-test operations until mid-1950.\n\nIt completed:\n\n- 19 contractor demonstration flights\n- 59 Air Force test flights\n\n---\n\n7. Impact and Innovation\n\nThe Bell X-1 demonstrated that the so-called **\"sound barrier\"** could be overcome by a manned aircraft.\n\nIts flight-test program provided valuable transonic and supersonic flight data and contributed to the development of high-speed aircraft.\n\nThe X-1 therefore represents an important milestone in the transition from subsonic to supersonic aviation.\n\n---\n\n8. Museum Information\n\n- **Museum:** National Air and Space Museum\n- **Location:** Washington, DC\n- **Exhibition:** Boeing Milestones of Flight Hall\n- **Data Source:** National Air and Space Museum\n- **Inventory Number:** A19510007000\n- **Credit Line:** Transferred from the Department of the Air Force\n\n---\n\n9. Physical Description\n\nSingle engine, single seat, mid-wing rocket plane with an international orange paint scheme.\n\n---\n\n10. Materials\n\nThe aircraft contains:\n\n- Aluminum\n- Steel\n- Glass\n- Paint\n- Foam\n- Fabric\n- Rubber\n- Asbestos\n- Magnesium\n- Radium paint\n- Plexiglass\n- Leather\n\n---\n\n11. Dimensions\n\n- **Length:** 30 ft. 9 in.\n- **Height:** 10 ft. 8 1/2 in.\n- **Width:** 28 ft.\n- **Weight:** 2,780.5 kg (6,130 lb)\n\nMetric dimensions:\n\n- **326.4 × 937.3 × 853.4 cm**\n\n---\n\n12. Rights and Usage\n\n- **Restrictions & Rights:** CC0\n\nThe Smithsonian record identifies this artifact as **CC0**.\n\n---\n\n13. 3D Model Integration\n\nLocal Model Path\n\n```text\npublic/models/artifacts/ART008/model.glb",
+    "extended_knowledge": {
+      "sound_barrier_break": "On October 14, 1947, U.S. Air Force Captain Charles E. 'Chuck' Yeager broke the sound barrier, reaching Mach 1.06 (700 mph / 1,127 km/h) at 43,000 feet over Rogers Dry Lake, California.",
+      "airplane_design": "Shaped like a .50-caliber Browning machine gun bullet, known to be stable at supersonic speeds, with razor-thin straight wings and a bullet-shaped fuselage.",
+      "propulsion": "Powered by a Reaction Motors XLR11 four-chamber liquid-fuel rocket engine generating 6,000 pounds of thrust using liquid oxygen (LOX) and diluted ethyl alcohol.",
+      "launch_method": "Carried aloft to 25,000 feet nestled in the bomb bay of a modified Boeing B-29 Superfortress mothership before being dropped for rocket ignition."
     }
   },
   {
     "id": "ART009",
     "name": "Mercury Pressure Suit",
+    "title": "Mercury Pressure Suit",
+    "artist": "B.F. Goodrich / NASA",
     "category": "Space Suits / Human Spaceflight Personal Equipment",
+    "gallery": "Gallery 2: Smithsonian Technology & Science Hall",
+    "galleryId": "gallery-2",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "institution": "National Air and Space Museum, Smithsonian Institution",
+    "source": "Smithsonian 3D / National Air and Space Museum",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART009/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      14,
+      0,
+      -3
+    ],
+    "rotation": [
+      0,
+      0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "1961 (20th Century)",
     "origin": "United States",
     "description": "The Mercury full-pressure suit worn by astronaut Alan B. Shepard Jr. during Freedom 7, the first crewed spaceflight launched by the United States on May 5, 1961. Developed by B.F. Goodrich from U.S. Navy Mark IV pressure suits, it provided environmental protection and life support during early spaceflight.",
-    "galleryId": "gallery-2",
-    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART009",
       "historicalSignificance": "Worn by Alan Shepard on May 5, 1961, during the first American manned spaceflight. Pivotal artifact in human spaceflight history and early spacesuit engineering.",
       "material": "Aluminized nylon, Neoprene, Anodized aluminum neck ring, Brass, Rubber",
       "dimensions": "Full-body pressure suit (approx. 175cm x 60cm x 40cm)"
+    },
+    "readme_text": "ART015 — Mercury Pressure Suit\n\n1. Basic Information\n\n- **Artifact ID:** ART015\n- **Artifact Name:** Mercury Pressure Suit\n- **Astronaut:** Alan B. Shepard Jr.\n- **Domain:** Space & Aerospace History\n- **Subdomain:** Human Spaceflight / Space Suits\n- **Type:** PERSONAL EQUIPMENT-Pressure Suits\n- **Manufacturer:** B. F. Goodrich Co.\n- **Country of Origin:** United States of America\n\n---\n\n2. Historical Significance\n\nThe Mercury Pressure Suit was worn by astronaut **Alan B. Shepard Jr.** during the first manned spaceflight launched by the United States on **May 5, 1961**.\n\nShepard's sub-orbital flight was launched from **Pad 5 at Cape Canaveral** using a **Redstone rocket**. Approximately 15 minutes later, Shepard splashed down in the Atlantic Ocean.\n\nThe suit represents an important artifact from the early period of American human spaceflight and the **Project Mercury** program.\n\n---\n\n3. Suit Development\n\nThe Mercury spacesuit was a:\n\n- Close-fitting suit\n- Two-layer suit\n- Full-pressure suit\n\nIt was developed by the **B.F. Goodrich Company** from their **Mark IV pressure suit**, which had previously been used by the U.S. Navy.\n\nNASA selected the suit in **1959** for use during Project Mercury.\n\nDuring the Mercury program, the suit underwent minor modifications, primarily involving the shoulders.\n\n---\n\n4. Astronaut\n\n**Alan B. Shepard Jr.**\n\nShepard wore this suit during his historic sub-orbital Mercury flight on May 5, 1961.\n\n---\n\n5. Mission\n\nProject Mercury\n\nThe suit was used during the first manned spaceflight launched by the United States.\n\n- **Date:** May 5, 1961\n- **Launch Vehicle:** Redstone rocket\n- **Launch Site:** Pad 5, Cape Canaveral\n- **Flight Type:** Sub-orbital\n- **Landing:** Atlantic Ocean\n\n---\n\n6. Manufacturer\n\n**B. F. Goodrich Co.**\n\nThe suit was developed from the company's Mark IV pressure suit used by the U.S. Navy.\n\n---\n\n7. Museum Information\n\n- **Museum:** National Air and Space Museum\n- **Location:** Washington, DC\n- **Exhibition:** Destination Moon\n- **Credit Line:** Transferred from the National Aeronautics and Space Administration\n- **Transfer Year:** 1977\n\nNASA transferred this suit to the Smithsonian museum in 1977.\n\n---\n\n8. Materials\n\nExterior\n\n- Aluminized nylon\n- Brass\n- Cotton\n- Steel\n\nInterior\n\n- Neoprene\n- Neoprene-coated nylon\n- Rubber\n\nNeck Ring\n\n- Anodized aluminium\n\n---\n\n9. Artifact Type\n\n```text\nPERSONAL EQUIPMENT-Pressure Suits",
+    "extended_knowledge": {
+      "astronaut_and_flight": "Worn by Alan B. Shepard Jr. on May 5, 1961 aboard Freedom 7 (Mercury-Redstone 3), marking the first human spaceflight by the United States.",
+      "engineering": "Developed by B.F. Goodrich from the U.S. Navy Mark IV high-altitude fighter pressure suit. Features a flexible neoprene gas container wrapped in an outer aluminized nylon fabric to reflect radiant heat.",
+      "life_support": "Operating pressure of 5.0 psi pure oxygen, equipped with biomedical sensors, communication headset, microphone, and self-sealing aluminum entrance zippers.",
+      "significance": "Pioneered anthropomorphic spacesuit mobility and environmental pressurization, proving human survival and operational dexterity in zero-gravity spaceflight."
     }
   },
   {
     "id": "ART010",
     "name": "Pioneer 10 Space Probe",
+    "title": "Pioneer 10 Space Probe",
+    "artist": "TRW Systems Group / NASA Ames",
     "category": "Robotic Spacecraft / Deep Space Exploration",
+    "gallery": "Gallery 2: Smithsonian Technology & Science Hall",
+    "galleryId": "gallery-2",
+    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
     "institution": "National Air and Space Museum, Smithsonian Institution",
+    "source": "Smithsonian 3D / National Air and Space Museum",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART010/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      14,
+      0,
+      -6
+    ],
+    "rotation": [
+      0,
+      0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "1972 (20th Century)",
     "origin": "United States",
     "description": "Pioneer 10 was the first spacecraft to navigate through the Asteroid Belt, conduct a close-up flyby of Jupiter (December 1973), and achieve escape velocity from our Solar System. It carries the famous gold-anodized interstellar Pioneer Plaque.",
-    "galleryId": "gallery-2",
-    "galleryName": "Gallery 2: Smithsonian Technology & Science Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART010",
       "historicalSignificance": "First spacecraft to traverse the Asteroid Belt, perform a flyby of Jupiter, and carry the interstellar Pioneer Plaque intended for intelligent extraterrestrial life.",
       "material": "Aluminum alloy, Beryllium, Hydrazine propellant tanks, RTGs",
       "dimensions": "Antenna Diameter: 2.74m (9ft), Length: 2.9m"
+    },
+    "readme_text": "ART010 — Pioneer 10 Space Probe\n\n1. Basic Information\n\n- **Artifact ID:** ART010\n- **Artifact Name:** Pioneer 10 Space Probe\n- **Alternate Name:** Pioneer 10\n- **Domain:** Space & Aerospace History\n- **Subdomain:** Robotic Space Exploration / Interplanetary Probes\n- **Date:** 1972\n- **Manufacturer:** TRW Systems Group\n- **Country of Origin:** United States of America\n- **Type:** SPACECRAFT-Uncrewed / Interplanetary Probe\n\n---\n\n2. Historical Significance\n\nPioneer 10 was the first spacecraft to navigate through the Asteroid Belt, conduct a close-up flyby of Jupiter (December 1973), and achieve escape velocity from our Solar System.\n\nLaunched on **March 2, 1972** aboard an Atlas-Centaur rocket from Cape Canaveral, Pioneer 10 revolutionized planetary science by returning groundbreaking high-resolution images and radiation readings of Jupiter and its moons.\n\nIt also carries the iconic **Pioneer Plaque**, a gold-anodized aluminum plate featuring visual messages intended for potential extraterrestrial intelligence.\n\n---\n\n3. Key Accomplishment\n\n- **First Spacecraft to Cross the Asteroid Belt**\n- **First Close-Up Exploration of Jupiter**\n- **First Spacecraft on a Trajectory Out of the Solar System**\n\n---\n\n4. Spacecraft Design & Equipment\n\n- **High-Gain Antenna:** 2.74-meter (9 ft) parabolic dish reflector\n- **Power System:** Four Radioisotope Thermoelectric Generators (RTGs)\n- **Scientific Instruments:** Magnetometer, Charged Particle Instrument, Cosmic Ray Telescope, Geiger Tube Telescope, Imaging Photopolarimeter\n- **Interstellar Message:** Pioneer Plaque engraved with human figures, solar system map, and hydrogen hyperfine transition key.\n\n---\n\n5. Museum Information\n\n- **Museum:** National Air and Space Museum\n- **Location:** Washington, DC\n- **Exhibition:** Milestones of Flight / Space Exploration Hall\n- **Data Source:** National Air and Space Museum (Smithsonian 3D)\n- **Rights & License:** CC0 1.0 Universal (Smithsonian Open Access)\n\n---\n\n6. 3D Model Integration\n\nLocal Model Path\n\n```text\npublic/models/artifacts/ART010/model.glb\n```",
+    "extended_knowledge": {
+      "deep_space_firsts": "First spacecraft to traverse the Asteroid Belt (1972), first to obtain close-up images of Jupiter and its Galilean moons (December 1973), and first man-made object to achieve escape velocity from the Solar System.",
+      "interstellar_plaque": "Carries the famous gold-anodized aluminum plaque designed by Carl Sagan and Frank Drake, illustrating human figures, the solar system, and hydrogen atom hyperfine transition pulsar map.",
+      "power_and_distance": "Powered by four SNAP-19 radioisotope thermoelectric generators (RTGs) fueled by plutonium-238. Last weak signal received on January 23, 2003 at 7.6 billion miles (12.2 billion km) from Earth.",
+      "heading": "Currently coasting silently into interstellar space toward the constellation Taurus, expected to pass near the red giant star Aldebaran in approximately two million years."
     }
   },
   {
     "id": "ART011",
     "name": "Salwasiren qatarensis Fossil Skeleton",
+    "title": "Salwasiren qatarensis Fossil Skeleton",
+    "artist": "N/A",
     "category": "Prehistoric Marine Mammal / Sirenia Fossil",
+    "gallery": "Gallery 3: Smithsonian Paleontology Hall",
+    "galleryId": "gallery-3",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "institution": "National Museum of Natural History, Smithsonian Institution",
+    "source": "Smithsonian Institution (NMNH Paleobiology Dept) & Qatar Museums",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART011/model.glb",
+    "license": "Smithsonian Open Access / Qatar Museums",
+    "position": [
+      -4.2,
+      0,
+      -13
+    ],
+    "rotation": [
+      0,
+      0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "Early Miocene (c. 21 Million Years Old)",
     "origin": "Al Maszhabiya, Southwest Qatar",
     "description": "Fossilized skeleton of Salwasiren qatarensis, a 21-million-year-old extinct species of dugongid sea cow discovered in the Al Maszhabiya bonebed of Qatar. Digitized by the Smithsonian NMNH Paleobiology Department in collaboration with Qatar Museums, this fossil illustrates ancient sirenian evolution and the prehistoric seagrass ecosystems of the Early Miocene.",
-    "galleryId": "gallery-3",
-    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": true,
     "aiContext": {
+      "artifact_id": "ART011",
       "historicalSignificance": "A transitional fossil sirenian illustrating the evolutionary lineage of modern dugongs and manatees. Collected from the Al Maszhabiya bonebed under Qatar Museums Heritage Area 23400.",
       "material": "Fossilized Bone in Mineral Matrix",
       "dimensions": "Early Miocene Dugongid specimen (Record ID: dpo_3d_250001)"
+    },
+    "readme_text": "ART011 — Salwasiren qatarensis Fossil Skeleton\n\nArtifact Information\n\n- **Artifact Name:** Salwasiren qatarensis Fossil Skeleton\n\n- **Artist:** N/A\n\n- **Date:** 21 million years old\n\n- **Period:** Early Miocene\n\n- **Medium:** Fossil\n\n- **Type:** Fossil Skeleton\n\n- **Institution:** National Museum of Natural History, Smithsonian Institution\n\n- **Collection:** NMNH Paleobiology Department\n\n- **Record ID:** dpo_3d_250001\n\n3D Model Information\n\n- **3D Asset:** Salwasiren qatarensis Fossil Skeleton\n\n- **Model Format:** GLB\n\n- **Model Version:** Low-resolution 3D mesh\n\n- **Scale:** Meters\n\n- **Local File:** `model.glb`\n\n- **Local Path:** `public/models/artifacts/ART0011/model.glb`\n\nSummary\n\nThis 3D model shows part of the skeleton of *Salwasiren qatarensis*, a 21-million-year-old species of fossil sea cow discovered in Qatar.\n\nThe fossils of *Salwasiren* were collected from the Al Maszhabiya bonebed, which is exposed throughout southwest Qatar, especially in a protected area called the Southern Reserve.\n\nIts scientific name honors both the State of Qatar and the Bay of Salwa, a body of water close to where the fossils were found. The coastlines of the Bay of Salwa are shared by Saudi Arabia, Bahrain, and Qatar.\n\nThe bay supports herds of dugongs, the distant modern relatives of *Salwasiren*. Dugongs, like manatees from the Americas, are herbivorous marine mammals that eat plants on the seafloor.\n\n*Salwasiren* weighed about as much as an adult panda or a heavyweight boxer, although its body size was relatively small compared to other fossil and living sea cows, including dugongs, which can weigh much more.\n\nToday's dugongs use their tusks to excavate seagrass roots and create pits in the seafloor. This makes them ecosystem engineers because their activities support the health of seagrass ecosystems.\n\nIt is likely that *Salwasiren* occupied this ecological role in ancient seagrass ecosystems of the Early Miocene.\n\nSource\n\nThe 3D model and associated artifact information are sourced from the Smithsonian National Museum of Natural History Paleobiology Department.\n\n**Data Source:** NMNH - Paleobiology Dept.\n\nCollector\n\n**Qatar Museums**\n\nSite Information\n\n- **Site Name:** Al Maszhabiya\n\n- **Location:** Southwest Qatar\n\n- **Protected Area:** Southern Reserve\n\nScientific Classification\n\n**Taxonomy:**\n\nVertebrata, Mammalia, Eutheria, Sirenia, Dugongidae\n\n- **Kingdom/Group:** Vertebrata\n\n- **Class:** Mammalia\n\n- **Clade:** Eutheria\n\n- **Order:** Sirenia\n\n- **Family:** Dugongidae\n\n- **Species:** *Salwasiren qatarensis*\n\nProject Usage\n\nThe model is integrated into the Virtual Heritage Museum as:\n\n**ART0011 — Salwasiren qatarensis Fossil Skeleton**\n\nIt is used for:\n\n- Virtual 3D museum exhibition\n\n- Interactive artifact inspection\n\n- Mobile AR artifact placement\n\n- Artifact information display\n\n- Future AI Curator interaction\n\n- RAG-based artifact information retrieval\n\nIntegration Path\n\nThe application loads the model using:\n\n`/models/artifacts/ART0011/model.glb`\n\nThe model is managed through the centralized artifact metadata system and loaded using the project's Three.js / React Three Fiber artifact pipeline.\n\nAttribution\n\n*Salwasiren qatarensis* fossil skeleton, Early Miocene, collected from the Al Maszhabiya bonebed, Qatar Museums, digitized by the Smithsonian National Museum of Natural History Paleobiology Department.\n\nCredit Line\n\nDigitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums.\n\nThese fossils are registered under Heritage Area 23400 for Qatar Museums and protected by the Ministry of Environment and Climate Change.\n\nIdentifiers\n\n- **Field Identifier:** FD 23-56\n\n- **Qatar Museums Identifier:** ARC-2023_28_008\n\n- **Record ID:** dpo_3d_250001\n\nRights and Usage\n\n**Metadata Usage:** Usage conditions apply.\n\nThe 3D asset and associated metadata are subject to the usage conditions specified by the Smithsonian National Museum of Natural History and the contributing institutions.\n\nThe asset is being used in this project for educational and academic purposes as part of a virtual museum and AR demonstration.\n\nDownload Information\n\n- **Downloaded Format:** GLB\n\n- **Downloaded Model:** Low-resolution 3D mesh\n\n- **Downloaded For:** Virtual Museum / AR Academic Project\n\nNotes\n\nThe model is intended to be reused across both:\n\n1. Virtual Museum Mode\n\n2. Mobile AR Mode\n\nThe same GLB asset is used for both experiences.\n\nThe artifact provides a 3D representation of an extinct sea cow and can be used to demonstrate prehistoric marine ecosystems, fossil evidence, paleontology, and the evolutionary history of modern sirenians such as dugongs and manatees.",
+    "extended_knowledge": {
+      "discovery_and_site": "Fossils were discovered in the Al Maszhabiya bonebed, exposed throughout southwest Qatar within the protected Southern Reserve (Heritage Area 23400). Digitized in collaboration with Qatar Museums.",
+      "scientific_name_origin": "Honors both the State of Qatar and the Bay of Salwa, whose waters are shared by Qatar, Saudi Arabia, and Bahrain.",
+      "size_and_mass": "Weighed roughly as much as an adult panda or heavyweight boxer (~100 to 150 kg), noticeably smaller than modern dugongs and giant fossil sirenians.",
+      "diet_and_ecosystem": "Herbivorous marine mammal that fed on seafloor seagrasses. Used its tusks to excavate seagrass rhizomes, making it an ancient 'ecosystem engineer' that aerated seafloor sediments and sustained coastal biodiversity.",
+      "modern_relatives": "Direct evolutionary relative of modern dugongs inhabiting the Arabian Gulf and manatees of the Caribbean and Amazon.",
+      "taxonomy": "Class: Mammalia, Order: Sirenia, Family: Dugongidae, Species: Salwasiren qatarensis. Age: Early Miocene epoch (21 million years ago)."
     }
   },
   {
     "id": "ART012",
     "name": "Tyrannosaurus rex Skull",
+    "title": "Tyrannosaurus rex Skull",
+    "artist": "Kathy Wankel (Discovered 1988)",
     "category": "Theropod Dinosaur Paleontology",
+    "gallery": "Gallery 3: Smithsonian Paleontology Hall",
+    "galleryId": "gallery-3",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "institution": "National Museum of Natural History, Smithsonian Institution",
+    "source": "Smithsonian NMNH Paleobiology (The Nation's T. rex)",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART012/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      -4.2,
+      0,
+      -18
+    ],
+    "rotation": [
+      0,
+      0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "Late Cretaceous (c. 66 Million Years Ago)",
     "origin": "Hell Creek Formation, Montana, United States",
     "description": "The monumental fossil skull of the apex predator Tyrannosaurus rex, showcased in the Smithsonian NMNH Hall of Fossils ('The Nation's T. rex'). Featuring massive reinforced jaws, 30 cm serrated bone-crushing teeth, and forward-facing stereoscopic eye sockets with acute depth perception.",
-    "galleryId": "gallery-3",
-    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": false,
     "aiContext": {
+      "artifact_id": "ART012",
       "historicalSignificance": "Discovered in 1988 by Kathy Wankel in Montana. One of the most complete and scientifically celebrated T. rex specimens in the world, designated 'The Nation's T. rex'.",
       "material": "Fossilized Cranial Bone",
       "dimensions": "Skull length: 1.5m (approx. 5ft)"
+    },
+    "readme_text": "ART012 — Salwasiren qatarensis Fossil Skeleton\n\nArtifact Information\n\n- **Artifact Name:** Salwasiren qatarensis Fossil Skeleton\n\n- **Artist:** N/A\n\n- **Date:** 21 million years old\n\n- **Period:** Early Miocene\n\n- **Medium:** Fossil\n\n- **Type:** Fossil Skeleton\n\n- **Institution:** National Museum of Natural History, Smithsonian Institution\n\n- **Collection:** NMNH - Paleobiology Dept.\n\n- **Record ID:** dpo_3d_250001\n\n3D Model Information\n\n- **3D Asset:** Salwasiren qatarensis Fossil Skeleton\n\n- **Model Format:** GLB\n\n- **Model Version:** Low-resolution 3D mesh\n\n- **Scale:** Meters\n\n- **Local File:** `model.glb`\n\n- **Local Path:** `public/models/artifacts/ART012/model.glb`\n\nSource\n\nThe 3D model is sourced from the Smithsonian National Museum of Natural History Paleobiology Department.\n\n**Data Source:** NMNH - Paleobiology Dept.\n\nSummary\n\nThis 3D model shows part of the skeleton of *Salwasiren qatarensis*, a 21-million-year-old species of fossil sea cow discovered in Qatar.\n\nThe fossils of *Salwasiren* were collected from the Al Maszhabiya bonebed, which is exposed throughout southwest Qatar, especially in a protected area called the Southern Reserve.\n\nIts scientific name honors both the State of Qatar and the Bay of Salwa, a body of water close to where the fossils were found. The coastlines of the Bay of Salwa are shared by Saudi Arabia, Bahrain, and Qatar.\n\nThe bay supports herds of dugongs, the distant modern relatives of *Salwasiren*. Dugongs, like manatees from the Americas, are herbivorous marine mammals that eat plants on the seafloor.\n\n*Salwasiren* weighed about as much as an adult panda or a heavyweight boxer, although its body size was relatively small compared to other fossil and living sea cows, including dugongs, which can weigh much more.\n\nToday's dugongs use their tusks to excavate seagrass roots and create pits in the seafloor, which makes them ecosystem engineers because their activities support the health of seagrass ecosystems.\n\nIt is likely that *Salwasiren* occupied this ecological role in ancient seagrass ecosystems of the Early Miocene.\n\nCollector\n\n**Qatar Museums**\n\nSite Information\n\n- **Site Name:** Al Maszhabiya\n\n- **Location:** Southwest Qatar\n\n- **Protected Area:** Southern Reserve\n\nTaxonomy\n\n**Taxonomy:** Vertebrata, Mammalia, Eutheria, Sirenia, Dugongidae\n\nCredit Line\n\nDigitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums.\n\nThese fossils are registered under Heritage Area 23400 for Qatar Museums and protected by the Ministry of Environment and Climate Change.\n\nIdentifiers\n\n- **Field Identifier:** FD 23-56\n\n- **Qatar Museums Identifier:** ARC-2023_28_008\n\n- **Record ID:** dpo_3d_250001\n\nRights and Usage\n\n**Metadata Usage:** Usage conditions apply.\n\nThe 3D asset and associated metadata are subject to the usage conditions specified by the Smithsonian National Museum of Natural History and the contributing institutions.\n\nThe asset is being used in this project for educational and academic purposes as part of a virtual museum and AR demonstration.\n\nProject Usage\n\nThe model is integrated into the Virtual Heritage Museum as:\n\n**ART012 — Salwasiren qatarensis Fossil Skeleton**\n\nIt is used for:\n\n- Virtual 3D museum exhibition\n\n- Interactive artifact inspection\n\n- Mobile AR artifact placement\n\n- Artifact information display\n\n- Future AI Curator interaction\n\n- RAG-based artifact information retrieval\n\nIntegration Path\n\nThe application loads the model using:\n\n`/models/artifacts/ART012/model.glb`\n\nThe model is managed through the centralized artifact metadata system and loaded using the project's Three.js / React Three Fiber artifact pipeline.\n\nAttribution\n\n*Salwasiren qatarensis* fossil skeleton, Early Miocene, collected from the Al Maszhabiya bonebed, Qatar Museums, digitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums.\n\nDownload Information\n\n- **Downloaded Format:** GLB\n\n- **Downloaded Model:** Low-resolution 3D mesh\n\n- **Downloaded For:** Virtual Museum / AR Academic Project\n\nNotes\n\nThe model is intended to be reused across both:\n\n1. Virtual Museum Mode\n\n2. Mobile AR Mode\n\nThe same GLB asset is used for both experiences.\n\nThe artifact provides a 3D representation of an extinct sea cow and can be used to demonstrate prehistoric marine ecosystems, fossil evidence, paleontology, and the evolutionary history of modern sirenians such as dugongs and manatees.",
+    "extended_knowledge": {
+      "specimen_and_discovery": "Discovered in 1988 by Kathy Wankel in the Hell Creek Formation, Montana (catalog MOR 555 / USNM 555000). Transferred to the Smithsonian National Museum of Natural History in 2014.",
+      "skull_and_teeth": "Measures 1.5 meters (5 feet) in length. Jaws contain up to 60 D-shaped and oval serrated teeth measuring up to 30 cm (12 inches) with root. Serrations acted as bone saws.",
+      "bite_force": "Estimated bite force exceeding 35,000 to 57,000 Newtons (8,000 to 12,800 pounds), enough to shatter the thick cortical bones of adult ceratopsians and hadrosaurs.",
+      "sensory_adaptations": "Features forward-facing stereoscopic binocular eyes with exceptional depth perception and expanded olfactory bulbs indicating an acute sense of smell for tracking prey or carrion.",
+      "age_and_formation": "Late Cretaceous period, approximately 66 to 68 million years ago, directly before the Cretaceous-Paleogene (K-Pg) mass extinction event."
     }
   },
   {
     "id": "ART013",
     "name": "Triceratops horridus (\"Hatcher\")",
+    "title": "Triceratops horridus (\"Hatcher\")",
+    "artist": "John Bell Hatcher (Collected 1891)",
     "category": "Ceratopsian Dinosaur Paleontology",
+    "gallery": "Gallery 3: Smithsonian Paleontology Hall",
+    "galleryId": "gallery-3",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "institution": "National Museum of Natural History, Smithsonian Institution",
+    "source": "Smithsonian Hall of Paleobiology (USNM 4720)",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART013/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      0,
+      0,
+      -16
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "scale": 1,
     "period": "Late Cretaceous (c. 66 Million Years Ago)",
     "origin": "Lance Formation, Niobrara County, Wyoming, United States",
     "description": "The world's first mounted Triceratops skeleton, affectionately nicknamed 'Hatcher' (catalog USNM 4720). One of the most famous dinosaur fossils on Earth, boasting three massive brow and nasal defensive horns and an expansive solid bony neck frill.",
-    "galleryId": "gallery-3",
-    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": false,
     "aiContext": {
+      "artifact_id": "ART013",
       "historicalSignificance": "Mounted in 1905 at the Smithsonian, it was the first Triceratops mounted for public display anywhere in the world and remains the definitive ceratopsian type reference.",
       "material": "Fossilized Skeletal Matrix",
       "dimensions": "Length: 7.9m (26ft), Frill Width: 2m"
+    },
+    "readme_text": "ART013 — Salwasiren qatarensis Fossil Skeleton\n\nArtifact Information\n\n- **Artifact Name:** Salwasiren qatarensis Fossil Skeleton\n\n- **Artist:** N/A\n\n- **Date:** 21 million years old\n\n- **Period:** Early Miocene\n\n- **Medium:** Fossil\n\n- **Type:** Fossil Skeleton\n\n- **Institution:** National Museum of Natural History, Smithsonian Institution\n\n- **Collection:** NMNH - Paleobiology Dept.\n\n- **Record ID:** dpo_3d_250001\n\n3D Model Information\n\n- **3D Asset:** Salwasiren qatarensis Fossil Skeleton\n\n- **Model Format:** GLB\n\n- **Model Version:** Low-resolution 3D mesh\n\n- **Scale:** Meters\n\n- **Local File:** `model.glb`\n\n- **Local Path:** `public/models/artifacts/ART013/model.glb`\n\nSource\n\nThe 3D model is sourced from the Smithsonian National Museum of Natural History Paleobiology Department.\n\n**Data Source:** NMNH - Paleobiology Dept.\n\nSummary\n\nThis 3D model shows part of the skeleton of *Salwasiren qatarensis*, a 21-million-year-old species of fossil sea cow discovered in Qatar. The fossils of *Salwasiren* were collected from the Al Maszhabiya bonebed, which is exposed throughout southwest Qatar, especially in a protected area called the Southern Reserve.\n\nIts scientific name honors both the State of Qatar and the Bay of Salwa, a body of water close to where the fossils were found. The coastlines of the Bay of Salwa are shared by Saudi Arabia, Bahrain, and Qatar.\n\nThe bay supports herds of dugongs, the distant modern relatives of *Salwasiren*. Dugongs, like manatees from the Americas, are herbivorous marine mammals that eat plants on the seafloor.\n\n*Salwasiren* weighed about as much as an adult panda or a heavyweight boxer, although its body size was relatively small compared to other fossil and living sea cows, including dugongs, which can weigh much more.\n\nToday's dugongs use their tusks to excavate seagrass roots and create pits in the seafloor, which makes them ecosystem engineers because their activities support the health of seagrass ecosystems.\n\nIt is likely that *Salwasiren* occupied this ecological role in ancient seagrass ecosystems of the Early Miocene.\n\nCollector\n\n**Qatar Museums**\n\nSite Information\n\n- **Site Name:** Al Maszhabiya\n\nCredit Line\n\nDigitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums. These fossils are registered under Heritage Area 23400 for Qatar Museums and protected by the Ministry of Environment and Climate Change.\n\nTaxonomy\n\n**Taxonomy:** Vertebrata, Mammalia, Eutheria, Sirenia, Dugongidae\n\nRights and Usage\n\n**Metadata Usage:** Usage conditions apply.\n\nThe 3D asset and associated metadata are subject to the usage conditions specified by the Smithsonian National Museum of Natural History and the contributing institutions.\n\nThe asset is being used in this project for educational and academic purposes as part of a virtual museum and AR demonstration.\n\nProject Usage\n\nThe model is integrated into the Virtual Heritage Museum as:\n\n**ART013 — Salwasiren qatarensis Fossil Skeleton**\n\nIt is used for:\n\n- Virtual 3D museum exhibition\n\n- Interactive artifact inspection\n\n- Mobile AR artifact placement\n\n- Artifact information display\n\n- Future AI Curator interaction\n\n- RAG-based artifact information retrieval\n\nIntegration Path\n\nThe application loads the model using:\n\n`/models/artifacts/ART013/model.glb`\n\nThe model is managed through the centralized artifact metadata system and loaded using the project's Three.js / React Three Fiber artifact pipeline.\n\nAttribution\n\n*Salwasiren qatarensis* fossil skeleton, Early Miocene, collected from the Al Maszhabiya bonebed, Qatar Museums, digitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums.\n\nIdentifiers\n\n- **Field Identifier:** FD 23-56\n\n- **Qatar Museums Identifier:** ARC-2023_28_008\n\n- **Record ID:** dpo_3d_250001\n\nDownload Information\n\n- **Downloaded Format:** GLB\n\n- **Downloaded Model:** Low-resolution 3D mesh\n\n- **Downloaded For:** Virtual Museum / AR Academic Project\n\nNotes\n\nThe model is intended to be reused across both:\n\n1. Virtual Museum Mode\n\n2. Mobile AR Mode\n\nThe same GLB asset is used for both experiences.",
+    "extended_knowledge": {
+      "specimen_and_collector": "Collected in 1891 by famed paleontologist John Bell Hatcher in the Lance Formation of Niobrara County, Wyoming (catalog USNM 4720).",
+      "historic_milestone": "Mounted in 1905 at the Smithsonian, becoming the very first mounted Triceratops skeleton anywhere in the world and the world's most famous ceratopsian.",
+      "horns_and_frill": "Features two massive 1-meter (3-foot) brow horns, a stout nasal horn, and a wide, solid bony neck frill (parietal-squamosal) that lacked the weight-reducing fenestrae (holes) of other ceratopsids.",
+      "defense_and_combat": "Fossil bone frills and horns frequently exhibit healed puncture wounds and fractures, demonstrating active combat with rival Triceratops for territory and mates, as well as defense against Tyrannosaurus rex.",
+      "diet_and_size": "Quadrupedal herbivore reaching 8 meters (26 feet) in length and 6 to 9 metric tons. Used a sharp keratinous parrot-like beak and shearing tooth batteries to slice fibrous palms, cycads, and ferns."
     }
   },
   {
     "id": "ART014",
     "name": "Woolly Mammoth Tusk & Molar",
+    "title": "Woolly Mammoth Tusk & Molar",
+    "artist": "N/A",
     "category": "Pleistocene Ice Age Megafauna",
+    "gallery": "Gallery 3: Smithsonian Paleontology Hall",
+    "galleryId": "gallery-3",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "institution": "National Museum of Natural History, Smithsonian Institution",
+    "source": "Smithsonian Institution (NMNH Paleobiology Dept)",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART014/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      4.2,
+      0,
+      -13
+    ],
+    "rotation": [
+      0,
+      -0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "Late Pleistocene (c. 40,000–10,000 Years Ago)",
     "origin": "Beringia Tundra, Alaska / Siberia",
     "description": "Pristine fossilized spiraling ivory tusk and characteristic grooved molar of Mammuthus primigenius. The specialized high-crowned dental plates allowed mammoths to grind tough tundra steppe grasses during the Last Glacial Maximum.",
-    "galleryId": "gallery-3",
-    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": false,
     "aiContext": {
+      "artifact_id": "ART014",
       "historicalSignificance": "Demonstrates the specialized anatomical adaptations of Ice Age megafauna that traversed the Bering Land Bridge during the Pleistocene epoch.",
       "material": "Fossilized Ivory & Mineralized Dentin",
       "dimensions": "Tusk curvature length: 2.8m; Molar length: 25cm"
+    },
+    "readme_text": "ART014 — Salwasiren qatarensis Fossil Skeleton\n\nArtifact Information\n\n- **Artifact Name:** Salwasiren qatarensis Fossil Skeleton\n\n- **Artist:** N/A\n\n- **Date:** 21 million years old\n\n- **Period:** Early Miocene\n\n- **Medium:** Fossil\n\n- **Type:** Fossil Skeleton\n\n- **Institution:** National Museum of Natural History, Smithsonian Institution\n\n- **Collection:** NMNH - Paleobiology Dept.\n\n- **Record ID:** dpo_3d_250001\n\n3D Model Information\n\n- **3D Asset:** Salwasiren qatarensis Fossil Skeleton\n\n- **Model Format:** GLB\n\n- **Model Version:** Low-resolution 3D mesh\n\n- **Scale:** Meters\n\n- **Local File:** `model.glb`\n\n- **Local Path:** `public/models/artifacts/ART014/model.glb`\n\nSource\n\nThe 3D model is sourced from the Smithsonian National Museum of Natural History Paleobiology Department.\n\n**Data Source:** NMNH - Paleobiology Dept.\n\nSummary\n\nThis 3D model shows part of the skeleton of *Salwasiren qatarensis*, a 21-million-year-old species of fossil sea cow discovered in Qatar. The fossils of *Salwasiren* were collected from the Al Maszhabiya bonebed, which is exposed throughout southwest Qatar, especially in a protected area called the Southern Reserve.\n\nIts scientific name honors both the State of Qatar and the Bay of Salwa, a body of water close to where the fossils were found. The coastlines of the Bay of Salwa are shared by Saudi Arabia, Bahrain, and Qatar.\n\nThe bay supports herds of dugongs, the distant modern relatives of *Salwasiren*. Dugongs, like manatees from the Americas, are herbivorous marine mammals that eat plants on the seafloor.\n\n*Salwasiren* weighed about as much as an adult panda or a heavyweight boxer, although its body size was relatively small compared to other fossil and living sea cows, including dugongs, which can weigh much more.\n\nToday's dugongs use their tusks to excavate seagrass roots and create pits in the seafloor, which makes them ecosystem engineers because their activities support the health of seagrass ecosystems.\n\nIt is likely that *Salwasiren* occupied this ecological role in ancient seagrass ecosystems of the Early Miocene.\n\nCollector\n\n**Qatar Museums**\n\nSite Information\n\n- **Site Name:** Al Maszhabiya\n\nCredit Line\n\nDigitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums. These fossils are registered under Heritage Area 23400 for Qatar Museums and protected by the Ministry of Environment and Climate Change.\n\nTaxonomy\n\n**Taxonomy:** Vertebrata, Mammalia, Eutheria, Sirenia, Dugongidae\n\nRights and Usage\n\n**Metadata Usage:** Usage conditions apply.\n\nThe 3D asset and associated metadata are subject to the usage conditions specified by the Smithsonian National Museum of Natural History and the contributing institutions.\n\nThe asset is being used in this project for educational and academic purposes as part of a virtual museum and AR demonstration.\n\nProject Usage\n\nThe model is integrated into the Virtual Heritage Museum as:\n\n**ART014 — Salwasiren qatarensis Fossil Skeleton**\n\nIt is used for:\n\n- Virtual 3D museum exhibition\n\n- Interactive artifact inspection\n\n- Mobile AR artifact placement\n\n- Artifact information display\n\n- Future AI Curator interaction\n\n- RAG-based artifact information retrieval\n\nIntegration Path\n\nThe application loads the model using:\n\n`/models/artifacts/ART014/model.glb`\n\nThe model is managed through the centralized artifact metadata system and loaded using the project's Three.js / React Three Fiber artifact pipeline.\n\nAttribution\n\n*Salwasiren qatarensis* fossil skeleton, Early Miocene, collected from the Al Maszhabiya bonebed, Qatar Museums, digitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums.\n\nIdentifiers\n\n- **Field Identifier:** FD 23-56\n\n- **Qatar Museums Identifier:** ARC-2023_28_008\n\n- **Record ID:** dpo_3d_250001\n\nDownload Information\n\n- **Downloaded Format:** GLB\n\n- **Downloaded Model:** Low-resolution 3D mesh\n\n- **Downloaded For:** Virtual Museum / AR Academic Project\n\nNotes\n\nThe model is intended to be reused across both:\n\n1. Virtual Museum Mode\n\n2. Mobile AR Mode\n\nThe same GLB asset is used for both experiences.\n\nThe artifact provides a 3D representation of an extinct sea cow and can be used to demonstrate prehistoric marine ecosystems, fossil evidence, paleontology, and the evolutionary history of modern sirenians such as dugongs and manatees.",
+    "extended_knowledge": {
+      "specimen_and_origin": "Discovered in Late Pleistocene permafrost deposits of the Beringia region (Alaska and northern Siberia). Preserved with pristine microscopic dentin rings and enamel ridges.",
+      "tusk_adaptation": "Spiraling ivory tusks reached up to 4.2 meters (14 feet) in length and over 80 kg in weight. Curved inward to prevent snagging in brush and used as snow shovels to sweep aside frozen snow drifts to reach grass.",
+      "molar_dentition": "High-crowned (hypsodont) grinding molars composed of alternating vertical plates of hard enamel, dentin, and cementum. The plates acted as coarse rasps for grinding abrasive silica-rich tundra grasses and sedges.",
+      "cold_climate_adaptations": "Equipped with dual-layer shaggy wool coats up to 90 cm long, 10 cm subcutaneous fat layers, small freeze-resistant ears and tail, and specialized cold-tolerant hemoglobin.",
+      "chronology_and_extinction": "Abundant across the Holarctic steppe from 400,000 years ago until main continental extinction around 10,000 years ago, with isolated island populations surviving on Wrangel Island until 4,000 years ago."
     }
   },
   {
     "id": "ART015",
     "name": "Smilodon fatalis (Sabertooth Cat Skull)",
+    "title": "Smilodon fatalis (Sabertooth Cat Skull)",
+    "artist": "N/A",
     "category": "Pleistocene Carnivore Paleontology",
+    "gallery": "Gallery 3: Smithsonian Paleontology Hall",
+    "galleryId": "gallery-3",
+    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
     "institution": "National Museum of Natural History, Smithsonian Institution",
+    "source": "Smithsonian Institution / La Brea Tar Pits Collection",
+    "sourceUrl": "https://3d.si.edu",
+    "modelPath": "/models/artifacts/ART015/model.glb",
+    "license": "CC0 1.0 Universal (Smithsonian Open Access)",
+    "position": [
+      4.2,
+      0,
+      -18
+    ],
+    "rotation": [
+      0,
+      -0.7854,
+      0
+    ],
+    "scale": 1,
     "period": "Late Pleistocene (c. 30,000–11,000 Years Ago)",
     "origin": "North America (Rancho La Brea Tar Pits)",
     "description": "Complete fossilized skull of Smilodon fatalis featuring iconic elongated maxillary blade canines reaching up to 28 cm (11 inches). The skull exemplifies the specialized hypercarnivorous predatory mechanics and wide gape angle of Ice Age apex felids.",
-    "galleryId": "gallery-3",
-    "galleryName": "Gallery 3: Smithsonian Paleontology Hall",
+    "pedestalHeight": 1.2,
+    "isVerifiedMuseumData": true,
+    "hasPhysicalGlb": false,
     "aiContext": {
+      "artifact_id": "ART015",
       "historicalSignificance": "Preserved in natural asphalt seeps, providing remarkable scientific insight into Late Pleistocene apex predators that hunted alongside early humans.",
       "material": "Petrified Bone with Tar Permeation",
       "dimensions": "Skull length: 32cm; Saber Canines: 28cm"
+    },
+    "readme_text": "ART015 — Salwasiren qatarensis Fossil Skeleton\n\nArtifact Information\n\n- **Artifact Name:** Salwasiren qatarensis Fossil Skeleton\n\n- **Artist:** N/A\n\n- **Date:** 21 million years old\n\n- **Period:** Early Miocene\n\n- **Medium:** Fossil\n\n- **Type:** Fossil Skeleton\n\n- **Institution:** National Museum of Natural History, Smithsonian Institution\n\n- **Collection:** NMNH - Paleobiology Dept.\n\n- **Record ID:** dpo_3d_250001\n\n3D Model Information\n\n- **3D Asset:** Salwasiren qatarensis Fossil Skeleton\n\n- **Model Format:** GLB\n\n- **Model Version:** Low-resolution 3D mesh\n\n- **Scale:** Meters\n\n- **Local File:** `model.glb`\n\n- **Local Path:** `public/models/artifacts/ART015/model.glb`\n\nSource\n\nThe 3D model is sourced from the Smithsonian National Museum of Natural History Paleobiology Department.\n\n**Data Source:** NMNH - Paleobiology Dept.\n\nSummary\n\nThis 3D model shows part of the skeleton of *Salwasiren qatarensis*, a 21-million-year-old species of fossil sea cow discovered in Qatar. The fossils of *Salwasiren* were collected from the Al Maszhabiya bonebed, which is exposed throughout southwest Qatar, especially in a protected area called the Southern Reserve.\n\nIts scientific name honors both the State of Qatar and the Bay of Salwa, a body of water close to where the fossils were found. The coastlines of the Bay of Salwa are shared by Saudi Arabia, Bahrain, and Qatar.\n\nThe bay supports herds of dugongs, the distant modern relatives of *Salwasiren*. Dugongs, like manatees from the Americas, are herbivorous marine mammals that eat plants on the seafloor.\n\n*Salwasiren* weighed about as much as an adult panda or a heavyweight boxer, although its body size was relatively small compared to other fossil and living sea cows, including dugongs, which can weigh much more.\n\nToday's dugongs use their tusks to excavate seagrass roots and create pits in the seafloor, which makes them ecosystem engineers because their activities support the health of seagrass ecosystems.\n\nIt is likely that *Salwasiren* occupied this ecological role in ancient seagrass ecosystems of the Early Miocene.\n\nCollector\n\n**Qatar Museums**\n\nSite Information\n\n- **Site Name:** Al Maszhabiya\n\nCredit Line\n\nDigitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums. These fossils are registered under Heritage Area 23400 for Qatar Museums and protected by the Ministry of Environment and Climate Change.\n\nTaxonomy\n\n**Taxonomy:** Vertebrata, Mammalia, Eutheria, Sirenia, Dugongidae\n\nRights and Usage\n\n**Metadata Usage:** Usage conditions apply.\n\nThe 3D asset and associated metadata are subject to the usage conditions specified by the Smithsonian National Museum of Natural History and the contributing institutions.\n\nThe asset is being used in this project for educational and academic purposes as part of a virtual museum and AR demonstration.\n\nProject Usage\n\nThe model is integrated into the Virtual Heritage Museum as:\n\n**ART015 — Salwasiren qatarensis Fossil Skeleton**\n\nIt is used for:\n\n- Virtual 3D museum exhibition\n\n- Interactive artifact inspection\n\n- Mobile AR artifact placement\n\n- Artifact information display\n\n- Future AI Curator interaction\n\n- RAG-based artifact information retrieval\n\nIntegration Path\n\nThe application loads the model using:\n\n`/models/artifacts/ART015/model.glb`\n\nThe model is managed through the centralized artifact metadata system and loaded using the project's Three.js / React Three Fiber artifact pipeline.\n\nAttribution\n\n*Salwasiren qatarensis* fossil skeleton, Early Miocene, collected from the Al Maszhabiya bonebed, Qatar Museums, digitized with permission of Qatar's Ministry of Environment and Climate Change and Qatar Museums.\n\nIdentifiers\n\n- **Field Identifier:** FD 23-56\n\n- **Qatar Museums Identifier:** ARC-2023_28_008\n\n- **Record ID:** dpo_3d_250001\n\nDownload Information\n\n- **Downloaded Format:** GLB\n\n- **Downloaded Model:** Low-resolution 3D mesh\n\n- **Downloaded For:** Virtual Museum / AR Academic Project\n\nNotes\n\nThe model is intended to be reused across both:\n\n1. Virtual Museum Mode\n\n2. Mobile AR Mode\n\nThe same GLB asset is used for both experiences.\n\nThe artifact provides a 3D representation of an extinct sea cow and can be used to demonstrate prehistoric marine ecosystems, fossil evidence, paleontology, and the evolutionary history of modern sirenians such as dugongs and manatees.",
+    "extended_knowledge": {
+      "tar_pits_preservation": "Recovered from the asphalt seeps of the Rancho La Brea Tar Pits in Los Angeles, California. Petroleum permeated and petrified the bone, preserving pristine honey-brown fossilization.",
+      "saber_fangs": "Iconic elongated maxillary canine teeth measured up to 28 cm (11 inches) long. Oval and serrated along both edges, designed to slice the windpipe and carotid arteries of heavy megafauna.",
+      "jaw_mechanics": "Could open its jaws to an astonishing 120-degree gape angle (compared to 65 degrees for modern lions) enabled by modified mastoid processes and reduced lower jaw flanges.",
+      "hunting_style": "Ambush predator with heavily muscled shoulders, neck, and forelimbs built to wrestle bison, horses, and juvenile mammoths to the ground before delivering a precision throat bite.",
+      "extinction": "Disappeared approximately 10,000 to 11,000 years ago during the Quaternary extinction event following the collapse of large herbivore prey populations."
     }
   }
 ]

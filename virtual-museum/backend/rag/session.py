@@ -11,7 +11,7 @@ No database is used; sessions reside in memory for development/demo.
 import uuid
 from typing import Dict, Any, Optional
 from .memory import SessionMemory
-from .profile import VisitorProfile
+from .visitor_profile import VisitorProfile
 
 
 class SessionState:

@@ -85,6 +85,14 @@ class AskRequest(BaseModel):
         default="educational",
         description="Curator presentation style: 'educational', 'concise', or 'friendly'."
     )
+    history: Optional[List[Dict[str, Any]]] = Field(
+        default_factory=list,
+        description="Optional client conversation history for multi-turn dialogue continuity."
+    )
+    visited_artifacts: Optional[List[str]] = Field(
+        default_factory=list,
+        description="Optional list of exhibit IDs previously explored during this museum tour."
+    )
 
     @field_validator("question")
     @classmethod
@@ -130,6 +138,18 @@ class AskResponse(BaseModel):
     session_id: str
     tone: str
     related_suggestions: List[SuggestionPayload] = []
+    suggested_followups: List[str] = Field(
+        default_factory=list,
+        description="Context-aware follow-up question prompts generated for this dialogue"
+    )
+    visited_artifacts: List[str] = Field(
+        default_factory=list,
+        description="List of all exhibits engaged during this session tour."
+    )
+    tour_progress: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="Museum tour telemetry (exhibits visited count, active gallery)."
+    )
 
 
 # ── ENDPOINTS ─────────────────────────────────────────────────────────────────
@@ -170,6 +190,8 @@ def ask_curator_endpoint(payload: AskRequest):
             session_id=payload.session_id,
             tone=payload.tone,
             artifact_id=payload.artifact_id,  # Forwarded to RAG pipeline
+            history=payload.history,
+            visited_artifacts=payload.visited_artifacts,
         )
 
         resolved_art = result.get("source", {}).get("artifact") if result.get("source") else "None (Refused/General)"
