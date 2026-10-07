@@ -1,0 +1,1846 @@
+{
+  "version": "1.0",
+  "num_queries": 250,
+  "queries": [
+    {
+      "id": "INS_ART001_1",
+      "question": "Tell me about Old Arrow Maker.",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART001_2",
+      "question": "What is the historical significance of Old Arrow Maker?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART001_3",
+      "question": "When was Old Arrow Maker created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART001_4",
+      "question": "What is Old Arrow Maker and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART001_5",
+      "question": "What do we know about the origin of Old Arrow Maker?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART001_6",
+      "question": "What makes Old Arrow Maker important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART001_7",
+      "question": "What period is Old Arrow Maker associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART001_8",
+      "question": "What is the main purpose or role of Old Arrow Maker?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART002_1",
+      "question": "Tell me about George Washington.",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART002_2",
+      "question": "What is the historical significance of George Washington?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART002_3",
+      "question": "When was George Washington created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART002_4",
+      "question": "What is George Washington and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART002_5",
+      "question": "What do we know about the origin of George Washington?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART002_6",
+      "question": "What makes George Washington important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART002_7",
+      "question": "What period is George Washington associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART002_8",
+      "question": "What is the main purpose or role of George Washington?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART003_1",
+      "question": "Tell me about Morse-Vail Telegraph Key.",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART003_2",
+      "question": "What is the historical significance of Morse-Vail Telegraph Key?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART003_3",
+      "question": "When was Morse-Vail Telegraph Key created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART003_4",
+      "question": "What is Morse-Vail Telegraph Key and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART003_5",
+      "question": "What do we know about the origin of Morse-Vail Telegraph Key?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART003_6",
+      "question": "What makes Morse-Vail Telegraph Key important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART003_7",
+      "question": "What period is Morse-Vail Telegraph Key associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART003_8",
+      "question": "What is the main purpose or role of Morse-Vail Telegraph Key?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART004_1",
+      "question": "Tell me about Page Induction Coil.",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART004_2",
+      "question": "What is the historical significance of Page Induction Coil?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART004_3",
+      "question": "When was Page Induction Coil created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART004_4",
+      "question": "What is Page Induction Coil and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART004_5",
+      "question": "What do we know about the origin of Page Induction Coil?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART004_6",
+      "question": "What makes Page Induction Coil important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART004_7",
+      "question": "What period is Page Induction Coil associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART004_8",
+      "question": "What is the main purpose or role of Page Induction Coil?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART005_1",
+      "question": "Tell me about Ceremonial Elephant-Shaped Covered Vessel.",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART005_2",
+      "question": "What is the historical significance of Ceremonial Elephant-Shaped Covered Vessel?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART005_3",
+      "question": "When was Ceremonial Elephant-Shaped Covered Vessel created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART005_4",
+      "question": "What is Ceremonial Elephant-Shaped Covered Vessel and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART005_5",
+      "question": "What do we know about the origin of Ceremonial Elephant-Shaped Covered Vessel?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART005_6",
+      "question": "What makes Ceremonial Elephant-Shaped Covered Vessel important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART005_7",
+      "question": "What period is Ceremonial Elephant-Shaped Covered Vessel associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART005_8",
+      "question": "What is the main purpose or role of Ceremonial Elephant-Shaped Covered Vessel?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART006_1",
+      "question": "Tell me about Apollo 11 Command Module \"Columbia\".",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART006_2",
+      "question": "What is the historical significance of Apollo 11 Command Module \"Columbia\"?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART006_3",
+      "question": "When was Apollo 11 Command Module \"Columbia\" created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART006_4",
+      "question": "What is Apollo 11 Command Module \"Columbia\" and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART006_5",
+      "question": "What do we know about the origin of Apollo 11 Command Module \"Columbia\"?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART006_6",
+      "question": "What makes Apollo 11 Command Module \"Columbia\" important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART006_7",
+      "question": "What period is Apollo 11 Command Module \"Columbia\" associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART006_8",
+      "question": "What is the main purpose or role of Apollo 11 Command Module \"Columbia\"?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART007_1",
+      "question": "Tell me about Space Shuttle Discovery.",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART007_2",
+      "question": "What is the historical significance of Space Shuttle Discovery?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART007_3",
+      "question": "When was Space Shuttle Discovery created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART007_4",
+      "question": "What is Space Shuttle Discovery and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART007_5",
+      "question": "What do we know about the origin of Space Shuttle Discovery?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART007_6",
+      "question": "What makes Space Shuttle Discovery important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART007_7",
+      "question": "What period is Space Shuttle Discovery associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART007_8",
+      "question": "What is the main purpose or role of Space Shuttle Discovery?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART008_1",
+      "question": "Tell me about Bell X-1 \"Glamorous Glennis\".",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART008_2",
+      "question": "What is the historical significance of Bell X-1 \"Glamorous Glennis\"?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART008_3",
+      "question": "When was Bell X-1 \"Glamorous Glennis\" created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART008_4",
+      "question": "What is Bell X-1 \"Glamorous Glennis\" and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART008_5",
+      "question": "What do we know about the origin of Bell X-1 \"Glamorous Glennis\"?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART008_6",
+      "question": "What makes Bell X-1 \"Glamorous Glennis\" important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART008_7",
+      "question": "What period is Bell X-1 \"Glamorous Glennis\" associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART008_8",
+      "question": "What is the main purpose or role of Bell X-1 \"Glamorous Glennis\"?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART009_1",
+      "question": "Tell me about Mercury Pressure Suit.",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART009_2",
+      "question": "What is the historical significance of Mercury Pressure Suit?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART009_3",
+      "question": "When was Mercury Pressure Suit created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART009_4",
+      "question": "What is Mercury Pressure Suit and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART009_5",
+      "question": "What do we know about the origin of Mercury Pressure Suit?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART009_6",
+      "question": "What makes Mercury Pressure Suit important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART009_7",
+      "question": "What period is Mercury Pressure Suit associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART009_8",
+      "question": "What is the main purpose or role of Mercury Pressure Suit?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART010_1",
+      "question": "Tell me about Pioneer 10 Space Probe.",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART010_2",
+      "question": "What is the historical significance of Pioneer 10 Space Probe?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART010_3",
+      "question": "When was Pioneer 10 Space Probe created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART010_4",
+      "question": "What is Pioneer 10 Space Probe and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART010_5",
+      "question": "What do we know about the origin of Pioneer 10 Space Probe?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART010_6",
+      "question": "What makes Pioneer 10 Space Probe important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART010_7",
+      "question": "What period is Pioneer 10 Space Probe associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART010_8",
+      "question": "What is the main purpose or role of Pioneer 10 Space Probe?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART011_1",
+      "question": "Tell me about Salwasiren qatarensis Fossil Skeleton.",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART011_2",
+      "question": "What is the historical significance of Salwasiren qatarensis Fossil Skeleton?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART011_3",
+      "question": "When was Salwasiren qatarensis Fossil Skeleton created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART011_4",
+      "question": "What is Salwasiren qatarensis Fossil Skeleton and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART011_5",
+      "question": "What do we know about the origin of Salwasiren qatarensis Fossil Skeleton?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART011_6",
+      "question": "What makes Salwasiren qatarensis Fossil Skeleton important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART011_7",
+      "question": "What period is Salwasiren qatarensis Fossil Skeleton associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART011_8",
+      "question": "What is the main purpose or role of Salwasiren qatarensis Fossil Skeleton?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART012_1",
+      "question": "Tell me about Tyrannosaurus rex Skull.",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART012_2",
+      "question": "What is the historical significance of Tyrannosaurus rex Skull?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART012_3",
+      "question": "When was Tyrannosaurus rex Skull created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART012_4",
+      "question": "What is Tyrannosaurus rex Skull and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART012_5",
+      "question": "What do we know about the origin of Tyrannosaurus rex Skull?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART012_6",
+      "question": "What makes Tyrannosaurus rex Skull important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART012_7",
+      "question": "What period is Tyrannosaurus rex Skull associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART012_8",
+      "question": "What is the main purpose or role of Tyrannosaurus rex Skull?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART013_1",
+      "question": "Tell me about Triceratops horridus (\"Hatcher\").",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART013_2",
+      "question": "What is the historical significance of Triceratops horridus (\"Hatcher\")?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART013_3",
+      "question": "When was Triceratops horridus (\"Hatcher\") created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART013_4",
+      "question": "What is Triceratops horridus (\"Hatcher\") and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART013_5",
+      "question": "What do we know about the origin of Triceratops horridus (\"Hatcher\")?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART013_6",
+      "question": "What makes Triceratops horridus (\"Hatcher\") important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART013_7",
+      "question": "What period is Triceratops horridus (\"Hatcher\") associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART013_8",
+      "question": "What is the main purpose or role of Triceratops horridus (\"Hatcher\")?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART014_1",
+      "question": "Tell me about Woolly Mammoth Tusk & Molar.",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART014_2",
+      "question": "What is the historical significance of Woolly Mammoth Tusk & Molar?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART014_3",
+      "question": "When was Woolly Mammoth Tusk & Molar created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART014_4",
+      "question": "What is Woolly Mammoth Tusk & Molar and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART014_5",
+      "question": "What do we know about the origin of Woolly Mammoth Tusk & Molar?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART014_6",
+      "question": "What makes Woolly Mammoth Tusk & Molar important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART014_7",
+      "question": "What period is Woolly Mammoth Tusk & Molar associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART014_8",
+      "question": "What is the main purpose or role of Woolly Mammoth Tusk & Molar?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART015_1",
+      "question": "Tell me about Smilodon fatalis (Sabertooth Cat Skull).",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART015_2",
+      "question": "What is the historical significance of Smilodon fatalis (Sabertooth Cat Skull)?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART015_3",
+      "question": "When was Smilodon fatalis (Sabertooth Cat Skull) created or used?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART015_4",
+      "question": "What is Smilodon fatalis (Sabertooth Cat Skull) and what was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART015_5",
+      "question": "What do we know about the origin of Smilodon fatalis (Sabertooth Cat Skull)?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART015_6",
+      "question": "What makes Smilodon fatalis (Sabertooth Cat Skull) important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART015_7",
+      "question": "What period is Smilodon fatalis (Sabertooth Cat Skull) associated with?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "INS_ART015_8",
+      "question": "What is the main purpose or role of Smilodon fatalis (Sabertooth Cat Skull)?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "named_semantic"
+    },
+    {
+      "id": "DEI_ART001_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_1",
+      "question": "What is this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_2",
+      "question": "Tell me about this artifact.",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_3",
+      "question": "When was it created?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_4",
+      "question": "Who created it?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_5",
+      "question": "What was it used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_6",
+      "question": "Why is this important?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "OOD_001",
+      "question": "What is the weather forecast in Tokyo today?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_002",
+      "question": "What is 25 multiplied by 17?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_003",
+      "question": "Write a Python program to sort a list.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_004",
+      "question": "Who won the latest football match?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_005",
+      "question": "What is the current price of Bitcoin?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_006",
+      "question": "Give me a recipe for chocolate cake.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_007",
+      "question": "What is the exchange rate from dollars to rupees?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_008",
+      "question": "Recommend a movie for tonight.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_009",
+      "question": "How do I book a hotel in Paris?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_010",
+      "question": "What are the symptoms of influenza?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_011",
+      "question": "Who is the current prime minister of India?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_012",
+      "question": "Translate this sentence into French.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_013",
+      "question": "How can I learn JavaScript?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_014",
+      "question": "What is the stock market doing today?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_015",
+      "question": "Tell me a joke.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_016",
+      "question": "What is the population of Tokyo?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_017",
+      "question": "How do I calculate compound interest?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_018",
+      "question": "What is the best pizza restaurant nearby?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_019",
+      "question": "Who won the cricket match yesterday?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_020",
+      "question": "How do I make coffee?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_021",
+      "question": "What is the capital of Australia?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_022",
+      "question": "Explain quantum computing in general.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_023",
+      "question": "Give me a C program for binary search.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_024",
+      "question": "What is the temperature in London?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_025",
+      "question": "What are today's major news headlines?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_026",
+      "question": "How do I train for a marathon?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_027",
+      "question": "Recommend a smartphone under 30000 rupees.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_028",
+      "question": "What is the latest movie release?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_029",
+      "question": "Solve 12345 divided by 37.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_030",
+      "question": "How do I apply for a job?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_031",
+      "question": "What is the best hotel in Mumbai?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_032",
+      "question": "Tell me about a random celebrity.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_033",
+      "question": "How do I cook pasta?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_034",
+      "question": "What is the current exchange rate for euros?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_035",
+      "question": "Write SQL to find duplicate rows.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_036",
+      "question": "What is the latest cricket score?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_037",
+      "question": "How do I remove a virus from Windows?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_038",
+      "question": "What is the forecast for rain tomorrow?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_039",
+      "question": "Recommend a song for studying.",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    },
+    {
+      "id": "OOD_040",
+      "question": "How do I learn machine learning?",
+      "label": "ood",
+      "target_artifact_id": null,
+      "query_type": "out_of_domain"
+    }
+  ]
+}

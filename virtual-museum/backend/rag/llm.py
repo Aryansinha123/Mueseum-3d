@@ -342,7 +342,8 @@ def build_rich_fallback_answer(
         elif valid_tone == "friendly":
             answer = f"Step back in time! The {name} was created in {period}, originating from {origin}.\n\nWhat makes this era so captivating is how it represents the pinnacle of {category}. {chronology or f'It is a preserved window into human and natural history here in {gallery}.'}"
         else:
-            answer = f"Chronological & Historical Context:\n\nThe {name} dates to {period}, with recorded origins in {origin}. Preserved within {gallery}, it exemplifies {category}.\n\n{f'Historical Era Breakdown:\n{chronology}' if chronology else f'Created during {period}, it serves as an indispensable reference point in museum archives.'}"
+            chron_detail = f"Historical Era Breakdown:\n{chronology}" if chronology else f"Created during {period}, it serves as an indispensable reference point in museum archives."
+            answer = f"Chronological & Historical Context:\n\nThe {name} dates to {period}, with recorded origins in {origin}. Preserved within {gallery}, it exemplifies {category}.\n\n{chron_detail}"
 
     # ── 2. WHAT WAS IT USED FOR / PURPOSE ─────────────────────────────────────
     elif intent == "purpose":
@@ -352,7 +353,8 @@ def build_rich_fallback_answer(
         elif valid_tone == "friendly":
             answer = f"Fascinating question! The {name} had an indispensable real-world role.\n\n{purpose or desc}\n\nSeeing it up close in 3D truly highlights the ingenuity that went into its everyday function!"
         else:
-            answer = f"Functional Purpose & Operational Role:\n\nThe {name} served a vital function in its historical and technical domain.\n\n{f'Operational Breakdown:\n{purpose}' if purpose else f'Primary Application:\n{desc}'}\n\nIts design exemplifies the pragmatic and cultural requirements of {category} in {gallery}."
+            purpose_detail = f"Operational Breakdown:\n{purpose}" if purpose else f"Primary Application:\n{desc}"
+            answer = f"Functional Purpose & Operational Role:\n\nThe {name} served a vital function in its historical and technical domain.\n\n{purpose_detail}\n\nIts design exemplifies the pragmatic and cultural requirements of {category} in {gallery}."
 
     # ── 3. WHY IS IT IMPORTANT / SIGNIFICANCE ─────────────────────────────────
     elif intent == "significance":

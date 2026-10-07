@@ -19,10 +19,27 @@ export function ARScene({
   rotationY,
 }) {
   // Real-time hit position & orientation tracked in refs to avoid 60fps React re-renders
-  const lastHitRef = useRef([0, 0, 0]);
-  const lastHitQuatRef = useRef([0, 0, 0, 1]);
+  const lastHitRef = useRef(null);
+  const lastHitQuatRef = useRef(null);
+  const placementCooldownRef = useRef(0);
+  const prevIsPlacedRef = useRef(isPlaced);
+
+  // When placement is cleared (via the Move option), enforce a cooldown to ignore the initiating tap
+  useEffect(() => {
+    if (prevIsPlacedRef.current && !isPlaced) {
+      placementCooldownRef.current = Date.now() + 600;
+      lastHitRef.current = null;
+      lastHitQuatRef.current = null;
+      console.log("[AR] Placement cleared for repositioning (Move mode active)");
+    }
+    prevIsPlacedRef.current = isPlaced;
+  }, [isPlaced]);
 
   const attemptPlacement = useCallback(() => {
+    if (Date.now() < placementCooldownRef.current) {
+      console.log("[AR] Placement tap ignored during cooldown");
+      return;
+    }
     if (!isPlaced && lastHitRef.current) {
       console.log("[AR] Artifact placed");
       setPlacedPosition([...lastHitRef.current]);
@@ -42,6 +59,9 @@ export function ARScene({
   // Fallback pointer event handler for testing
   const handlePointerDown = (e) => {
     e.stopPropagation();
+    if (e.point) {
+      lastHitRef.current = [e.point.x, e.point.y, e.point.z];
+    }
     attemptPlacement();
   };
 

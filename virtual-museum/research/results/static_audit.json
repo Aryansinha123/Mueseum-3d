@@ -1,0 +1,36 @@
+{
+  "catalog": {
+    "artifacts": 15,
+    "unique_ids": 15,
+    "verified_records": 15,
+    "physical_glb_records": 11,
+    "galleries": {
+      "Gallery 1: History": 5,
+      "Gallery 2: Smithsonian Technology & Science Hall": 5,
+      "Gallery 3: Smithsonian Paleontology Hall": 5
+    },
+    "embedding_cache_shape": [
+      15,
+      384
+    ]
+  },
+  "threshold": {
+    "configured_value": 0.5,
+    "uses_cosine_not_probability": true
+  },
+  "pipeline_checks": {
+    "pre_generation_gate_phrase": true,
+    "contextual_artifact_routing": true,
+    "bounded_memory": true,
+    "evidence_returned": true,
+    "source_returned": true,
+    "llm_called_after_gate": true
+  },
+  "benchmark": {
+    "queries": 250,
+    "in_scope": 210,
+    "ood": 40,
+    "deictic": 90,
+    "unique_query_ids": 250
+  }
+}

@@ -1,0 +1,91 @@
+id,question,artifact_id,resolved_artifact_id,correct_binding,refused,llm_called,similarity,error,latency_ms
+DEI_ART001_1,What is this?,ART001,ART001,1,False,True,0.7012,,6141.552
+DEI_ART001_2,Tell me about this artifact.,ART001,ART001,1,False,True,0.7073,,26.884
+DEI_ART001_3,When was it created?,ART001,ART001,1,False,True,0.705,,22.297
+DEI_ART001_4,Who created it?,ART001,ART001,1,False,True,0.7141,,22.603
+DEI_ART001_5,What was it used for?,ART001,ART001,1,False,True,0.6958,,26.263
+DEI_ART001_6,Why is this important?,ART001,ART001,1,False,True,0.6559,,25.78
+DEI_ART002_1,What is this?,ART002,ART002,1,False,True,0.5878,,25.863
+DEI_ART002_2,Tell me about this artifact.,ART002,ART002,1,False,True,0.5568,,24.9
+DEI_ART002_3,When was it created?,ART002,ART002,1,False,True,0.6003,,25.984
+DEI_ART002_4,Who created it?,ART002,ART002,1,False,True,0.6205,,37.434
+DEI_ART002_5,What was it used for?,ART002,ART002,1,False,True,0.5789,,30.939
+DEI_ART002_6,Why is this important?,ART002,ART002,1,False,True,0.5381,,56.672
+DEI_ART003_1,What is this?,ART003,ART003,1,False,True,0.8241,,41.479
+DEI_ART003_2,Tell me about this artifact.,ART003,ART003,1,False,True,0.8208,,41.507
+DEI_ART003_3,When was it created?,ART003,ART003,1,False,True,0.8752,,29.549
+DEI_ART003_4,Who created it?,ART003,ART003,1,False,True,0.8899,,28.057
+DEI_ART003_5,What was it used for?,ART003,ART003,1,False,True,0.8615,,31.73
+DEI_ART003_6,Why is this important?,ART003,ART003,1,False,True,0.797,,28.071
+DEI_ART004_1,What is this?,ART004,ART004,1,False,True,0.8238,,23.437
+DEI_ART004_2,Tell me about this artifact.,ART004,ART004,1,False,True,0.8325,,24.719
+DEI_ART004_3,When was it created?,ART004,ART004,1,False,True,0.8593,,22.44
+DEI_ART004_4,Who created it?,ART004,ART004,1,False,True,0.8458,,23.46
+DEI_ART004_5,What was it used for?,ART004,ART004,1,False,True,0.8545,,24.572
+DEI_ART004_6,Why is this important?,ART004,ART004,1,False,True,0.7647,,24.732
+DEI_ART005_1,What is this?,ART005,ART005,1,False,True,0.8036,,25.088
+DEI_ART005_2,Tell me about this artifact.,ART005,ART005,1,False,True,0.7939,,28.533
+DEI_ART005_3,When was it created?,ART005,ART005,1,False,True,0.7714,,27.68
+DEI_ART005_4,Who created it?,ART005,ART005,1,False,True,0.7684,,31.729
+DEI_ART005_5,What was it used for?,ART005,ART005,1,False,True,0.7677,,32.63
+DEI_ART005_6,Why is this important?,ART005,ART005,1,False,True,0.7332,,30.48
+DEI_ART006_1,What is this?,ART006,ART006,1,False,True,0.7701,,32.544
+DEI_ART006_2,Tell me about this artifact.,ART006,ART006,1,False,True,0.7468,,29.704
+DEI_ART006_3,When was it created?,ART006,ART006,1,False,True,0.7966,,31.143
+DEI_ART006_4,Who created it?,ART006,ART006,1,False,True,0.798,,32.143
+DEI_ART006_5,What was it used for?,ART006,ART006,1,False,True,0.7538,,35.434
+DEI_ART006_6,Why is this important?,ART006,ART006,1,False,True,0.7136,,29.622
+DEI_ART007_1,What is this?,ART007,ART007,1,False,True,0.7156,,23.337
+DEI_ART007_2,Tell me about this artifact.,ART007,ART007,1,False,True,0.6699,,27.063
+DEI_ART007_3,When was it created?,ART007,ART007,1,False,True,0.632,,20.441
+DEI_ART007_4,Who created it?,ART007,ART007,1,False,True,0.6706,,25.721
+DEI_ART007_5,What was it used for?,ART007,ART007,1,False,True,0.696,,23.983
+DEI_ART007_6,Why is this important?,ART007,ART007,1,False,True,0.6449,,22.379
+DEI_ART008_1,What is this?,ART008,ART008,1,False,True,0.7433,,33.823
+DEI_ART008_2,Tell me about this artifact.,ART008,ART008,1,False,True,0.7461,,99.519
+DEI_ART008_3,When was it created?,ART008,ART008,1,False,True,0.7108,,64.796
+DEI_ART008_4,Who created it?,ART008,ART008,1,False,True,0.7224,,56.846
+DEI_ART008_5,What was it used for?,ART008,ART008,1,False,True,0.6705,,46.422
+DEI_ART008_6,Why is this important?,ART008,ART008,1,False,True,0.6617,,35.944
+DEI_ART009_1,What is this?,ART009,ART009,1,False,True,0.8298,,26.666
+DEI_ART009_2,Tell me about this artifact.,ART009,ART009,1,False,True,0.839,,34.964
+DEI_ART009_3,When was it created?,ART009,ART009,1,False,True,0.807,,26.797
+DEI_ART009_4,Who created it?,ART009,ART009,1,False,True,0.8037,,28.518
+DEI_ART009_5,What was it used for?,ART009,ART009,1,False,True,0.8247,,26.927
+DEI_ART009_6,Why is this important?,ART009,ART009,1,False,True,0.769,,20.519
+DEI_ART010_1,What is this?,ART010,ART010,1,False,True,0.7674,,25.061
+DEI_ART010_2,Tell me about this artifact.,ART010,ART010,1,False,True,0.7576,,23.988
+DEI_ART010_3,When was it created?,ART010,ART010,1,False,True,0.7679,,21.914
+DEI_ART010_4,Who created it?,ART010,ART010,1,False,True,0.7627,,23.901
+DEI_ART010_5,What was it used for?,ART010,ART010,1,False,True,0.7443,,36.173
+DEI_ART010_6,Why is this important?,ART010,ART010,1,False,True,0.7024,,28.045
+DEI_ART011_1,What is this?,ART011,ART011,1,False,True,0.8398,,31.901
+DEI_ART011_2,Tell me about this artifact.,ART011,ART011,1,False,True,0.8649,,41.851
+DEI_ART011_3,When was it created?,ART011,ART011,1,False,True,0.8465,,34.431
+DEI_ART011_4,Who created it?,ART011,ART011,1,False,True,0.8289,,34.564
+DEI_ART011_5,What was it used for?,ART011,ART011,1,False,True,0.8313,,29.492
+DEI_ART011_6,Why is this important?,ART011,ART011,1,False,True,0.8118,,29.894
+DEI_ART012_1,What is this?,ART012,ART012,1,False,True,0.7891,,31.306
+DEI_ART012_2,Tell me about this artifact.,ART012,ART012,1,False,True,0.7845,,32.303
+DEI_ART012_3,When was it created?,ART012,ART012,1,False,True,0.7776,,28.345
+DEI_ART012_4,Who created it?,ART012,ART012,1,False,True,0.7759,,29.106
+DEI_ART012_5,What was it used for?,ART012,ART012,1,False,True,0.7259,,31.921
+DEI_ART012_6,Why is this important?,ART012,ART012,1,False,True,0.7153,,36.327
+DEI_ART013_1,What is this?,ART013,ART013,1,False,True,0.7642,,32.47
+DEI_ART013_2,Tell me about this artifact.,ART013,ART013,1,False,True,0.7429,,32.495
+DEI_ART013_3,When was it created?,ART013,ART013,1,False,True,0.7826,,27.979
+DEI_ART013_4,Who created it?,ART013,ART013,1,False,True,0.7836,,26.191
+DEI_ART013_5,What was it used for?,ART013,ART013,1,False,True,0.7386,,30.094
+DEI_ART013_6,Why is this important?,ART013,ART013,1,False,True,0.706,,27.202
+DEI_ART014_1,What is this?,ART014,ART014,1,False,True,0.7977,,28.695
+DEI_ART014_2,Tell me about this artifact.,ART014,ART014,1,False,True,0.7997,,24.514
+DEI_ART014_3,When was it created?,ART014,ART014,1,False,True,0.8031,,27.783
+DEI_ART014_4,Who created it?,ART014,ART014,1,False,True,0.7928,,27.467
+DEI_ART014_5,What was it used for?,ART014,ART014,1,False,True,0.7746,,35.244
+DEI_ART014_6,Why is this important?,ART014,ART014,1,False,True,0.7343,,32.02
+DEI_ART015_1,What is this?,ART015,ART015,1,False,True,0.8475,,33.364
+DEI_ART015_2,Tell me about this artifact.,ART015,ART015,1,False,True,0.83,,30.727
+DEI_ART015_3,When was it created?,ART015,ART015,1,False,True,0.827,,34.38
+DEI_ART015_4,Who created it?,ART015,ART015,1,False,True,0.8263,,39.231
+DEI_ART015_5,What was it used for?,ART015,ART015,1,False,True,0.8154,,36.429
+DEI_ART015_6,Why is this important?,ART015,ART015,1,False,True,0.7942,,33.897

@@ -1,0 +1,161 @@
+id,question,label,target_artifact_id,predicted_artifact_id,similarity,correct_top1,latency_ms
+INS_ART001_1,Tell me about Old Arrow Maker.,in_scope,ART001,ART001,0.6981,1,7597.477
+INS_ART001_2,What is the historical significance of Old Arrow Maker?,in_scope,ART001,ART001,0.7622,1,26.602
+INS_ART001_3,When was Old Arrow Maker created or used?,in_scope,ART001,ART001,0.7124,1,25.524
+INS_ART001_4,What is Old Arrow Maker and what was it used for?,in_scope,ART001,ART001,0.7012,1,32.219
+INS_ART001_5,What do we know about the origin of Old Arrow Maker?,in_scope,ART001,ART001,0.7087,1,25.738
+INS_ART001_6,What makes Old Arrow Maker important?,in_scope,ART001,ART001,0.6717,1,21.355
+INS_ART001_7,What period is Old Arrow Maker associated with?,in_scope,ART001,ART001,0.6826,1,20.626
+INS_ART001_8,What is the main purpose or role of Old Arrow Maker?,in_scope,ART001,ART001,0.6488,1,24.548
+INS_ART002_1,Tell me about George Washington.,in_scope,ART002,ART002,0.5321,1,25.773
+INS_ART002_2,What is the historical significance of George Washington?,in_scope,ART002,ART002,0.5622,1,23.141
+INS_ART002_3,When was George Washington created or used?,in_scope,ART002,ART002,0.5962,1,20.497
+INS_ART002_4,What is George Washington and what was it used for?,in_scope,ART002,ART002,0.5758,1,26.966
+INS_ART002_5,What do we know about the origin of George Washington?,in_scope,ART002,ART002,0.5499,1,28.703
+INS_ART002_6,What makes George Washington important?,in_scope,ART002,ART002,0.506,1,32.614
+INS_ART002_7,What period is George Washington associated with?,in_scope,ART002,ART002,0.5534,1,30.506
+INS_ART002_8,What is the main purpose or role of George Washington?,in_scope,ART002,ART002,0.5156,1,29.226
+INS_ART003_1,Tell me about Morse-Vail Telegraph Key.,in_scope,ART003,ART003,0.8232,1,31.554
+INS_ART003_2,What is the historical significance of Morse-Vail Telegraph Key?,in_scope,ART003,ART003,0.8508,1,35.777
+INS_ART003_3,When was Morse-Vail Telegraph Key created or used?,in_scope,ART003,ART003,0.8888,1,37.157
+INS_ART003_4,What is Morse-Vail Telegraph Key and what was it used for?,in_scope,ART003,ART003,0.85,1,41.165
+INS_ART003_5,What do we know about the origin of Morse-Vail Telegraph Key?,in_scope,ART003,ART003,0.8576,1,34.737
+INS_ART003_6,What makes Morse-Vail Telegraph Key important?,in_scope,ART003,ART003,0.8003,1,33.325
+INS_ART003_7,What period is Morse-Vail Telegraph Key associated with?,in_scope,ART003,ART003,0.812,1,34.669
+INS_ART003_8,What is the main purpose or role of Morse-Vail Telegraph Key?,in_scope,ART003,ART003,0.8084,1,34.095
+INS_ART004_1,Tell me about Page Induction Coil.,in_scope,ART004,ART004,0.829,1,33.568
+INS_ART004_2,What is the historical significance of Page Induction Coil?,in_scope,ART004,ART004,0.8511,1,36.317
+INS_ART004_3,When was Page Induction Coil created or used?,in_scope,ART004,ART004,0.8667,1,31.218
+INS_ART004_4,What is Page Induction Coil and what was it used for?,in_scope,ART004,ART004,0.8417,1,37.356
+INS_ART004_5,What do we know about the origin of Page Induction Coil?,in_scope,ART004,ART004,0.8517,1,35.205
+INS_ART004_6,What makes Page Induction Coil important?,in_scope,ART004,ART004,0.7866,1,28.004
+INS_ART004_7,What period is Page Induction Coil associated with?,in_scope,ART004,ART004,0.7558,1,31.535
+INS_ART004_8,What is the main purpose or role of Page Induction Coil?,in_scope,ART004,ART004,0.7821,1,35.32
+INS_ART005_1,Tell me about Ceremonial Elephant-Shaped Covered Vessel.,in_scope,ART005,ART005,0.7929,1,38.987
+INS_ART005_2,What is the historical significance of Ceremonial Elephant-Shaped Covered Vessel?,in_scope,ART005,ART005,0.7836,1,35.468
+INS_ART005_3,When was Ceremonial Elephant-Shaped Covered Vessel created or used?,in_scope,ART005,ART005,0.7748,1,35.609
+INS_ART005_4,What is Ceremonial Elephant-Shaped Covered Vessel and what was it used for?,in_scope,ART005,ART005,0.786,1,43.655
+INS_ART005_5,What do we know about the origin of Ceremonial Elephant-Shaped Covered Vessel?,in_scope,ART005,ART005,0.7696,1,38.423
+INS_ART005_6,What makes Ceremonial Elephant-Shaped Covered Vessel important?,in_scope,ART005,ART005,0.7345,1,34.868
+INS_ART005_7,What period is Ceremonial Elephant-Shaped Covered Vessel associated with?,in_scope,ART005,ART005,0.7772,1,36.012
+INS_ART005_8,What is the main purpose or role of Ceremonial Elephant-Shaped Covered Vessel?,in_scope,ART005,ART005,0.7568,1,42.018
+INS_ART006_1,"Tell me about Apollo 11 Command Module ""Columbia"".",in_scope,ART006,ART006,0.745,1,35.348
+INS_ART006_2,"What is the historical significance of Apollo 11 Command Module ""Columbia""?",in_scope,ART006,ART006,0.765,1,38.759
+INS_ART006_3,"When was Apollo 11 Command Module ""Columbia"" created or used?",in_scope,ART006,ART006,0.7773,1,38.779
+INS_ART006_4,"What is Apollo 11 Command Module ""Columbia"" and what was it used for?",in_scope,ART006,ART006,0.7446,1,43.926
+INS_ART006_5,"What do we know about the origin of Apollo 11 Command Module ""Columbia""?",in_scope,ART006,ART006,0.7622,1,38.211
+INS_ART006_6,"What makes Apollo 11 Command Module ""Columbia"" important?",in_scope,ART006,ART006,0.7193,1,38.094
+INS_ART006_7,"What period is Apollo 11 Command Module ""Columbia"" associated with?",in_scope,ART006,ART006,0.7605,1,32.653
+INS_ART006_8,"What is the main purpose or role of Apollo 11 Command Module ""Columbia""?",in_scope,ART006,ART006,0.7135,1,30.773
+INS_ART007_1,Tell me about Space Shuttle Discovery.,in_scope,ART007,ART007,0.6745,1,27.351
+INS_ART007_2,What is the historical significance of Space Shuttle Discovery?,in_scope,ART007,ART007,0.6465,1,37.611
+INS_ART007_3,When was Space Shuttle Discovery created or used?,in_scope,ART007,ART007,0.6173,1,32.315
+INS_ART007_4,What is Space Shuttle Discovery and what was it used for?,in_scope,ART007,ART007,0.7064,1,33.466
+INS_ART007_5,What do we know about the origin of Space Shuttle Discovery?,in_scope,ART007,ART007,0.6042,1,36.256
+INS_ART007_6,What makes Space Shuttle Discovery important?,in_scope,ART007,ART007,0.6589,1,32.351
+INS_ART007_7,What period is Space Shuttle Discovery associated with?,in_scope,ART007,ART007,0.6389,1,28.216
+INS_ART007_8,What is the main purpose or role of Space Shuttle Discovery?,in_scope,ART007,ART007,0.661,1,29.6
+INS_ART008_1,"Tell me about Bell X-1 ""Glamorous Glennis"".",in_scope,ART008,ART008,0.7391,1,29.346
+INS_ART008_2,"What is the historical significance of Bell X-1 ""Glamorous Glennis""?",in_scope,ART008,ART008,0.6933,1,29.545
+INS_ART008_3,"When was Bell X-1 ""Glamorous Glennis"" created or used?",in_scope,ART008,ART008,0.7001,1,31.281
+INS_ART008_4,"What is Bell X-1 ""Glamorous Glennis"" and what was it used for?",in_scope,ART008,ART008,0.6676,1,30.16
+INS_ART008_5,"What do we know about the origin of Bell X-1 ""Glamorous Glennis""?",in_scope,ART008,ART008,0.6898,1,26.785
+INS_ART008_6,"What makes Bell X-1 ""Glamorous Glennis"" important?",in_scope,ART008,ART008,0.6677,1,28.028
+INS_ART008_7,"What period is Bell X-1 ""Glamorous Glennis"" associated with?",in_scope,ART008,ART008,0.649,1,32.108
+INS_ART008_8,"What is the main purpose or role of Bell X-1 ""Glamorous Glennis""?",in_scope,ART008,ART008,0.6511,1,31.331
+INS_ART009_1,Tell me about Mercury Pressure Suit.,in_scope,ART009,ART009,0.8415,1,24.689
+INS_ART009_2,What is the historical significance of Mercury Pressure Suit?,in_scope,ART009,ART009,0.7876,1,24.561
+INS_ART009_3,When was Mercury Pressure Suit created or used?,in_scope,ART009,ART009,0.8159,1,26.737
+INS_ART009_4,What is Mercury Pressure Suit and what was it used for?,in_scope,ART009,ART009,0.853,1,29.276
+INS_ART009_5,What do we know about the origin of Mercury Pressure Suit?,in_scope,ART009,ART009,0.7862,1,41.882
+INS_ART009_6,What makes Mercury Pressure Suit important?,in_scope,ART009,ART009,0.7442,1,43.229
+INS_ART009_7,What period is Mercury Pressure Suit associated with?,in_scope,ART009,ART009,0.7439,1,30.914
+INS_ART009_8,What is the main purpose or role of Mercury Pressure Suit?,in_scope,ART009,ART009,0.7822,1,29.523
+INS_ART010_1,Tell me about Pioneer 10 Space Probe.,in_scope,ART010,ART010,0.7586,1,21.393
+INS_ART010_2,What is the historical significance of Pioneer 10 Space Probe?,in_scope,ART010,ART010,0.7093,1,24.99
+INS_ART010_3,When was Pioneer 10 Space Probe created or used?,in_scope,ART010,ART010,0.7547,1,21.67
+INS_ART010_4,What is Pioneer 10 Space Probe and what was it used for?,in_scope,ART010,ART010,0.7545,1,28.506
+INS_ART010_5,What do we know about the origin of Pioneer 10 Space Probe?,in_scope,ART010,ART010,0.7218,1,26.215
+INS_ART010_6,What makes Pioneer 10 Space Probe important?,in_scope,ART010,ART010,0.7141,1,23.851
+INS_ART010_7,What period is Pioneer 10 Space Probe associated with?,in_scope,ART010,ART010,0.7074,1,27.89
+INS_ART010_8,What is the main purpose or role of Pioneer 10 Space Probe?,in_scope,ART010,ART010,0.67,1,27.155
+INS_ART011_1,Tell me about Salwasiren qatarensis Fossil Skeleton.,in_scope,ART011,ART011,0.8526,1,24.29
+INS_ART011_2,What is the historical significance of Salwasiren qatarensis Fossil Skeleton?,in_scope,ART011,ART011,0.8458,1,27.047
+INS_ART011_3,When was Salwasiren qatarensis Fossil Skeleton created or used?,in_scope,ART011,ART011,0.8502,1,23.422
+INS_ART011_4,What is Salwasiren qatarensis Fossil Skeleton and what was it used for?,in_scope,ART011,ART011,0.8479,1,27.021
+INS_ART011_5,What do we know about the origin of Salwasiren qatarensis Fossil Skeleton?,in_scope,ART011,ART011,0.8744,1,25.858
+INS_ART011_6,What makes Salwasiren qatarensis Fossil Skeleton important?,in_scope,ART011,ART011,0.8034,1,25.197
+INS_ART011_7,What period is Salwasiren qatarensis Fossil Skeleton associated with?,in_scope,ART011,ART011,0.8387,1,28.621
+INS_ART011_8,What is the main purpose or role of Salwasiren qatarensis Fossil Skeleton?,in_scope,ART011,ART011,0.8122,1,27.721
+INS_ART012_1,Tell me about Tyrannosaurus rex Skull.,in_scope,ART012,ART012,0.7743,1,30.388
+INS_ART012_2,What is the historical significance of Tyrannosaurus rex Skull?,in_scope,ART012,ART012,0.7627,1,29.172
+INS_ART012_3,When was Tyrannosaurus rex Skull created or used?,in_scope,ART012,ART012,0.7747,1,32.734
+INS_ART012_4,What is Tyrannosaurus rex Skull and what was it used for?,in_scope,ART012,ART012,0.7279,1,32.655
+INS_ART012_5,What do we know about the origin of Tyrannosaurus rex Skull?,in_scope,ART012,ART012,0.7947,1,29.864
+INS_ART012_6,What makes Tyrannosaurus rex Skull important?,in_scope,ART012,ART012,0.7145,1,28.337
+INS_ART012_7,What period is Tyrannosaurus rex Skull associated with?,in_scope,ART012,ART012,0.8035,1,30.436
+INS_ART012_8,What is the main purpose or role of Tyrannosaurus rex Skull?,in_scope,ART012,ART012,0.7087,1,30.362
+INS_ART013_1,"Tell me about Triceratops horridus (""Hatcher"").",in_scope,ART013,ART013,0.7418,1,29.722
+INS_ART013_2,"What is the historical significance of Triceratops horridus (""Hatcher"")?",in_scope,ART013,ART013,0.7754,1,31.681
+INS_ART013_3,"When was Triceratops horridus (""Hatcher"") created or used?",in_scope,ART013,ART013,0.7689,1,25.238
+INS_ART013_4,"What is Triceratops horridus (""Hatcher"") and what was it used for?",in_scope,ART013,ART013,0.7219,1,28.961
+INS_ART013_5,"What do we know about the origin of Triceratops horridus (""Hatcher"")?",in_scope,ART013,ART013,0.7756,1,29.749
+INS_ART013_6,"What makes Triceratops horridus (""Hatcher"") important?",in_scope,ART013,ART013,0.7089,1,30.021
+INS_ART013_7,"What period is Triceratops horridus (""Hatcher"") associated with?",in_scope,ART013,ART013,0.7296,1,30.672
+INS_ART013_8,"What is the main purpose or role of Triceratops horridus (""Hatcher"")?",in_scope,ART013,ART013,0.7057,1,26.793
+INS_ART014_1,Tell me about Woolly Mammoth Tusk & Molar.,in_scope,ART014,ART014,0.7821,1,28.752
+INS_ART014_2,What is the historical significance of Woolly Mammoth Tusk & Molar?,in_scope,ART014,ART014,0.7759,1,29.021
+INS_ART014_3,When was Woolly Mammoth Tusk & Molar created or used?,in_scope,ART014,ART014,0.7922,1,29.585
+INS_ART014_4,What is Woolly Mammoth Tusk & Molar and what was it used for?,in_scope,ART014,ART014,0.7473,1,29.801
+INS_ART014_5,What do we know about the origin of Woolly Mammoth Tusk & Molar?,in_scope,ART014,ART014,0.7841,1,30.618
+INS_ART014_6,What makes Woolly Mammoth Tusk & Molar important?,in_scope,ART014,ART014,0.7287,1,27.652
+INS_ART014_7,What period is Woolly Mammoth Tusk & Molar associated with?,in_scope,ART014,ART014,0.8034,1,27.791
+INS_ART014_8,What is the main purpose or role of Woolly Mammoth Tusk & Molar?,in_scope,ART014,ART014,0.7143,1,29.946
+INS_ART015_1,Tell me about Smilodon fatalis (Sabertooth Cat Skull).,in_scope,ART015,ART015,0.8195,1,33.097
+INS_ART015_2,What is the historical significance of Smilodon fatalis (Sabertooth Cat Skull)?,in_scope,ART015,ART015,0.8293,1,33.6
+INS_ART015_3,When was Smilodon fatalis (Sabertooth Cat Skull) created or used?,in_scope,ART015,ART015,0.8229,1,29.933
+INS_ART015_4,What is Smilodon fatalis (Sabertooth Cat Skull) and what was it used for?,in_scope,ART015,ART015,0.8035,1,30.483
+INS_ART015_5,What do we know about the origin of Smilodon fatalis (Sabertooth Cat Skull)?,in_scope,ART015,ART015,0.8279,1,26.742
+INS_ART015_6,What makes Smilodon fatalis (Sabertooth Cat Skull) important?,in_scope,ART015,ART015,0.7868,1,28.234
+INS_ART015_7,What period is Smilodon fatalis (Sabertooth Cat Skull) associated with?,in_scope,ART015,ART015,0.8128,1,29.43
+INS_ART015_8,What is the main purpose or role of Smilodon fatalis (Sabertooth Cat Skull)?,in_scope,ART015,ART015,0.7703,1,28.366
+OOD_001,What is the weather forecast in Tokyo today?,ood,,ART014,0.167,0,21.673
+OOD_002,What is 25 multiplied by 17?,ood,,ART008,0.1362,0,23.529
+OOD_003,Write a Python program to sort a list.,ood,,ART011,0.1374,0,26.576
+OOD_004,Who won the latest football match?,ood,,ART003,0.1733,0,46.601
+OOD_005,What is the current price of Bitcoin?,ood,,ART003,0.1554,0,46.968
+OOD_006,Give me a recipe for chocolate cake.,ood,,ART001,0.2094,0,30.541
+OOD_007,What is the exchange rate from dollars to rupees?,ood,,ART012,0.1651,0,36.475
+OOD_008,Recommend a movie for tonight.,ood,,ART002,0.0982,0,45.359
+OOD_009,How do I book a hotel in Paris?,ood,,ART007,0.0413,0,35.865
+OOD_010,What are the symptoms of influenza?,ood,,ART008,0.1269,0,34.219
+OOD_011,Who is the current prime minister of India?,ood,,ART007,0.1509,0,29.798
+OOD_012,Translate this sentence into French.,ood,,ART003,0.1105,0,32.38
+OOD_013,How can I learn JavaScript?,ood,,ART003,0.0878,0,29.022
+OOD_014,What is the stock market doing today?,ood,,ART003,0.181,0,41.01
+OOD_015,Tell me a joke.,ood,,ART008,0.1254,0,24.887
+OOD_016,What is the population of Tokyo?,ood,,ART011,0.1769,0,35.184
+OOD_017,How do I calculate compound interest?,ood,,ART012,0.1055,0,32.361
+OOD_018,What is the best pizza restaurant nearby?,ood,,ART001,0.1067,0,23.007
+OOD_019,Who won the cricket match yesterday?,ood,,ART003,0.1347,0,23.107
+OOD_020,How do I make coffee?,ood,,ART003,0.1636,0,27.042
+OOD_021,What is the capital of Australia?,ood,,ART010,0.1794,0,25.077
+OOD_022,Explain quantum computing in general.,ood,,ART003,0.197,0,29.16
+OOD_023,Give me a C program for binary search.,ood,,ART003,0.1665,0,26.533
+OOD_024,What is the temperature in London?,ood,,ART006,0.2574,0,26.033
+OOD_025,What are today's major news headlines?,ood,,ART003,0.2773,0,21.564
+OOD_026,How do I train for a marathon?,ood,,ART014,0.1597,0,19.866
+OOD_027,Recommend a smartphone under 30000 rupees.,ood,,ART003,0.1751,0,26.986
+OOD_028,What is the latest movie release?,ood,,ART008,0.1934,0,24.375
+OOD_029,Solve 12345 divided by 37.,ood,,ART006,0.1191,0,19.899
+OOD_030,How do I apply for a job?,ood,,ART009,0.1158,0,20.26
+OOD_031,What is the best hotel in Mumbai?,ood,,ART015,0.1156,0,24.855
+OOD_032,Tell me about a random celebrity.,ood,,ART007,0.2515,0,23.267
+OOD_033,How do I cook pasta?,ood,,ART001,0.1038,0,21.901
+OOD_034,What is the current exchange rate for euros?,ood,,ART003,0.1273,0,22.35
+OOD_035,Write SQL to find duplicate rows.,ood,,ART007,0.1679,0,20.751
+OOD_036,What is the latest cricket score?,ood,,ART010,0.1828,0,21.192
+OOD_037,How do I remove a virus from Windows?,ood,,ART003,0.1017,0,23.779
+OOD_038,What is the forecast for rain tomorrow?,ood,,ART014,0.1698,0,22.773
+OOD_039,Recommend a song for studying.,ood,,ART010,0.0918,0,21.924
+OOD_040,How do I learn machine learning?,ood,,ART010,0.0984,0,24.331

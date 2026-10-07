@@ -255,6 +255,10 @@ export function AROverlayUI({
                 e.stopPropagation();
                 if (onClearPlacement) onClearPlacement();
               }}
+              onTouchStart={(e) => e.stopPropagation()}
+              onTouchEnd={(e) => e.stopPropagation()}
+              onPointerDown={(e) => e.stopPropagation()}
+              onPointerUp={(e) => e.stopPropagation()}
               className="flex flex-col items-center justify-center p-2 bg-slate-800/80 hover:bg-slate-700 text-amber-300 border border-slate-700 rounded-xl transition-all active:scale-90 min-w-[44px] min-h-[48px] cursor-pointer"
               title="Reposition Artifact"
             >

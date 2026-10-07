@@ -1,0 +1,38 @@
+{
+  "benchmark_queries": 250,
+  "retrieval_queries": 160,
+  "in_scope_top1_accuracy": 1.0,
+  "mean_in_scope_similarity": 0.7460066666666667,
+  "mean_ood_similarity": 0.1501125,
+  "threshold_0.50": {
+    "threshold": 0.5,
+    "TP": 120,
+    "FN": 0,
+    "TN": 40,
+    "FP": 0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "f1": 1.0,
+    "ood_false_accept_rate": 0.0,
+    "in_scope_false_reject_rate": 0.0
+  },
+  "best_f1_threshold_on_this_dataset": {
+    "threshold": 0.3,
+    "TP": 120,
+    "FN": 0,
+    "TN": 40,
+    "FP": 0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "f1": 1.0,
+    "ood_false_accept_rate": 0.0,
+    "in_scope_false_reject_rate": 0.0
+  },
+  "boundary_query_count_0.40_to_0.60": 8,
+  "deictic_binding_accuracy": 1.0,
+  "deictic_llm_calls": 90,
+  "xai_mean_provenance_score": 4,
+  "note": "Threshold selection must be performed on validation data and reported on a held-out test set for a publication-grade claim."
+}

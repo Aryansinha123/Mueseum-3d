@@ -1,0 +1,9 @@
+id,label,question,predicted_artifact_id,similarity,correct_top1
+INS_ART002_1,in_scope,Tell me about George Washington.,ART002,0.5321,1
+INS_ART002_2,in_scope,What is the historical significance of George Washington?,ART002,0.5622,1
+INS_ART002_3,in_scope,When was George Washington created or used?,ART002,0.5962,1
+INS_ART002_4,in_scope,What is George Washington and what was it used for?,ART002,0.5758,1
+INS_ART002_5,in_scope,What do we know about the origin of George Washington?,ART002,0.5499,1
+INS_ART002_6,in_scope,What makes George Washington important?,ART002,0.506,1
+INS_ART002_7,in_scope,What period is George Washington associated with?,ART002,0.5534,1
+INS_ART002_8,in_scope,What is the main purpose or role of George Washington?,ART002,0.5156,1
