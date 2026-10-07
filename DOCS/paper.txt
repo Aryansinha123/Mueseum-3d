@@ -1,0 +1,848 @@
+You are an expert scientific research-paper writer, AR/VR researcher, AI/ML researcher, and technical documentation specialist.
+
+I want you to create a complete, publication-quality Microsoft Word (.docx) research paper for my AR/VR + RAG + Explainable AI project.
+
+IMPORTANT:
+Do NOT write this as a college project report, software documentation, development diary, or "we developed an application" report.
+
+The final document must read like a genuine scientific research manuscript, with a clear research problem, literature-backed research gap, scientific novelty, proposed methodology, experimental/evaluation methodology, results, discussion, limitations, and research contribution.
+
+==================================================
+1. SOURCE MATERIALS — USE ALL OF THESE
+==================================================
+
+You have three important sources:
+
+SOURCE A — RESEARCH PPT:
+"Virtual Museums- XAI RAG AR VR.pdf"
+
+Use this as the primary source for:
+- Research motivation
+- Problem statement
+- Existing challenges
+- Literature review
+- Comparative analysis
+- Research gap
+- Proposed solution
+- System concept
+- XAI/RAG concept
+- Existing terminology
+- Claimed novelty
+- References already identified in the PPT
+
+Do NOT blindly copy PPT bullet points.
+Convert them into proper scientific prose.
+
+SOURCE B — RESEARCH PAPER GUIDELINES:
+"AR_VR_Research_Paper_Guidelines.pdf"
+
+Use this as the writing and scientific-structure standard.
+
+Important principles from the guidelines:
+- The manuscript must be a scientific research paper, NOT a project report.
+- The paper must answer "What scientific knowledge, method, evidence, or design insight does this study contribute?"
+- Do not organize the paper around software features.
+- Build the manuscript around a scientific claim.
+- Establish:
+  Important problem
+  → recent literature
+  → precise research gap
+  → novel idea
+  → research questions/hypotheses
+  → proposed method
+  → controlled evaluation
+  → baseline comparison
+  → statistical/quantitative evidence
+  → interpretation
+  → limitations
+  → scientific contribution.
+
+SOURCE C — MY ACTUAL PROJECT FOLDER:
+The project folder available in the Antigravity workspace is the source of truth for the actual implementation.
+
+IMPORTANT:
+Inspect the COMPLETE project folder before writing the paper.
+
+Do not assume implementation details from the PPT if the actual project code differs.
+
+Use the project folder to determine:
+- Actual frontend architecture
+- Actual backend architecture
+- Actual technologies/frameworks
+- Actual AR/VR implementation
+- Actual 3D museum structure
+- Actual galleries
+- Actual artifacts
+- Actual artifact metadata
+- Actual RAG implementation
+- Actual embedding model
+- Actual retrieval mechanism
+- Actual similarity calculation
+- Actual confidence threshold
+- Actual LLM/model
+- Actual prompting logic
+- Actual context/session memory
+- Actual XAI output
+- Actual source attribution
+- Actual evidence snippets
+- Actual API architecture
+- Actual data flow
+- Actual UI/UX
+- Actual performance-related implementation
+- Actual experiments/tests
+- Actual logs
+- Actual available quantitative results
+- Actual limitations/failure cases
+
+Search the project recursively rather than only inspecting the root directory.
+
+Inspect relevant:
+- README files
+- package.json
+- requirements.txt
+- backend Python files
+- frontend files
+- API routes
+- configuration files
+- JSON datasets
+- artifact metadata
+- RAG implementation
+- embedding code
+- model configuration
+- retrieval functions
+- confidence threshold logic
+- XAI implementation
+- AR/VR components
+- Three.js / React Three Fiber implementation
+- screenshots/assets where scientifically relevant
+- testing scripts
+- experiment/result files
+- logs
+- documentation
+
+Do NOT fabricate anything that is not present in the project.
+
+==================================================
+2. PROJECT RESEARCH CONTEXT
+==================================================
+
+The research topic is broadly:
+
+"Context-Aware Explainable AI Curator for Virtual Museums using Retrieval-Augmented Generation"
+
+The PPT describes the motivation as combining:
+- Virtual museums
+- AR/VR
+- AI museum guides
+- Retrieval-Augmented Generation
+- Context awareness
+- Explainable AI
+
+The proposed system aims to provide:
+- Accurate responses
+- Context-aware interaction
+- Evidence-backed answers
+- Source attribution
+- Confidence scores
+- Explainable reasoning
+- Reduced hallucination
+- Better trust and learning
+
+The PPT identifies major challenges including:
+1. Lack of explainability
+2. Hallucinated responses
+3. Limited context awareness
+4. Insufficient source attribution
+5. Low user trust
+6. Fragmented integration of RAG and XAI in immersive museum environments
+
+Use the PPT and actual implementation to refine this into a scientifically precise research problem.
+
+Do not assume that every claim in the PPT is experimentally validated.
+
+Clearly distinguish:
+- Proposed capabilities
+- Implemented capabilities
+- Experimentally validated capabilities
+- Future work
+
+==================================================
+3. MOST IMPORTANT REQUIREMENT — DO NOT FABRICATE RESULTS
+==================================================
+
+This is critical.
+
+Never invent:
+- Participants
+- User-study results
+- Accuracy values
+- Precision/recall
+- F1 scores
+- p-values
+- confidence intervals
+- effect sizes
+- usability scores
+- SUS scores
+- statistical significance
+- FPS
+- latency
+- retrieval accuracy
+- hallucination reduction percentages
+- survey results
+- experimental results
+- dataset statistics
+- hardware specifications
+- benchmark results
+
+unless they are actually present in the project files or provided source material.
+
+If the project contains actual measurements, use them.
+
+If results are missing:
+- Do NOT make them up.
+- Clearly mark the section as requiring experimental data.
+- Explain what experiment/metric is needed.
+- Where appropriate, create a clearly labelled "Evaluation Required" subsection or placeholder.
+
+Do not falsely claim that a method "improves", "reduces", "outperforms", or "achieves" something unless supported by evidence.
+
+Use scientifically cautious wording such as:
+"the proposed framework is designed to..."
+"the implementation provides..."
+"the current prototype demonstrates..."
+"this component is intended to..."
+when experimental evidence is unavailable.
+
+==================================================
+4. DETERMINE THE REAL SCIENTIFIC NOVELTY
+==================================================
+
+Do not simply claim:
+
+"We developed a virtual museum."
+
+That is NOT sufficient scientific novelty.
+
+Analyze the PPT literature review AND the actual implementation.
+
+Determine what is genuinely novel about the combination of:
+- Context-aware museum interaction
+- RAG-based knowledge grounding
+- Explainable AI
+- Confidence-based response gating
+- Evidence/source attribution
+- AR/VR museum environment
+- Conversation/session context
+- Artifact-aware retrieval
+
+Use the literature comparison to establish what previous systems do and what remains unresolved.
+
+The PPT literature review includes work related to:
+- SA-RAG in virtual museums
+- RAG avatars for virtual archaeology
+- Image-to-3D voice RAG guidance
+- Textile Heritage AI Assistant
+- AI-directed procedural content generation in XR museums
+- ARIA adaptive AR
+- VR/AIoT/semantic museums
+- Virtual art and ML curation
+- 3D point-cloud restoration
+- Museum in the Classroom AR
+- RAG surveys
+- VR/AR museum learning
+- The Invisible Museum platform
+- AI and museums collaboration
+
+Do not merely list these papers.
+
+Synthesize them by research themes and identify:
+- What they solve
+- Their methodology
+- Their strengths
+- Their limitations
+- What they do NOT address
+- How the proposed system addresses the remaining gap
+
+Do not claim "no one has done this before" unless this can actually be defended.
+
+Use wording such as:
+"To the best of our review..."
+"Existing studies predominantly..."
+"Prior work has addressed X and Y independently, whereas..."
+when appropriate.
+
+==================================================
+5. REQUIRED SCIENTIFIC PAPER STRUCTURE
+==================================================
+
+Create the Word document using a strong scientific-paper structure.
+
+Recommended structure:
+
+TITLE
+
+AUTHORS
+Aryan Sinha
+Shriya Garg
+
+AFFILIATION
+Use the project/PPT information for institution, school, program, supervisor, etc.
+Do not invent missing affiliation details.
+
+ABSTRACT
+KEYWORDS
+
+1. INTRODUCTION
+
+2. RELATED WORK AND RESEARCH GAP
+   2.1 AI-Enabled Virtual Museums
+   2.2 RAG for Knowledge-Grounded Museum Interaction
+   2.3 Explainable AI and Trust
+   2.4 Context-Aware/Personalized XR Interaction
+   2.5 Research Gap
+
+3. RESEARCH QUESTIONS AND/OR HYPOTHESES
+
+4. PROPOSED CONTEXT-AWARE EXPLAINABLE AI CURATOR
+   4.1 System Overview
+   4.2 Virtual Museum Environment
+   4.3 Artifact Knowledge Representation
+   4.4 Embedding and Retrieval
+   4.5 Context Awareness
+   4.6 Confidence-Based Decision/Gating
+   4.7 LLM Response Generation
+   4.8 Explainability Layer
+   4.9 Source Attribution and Evidence
+   4.10 Session/Conversation Memory
+   4.11 AR/VR Interaction
+   4.12 End-to-End System Workflow
+
+5. RESEARCH METHODOLOGY AND EXPERIMENTAL DESIGN
+   5.1 Experimental Objectives
+   5.2 Experimental Conditions
+   5.3 Baselines
+   5.4 Evaluation Dataset/Artifacts
+   5.5 Evaluation Metrics
+   5.6 Procedure
+   5.7 Hardware and Software Environment
+   5.8 Data Collection
+   5.9 Statistical Analysis
+
+6. RESULTS
+
+7. ABLATION, ROBUSTNESS AND FAILURE-CASE ANALYSIS
+
+8. DISCUSSION
+
+9. LIMITATIONS, THREATS TO VALIDITY AND ETHICS
+
+10. REPRODUCIBILITY AND IMPLEMENTATION DETAILS
+
+11. CONCLUSION
+
+REFERENCES
+
+==================================================
+6. RESEARCH QUESTIONS
+==================================================
+
+Derive research questions from the actual system and what can realistically be evaluated.
+
+Possible directions include:
+
+RQ1:
+Can retrieval-grounded responses provide more reliable museum information than an ungrounded LLM response?
+
+RQ2:
+Does confidence-based retrieval gating reduce unsupported responses when the required information is absent from the curated knowledge base?
+
+RQ3:
+Does context-aware interaction improve the relevance of responses to the visitor's current exhibit and conversation context?
+
+RQ4:
+Does the XAI layer improve transparency by exposing source artifacts, evidence, and confidence information?
+
+RQ5:
+What contribution does each component make to the overall system?
+
+Do NOT automatically use all of these.
+
+Select or modify them based on:
+- actual implementation
+- available data
+- actual experiments
+- feasible evaluation
+
+Every RQ must have:
+RQ → measurement → analysis → result → interpretation.
+
+==================================================
+7. BASELINES
+==================================================
+
+A scientific paper needs meaningful comparisons.
+
+Inspect the project and determine which baselines can realistically be implemented or already exist.
+
+Potential baselines:
+1. Ungrounded LLM
+2. RAG without confidence gating
+3. RAG without context/session memory
+4. RAG without XAI
+5. Complete proposed system
+
+Only include a baseline if it is:
+- already available,
+- can be fairly reproduced,
+- or is explicitly proposed as an experiment to conduct.
+
+Do NOT claim baseline performance if it has not been measured.
+
+Explain why each baseline is scientifically meaningful.
+
+==================================================
+8. EVALUATION
+==================================================
+
+Build the evaluation section around the research questions.
+
+Potential evaluation dimensions:
+
+A. Retrieval quality
+- similarity score
+- retrieval accuracy
+- top-k retrieval
+- correct artifact retrieval
+
+B. Answer quality
+- factual correctness
+- groundedness
+- relevance
+- unsupported claims
+
+C. Hallucination/grounding behavior
+- supported vs unsupported answers
+- refusal behavior below confidence threshold
+
+D. Explainability
+- source attribution
+- evidence availability
+- confidence visibility
+- traceability
+
+E. Context awareness
+- pronoun resolution
+- follow-up question handling
+- session memory
+- exhibit-aware response relevance
+
+F. System performance
+- response latency
+- retrieval time
+- inference time
+- FPS if available
+- WebGL/runtime stability if measurable
+
+G. User experience, ONLY if actual user-study data exists
+- usability
+- satisfaction
+- engagement
+- presence
+- cognitive workload
+
+Do not include metrics simply to make the paper look more advanced.
+
+==================================================
+9. ABLATION STUDY
+==================================================
+
+Because the system contains multiple components, determine whether an ablation study is possible.
+
+Potential ablations:
+
+A. Full system
+B. Without XAI
+C. Without confidence threshold
+D. Without context memory
+E. Without RAG
+F. Without source/evidence presentation
+
+Only include experiments that are technically meaningful and feasible.
+
+If no ablation data exists, create an "Ablation and Future Evaluation" subsection rather than fabricating results.
+
+==================================================
+10. SYSTEM ARCHITECTURE
+==================================================
+
+Create a scientifically clear description of the actual architecture.
+
+If the project implementation confirms the following architecture, explain it accurately:
+
+User
+↓
+Virtual Museum / AR Interface
+↓
+Artifact / Exhibit Context
+↓
+User Query
+↓
+Embedding Model
+↓
+Vector Similarity Retrieval
+↓
+Confidence Threshold / Relevance Gate
+↓
+Retrieved Artifact Knowledge
+↓
+LLM
+↓
+Explainability Layer
+↓
+Answer + Evidence + Source + Confidence
+↓
+User
+
+If the actual project differs, use the actual architecture instead.
+
+Explain data flow and component interaction.
+
+Include a publication-quality architecture figure if possible.
+
+Do not create a decorative architecture diagram.
+
+==================================================
+11. TECHNICAL DETAILS
+==================================================
+
+Extract the exact technical implementation from the project folder.
+
+If confirmed by the project, describe technologies such as:
+- Next.js
+- React
+- Three.js
+- React Three Fiber
+- FastAPI
+- SentenceTransformers
+- all-MiniLM-L6-v2
+- NumPy embeddings
+- Groq LLM
+- AR/WebXR
+- GLB/3D artifacts
+- JSON artifact knowledge base
+
+But NEVER assume these are still the exact final implementation.
+
+Verify everything against the current project files.
+
+Explain technologies only when scientifically relevant.
+
+Avoid unnecessary developer-oriented details such as:
+- installation commands
+- basic npm instructions
+- file-by-file tutorials
+- code screenshots
+- routine UI configuration
+
+==================================================
+12. RAG METHODOLOGY
+==================================================
+
+Explain the actual RAG pipeline mathematically and scientifically.
+
+Where supported by the implementation, explain:
+
+1. Artifact knowledge collection
+2. Text preprocessing
+3. Embedding generation
+4. Query embedding
+5. Similarity calculation
+6. Candidate retrieval
+7. Confidence/relevance threshold
+8. Context construction
+9. LLM generation
+10. Evidence/source extraction
+11. Response generation
+
+If cosine similarity is used, include the mathematical formulation where appropriate.
+
+For example:
+
+cos(q,d) = (q · d) / (||q|| ||d||)
+
+But only include formulas that correspond to the actual implementation.
+
+Explain the confidence threshold accurately.
+
+If the implementation uses a fixed threshold such as 0.50, verify this in the code before stating it.
+
+==================================================
+13. EXPLAINABLE AI
+==================================================
+
+Treat XAI as a research component, not just a UI feature.
+
+Explain how the system exposes:
+- retrieved artifact
+- source/gallery information
+- confidence score
+- evidence snippet
+- reasoning/grounding information
+
+Discuss how this improves:
+- transparency
+- traceability
+- user trust
+- verification
+- resistance to unsupported generation
+
+Do not claim that displaying evidence automatically proves trust improvement.
+
+If user trust has not been experimentally measured, state that explainability is a transparency mechanism and that its effect on trust requires empirical validation.
+
+==================================================
+14. CONTEXT AWARENESS
+==================================================
+
+Investigate the actual project implementation to identify what context is used.
+
+Possible context:
+- current artifact
+- current gallery
+- previous questions
+- short-term session memory
+- previous retrieved artifact
+- pronoun resolution
+- conversation history
+
+Explain exactly what is implemented.
+
+If the system uses a sliding conversation memory, describe:
+- size/window
+- what information is retained
+- how it affects retrieval or generation
+
+Do not invent details.
+
+==================================================
+15. FIGURES AND TABLES
+==================================================
+
+Create useful scientific figures/tables from the actual project.
+
+Potential figures:
+
+Figure 1:
+Conceptual overview of the research problem.
+
+Figure 2:
+System architecture.
+
+Figure 3:
+RAG + confidence gating + XAI pipeline.
+
+Figure 4:
+Context-aware interaction flow.
+
+Figure 5:
+Virtual museum environment/galleries if scientifically relevant.
+
+Figure 6:
+Evaluation methodology.
+
+Figure 7+:
+Actual quantitative results.
+
+Potential tables:
+
+Table 1:
+Comparison of related research.
+
+Columns:
+Paper | Method | Context | RAG | XAI | Source Attribution | Confidence | AR/VR | Limitation
+
+Table 2:
+Research gap and proposed contribution.
+
+Table 3:
+System components and implementation.
+
+Table 4:
+Experimental conditions.
+
+Table 5:
+Quantitative results.
+
+Table 6:
+Ablation results.
+
+Do not create result tables containing invented values.
+
+Screenshots should NOT dominate the paper.
+Use screenshots only when they provide evidence of a scientifically relevant system component.
+
+==================================================
+16. LITERATURE
+==================================================
+
+Use the references from the PPT as the initial literature foundation.
+
+However:
+- verify citations where possible
+- preserve genuine references
+- do not fabricate DOI, author, journal, conference, or year
+- do not invent references just to increase citation count
+- distinguish PPT-provided references from newly researched references
+
+If external research is needed, prioritize:
+- peer-reviewed journals
+- major conferences
+- recent publications
+- primary research papers
+- highly relevant AR/VR/XR + RAG + XAI + museum/heritage research
+
+Use recent literature where appropriate while retaining foundational work.
+
+Synthesize literature thematically rather than creating a paper-by-paper list.
+
+==================================================
+17. WRITING STYLE
+==================================================
+
+Use formal academic English.
+
+The writing must sound like a research paper written for an AR/VR/AI journal or conference.
+
+Avoid:
+- "our project"
+- "we made"
+- "we created a website"
+- "we added a feature"
+- "this application is very useful"
+- "very good results"
+- "best"
+- "revolutionary"
+- "groundbreaking"
+- "state-of-the-art" unless directly justified
+
+Prefer:
+- "This study proposes..."
+- "The proposed framework..."
+- "The system integrates..."
+- "The evaluation examines..."
+- "The results indicate..."
+- "Within the evaluated conditions..."
+- "The findings suggest..."
+- "To the best of our review..."
+
+Use precise scientific claims.
+
+Every major claim should be supported by:
+- literature,
+- implementation evidence,
+- experimental evidence,
+- or clearly labelled as a design objective.
+
+==================================================
+18. WORD DOCUMENT FORMATTING
+==================================================
+
+Create a professional .docx research manuscript.
+
+Use:
+- consistent academic typography
+- proper heading hierarchy
+- page numbers
+- figure captions
+- table captions
+- numbered figures
+- numbered tables
+- equations where necessary
+- consistent citation style
+- consistent spacing
+- professional margins
+- readable tables
+- proper references
+- cross-references where possible
+
+Do not make it look like a PowerPoint converted into Word.
+
+The final document should visually resemble a scientific manuscript.
+
+Use a two-column layout ONLY if appropriate for the target publication; otherwise use a clean single-column manuscript layout.
+
+Do not overdesign the document.
+
+==================================================
+19. SCIENTIFIC INTEGRITY CHECK
+==================================================
+
+Before finalizing, perform a strict internal audit.
+
+Check:
+
+1. Is the research problem clearly defined?
+2. Is the research gap specific?
+3. Is the novelty defensible?
+4. Are 3–4 contributions clearly stated?
+5. Does every contribution have supporting evidence or an explicitly stated evaluation requirement?
+6. Are research questions measurable?
+7. Is there a meaningful baseline?
+8. Are all technical claims verified against the actual project?
+9. Are all numerical results sourced from actual data?
+10. Are there any fabricated results?
+11. Are citations genuine?
+12. Are limitations honestly reported?
+13. Are negative/failure cases included if available?
+14. Is the conclusion about what was learned rather than merely what was built?
+15. Does the paper follow the supplied AR/VR scientific manuscript guidelines?
+
+==================================================
+20. FINAL OUTPUT
+==================================================
+
+Produce:
+
+1. A complete Word (.docx) research paper.
+2. A scientifically strong title.
+3. Abstract.
+4. Keywords.
+5. Full research manuscript.
+6. Proper figures and tables where supported by the project.
+7. Proper references.
+8. A final scientific-integrity check.
+
+Before writing the final manuscript, inspect the entire project folder and reconcile it with the PPT.
+
+If there is a conflict:
+
+PROJECT CODE / ACTUAL IMPLEMENTATION
+takes precedence over assumptions in the PPT for implementation details.
+
+PPT
+takes precedence for the intended research framing, literature review, research gap, and original proposal unless contradicted by actual project evidence.
+
+RESEARCH GUIDELINES PDF
+takes precedence for manuscript structure, scientific writing style, evaluation philosophy, and publication-quality expectations.
+
+When something cannot be established from the available evidence, explicitly mark it as:
+"[REQUIRES VALIDATION]"
+or
+"[EXPERIMENTAL DATA REQUIRED]"
+
+Do not fabricate information to make the manuscript appear complete.
+
+The final manuscript should make the central scientific argument clear:
+
+PROBLEM
+→ EXISTING LIMITATION
+→ RESEARCH GAP
+→ PROPOSED SCIENTIFIC MECHANISM
+→ EXPERIMENT
+→ EVIDENCE
+→ INTERPRETATION
+→ CONTRIBUTION
+
+The objective is NOT to produce a longer project report.
+
+The objective is to transform the actual Virtual Museum + Context-Aware RAG + Explainable AI implementation into a defensible scientific research manuscript.
