@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useEffect } from "react";
 import { useXREvent } from "@react-three/xr";
 import { ARPlacementIndicator } from "./ARPlacementIndicator";
 import { ARArtifact } from "./ARArtifact";
