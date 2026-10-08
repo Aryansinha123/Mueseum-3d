@@ -121,7 +121,8 @@ export default function Home() {
     setArScale(1.0);
     setRotationY(0);
 
-    if (xrStore && typeof xrStore.enterAR === "function") {
+    const hasActiveSession = Boolean(xrStore?.getState?.()?.session);
+    if (!hasActiveSession && xrStore && typeof xrStore.enterAR === "function") {
       xrStore
         .enterAR()
         .then((session) => {

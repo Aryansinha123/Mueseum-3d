@@ -11,7 +11,7 @@ const tempPos = new THREE.Vector3();
 const tempQuat = new THREE.Quaternion();
 const tempScale = new THREE.Vector3();
 
-export function ARPlacementIndicator({ active, lastHitRef, lastHitQuatRef }) {
+export function ARPlacementIndicator({ active, lastHitRef }) {
   const reticleRef = useRef();
   const surfaceDetectedLogged = useRef(false);
 
@@ -47,12 +47,9 @@ export function ARPlacementIndicator({ active, lastHitRef, lastHitQuatRef }) {
           }
         }
 
-        // Store latest hit position & orientation for instant tap lock
+        // Store latest hit position for instant tap lock
         if (lastHitRef) {
           lastHitRef.current = [tempPos.x, tempPos.y, tempPos.z];
-        }
-        if (lastHitQuatRef) {
-          lastHitQuatRef.current = [tempQuat.x, tempQuat.y, tempQuat.z, tempQuat.w];
         }
       }
     } else if (reticleRef.current && reticleRef.current.visible) {

@@ -18,9 +18,8 @@ export function ARScene({
   arScale,
   rotationY,
 }) {
-  // Real-time hit position & orientation tracked in refs to avoid 60fps React re-renders
-  const lastHitRef = useRef(null);
-  const lastHitQuatRef = useRef(null);
+  // Real-time hit position tracked in refs to avoid 60fps React re-renders
+  const lastHitRef = useRef([0, 0, 0]);
   const placementCooldownRef = useRef(0);
   const prevIsPlacedRef = useRef(isPlaced);
 
@@ -28,8 +27,7 @@ export function ARScene({
   useEffect(() => {
     if (prevIsPlacedRef.current && !isPlaced) {
       placementCooldownRef.current = Date.now() + 600;
-      lastHitRef.current = null;
-      lastHitQuatRef.current = null;
+      lastHitRef.current = [0, 0, 0];
       console.log("[AR] Placement cleared for repositioning (Move mode active)");
     }
     prevIsPlacedRef.current = isPlaced;
@@ -40,16 +38,14 @@ export function ARScene({
       console.log("[AR] Placement tap ignored during cooldown");
       return;
     }
-    if (!isPlaced && lastHitRef.current) {
-      console.log("[AR] Artifact placed");
-      setPlacedPosition([...lastHitRef.current]);
-      if (lastHitQuatRef.current && setPlacedQuaternion) {
-        setPlacedQuaternion([...lastHitQuatRef.current]);
-      }
+    if (!isPlaced) {
+      const pos = lastHitRef.current || [0, 0, 0];
+      console.log("[AR] Artifact placed at", pos);
+      setPlacedPosition([...pos]);
       setIsPlaced(true);
       console.log("[AR] Artifact transform locked");
     }
-  }, [isPlaced, setPlacedPosition, setPlacedQuaternion, setIsPlaced]);
+  }, [isPlaced, setPlacedPosition, setIsPlaced]);
 
   // Listen for WebXR session tap/select events to confirm placement
   useXREvent("select", () => {
@@ -95,7 +91,6 @@ export function ARScene({
         <ARPlacementIndicator
           active={!isPlaced}
           lastHitRef={lastHitRef}
-          lastHitQuatRef={lastHitQuatRef}
         />
       )}
 
@@ -104,7 +99,6 @@ export function ARScene({
         <ARArtifact
           artifact={selectedArtifact}
           position={placedPosition}
-          quaternion={placedQuaternion}
           rotationY={rotationY}
           arScale={arScale}
           isSelected={true}
