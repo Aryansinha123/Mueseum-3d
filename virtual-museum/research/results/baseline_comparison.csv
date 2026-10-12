@@ -1,0 +1,7 @@
+Model,Retrieval_Type,Top1_Named_Semantic_Acc,Deictic_Spatial_Acc,OOD_Rejection_Spec,OOD_False_Accept_Rate,XAI_Provenance_Score,LLM_Calls_Suppressed_OOD,Mean_Retrieval_Latency_ms,Description
+Vanilla Zero-Shot LLM,None (Parametric only),N/A,0.0%,0.0%,100.0%,0.0 / 4,0.0%,0.0,Direct prompt to LLM without RAG; prone to severe hallucinations on niche artifacts.
+B1: BM25 Lexical RAG,Sparse Okapi BM25,100.00%,0.0%,0.0%,100.0%,1.0 / 4,0.0%,0.42,Exact keyword matching; suffers from vocabulary mismatch and lack of confidence calibration.
+B2: TF-IDF RAG,Sparse TF-IDF Cosine,100.00%,0.0%,0.0%,100.0%,1.0 / 4,0.0%,2.03,Standard vector space model; fails on paraphrase queries without semantic embeddings.
+B3: Ungated Dense RAG,Dense (all-MiniLM-L6-v2),100.00%,0.0%,0.0%,100.0%,2.0 / 4,0.0%,97.4,Always generates answers; forces hallucination on all 40 OOD queries.
+B4: Stateless Dense RAG,Dense (all-MiniLM-L6-v2),100.00%,0.00%,100.00%,0.00%,4.0 / 4,100.0%,97.4,Uses gate tau=0.50 but lacks 3D spatial binding; fails on indexical queries like 'What is this?'.
+Proposed (Context-Aware XAI-RAG),Dense + Deictic Routing,100.00%,100.00%,100.00%,0.00%,4.0 / 4,100.0%,97.4,"Full proposed architecture: 3D deictic routing, tau=0.50 pre-LLM gate, 3-turn memory, 4-pillar XAI."

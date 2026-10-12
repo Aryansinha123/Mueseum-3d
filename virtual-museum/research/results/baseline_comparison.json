@@ -1,0 +1,74 @@
+[
+  {
+    "Model": "Vanilla Zero-Shot LLM",
+    "Retrieval_Type": "None (Parametric only)",
+    "Top1_Named_Semantic_Acc": "N/A",
+    "Deictic_Spatial_Acc": "0.0%",
+    "OOD_Rejection_Spec": "0.0%",
+    "OOD_False_Accept_Rate": "100.0%",
+    "XAI_Provenance_Score": "0.0 / 4",
+    "LLM_Calls_Suppressed_OOD": "0.0%",
+    "Mean_Retrieval_Latency_ms": 0.0,
+    "Description": "Direct prompt to LLM without RAG; prone to severe hallucinations on niche artifacts."
+  },
+  {
+    "Model": "B1: BM25 Lexical RAG",
+    "Retrieval_Type": "Sparse Okapi BM25",
+    "Top1_Named_Semantic_Acc": "100.00%",
+    "Deictic_Spatial_Acc": "0.0%",
+    "OOD_Rejection_Spec": "0.0%",
+    "OOD_False_Accept_Rate": "100.0%",
+    "XAI_Provenance_Score": "1.0 / 4",
+    "LLM_Calls_Suppressed_OOD": "0.0%",
+    "Mean_Retrieval_Latency_ms": 0.42,
+    "Description": "Exact keyword matching; suffers from vocabulary mismatch and lack of confidence calibration."
+  },
+  {
+    "Model": "B2: TF-IDF RAG",
+    "Retrieval_Type": "Sparse TF-IDF Cosine",
+    "Top1_Named_Semantic_Acc": "100.00%",
+    "Deictic_Spatial_Acc": "0.0%",
+    "OOD_Rejection_Spec": "0.0%",
+    "OOD_False_Accept_Rate": "100.0%",
+    "XAI_Provenance_Score": "1.0 / 4",
+    "LLM_Calls_Suppressed_OOD": "0.0%",
+    "Mean_Retrieval_Latency_ms": 2.03,
+    "Description": "Standard vector space model; fails on paraphrase queries without semantic embeddings."
+  },
+  {
+    "Model": "B3: Ungated Dense RAG",
+    "Retrieval_Type": "Dense (all-MiniLM-L6-v2)",
+    "Top1_Named_Semantic_Acc": "100.00%",
+    "Deictic_Spatial_Acc": "0.0%",
+    "OOD_Rejection_Spec": "0.0%",
+    "OOD_False_Accept_Rate": "100.0%",
+    "XAI_Provenance_Score": "2.0 / 4",
+    "LLM_Calls_Suppressed_OOD": "0.0%",
+    "Mean_Retrieval_Latency_ms": 97.4,
+    "Description": "Always generates answers; forces hallucination on all 40 OOD queries."
+  },
+  {
+    "Model": "B4: Stateless Dense RAG",
+    "Retrieval_Type": "Dense (all-MiniLM-L6-v2)",
+    "Top1_Named_Semantic_Acc": "100.00%",
+    "Deictic_Spatial_Acc": "0.00%",
+    "OOD_Rejection_Spec": "100.00%",
+    "OOD_False_Accept_Rate": "0.00%",
+    "XAI_Provenance_Score": "4.0 / 4",
+    "LLM_Calls_Suppressed_OOD": "100.0%",
+    "Mean_Retrieval_Latency_ms": 97.4,
+    "Description": "Uses gate tau=0.50 but lacks 3D spatial binding; fails on indexical queries like 'What is this?'."
+  },
+  {
+    "Model": "Proposed (Context-Aware XAI-RAG)",
+    "Retrieval_Type": "Dense + Deictic Routing",
+    "Top1_Named_Semantic_Acc": "100.00%",
+    "Deictic_Spatial_Acc": "100.00%",
+    "OOD_Rejection_Spec": "100.00%",
+    "OOD_False_Accept_Rate": "0.00%",
+    "XAI_Provenance_Score": "4.0 / 4",
+    "LLM_Calls_Suppressed_OOD": "100.0%",
+    "Mean_Retrieval_Latency_ms": 97.4,
+    "Description": "Full proposed architecture: 3D deictic routing, tau=0.50 pre-LLM gate, 3-turn memory, 4-pillar XAI."
+  }
+]

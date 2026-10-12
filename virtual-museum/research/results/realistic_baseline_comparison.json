@@ -1,0 +1,184 @@
+{
+  "comparison": [
+    {
+      "Model": "Vanilla Zero-Shot LLM",
+      "Retrieval_Type": "None (Parametric only)",
+      "Overall_Top1_Acc": "N/A",
+      "Descriptive_Top1_Acc": "N/A",
+      "Deictic_Spatial_Acc": "0.00%",
+      "Distant_OOD_Spec": "0.00%",
+      "Near_Domain_OOC_Spec": "0.00%",
+      "Overall_OOD_Spec": "0.00%",
+      "OOD_False_Accept_Rate": "100.00%",
+      "AUROC": "N/A",
+      "XAI_Provenance_Score": "0.0 / 4",
+      "LLM_Calls_Suppressed": "0.00%",
+      "Mean_Retrieval_Latency_ms": 0.0
+    },
+    {
+      "Model": "B1: BM25 Lexical RAG",
+      "Retrieval_Type": "Sparse Okapi BM25",
+      "Overall_Top1_Acc": "92.50%",
+      "Descriptive_Top1_Acc": "90.00%",
+      "Deictic_Spatial_Acc": "0.00%",
+      "Distant_OOD_Spec": "0.00% (ungated)",
+      "Near_Domain_OOC_Spec": "0.00% (ungated)",
+      "Overall_OOD_Spec": "0.00%",
+      "OOD_False_Accept_Rate": "100.00%",
+      "AUROC": "N/A",
+      "XAI_Provenance_Score": "1.0 / 4",
+      "LLM_Calls_Suppressed": "0.00%",
+      "Mean_Retrieval_Latency_ms": 0.59
+    },
+    {
+      "Model": "B2: TF-IDF RAG",
+      "Retrieval_Type": "Sparse TF-IDF Cosine",
+      "Overall_Top1_Acc": "91.67%",
+      "Descriptive_Top1_Acc": "88.33%",
+      "Deictic_Spatial_Acc": "0.00%",
+      "Distant_OOD_Spec": "0.00% (ungated)",
+      "Near_Domain_OOC_Spec": "0.00% (ungated)",
+      "Overall_OOD_Spec": "0.00%",
+      "OOD_False_Accept_Rate": "100.00%",
+      "AUROC": "N/A",
+      "XAI_Provenance_Score": "1.0 / 4",
+      "LLM_Calls_Suppressed": "0.00%",
+      "Mean_Retrieval_Latency_ms": 2.76
+    },
+    {
+      "Model": "B3: Ungated Dense RAG",
+      "Retrieval_Type": "Dense (all-MiniLM-L6-v2)",
+      "Overall_Top1_Acc": "99.17%",
+      "Descriptive_Top1_Acc": "100.00%",
+      "Deictic_Spatial_Acc": "0.00%",
+      "Distant_OOD_Spec": "0.00% (ungated)",
+      "Near_Domain_OOC_Spec": "0.00% (ungated)",
+      "Overall_OOD_Spec": "0.00%",
+      "OOD_False_Accept_Rate": "100.00%",
+      "AUROC": "0.9967",
+      "XAI_Provenance_Score": "2.0 / 4",
+      "LLM_Calls_Suppressed": "0.00%",
+      "Mean_Retrieval_Latency_ms": 117.69
+    },
+    {
+      "Model": "B4: Stateless Dense RAG",
+      "Retrieval_Type": "Dense (all-MiniLM-L6-v2)",
+      "Overall_Top1_Acc": "99.17%",
+      "Descriptive_Top1_Acc": "100.00%",
+      "Deictic_Spatial_Acc": "0.00%",
+      "Distant_OOD_Spec": "100.00%",
+      "Near_Domain_OOC_Spec": "96.00%",
+      "Overall_OOD_Spec": "98.00%",
+      "OOD_False_Accept_Rate": "2.00%",
+      "AUROC": "0.9967",
+      "XAI_Provenance_Score": "4.0 / 4",
+      "LLM_Calls_Suppressed": "98.00%",
+      "Mean_Retrieval_Latency_ms": 117.69
+    },
+    {
+      "Model": "Proposed (Context-Aware XAI-RAG)",
+      "Retrieval_Type": "Dense + 3D Deictic Binding",
+      "Overall_Top1_Acc": "99.17%",
+      "Descriptive_Top1_Acc": "100.00%",
+      "Deictic_Spatial_Acc": "83.33%",
+      "Distant_OOD_Spec": "100.00%",
+      "Near_Domain_OOC_Spec": "96.00%",
+      "Overall_OOD_Spec": "98.00%",
+      "OOD_False_Accept_Rate": "2.00%",
+      "AUROC": "0.9967",
+      "XAI_Provenance_Score": "4.0 / 4",
+      "LLM_Calls_Suppressed": "98.00%",
+      "Mean_Retrieval_Latency_ms": 117.69
+    }
+  ],
+  "subtype_breakdown": {
+    "descriptive": {
+      "count": 60,
+      "bm25_acc": 0.9,
+      "tfidf_acc": 0.8833333333333333,
+      "dense_acc": 1.0,
+      "dense_mean_score": 0.6121283333333334
+    },
+    "attribute": {
+      "count": 30,
+      "bm25_acc": 0.9333333333333333,
+      "tfidf_acc": 0.9333333333333333,
+      "dense_acc": 1.0,
+      "dense_mean_score": 0.6837366666666665
+    },
+    "natural": {
+      "count": 30,
+      "bm25_acc": 0.9666666666666667,
+      "tfidf_acc": 0.9666666666666667,
+      "dense_acc": 0.9666666666666667,
+      "dense_mean_score": 0.7365466666666666
+    }
+  },
+  "score_distributions": {
+    "in_scope_mean": 0.6611,
+    "distant_ood_mean": 0.1744,
+    "near_domain_ooc_mean": 0.3547
+  },
+  "boundary_analysis": [
+    {
+      "question": "Tell me about old weapons.",
+      "matched_artifact": "Old Arrow Maker",
+      "score": 0.3958,
+      "decision": "REJECTED"
+    },
+    {
+      "question": "What space stuff is here?",
+      "matched_artifact": "Space Shuttle Discovery",
+      "score": 0.4455,
+      "decision": "REJECTED"
+    },
+    {
+      "question": "Ancient tools",
+      "matched_artifact": "Ceremonial Elephant-Shaped Covered Vessel",
+      "score": 0.4913,
+      "decision": "REJECTED"
+    },
+    {
+      "question": "Prehistoric fossils",
+      "matched_artifact": "Tyrannosaurus rex Skull",
+      "score": 0.6288,
+      "decision": "ACCEPTED"
+    },
+    {
+      "question": "Old American statues",
+      "matched_artifact": "Old Arrow Maker",
+      "score": 0.5754,
+      "decision": "ACCEPTED"
+    },
+    {
+      "question": "Aircraft",
+      "matched_artifact": "Bell X-1 \"Glamorous Glennis\"",
+      "score": 0.4392,
+      "decision": "REJECTED"
+    },
+    {
+      "question": "Fossil bones",
+      "matched_artifact": "Tyrannosaurus rex Skull",
+      "score": 0.5653,
+      "decision": "ACCEPTED"
+    },
+    {
+      "question": "Telegraphs and electricity",
+      "matched_artifact": "Morse-Vail Telegraph Key",
+      "score": 0.4948,
+      "decision": "REJECTED"
+    },
+    {
+      "question": "Things made of bronze",
+      "matched_artifact": "Ceremonial Elephant-Shaped Covered Vessel",
+      "score": 0.498,
+      "decision": "REJECTED"
+    },
+    {
+      "question": "Artifacts from the 1800s",
+      "matched_artifact": "Ceremonial Elephant-Shaped Covered Vessel",
+      "score": 0.4382,
+      "decision": "REJECTED"
+    }
+  ]
+}

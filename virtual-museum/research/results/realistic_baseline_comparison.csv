@@ -1,0 +1,7 @@
+Model,Retrieval_Type,Overall_Top1_Acc,Descriptive_Top1_Acc,Deictic_Spatial_Acc,Distant_OOD_Spec,Near_Domain_OOC_Spec,Overall_OOD_Spec,OOD_False_Accept_Rate,AUROC,XAI_Provenance_Score,LLM_Calls_Suppressed,Mean_Retrieval_Latency_ms
+Vanilla Zero-Shot LLM,None (Parametric only),N/A,N/A,0.00%,0.00%,0.00%,0.00%,100.00%,N/A,0.0 / 4,0.00%,0.0
+B1: BM25 Lexical RAG,Sparse Okapi BM25,92.50%,90.00%,0.00%,0.00% (ungated),0.00% (ungated),0.00%,100.00%,N/A,1.0 / 4,0.00%,0.59
+B2: TF-IDF RAG,Sparse TF-IDF Cosine,91.67%,88.33%,0.00%,0.00% (ungated),0.00% (ungated),0.00%,100.00%,N/A,1.0 / 4,0.00%,2.76
+B3: Ungated Dense RAG,Dense (all-MiniLM-L6-v2),99.17%,100.00%,0.00%,0.00% (ungated),0.00% (ungated),0.00%,100.00%,0.9967,2.0 / 4,0.00%,117.69
+B4: Stateless Dense RAG,Dense (all-MiniLM-L6-v2),99.17%,100.00%,0.00%,100.00%,96.00%,98.00%,2.00%,0.9967,4.0 / 4,98.00%,117.69
+Proposed (Context-Aware XAI-RAG),Dense + 3D Deictic Binding,99.17%,100.00%,83.33%,100.00%,96.00%,98.00%,2.00%,0.9967,4.0 / 4,98.00%,117.69

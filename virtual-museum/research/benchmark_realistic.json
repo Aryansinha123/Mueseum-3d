@@ -1,0 +1,2053 @@
+{
+  "version": "2.0-realistic",
+  "total_queries": 270,
+  "breakdown": {
+    "in_scope_realistic": 120,
+    "deictic_spatial": 90,
+    "ood_distant": 25,
+    "ood_near_domain": 25,
+    "boundary_ambiguous": 10
+  },
+  "queries": [
+    {
+      "id": "INS_ART001_001",
+      "question": "Tell me about the marble sculpture of an indigenous craftsman weaving arrows.",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART001_002",
+      "question": "Which artwork was sculpted by a 19th-century Black and Native American woman artist?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART001_003",
+      "question": "Show me the neoclassical marble statue depicting characters from Longfellow's Hiawatha.",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART001_004",
+      "question": "What is that stone carving showing a father and daughter sitting together making hunting gear?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART001_005",
+      "question": "Who was Edmonia Lewis and what work does she have here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART001_006",
+      "question": "What material was used to carve the Old Arrow Maker?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART001_007",
+      "question": "Tell me the story behind the Old Arrow Maker statue.",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART001_008",
+      "question": "What is the historical significance of the Old Arrow Maker sculpture?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART002_009",
+      "question": "Which statue depicts the first American president dressed like a Roman god?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART002_010",
+      "question": "Tell me about the controversial marble sculpture showing a shirtless founding father.",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART002_011",
+      "question": "Show me the monumental neoclassical carving inspired by the Olympian Zeus.",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART002_012",
+      "question": "What is that enormous marble figure of George Washington seated on an ornate throne?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART002_013",
+      "question": "Who was Horatio Greenough and why was his statue of Washington criticized?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART002_014",
+      "question": "When was the monumental seated George Washington carved?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART002_015",
+      "question": "Tell me about Horatio Greenough's George Washington.",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART002_016",
+      "question": "What is the history behind the neoclassical George Washington statue?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART003_017",
+      "question": "What is that antique brass switch used to tap out electrical code messages?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART003_018",
+      "question": "Show me the device that sent the famous message What hath God wrought.",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART003_019",
+      "question": "Which instrument was used in the first official telecommunication line between Washington and Baltimore?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART003_020",
+      "question": "Tell me about the 1844 brass instrument that revolutionized long-distance communication.",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART003_021",
+      "question": "Who invented the telegraph key on display in the historical gallery?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART003_022",
+      "question": "What was the very first telegraph message sent with the Morse key?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART003_023",
+      "question": "Tell me about the Morse-Vail telegraph key.",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART003_024",
+      "question": "How did the 1844 Morse telegraph transmitter work?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART004_025",
+      "question": "What is that early electromagnetic apparatus with copper coils and an iron core?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART004_026",
+      "question": "Show me the 1838 device that generated high voltage sparks using electromagnetic induction.",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART004_027",
+      "question": "Which antique scientific device served as the forerunner to modern electrical transformers?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART004_028",
+      "question": "Tell me about the apparatus invented by Charles Grafton Page to boost electrical current.",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART004_029",
+      "question": "What was Charles Grafton Page's induction coil used for?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART004_030",
+      "question": "How did early scientists produce high-voltage sparks in 1838?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART004_031",
+      "question": "Tell me about the Page induction coil.",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART004_032",
+      "question": "What is the scientific significance of the Page induction device?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART005_033",
+      "question": "What is that ancient Chinese bronze container shaped like an elephant?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART005_034",
+      "question": "Show me the Shang dynasty ritual bronze wine vessel with animal carvings.",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART005_035",
+      "question": "Which exhibit is an ancient Asian cast bronze object used for ancestral ceremonies?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART005_036",
+      "question": "Tell me about the covered bronze animal vessel from late Bronze Age China.",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART005_037",
+      "question": "What dynasty created the ceremonial elephant vessel?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART005_038",
+      "question": "What kind of rituals was the bronze elephant zun used for in ancient China?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART005_039",
+      "question": "Tell me about the Ceremonial Elephant-Shaped Covered Vessel.",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART005_040",
+      "question": "What motifs and decorations are cast onto the bronze elephant vessel?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART006_041",
+      "question": "Show me the spacecraft that carried the first astronauts back from the Moon landing.",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART006_042",
+      "question": "What is that cone-shaped capsule that splashed down in the Pacific Ocean after Apollo 11?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART006_043",
+      "question": "Which exhibit was the actual crew cabin for Armstrong, Aldrin, and Collins?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART006_044",
+      "question": "Tell me about the heat-shielded command cabin from the historic 1969 lunar voyage.",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART006_045",
+      "question": "Who were the astronauts aboard Apollo 11 Columbia?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART006_046",
+      "question": "What happened to the Columbia capsule after it re-entered Earth's atmosphere?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART006_047",
+      "question": "Tell me about the Apollo 11 Command Module Columbia.",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART006_048",
+      "question": "What is the historical importance of the Apollo 11 command ship?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART007_049",
+      "question": "Show me the reusable NASA orbiter that deployed the Hubble Space Telescope.",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART007_050",
+      "question": "What is the winged spacecraft on display that completed thirty-nine orbital missions?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART007_051",
+      "question": "Which NASA space plane flew John Glenn back into orbit in 1998?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART007_052",
+      "question": "Tell me about the veteran orbiter that spent a full year accumulated in Earth orbit.",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART007_053",
+      "question": "How many space missions did Space Shuttle Discovery complete?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART007_054",
+      "question": "When was Discovery retired from active NASA spaceflight service?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART007_055",
+      "question": "Tell me about the Space Shuttle Discovery.",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART007_056",
+      "question": "What major space telescopes and satellites were launched by Discovery?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART008_057",
+      "question": "Which rocket plane was the first to fly faster than the speed of sound?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART008_058",
+      "question": "Tell me about the bright orange aircraft flown by Chuck Yeager on October 14 1947.",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART008_059",
+      "question": "Show me the experimental bullet-shaped plane that broke Mach 1.",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART008_060",
+      "question": "What is the rocket-powered test aircraft named Glamorous Glennis?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART008_061",
+      "question": "Who was the pilot that flew the Bell X-1 past the sound barrier?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART008_062",
+      "question": "How fast did the Bell X-1 fly on its historic supersonic flight?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART008_063",
+      "question": "Tell me about the Bell X-1 Glamorous Glennis.",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART008_064",
+      "question": "What engine powered the supersonic Bell X-1?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART009_065",
+      "question": "Which exhibit was the silver protective garment worn by America's first astronauts?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART009_066",
+      "question": "Show me the spacesuit used during Project Mercury orbital flights.",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART009_067",
+      "question": "What is that metallic pressure suit developed by Goodrich for early space explorers?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART009_068",
+      "question": "Tell me about the flight suit designed to protect astronauts against vacuum in the early 1960s.",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART009_069",
+      "question": "What material gives the Mercury space suit its shiny silver exterior?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART009_070",
+      "question": "Who were the astronauts that wore the Mercury pressure suit?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART009_071",
+      "question": "Tell me about the Mercury Pressure Suit.",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART009_072",
+      "question": "How did the Mercury astronaut suit supply oxygen and maintain pressurization?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART010_073",
+      "question": "Which robotic probe was the very first spacecraft to fly past the planet Jupiter?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART010_074",
+      "question": "Show me the unmanned space explorer carrying a golden plaque for alien civilizations.",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART010_075",
+      "question": "What is that space probe that was first to safely traverse the asteroid belt in 1972?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART010_076",
+      "question": "Tell me about the nuclear-powered deep space probe heading out of our solar system.",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART010_077",
+      "question": "What message is engraved on the Pioneer 10 golden plaque?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART010_078",
+      "question": "When did Pioneer 10 complete its historic flyby of Jupiter?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART010_079",
+      "question": "Tell me about the Pioneer 10 space probe.",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART010_080",
+      "question": "What power source kept Pioneer 10 transmitting across billions of miles?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART011_081",
+      "question": "Tell me about the ancient fossil sea cow skeleton excavated in Qatar.",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART011_082",
+      "question": "What is that prehistoric sirenian skeleton from the Eocene epoch?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART011_083",
+      "question": "Show me the extinct marine mammal fossil related to modern dugongs and manatees.",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART011_084",
+      "question": "Which exhibit contains the thirty-seven million year old aquatic mammal bones from the Persian Gulf?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART011_085",
+      "question": "Where was the Salwasiren fossil discovery made?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART011_086",
+      "question": "How is Salwasiren related to present-day marine sirenians?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART011_087",
+      "question": "Tell me about the Salwasiren qatarensis fossil skeleton.",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART011_088",
+      "question": "What does the Salwasiren skeleton reveal about the evolution of ancient sea cows?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART012_089",
+      "question": "Show me the massive carnivorous dinosaur skull with giant serrated teeth.",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART012_090",
+      "question": "What is that Cretaceous predator skull with the most powerful bite force in history?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART012_091",
+      "question": "Where is the fossil head of the giant meat-eating theropod king?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART012_092",
+      "question": "Tell me about the apex predatory dinosaur skull in the center of the hall.",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART012_093",
+      "question": "How strong was the bite force of a Tyrannosaurus rex?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART012_094",
+      "question": "What features made the T. rex skull adapted for crushing bone?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART012_095",
+      "question": "Tell me about the Tyrannosaurus rex skull on display.",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART012_096",
+      "question": "What period in prehistoric time did the Tyrannosaurus rex live?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART013_097",
+      "question": "Show me the famous three-horned plant-eating dinosaur with the massive neck frill.",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART013_098",
+      "question": "What is that giant horned herbivore skeleton named Hatcher?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART013_099",
+      "question": "Which exhibit is the world's first mounted skeleton of a ceratopsian dinosaur?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART013_100",
+      "question": "Tell me about the horned dinosaur skull that used horns to defend against predators.",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART013_101",
+      "question": "Who was John Bell Hatcher and why is this Triceratops named after him?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART013_102",
+      "question": "What was the purpose of the large bony frill on the Triceratops skull?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART013_103",
+      "question": "Tell me about Triceratops horridus Hatcher.",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART013_104",
+      "question": "How did Triceratops defend itself against carnivorous dinosaurs like T. rex?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART014_105",
+      "question": "Show me the enormous curved Ice Age tusk and massive grinding tooth.",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART014_106",
+      "question": "What is that prehistoric elephant ivory tusk from the frozen tundra?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART014_107",
+      "question": "Which fossil exhibit displays the spiraled mammoth tusk and ridged chewing tooth?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART014_108",
+      "question": "Tell me about the giant Ice Age mammal remains preserved from permafrost.",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART014_109",
+      "question": "What did Woolly Mammoths chew using their specialized ridged molars?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART014_110",
+      "question": "How long could a full-grown Woolly Mammoth curved tusk grow?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART014_111",
+      "question": "Tell me about the Woolly Mammoth Tusk and Molar.",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART014_112",
+      "question": "How did Ice Age mammoths use their tusks in snowy environments?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART015_113",
+      "question": "Where is that prehistoric feline skull with the enormous blade-like upper fangs?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART015_114",
+      "question": "Show me the fossil head of the Ice Age saber-toothed cat with curved canines.",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART015_115",
+      "question": "What is that predator skull from the tar pits with giant slicing teeth?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART015_116",
+      "question": "Tell me about the extinct big cat that could open its jaws to nearly one hundred degrees.",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "realistic_in_scope",
+      "subtype": "descriptive"
+    },
+    {
+      "id": "INS_ART015_117",
+      "question": "How long were the canine teeth of Smilodon fatalis?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART015_118",
+      "question": "How did saber-toothed cats use their long teeth without breaking them?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "realistic_in_scope",
+      "subtype": "attribute"
+    },
+    {
+      "id": "INS_ART015_119",
+      "question": "Tell me about the Smilodon fatalis sabertooth skull.",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "INS_ART015_120",
+      "question": "Where were most Smilodon fatalis fossils like this skull discovered?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "query_type": "realistic_in_scope",
+      "subtype": "natural"
+    },
+    {
+      "id": "DEI_ART001_001",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_002",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_003",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_004",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_005",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART001_006",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART001",
+      "artifact_id": "ART001",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_007",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_008",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_009",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_010",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_011",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART002_012",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART002",
+      "artifact_id": "ART002",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_013",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_014",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_015",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_016",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_017",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART003_018",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART003",
+      "artifact_id": "ART003",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_019",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_020",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_021",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_022",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_023",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART004_024",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART004",
+      "artifact_id": "ART004",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_025",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_026",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_027",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_028",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_029",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART005_030",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART005",
+      "artifact_id": "ART005",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_031",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_032",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_033",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_034",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_035",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART006_036",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART006",
+      "artifact_id": "ART006",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_037",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_038",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_039",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_040",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_041",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART007_042",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART007",
+      "artifact_id": "ART007",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_043",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_044",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_045",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_046",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_047",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART008_048",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART008",
+      "artifact_id": "ART008",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_049",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_050",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_051",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_052",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_053",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART009_054",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART009",
+      "artifact_id": "ART009",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_055",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_056",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_057",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_058",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_059",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART010_060",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART010",
+      "artifact_id": "ART010",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_061",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_062",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_063",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_064",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_065",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART011_066",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART011",
+      "artifact_id": "ART011",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_067",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_068",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_069",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_070",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_071",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART012_072",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART012",
+      "artifact_id": "ART012",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_073",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_074",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_075",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_076",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_077",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART013_078",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART013",
+      "artifact_id": "ART013",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_079",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_080",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_081",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_082",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_083",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART014_084",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART014",
+      "artifact_id": "ART014",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_085",
+      "question": "What am I looking at right here?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_086",
+      "question": "Can you explain what this piece is?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_087",
+      "question": "When was this created or found?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_088",
+      "question": "Who was the creator or person behind this?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_089",
+      "question": "What was the purpose or daily use of this item?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "DEI_ART015_090",
+      "question": "Why is this artifact important enough to be in the museum?",
+      "label": "in_scope",
+      "target_artifact_id": "ART015",
+      "artifact_id": "ART015",
+      "query_type": "deictic"
+    },
+    {
+      "id": "OOD_DIST_001",
+      "question": "What is the weather forecast in New York City today?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_002",
+      "question": "Can you write a Python function to reverse a linked list?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_003",
+      "question": "How do I make a classic Italian margherita pizza from scratch?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_004",
+      "question": "What is the capital city of Australia?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_005",
+      "question": "What are the symptoms of seasonal allergies?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_006",
+      "question": "How does the stock market work for beginners?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_007",
+      "question": "Who won the FIFA World Cup final in 2022?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_008",
+      "question": "What is 15 percent of 480?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_009",
+      "question": "How do I reset my Windows computer password?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_010",
+      "question": "Can you recommend a good action movie from this year?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_011",
+      "question": "What is the distance between the Earth and the Sun?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_012",
+      "question": "How do I brew cold brew coffee at home?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_013",
+      "question": "Write an SQL query to calculate average customer spend.",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_014",
+      "question": "What are the health benefits of green tea?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_015",
+      "question": "How do airplanes generate lift during takeoff?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_016",
+      "question": "What is the current price of Ethereum?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_017",
+      "question": "How do I prepare for a technical coding interview?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_018",
+      "question": "Translate 'Good morning, how are you?' into German.",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_019",
+      "question": "What is quantum mechanics in simple terms?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_020",
+      "question": "How do I remove coffee stains from a white shirt?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_021",
+      "question": "What is the tallest mountain in North America?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_022",
+      "question": "Can you teach me basic Spanish greetings?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_023",
+      "question": "How does a car combustion engine work?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_024",
+      "question": "What is the plot summary of Hamlet?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_DIST_025",
+      "question": "How do I calculate compound interest on an investment?",
+      "label": "ood",
+      "query_type": "ood_distant"
+    },
+    {
+      "id": "OOD_NEAR_001",
+      "question": "Where is Leonardo da Vinci's Mona Lisa exhibited?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_002",
+      "question": "When was the Rosetta Stone discovered by French soldiers in Egypt?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_003",
+      "question": "Tell me about King Tutankhamun's golden burial mask.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_004",
+      "question": "Who sculpted the famous marble statue of David in Florence?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_005",
+      "question": "Tell me about the Terracotta Army buried with Emperor Qin Shi Huang.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_006",
+      "question": "What is the Code of Hammurabi inscribed on the basalt stele?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_007",
+      "question": "Where can I see Vincent van Gogh's Starry Night painting?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_008",
+      "question": "Tell me about the Wright Brothers 1903 Flyer at the Air and Space Museum.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_009",
+      "question": "What discoveries were made by the Mars Curiosity Rover?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_010",
+      "question": "Tell me about the Parthenon Marbles taken from the Acropolis.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_011",
+      "question": "Where is the ancient Greek sculpture Venus de Milo located?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_012",
+      "question": "Tell me about the Great Sphinx of Giza in Egypt.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_013",
+      "question": "What is the historical significance of the Gutenberg Bible printed in 1455?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_014",
+      "question": "Where is the Hope Diamond on display in Washington?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_015",
+      "question": "Tell me about the original parchment of the United States Declaration of Independence.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_016",
+      "question": "What is the prehistoric monument of Stonehenge in England used for?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_017",
+      "question": "Who painted the Girl with a Pearl Earring?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_018",
+      "question": "Tell me about the Roman Colosseum and gladiatorial games.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_019",
+      "question": "What is the Dead Sea Scrolls collection discovered in Qumran caves?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_020",
+      "question": "Show me the mask of Agamemnon discovered at Mycenae.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_021",
+      "question": "Tell me about the prehistoric cave paintings in Lascaux France.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_022",
+      "question": "Where is the original Magna Carta preserved today?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_023",
+      "question": "Tell me about the ancient Egyptian bust of Queen Nefertiti.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_024",
+      "question": "What is the Sutton Hoo Anglo-Saxon ship burial treasure?",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "OOD_NEAR_025",
+      "question": "Tell me about the Viking longship discovered at Oseberg Norway.",
+      "label": "ood",
+      "query_type": "ood_near_domain"
+    },
+    {
+      "id": "BOUND_001",
+      "question": "Tell me about old weapons.",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_002",
+      "question": "What space stuff is here?",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_003",
+      "question": "Ancient tools",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_004",
+      "question": "Prehistoric fossils",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_005",
+      "question": "Old American statues",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_006",
+      "question": "Aircraft",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_007",
+      "question": "Fossil bones",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_008",
+      "question": "Telegraphs and electricity",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_009",
+      "question": "Things made of bronze",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    },
+    {
+      "id": "BOUND_010",
+      "question": "Artifacts from the 1800s",
+      "label": "boundary",
+      "query_type": "boundary_ambiguous"
+    }
+  ]
+}
