@@ -1,0 +1,10 @@
+# Ignore all documentation files and folders except DOCS/MAIN/Project Report.docx
+DOCS/*
+!DOCS/MAIN/
+DOCS/MAIN/*
+!DOCS/MAIN/Project Report.docx
+
+docs/*
+!docs/main/
+docs/main/*
+!docs/main/Project Report.docx
